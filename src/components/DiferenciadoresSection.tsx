@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 interface ComparisonRow {
   feature: string;
@@ -197,7 +198,7 @@ export default function DiferenciadoresSection() {
             No vendemos software estándar. Co-creamos automatizaciones específicas para empresas de construcción.
             Si no funciona, lo refinamos hasta que funcione. Sin letra pequeña.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10 mb-8">
             {["100% Sector Construcción", "ROI en 2-3 semanas", "Sin contratos eternos"].map((tag, idx) => (
               <div key={idx} className="flex items-center gap-2 text-slate-300 bg-black/20 px-4 py-2 rounded-full border border-white/5">
                 <svg className="w-5 h-5 text-accent-copper" fill="currentColor" viewBox="0 0 20 20">
@@ -207,6 +208,12 @@ export default function DiferenciadoresSection() {
               </div>
             ))}
           </div>
+          <Link
+            href="/auditoria"
+            className="btn-primary px-8 py-4 text-lg inline-block relative z-10 shadow-copper-glow hover:scale-105 transition-transform"
+          >
+            📞 Ver cómo funciona en tu empresa
+          </Link>
         </div>
       </div>
     </section>

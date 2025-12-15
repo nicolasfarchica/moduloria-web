@@ -42,7 +42,7 @@ const PRICING_TIERS: PricingTier[] = [
     price: '€3K - €8K',
     duration: 'Proyecto único',
     roi: '1-3 semanas',
-    bestFor: 'Empresas que quieren validar automatización con bajo riesgo antes de comprometerse',
+    bestFor: 'Empresas de construcción modular que quieren validar automatización con IA con bajo riesgo antes de comprometerse',
     features: [
       'Implementación en 3-7 días',
       '1 automatización específica',
@@ -91,7 +91,7 @@ const PRICING_FAQS = [
   },
   {
     q: "¿Puedo empezar con Quick Win y luego escalar a High Impact?",
-    a: "Absolutamente. Es el camino recomendado. Validas con bajo riesgo (Quick Win €3K-€8K), ves resultados reales, y luego decides si escalas. Bonus: Si contratas High Impact después de un Quick Win exitoso, te descontamos el 100% del Quick Win del precio final."
+    a: "Absolutamente. Es el camino recomendado para implementar IA en construcción modular. Validas con bajo riesgo (Quick Win €3K-€8K), ves resultados reales en tu empresa, y luego decides si escalas. Bonus: Si contratas High Impact después de un Quick Win exitoso, te descontamos el 100% del Quick Win del precio final."
   },
   {
     q: "¿Los precios incluyen las licencias de herramientas (n8n, Make, etc.)?",
@@ -124,9 +124,11 @@ export default function PreciosSection() {
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold font-heading text-white mb-6">
-            Precios <span className="text-accent-copper">transparentes</span>
+            Precios de <span className="text-accent-copper">IA en Construcción Modular</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-4">
+            Implementamos <strong className="text-white">automatización en construcción modular</strong> con precios transparentes.
+            <br />
             Sin letra pequeña. Sin contratos eternos. Pagas por resultados, no por horas.
           </p>
           <p className="text-lg text-accent-copper font-semibold">

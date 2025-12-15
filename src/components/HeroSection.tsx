@@ -29,17 +29,17 @@ export default function HeroSection() {
             <span className="text-accent-copper font-bold text-sm">✨ Especializado en Construcción Modular</span>
           </motion.div>
 
-          {/* Main Headline */}
+          {/* Main Headline - H1 Optimizado para SEO */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight font-heading"
           >
-            Automatiza lo que te frena.
+            IA en Construcción Modular
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-copper to-primary-light">
-              Escala sin contratar.
+              que Automatiza y Ahorra Tiempo
             </span>
           </motion.h1>
 
@@ -50,9 +50,11 @@ export default function HeroSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl md:text-2xl text-secondary-beige max-w-3xl mx-auto mb-12 font-light leading-relaxed"
           >
-            IA que entiende tu industria. Automatización que funciona desde el día 1.
+            Implementamos <span className="text-white font-medium">automatización en construcción modular</span> con IA práctica.
             <br />
-            <span className="text-white font-medium">Ahorra €67K-156K/año</span> eliminando tareas manuales repetitivas.
+            Ahorra <span className="text-accent-copper font-bold">€67K-156K/año</span> eliminando tareas manuales repetitivas.
+            <br />
+            <span className="text-primary-light text-lg">ROI medible en 2-3 semanas. Sin proyectos eternos.</span>
           </motion.p>
 
           {/* Social Proof */}

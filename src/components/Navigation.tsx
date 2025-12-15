@@ -110,7 +110,7 @@ export default function Navigation() {
             </Link>
 
             <Link
-              href="/sobre-nicolas"
+              href="/sobre-moduloria"
               className="text-white hover:text-accent-copper transition-colors duration-300 font-medium"
             >
               Nosotros
@@ -176,7 +176,7 @@ export default function Navigation() {
                 Recursos
               </Link>
               <Link
-                href="/sobre-nicolas"
+                href="/sobre-moduloria"
                 className="block text-white hover:text-accent-copper transition-colors duration-300 py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
