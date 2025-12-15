@@ -138,85 +138,89 @@ export default function PreciosSection() {
 
         {/* Pricing Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto mb-12">
-          {PRICING_TIERS.map((tier) => (
-            <div
-              key={tier.name}
-              className={`relative rounded-2xl p-8 transition-all duration-300 ${tier.highlighted
-                ? 'bg-gradient-to-br from-white/10 to-white/5 border border-accent-copper shadow-copper-glow transform md:-translate-y-4'
-                : 'bg-white/5 border border-white/10 hover:border-accent-copper/50 hover:bg-white/10'
-                }`}
-            >
-              {/* Highlighted Badge */}
-              {tier.highlighted && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-full text-center">
-                  <span className="bg-accent-copper text-white text-sm font-bold px-4 py-1 rounded-full shadow-lg">
-                    ⭐ Más popular
-                  </span>
-                </div>
-              )}
-
-              {/* Header */}
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold font-heading text-white mb-2">{tier.name}</h3>
-                <p className="text-gray-400 mb-4">{tier.tagline}</p>
-
-                <div className="mb-4">
-                  <div className={`text-4xl font-bold font-heading ${tier.highlighted ? 'text-accent-copper' : 'text-white'}`}>
-                    {tier.price}
-                  </div>
-                  <div className="text-sm text-gray-400 mt-1">{tier.duration}</div>
-                </div>
-
-                <div className="bg-accent-copper/20 border border-accent-copper/30 rounded-lg px-4 py-2 inline-block">
-                  <span className="text-sm font-semibold text-accent-copper">
-                    ⏱️ ROI: {tier.roi}
-                  </span>
-                </div>
-              </div>
-
-              {/* Best For */}
-              <div className="mb-6">
-                <p className="text-sm font-semibold text-white mb-2">✅ Ideal para:</p>
-                <p className="text-gray-300 text-sm">{tier.bestFor}</p>
-              </div>
-
-              {/* Features */}
-              <div className="mb-6">
-                <p className="text-sm font-semibold text-white mb-3">📦 Incluye:</p>
-                <ul className="space-y-2">
-                  {tier.features.map((feature, index) => (
-                    <li key={index} className="flex items-start gap-2 text-sm text-gray-300">
-                      <svg className="w-5 h-5 text-accent-copper flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Examples */}
-              <div className="mb-6">
-                <p className="text-sm font-semibold text-white mb-2">💡 Ejemplos:</p>
-                <div className="space-y-1">
-                  {tier.examples.map((example, index) => (
-                    <p key={index} className="text-sm text-gray-400">• {example}</p>
-                  ))}
-                </div>
-              </div>
-
-              {/* CTA */}
-              <Link
-                href={tier.ctaLink}
-                className={`block text-center py-4 rounded-lg font-semibold transition-all duration-300 ${tier.highlighted
-                  ? 'bg-accent-copper text-white hover:shadow-copper-glow hover:scale-[1.02]'
-                  : 'bg-white/10 text-white hover:bg-white/20'
+          {PRICING_TIERS.map((tier, index) => {
+            const tierId = index === 0 ? 'diagnostico' : index === 1 ? 'quick-win' : 'high-impact';
+            return (
+              <div
+                key={tier.name}
+                id={tierId}
+                className={`relative rounded-2xl p-8 transition-all duration-300 scroll-mt-24 ${tier.highlighted
+                  ? 'bg-gradient-to-br from-white/10 to-white/5 border border-accent-copper shadow-copper-glow transform md:-translate-y-4'
+                  : 'bg-white/5 border border-white/10 hover:border-accent-copper/50 hover:bg-white/10'
                   }`}
               >
-                {tier.cta}
-              </Link>
-            </div>
-          ))}
+                {/* Highlighted Badge */}
+                {tier.highlighted && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-full text-center">
+                    <span className="bg-accent-copper text-white text-sm font-bold px-4 py-1 rounded-full shadow-lg">
+                      ⭐ Más popular
+                    </span>
+                  </div>
+                )}
+
+                {/* Header */}
+                <div className="text-center mb-6">
+                  <h3 className="text-2xl font-bold font-heading text-white mb-2">{tier.name}</h3>
+                  <p className="text-gray-400 mb-4">{tier.tagline}</p>
+
+                  <div className="mb-4">
+                    <div className={`text-4xl font-bold font-heading ${tier.highlighted ? 'text-accent-copper' : 'text-white'}`}>
+                      {tier.price}
+                    </div>
+                    <div className="text-sm text-gray-400 mt-1">{tier.duration}</div>
+                  </div>
+
+                  <div className="bg-accent-copper/20 border border-accent-copper/30 rounded-lg px-4 py-2 inline-block">
+                    <span className="text-sm font-semibold text-accent-copper">
+                      ⏱️ ROI: {tier.roi}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Best For */}
+                <div className="mb-6">
+                  <p className="text-sm font-semibold text-white mb-2">✅ Ideal para:</p>
+                  <p className="text-gray-300 text-sm">{tier.bestFor}</p>
+                </div>
+
+                {/* Features */}
+                <div className="mb-6">
+                  <p className="text-sm font-semibold text-white mb-3">📦 Incluye:</p>
+                  <ul className="space-y-2">
+                    {tier.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-start gap-2 text-sm text-gray-300">
+                        <svg className="w-5 h-5 text-accent-copper flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Examples */}
+                <div className="mb-6">
+                  <p className="text-sm font-semibold text-white mb-2">💡 Ejemplos:</p>
+                  <div className="space-y-1">
+                    {tier.examples.map((example, idx) => (
+                      <p key={idx} className="text-sm text-gray-400">• {example}</p>
+                    ))}
+                  </div>
+                </div>
+
+                {/* CTA */}
+                <Link
+                  href={tier.ctaLink}
+                  className={`block text-center py-4 rounded-lg font-semibold transition-all duration-300 ${tier.highlighted
+                    ? 'bg-accent-copper text-white hover:shadow-copper-glow hover:scale-[1.02]'
+                    : 'bg-white/10 text-white hover:bg-white/20'
+                    }`}
+                >
+                  {tier.cta}
+                </Link>
+              </div>
+            );
+          })}
         </div>
 
         {/* Pricing FAQ (Accordion) */}
@@ -292,7 +296,7 @@ export default function PreciosSection() {
               <div className="text-secondary-beige text-sm">Ahorro anual promedio</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-accent-copper mb-2">2-8 semanas</div>
+              <div className="text-4xl font-bold text-accent-copper mb-2">2-3 semanas</div>
               <div className="text-secondary-beige text-sm">ROI típico</div>
             </div>
           </div>

@@ -49,7 +49,7 @@ export default function NosotrosSection() {
               <p>
                 La construcción modular tiene procesos únicos, tiempos críticos y márgenes ajustados que
                 las agencias de IA tradicionales no entienden. <span className="text-accent-copper">No puedes permitirte
-                perder 6 meses en un proyecto que "tal vez funcione".</span>
+                  perder 6 meses en un proyecto que "tal vez funcione".</span>
               </p>
 
               <p>

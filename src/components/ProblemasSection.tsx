@@ -157,8 +157,8 @@ export default function ProblemasSection() {
             <span className="text-secondary-beige text-xs font-medium uppercase tracking-widest font-heading">Catálogo de Soluciones</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 font-heading tracking-tight">
-            25 problemas que resolvemos en <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-copper to-primary-light">la industria de la construcción</span>
+            Problemas que resolvemos en <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-copper to-primary-light">la industria de construcción modular</span>
           </h2>
           <p className="text-xl text-primary-steel max-w-3xl mx-auto font-light leading-relaxed">
             Desde quick wins de 3 días hasta transformación digital completa. Elige tu punto de entrada.
@@ -282,7 +282,7 @@ export default function ProblemasSection() {
         {/* View All CTA */}
         <div className="text-center">
           <p className="text-primary-steel mb-8 font-light text-lg">
-            Estos son solo <span className="text-white font-medium">6 de los 25 problemas</span> documentados con ROI calculado.
+            Estos son solo <span className="text-white font-medium">algunos de los problemas</span> que documentamos con ROI calculado.
           </p>
           <Link
             href="/problemas"

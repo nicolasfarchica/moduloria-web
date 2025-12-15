@@ -43,57 +43,12 @@ export default function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
-            <div className="relative group">
-              <button className="text-white hover:text-accent-copper transition-colors duration-300 font-medium">
-                Problemas ▾
-              </button>
-              <div className="absolute left-0 mt-2 w-56 bg-primary-dark/95 backdrop-blur-xl border border-white/10 rounded-xl shadow-glow opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left">
-                <Link
-                  href="/problemas#quick-wins"
-                  className="block px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-accent-copper transition-colors duration-200 first:rounded-t-xl"
-                >
-                  Quick Wins
-                </Link>
-                <Link
-                  href="/problemas#high-impact"
-                  className="block px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-accent-copper transition-colors duration-200"
-                >
-                  High Impact
-                </Link>
-                <Link
-                  href="/problemas"
-                  className="block px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-accent-copper transition-colors duration-200 last:rounded-b-xl border-t border-white/5"
-                >
-                  Ver todos los problemas
-                </Link>
-              </div>
-            </div>
-
-            <div className="relative group">
-              <button className="text-white hover:text-accent-copper transition-colors duration-300 font-medium font-heading">
-                Soluciones ▾
-              </button>
-              <div className="absolute left-0 mt-2 w-56 bg-primary-dark/95 backdrop-blur-xl border border-white/10 rounded-xl shadow-glow opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left">
-                <Link
-                  href="/soluciones#auditoria"
-                  className="block px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-accent-copper transition-colors duration-200 first:rounded-t-xl"
-                >
-                  Auditoría
-                </Link>
-                <Link
-                  href="/soluciones#quick-win"
-                  className="block px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-accent-copper transition-colors duration-200"
-                >
-                  Quick Win
-                </Link>
-                <Link
-                  href="/soluciones#high-impact"
-                  className="block px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-accent-copper transition-colors duration-200 last:rounded-b-xl"
-                >
-                  High Impact
-                </Link>
-              </div>
-            </div>
+            <Link
+              href="/servicios"
+              className="text-white hover:text-accent-copper transition-colors duration-300 font-medium"
+            >
+              Servicios
+            </Link>
 
             <Link
               href="/precios"
@@ -121,7 +76,7 @@ export default function Navigation() {
               href="/auditoria"
               className="btn-primary text-sm px-6 py-3"
             >
-              🔍 Auditoría Gratis
+              � Diagnóstico Estratégico
             </Link>
           </div>
 
@@ -148,46 +103,39 @@ export default function Navigation() {
           <div className="lg:hidden bg-primary-dark border-t border-white/10">
             <div className="py-4 space-y-4">
               <Link
-                href="/problemas"
-                className="block text-white hover:text-accent-copper transition-colors duration-300 py-2"
+                href="/servicios"
+                className="block text-white hover:text-accent-copper transition-colors duration-300 py-2 px-4"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Problemas
-              </Link>
-              <Link
-                href="/soluciones"
-                className="block text-white hover:text-accent-copper transition-colors duration-300 py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Soluciones
+                Servicios
               </Link>
               <Link
                 href="/precios"
-                className="block text-white hover:text-accent-copper transition-colors duration-300 py-2"
+                className="block text-white hover:text-accent-copper transition-colors duration-300 py-2 px-4"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Precios
               </Link>
               <Link
                 href="/recursos"
-                className="block text-white hover:text-accent-copper transition-colors duration-300 py-2"
+                className="block text-white hover:text-accent-copper transition-colors duration-300 py-2 px-4"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Recursos
               </Link>
               <Link
                 href="/sobre-moduloria"
-                className="block text-white hover:text-accent-copper transition-colors duration-300 py-2"
+                className="block text-white hover:text-accent-copper transition-colors duration-300 py-2 px-4"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Nosotros
               </Link>
               <Link
                 href="/auditoria"
-                className="block btn-primary text-center mt-4"
+                className="block btn-primary text-center mt-4 mx-4"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                🔍 Auditoría Gratis
+                � Diagnóstico Estratégico
               </Link>
             </div>
           </div>
