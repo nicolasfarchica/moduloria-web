@@ -12,14 +12,17 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand Section */}
           <div>
-            <Link href="/" className="inline-block mb-6">
+            <Link href="/" className="flex items-center space-x-2 group mb-6">
               <Image
-                src="/images/logo.png"
+                src="/images/moduloria-logo.png"
                 alt="ModulorIA Logo"
-                width={150}
+                width={40}
                 height={40}
-                className="h-10 w-auto"
+                className="transition-transform duration-300 group-hover:scale-110 object-contain"
               />
+              <span className="text-2xl font-bold text-white tracking-tight">
+                Modulor<span className="text-accent-copper">IA</span>
+              </span>
             </Link>
             <p className="text-slate-400 text-sm mb-6 leading-relaxed">
               Automatización con IA especializada en construcción modular.
@@ -110,13 +113,13 @@ export default function Footer() {
             <h3 className="text-white font-bold mb-4 text-lg">Empresa</h3>
             <ul className="space-y-3">
               <li>
-                <Link href="/sobre-nicolas" className="text-slate-400 hover:text-accent-copper transition-colors text-sm">
-                  Sobre Nicolás
+                <Link href="/sobre-nosotros" className="text-slate-400 hover:text-accent-copper transition-colors text-sm">
+                  Sobre Nosotros
                 </Link>
               </li>
               <li>
-                <Link href="/soluciones" className="text-slate-400 hover:text-accent-copper transition-colors text-sm">
-                  Soluciones
+                <Link href="/servicios" className="text-slate-400 hover:text-accent-copper transition-colors text-sm">
+                  Servicios
                 </Link>
               </li>
               <li>
@@ -143,14 +146,14 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="mailto:nicolas@moduloria.com"
+                  href="mailto:contacto@moduloria.com"
                   className="text-slate-400 hover:text-accent-copper transition-colors text-sm flex items-center gap-2"
                 >
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                     <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                   </svg>
-                  nicolas@moduloria.com
+                  contacto@moduloria.com
                 </a>
               </li>
               <li>

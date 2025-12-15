@@ -13,6 +13,7 @@ interface Servicio {
     useCase: string;
     savings: string;
     timeline: string;
+    image: string;
 }
 
 const SERVICIOS: Servicio[] = [
@@ -31,6 +32,7 @@ const SERVICIOS: Servicio[] = [
         useCase: 'Empresa de módulos prefabricados redujo tiempo de presupuesto de 3 días a 2 horas.',
         savings: '€24K-€48K/año',
         timeline: '2-3 semanas',
+        image: '/images/budget-problem.png'
     },
     {
         id: 'planificacion',
@@ -47,6 +49,7 @@ const SERVICIOS: Servicio[] = [
         useCase: 'Planta de paneles CLT aumentó throughput un 23% sin inversión adicional.',
         savings: '€35K-€80K/año',
         timeline: '3-4 semanas',
+        image: '/images/production-problem.png'
     },
     {
         id: 'documentacion',
@@ -63,6 +66,7 @@ const SERVICIOS: Servicio[] = [
         useCase: 'Constructora eliminó 15h/semana de trabajo administrativo.',
         savings: '€18K-€30K/año',
         timeline: '1-2 semanas',
+        image: '/images/docs-problem.png'
     },
     {
         id: 'chatbot',
@@ -79,6 +83,7 @@ const SERVICIOS: Servicio[] = [
         useCase: 'Equipo de obra resuelve dudas técnicas en segundos en vez de llamar a oficina.',
         savings: '€12K-€25K/año',
         timeline: '3-5 días',
+        image: '/images/team-problem.png'
     },
     {
         id: 'calidad',
@@ -95,6 +100,7 @@ const SERVICIOS: Servicio[] = [
         useCase: 'Fábrica de módulos 3D redujo reclamaciones post-entrega un 40%.',
         savings: '€20K-€45K/año',
         timeline: '2-3 semanas',
+        image: '/images/quality-problem.png'
     },
     {
         id: 'comercial',
@@ -111,6 +117,7 @@ const SERVICIOS: Servicio[] = [
         useCase: 'Comercial pasó de gestionar 20 a 60 leads/mes sin contratar.',
         savings: '€15K-€35K/año',
         timeline: '1-2 semanas',
+        image: '/images/sales-problem.png'
     },
 ];
 
@@ -164,55 +171,56 @@ export default function ServiciosSection() {
                             transition={{ delay: index * 0.1 }}
                             className="group relative"
                         >
-                            <div className="glass-card h-full border border-white/5 hover:border-accent-copper/30 transition-all duration-300 hover:shadow-copper-glow">
-                                {/* Icon & Title */}
-                                <div className="flex items-start gap-4 mb-4">
-                                    <div className="w-14 h-14 rounded-xl bg-accent-copper/10 border border-accent-copper/20 flex items-center justify-center text-3xl flex-shrink-0">
+                            <div className="glass-card h-full border border-white/5 hover:border-accent-copper/30 transition-all duration-300 hover:shadow-copper-glow flex flex-col p-0 overflow-hidden">
+                                {/* Image Header */}
+                                <div className="h-48 relative overflow-hidden">
+                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent z-10" />
+                                    <img
+                                        src={servicio.image}
+                                        alt={servicio.title}
+                                        className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                                    />
+                                    <div className="absolute top-4 right-4 z-20 w-10 h-10 rounded-lg bg-accent-copper/90 backdrop-blur-sm border border-white/20 flex items-center justify-center text-xl shadow-lg">
                                         {servicio.icon}
                                     </div>
-                                    <div>
-                                        <h3 className="text-xl font-bold text-white group-hover:text-accent-copper transition-colors">
+                                </div>
+
+                                <div className="p-8 flex-1 flex flex-col">
+                                    {/* Title */}
+                                    <div className="mb-4">
+                                        <h3 className="text-xl font-bold text-white group-hover:text-accent-copper transition-colors mb-2">
                                             {servicio.title}
                                         </h3>
                                         <p className="text-accent-copper text-sm font-medium">{servicio.subtitle}</p>
                                     </div>
-                                </div>
 
-                                {/* Description */}
-                                <p className="text-slate-400 mb-4 leading-relaxed">
-                                    {servicio.description}
-                                </p>
+                                    {/* Description */}
+                                    <p className="text-slate-400 mb-6 leading-relaxed text-sm flex-1">
+                                        {servicio.description}
+                                    </p>
 
-                                {/* Benefits */}
-                                <ul className="space-y-2 mb-6">
-                                    {servicio.benefits.slice(0, 3).map((benefit, idx) => (
-                                        <li key={idx} className="flex items-start gap-2 text-sm">
-                                            <svg className="w-4 h-4 text-accent-copper flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                                            </svg>
-                                            <span className="text-slate-300">{benefit}</span>
-                                        </li>
-                                    ))}
-                                </ul>
+                                    {/* Benefits */}
+                                    <ul className="space-y-2 mb-6">
+                                        {servicio.benefits.slice(0, 3).map((benefit, idx) => (
+                                            <li key={idx} className="flex items-start gap-2 text-xs">
+                                                <svg className="w-4 h-4 text-accent-copper flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                                </svg>
+                                                <span className="text-slate-300">{benefit}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
 
-                                {/* Stats Row */}
-                                <div className="flex items-center justify-between pt-4 border-t border-white/5">
-                                    <div>
-                                        <p className="text-xs text-slate-500 uppercase tracking-wider">Ahorro típico</p>
-                                        <p className="text-accent-copper font-bold">{servicio.savings}</p>
-                                    </div>
-                                    <div className="text-right">
-                                        <p className="text-xs text-slate-500 uppercase tracking-wider">Implementación</p>
-                                        <p className="text-white font-semibold">{servicio.timeline}</p>
-                                    </div>
-                                </div>
-
-                                {/* Use Case Tooltip on Hover */}
-                                <div className="absolute inset-x-0 bottom-0 translate-y-full opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-300 pointer-events-none z-20">
-                                    <div className="mx-4 p-3 bg-slate-800 border border-white/10 rounded-lg shadow-lg">
-                                        <p className="text-xs text-slate-400">
-                                            <span className="text-accent-copper font-semibold">Caso real:</span> {servicio.useCase}
-                                        </p>
+                                    {/* Stats Row */}
+                                    <div className="flex items-center justify-between pt-4 border-t border-white/5 mt-auto">
+                                        <div>
+                                            <p className="text-[10px] text-slate-500 uppercase tracking-wider">Ahorro típico</p>
+                                            <p className="text-accent-copper font-bold text-sm">{servicio.savings}</p>
+                                        </div>
+                                        <div className="text-right">
+                                            <p className="text-[10px] text-slate-500 uppercase tracking-wider">Implementación</p>
+                                            <p className="text-white font-semibold text-sm">{servicio.timeline}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

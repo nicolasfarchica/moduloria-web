@@ -95,6 +95,32 @@ const PROBLEMS: Problem[] = [
     icon: '🤝',
     image: '/images/vendor-pain.png',
   },
+
+  // TRANSFORMACIONAL
+  {
+    id: '7',
+    tier: 'transformacional',
+    title: 'Digital Twin 4.0',
+    description: 'Réplica digital exacta de tu fábrica y productos. Simulación de escenarios y mantenimiento predictivo.',
+    roi: '12-18 meses',
+    timeToValue: '3-6 meses',
+    savings: '€150K+/año',
+    slug: 'digital-twin',
+    icon: '🌐',
+    image: '/images/digital-twin-problem.png',
+  },
+  {
+    id: '8',
+    tier: 'transformacional',
+    title: 'Producción Autónoma',
+    description: 'Líneas de ensamblaje robotizadas con mínima intervención humana. Producción 24/7.',
+    roi: '18-24 meses',
+    timeToValue: '6-12 meses',
+    savings: '€300K+/año',
+    slug: 'produccion-autonoma',
+    icon: '🤖',
+    image: '/images/autonomous-factory-problem.png',
+  },
 ];
 
 const TIER_CONFIG = {
@@ -258,21 +284,7 @@ export default function ProblemasSection() {
                     </div>
                   </div>
 
-                  {/* CTA */}
-                  <Link
-                    href={`/problemas/${problem.slug}`}
-                    className={`inline-flex items-center font-bold text-sm transition-all group-hover:translate-x-1 ${config.color}`}
-                  >
-                    Análisis Detallado
-                    <svg
-                      className="w-4 h-4 ml-2"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </Link>
+
                 </motion.div>
               );
             })}
@@ -282,16 +294,13 @@ export default function ProblemasSection() {
         {/* View All CTA */}
         <div className="text-center">
           <p className="text-primary-steel mb-8 font-light text-lg">
-            Estos son solo <span className="text-white font-medium">algunos de los problemas</span> que documentamos con ROI calculado.
+            ¿Tu problema no está en la lista? <span className="text-white font-medium">Analizamos tu caso específico.</span>
           </p>
           <Link
-            href="/problemas"
-            className="btn-outline border-white/20 text-white hover:border-accent-copper hover:text-accent-copper inline-flex items-center text-lg px-8 py-4 bg-white/5 backdrop-blur-sm"
+            href="/auditoria"
+            className="btn-primary px-8 py-4 text-lg inline-flex items-center shadow-copper-glow hover:scale-105 transition-transform"
           >
-            Explorar Catálogo Completo
-            <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
+            🔍 Solicitar Diagnóstico de Problemas
           </Link>
         </div>
       </div>

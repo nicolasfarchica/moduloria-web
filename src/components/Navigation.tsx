@@ -27,16 +27,16 @@ export default function Navigation() {
       <nav className="container-custom" aria-label="Navegación principal">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3 group">
+          <Link href="/" className="flex items-center space-x-2 group">
             <Image
-              src="/logo-moduloria.png"
+              src="/images/moduloria-logo.png"
               alt="ModulorIA Logo"
-              width={48}
-              height={48}
-              className="transition-transform duration-300 group-hover:scale-105"
+              width={40}
+              height={40}
+              className="transition-transform duration-300 group-hover:scale-110 object-contain"
               priority
             />
-            <span className="text-2xl font-bold text-white">
+            <span className="text-2xl font-bold text-white tracking-tight">
               Modulor<span className="text-accent-copper">IA</span>
             </span>
           </Link>

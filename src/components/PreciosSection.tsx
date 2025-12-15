@@ -51,8 +51,8 @@ const PRICING_TIERS: PricingTier[] = [
       '1 mes de soporte incluido',
     ],
     examples: ['OCR Facturas', 'Clasificación Emails', 'Alertas de Retrasos'],
-    cta: '🚀 Ver Quick Wins',
-    ctaLink: '/soluciones#quick-win',
+    cta: '🚀 Solicitar Quick Win',
+    ctaLink: '/auditoria?plan=quick-win',
   },
   {
     name: 'High Impact',
@@ -70,8 +70,8 @@ const PRICING_TIERS: PricingTier[] = [
       '2 sesiones de optimización mensuales',
     ],
     examples: ['Dashboard Multimódulo', 'Reportes Automáticos', 'Gestión Proveedores'],
-    cta: '💎 Ver High Impact',
-    ctaLink: '/soluciones#high-impact',
+    cta: '💎 Solicitar High Impact',
+    ctaLink: '/auditoria?plan=high-impact',
     highlighted: true,
   },
 ];

@@ -44,7 +44,7 @@ const COMPARISONS: ComparisonRow[] = [
   {
     feature: '🤝 Soporte',
     generic: 'Tickets por portal. Respuesta en 48-72h.',
-    moduloria: 'WhatsApp directo con Nicolás. Respuesta en < 2h hábiles.',
+    moduloria: 'WhatsApp directo con nuestro equipo. Respuesta en < 2h hábiles.',
     impact: 'medium',
   },
   {

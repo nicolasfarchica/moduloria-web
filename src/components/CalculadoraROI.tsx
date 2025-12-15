@@ -53,7 +53,7 @@ export default function CalculadoraROI() {
   // Cálculos
   const ahorroFacturas = facturas * 12 * 8; // €8/factura promedio
   const ahorroProyectos = proyectos * 12 * 50; // €50/proyecto/mes en seguimiento
-  const ahorroHoras = horasAdmin * 4 * 35; // €35/hora * 4 semanas
+  const ahorroHoras = horasAdmin * 4 * 35 * 12; // €35/hora * 4 semanas * 12 meses
   const ahorroTotal = ahorroFacturas + ahorroProyectos + ahorroHoras;
   const roiMeses = Math.max(1, Math.ceil((8000 / ahorroTotal) * 12));
 

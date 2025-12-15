@@ -39,7 +39,7 @@ export default function HeroSection() {
             IA en Construcción Modular
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-copper to-primary-light">
-              que Automatiza y Ahorra Tiempo
+              que Ahorra Tiempo
             </span>
           </motion.h1>
 
@@ -50,7 +50,7 @@ export default function HeroSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl md:text-2xl text-secondary-beige max-w-3xl mx-auto mb-12 font-light leading-relaxed"
           >
-            Implementamos <span className="text-white font-medium">automatización en construcción modular</span> con IA práctica.
+            Implementamos <span className="text-white font-medium">soluciones de IA para construcción modular</span>.
             <br />
             Ahorra <span className="text-accent-copper font-bold">€67K-156K/año</span> eliminando tareas manuales repetitivas.
             <br />

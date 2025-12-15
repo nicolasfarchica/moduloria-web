@@ -130,11 +130,14 @@ export default function NosotrosSection() {
             className="glass-card p-8 md:p-12"
           >
             <div className="flex flex-col md:flex-row gap-8 items-center">
-              {/* Profile Image Placeholder */}
-              <div className="flex-shrink-0">
-                <div className="w-32 h-32 rounded-full bg-gradient-to-br from-accent-copper to-primary-medium flex items-center justify-center text-5xl">
-                  👨‍💼
-                </div>
+              {/* Profile Image */}
+              <div className="flex-shrink-0 relative group">
+                <div className="absolute inset-0 bg-accent-copper rounded-full blur-md opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
+                <img
+                  src="/images/nicolas-farchica-ceo.jpg"
+                  alt="Nicolás Farchica - CEO ModulorIA"
+                  className="w-40 h-40 rounded-full object-cover border-4 border-accent-copper/20 shadow-xl relative z-10 group-hover:scale-105 transition-transform duration-500"
+                />
               </div>
 
               {/* Bio */}
