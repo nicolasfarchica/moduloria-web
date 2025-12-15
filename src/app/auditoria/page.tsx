@@ -199,7 +199,182 @@ export default function AuditoriaPage() {
               </div>
             </motion.div>
 
-            {/* Right Column: Formulario - TRUNCATED DUE TO LENGTH - Complete in next upload batch */}
+            {/* Right Column: Formulario */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3 }}
+              className="glass-panel p-8 md:p-10 rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent shadow-xl"
+            >
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 font-heading">
+                Agendar Auditoría Gratis
+              </h2>
+
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Nombre */}
+                <div>
+                  <label htmlFor="nombre" className="block text-sm font-medium text-gray-300 mb-2">
+                    Nombre completo *
+                  </label>
+                  <input
+                    type="text"
+                    id="nombre"
+                    name="nombre"
+                    value={formData.nombre}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 bg-background-dark border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-copper focus:border-transparent transition-all"
+                    placeholder="Ej: Juan Pérez"
+                  />
+                </div>
+
+                {/* Empresa */}
+                <div>
+                  <label htmlFor="empresa" className="block text-sm font-medium text-gray-300 mb-2">
+                    Empresa *
+                  </label>
+                  <input
+                    type="text"
+                    id="empresa"
+                    name="empresa"
+                    value={formData.empresa}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 bg-background-dark border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-copper focus:border-transparent transition-all"
+                    placeholder="Ej: Constructora ABC"
+                  />
+                </div>
+
+                {/* Email */}
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                    Email corporativo *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 bg-background-dark border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-copper focus:border-transparent transition-all"
+                    placeholder="juan@empresa.com"
+                  />
+                </div>
+
+                {/* Teléfono */}
+                <div>
+                  <label htmlFor="telefono" className="block text-sm font-medium text-gray-300 mb-2">
+                    Teléfono *
+                  </label>
+                  <input
+                    type="tel"
+                    id="telefono"
+                    name="telefono"
+                    value={formData.telefono}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 bg-background-dark border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-copper focus:border-transparent transition-all"
+                    placeholder="+34 600 000 000"
+                  />
+                </div>
+
+                {/* Empleados */}
+                <div>
+                  <label htmlFor="empleados" className="block text-sm font-medium text-gray-300 mb-2">
+                    Tamaño de la empresa *
+                  </label>
+                  <select
+                    id="empleados"
+                    name="empleados"
+                    value={formData.empleados}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 bg-background-dark border border-white/10 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-accent-copper focus:border-transparent transition-all"
+                  >
+                    <option value="">Selecciona...</option>
+                    <option value="1-10">1-10 empleados</option>
+                    <option value="11-50">11-50 empleados</option>
+                    <option value="51-200">51-200 empleados</option>
+                    <option value="200+">200+ empleados</option>
+                  </select>
+                </div>
+
+                {/* Proyectos Activos */}
+                <div>
+                  <label htmlFor="proyectosActivos" className="block text-sm font-medium text-gray-300 mb-2">
+                    Proyectos activos simultáneos *
+                  </label>
+                  <input
+                    type="number"
+                    id="proyectosActivos"
+                    name="proyectosActivos"
+                    value={formData.proyectosActivos}
+                    onChange={handleChange}
+                    required
+                    min="0"
+                    className="w-full px-4 py-3 bg-background-dark border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-copper focus:border-transparent transition-all"
+                    placeholder="Ej: 5"
+                  />
+                </div>
+
+                {/* Mayor Problema */}
+                <div>
+                  <label htmlFor="mayorProblema" className="block text-sm font-medium text-gray-300 mb-2">
+                    ¿Cuál es tu mayor problema operativo? *
+                  </label>
+                  <textarea
+                    id="mayorProblema"
+                    name="mayorProblema"
+                    value={formData.mayorProblema}
+                    onChange={handleChange}
+                    required
+                    rows={4}
+                    className="w-full px-4 py-3 bg-background-dark border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-copper focus:border-transparent transition-all resize-none"
+                    placeholder="Ej: Paso 3 horas diarias procesando facturas manualmente..."
+                  />
+                </div>
+
+                {/* Presupuesto */}
+                <div>
+                  <label htmlFor="presupuesto" className="block text-sm font-medium text-gray-300 mb-2">
+                    Presupuesto mensual para automatización
+                  </label>
+                  <select
+                    id="presupuesto"
+                    name="presupuesto"
+                    value={formData.presupuesto}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-background-dark border border-white/10 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-accent-copper focus:border-transparent transition-all"
+                  >
+                    <option value="">Selecciona... (opcional)</option>
+                    <option value="<500">Menos de €500/mes</option>
+                    <option value="500-1500">€500 - €1,500/mes</option>
+                    <option value="1500-3000">€1,500 - €3,000/mes</option>
+                    <option value="3000+">€3,000+/mes</option>
+                    <option value="proyecto-unico">Prefiero proyecto único</option>
+                  </select>
+                </div>
+
+                {/* Submit Button */}
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full btn-primary py-4 text-lg font-bold disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] transition-transform"
+                >
+                  {isSubmitting ? '⏳ Enviando...' : '🚀 Solicitar Auditoría Gratis'}
+                </button>
+
+                {/* Privacy Note */}
+                <p className="text-xs text-gray-500 text-center">
+                  Al enviar este formulario aceptas nuestra{' '}
+                  <Link href="/privacidad" className="text-accent-copper hover:underline">
+                    política de privacidad
+                  </Link>
+                  . No compartimos tus datos con terceros.
+                </p>
+              </form>
+            </motion.div>
             </div>
         </div>
       </section>
