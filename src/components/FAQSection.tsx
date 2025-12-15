@@ -92,7 +92,7 @@ export default function FAQSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
-              className="glass-card overflow-hidden"
+              className="glass-card"
             >
               {/* Question Button */}
               <button
@@ -115,13 +115,13 @@ export default function FAQSection() {
               </button>
 
               {/* Answer */}
-              <AnimatePresence>
+              <AnimatePresence initial={false}>
                 {openIndex === index && (
                   <motion.div
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
                     className="overflow-hidden"
                   >
                     <div className="px-6 pb-6 text-slate-300 leading-relaxed">
