@@ -7,6 +7,49 @@ export default function CalculadoraROI() {
   const [proyectos, setProyectos] = useState(5);
   const [horasAdmin, setHorasAdmin] = useState(20);
 
+  // Estilos para los sliders
+  const sliderStyle = `
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      outline: none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #C67A52;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 10px rgba(198, 122, 82, 0.5);
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #C67A52;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+    }
+
+    input[type="range"]::-moz-range-thumb:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 10px rgba(198, 122, 82, 0.5);
+    }
+  `;
+
   // Cálculos
   const ahorroFacturas = facturas * 12 * 8; // €8/factura promedio
   const ahorroProyectos = proyectos * 12 * 50; // €50/proyecto/mes en seguimiento
@@ -16,6 +59,9 @@ export default function CalculadoraROI() {
 
   return (
     <section id="calculadora" className="section-padding bg-background-end relative overflow-hidden">
+      {/* Estilos para sliders */}
+      <style dangerouslySetInnerHTML={{ __html: sliderStyle }} />
+
       {/* Background Decoration */}
       <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5 pointer-events-none" />
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary-medium/10 rounded-full blur-[120px] pointer-events-none" />
@@ -46,7 +92,7 @@ export default function CalculadoraROI() {
                   step="10"
                   value={facturas}
                   onChange={(e) => setFacturas(Number(e.target.value))}
-                  className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer"
+                  className="w-full cursor-pointer"
                   style={{
                     background: `linear-gradient(to right, #C67A52 0%, #C67A52 ${((facturas - 10) / 490) * 100}%, #334155 ${((facturas - 10) / 490) * 100}%, #334155 100%)`
                   }}
@@ -69,7 +115,7 @@ export default function CalculadoraROI() {
                   step="1"
                   value={proyectos}
                   onChange={(e) => setProyectos(Number(e.target.value))}
-                  className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer"
+                  className="w-full cursor-pointer"
                   style={{
                     background: `linear-gradient(to right, #C67A52 0%, #C67A52 ${((proyectos - 1) / 49) * 100}%, #334155 ${((proyectos - 1) / 49) * 100}%, #334155 100%)`
                   }}
@@ -92,7 +138,7 @@ export default function CalculadoraROI() {
                   step="5"
                   value={horasAdmin}
                   onChange={(e) => setHorasAdmin(Number(e.target.value))}
-                  className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer"
+                  className="w-full cursor-pointer"
                   style={{
                     background: `linear-gradient(to right, #C67A52 0%, #C67A52 ${((horasAdmin - 5) / 55) * 100}%, #334155 ${((horasAdmin - 5) / 55) * 100}%, #334155 100%)`
                   }}
