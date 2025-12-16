@@ -94,16 +94,12 @@ const PRICING_FAQS = [
     a: "Absolutamente. Es el camino recomendado para implementar IA en construcción modular. Validas con bajo riesgo (Quick Win), ves resultados reales en tu empresa, y luego decides si escalas. Bonus: Si contratas High Impact después de un Quick Win exitoso, te descontamos el 100% del Quick Win del precio final."
   },
   {
-    q: "¿Los precios incluyen las licencias de herramientas (n8n, Make, etc.)?",
-    a: "Depende de la solución. Para proyectos iniciales: Usamos herramientas con planes gratuitos o de bajo costo. Ese costo recurrente mínimo corre por tu cuenta. Para proyectos avanzados: Si necesitas herramientas premium, te asesoramos sobre las opciones más cost-effective. Licencias corren por tu cuenta, pero te ayudamos a optimizar costos."
-  },
-  {
     q: "¿Ofrecen descuentos por volumen o contratos anuales?",
     a: "No hacemos contratos anuales (va contra nuestra filosofía de flexibilidad). Pero sí ofrecemos descuentos en estos casos: 1) Múltiples proyectos: Si contratas 2+ Quick Wins simultáneos, descuento aplicado. 2) Escalado: 100% descuento del Quick Win al pasar a High Impact."
   },
   {
-    q: "¿El Diagnóstico Estratégico es reembolsable?",
-    a: "Sí, al 100%. Si decides contratar cualquier solución (Quick Win o High Impact) dentro de los 30 días siguientes, descontamos el costo del diagnóstico del precio final. Cobramos el diagnóstico porque entregamos un plan de trabajo real y accionable, no es una simple llamada de ventas."
+    q: "¿Qué incluye el Diagnóstico Estratégico?",
+    a: "El Diagnóstico Estratégico incluye un análisis completo de tus procesos actuales, identificación de oportunidades de automatización, cálculo de ROI estimado, y un roadmap de implementación detallado. Si decides contratar cualquier solución (Quick Win o High Impact) dentro de los 30 días siguientes, descontamos el 100% del costo del diagnóstico del precio final."
   }
 ];
 
