@@ -97,7 +97,7 @@ export default function CTAFinalSection() {
                   href="/auditoria"
                   className="btn-primary text-lg px-10 py-5 shadow-glow hover:shadow-copper-lg w-full sm:w-auto transform hover:scale-105 transition-all duration-300"
                 >
-                  📞 Agendar Diagnóstico (€299)
+                  📞 Agendar Diagnóstico Estratégico
                 </Link>
                 <Link
                   href="/#calculadora"

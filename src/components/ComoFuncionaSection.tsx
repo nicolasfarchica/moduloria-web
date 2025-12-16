@@ -9,7 +9,7 @@ interface Step {
   duration: string;
   description: string;
   deliverables: string[];
-  icon: string;
+  icon: React.ReactNode;
 }
 
 const STEPS: Step[] = [
@@ -23,7 +23,13 @@ const STEPS: Step[] = [
       'ROI estimado con números reales',
       'Propuesta de hoja de ruta',
     ],
-    icon: '🔍',
+    icon: (
+      <svg className="w-16 h-16 text-accent-copper" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="8" strokeWidth="2"/>
+        <path d="m21 21-4.35-4.35" strokeWidth="2" strokeLinecap="round"/>
+        <path d="M11 8v3l2 2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
   },
   {
     number: 2,
@@ -35,7 +41,13 @@ const STEPS: Step[] = [
       'Automatización configurada y probada en entorno real',
       'Documentación técnica + videos de capacitación',
     ],
-    icon: '⚙️',
+    icon: (
+      <svg className="w-16 h-16 text-accent-copper" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="3" strokeWidth="2"/>
+        <path d="M12 1v6m0 6v6M5 12h6m6 0h6" strokeWidth="2" strokeLinecap="round"/>
+        <path d="m16.2 7.8 1.4-1.4m-11.2 0 1.4 1.4m11.2 11.2-1.4-1.4m-11.2 0 1.4 1.4" strokeWidth="2" strokeLinecap="round"/>
+      </svg>
+    ),
   },
   {
     number: 3,
@@ -47,7 +59,12 @@ const STEPS: Step[] = [
       '2 sesiones de optimización mensuales',
       'Dashboard de métricas (ahorro real vs. proyectado)',
     ],
-    icon: '🚀',
+    icon: (
+      <svg className="w-16 h-16 text-accent-copper" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path d="M12 2v20M2 12l10-10 10 10" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M17 17v-6l-5-5-5 5v6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
   },
 ];
 

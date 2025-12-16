@@ -55,9 +55,9 @@ export default function HeroSection() {
           >
             Implementamos <span className="text-white font-medium">soluciones de IA para construcción modular</span>.
             <br />
-            Ahorra <span className="text-accent-copper font-bold">€67K-156K/año</span> eliminando tareas manuales repetitivas.
+            <span className="text-accent-copper font-bold">Ahorra tiempo y reduce errores</span> eliminando tareas manuales repetitivas.
             <br />
-            <span className="text-primary-light text-lg">ROI medible en 2-3 semanas. Sin proyectos eternos.</span>
+            <span className="text-primary-light text-lg">ROI medible en semanas. Sin proyectos eternos.</span>
           </motion.p>
 
           {/* Social Proof */}
@@ -97,9 +97,9 @@ export default function HeroSection() {
             <Link
               href="/auditoria"
               className="btn-primary text-lg px-8 py-4 shadow-glow hover:shadow-copper-lg w-full sm:w-auto"
-              aria-label="Agendar diagnóstico estratégico por 299 euros"
+              aria-label="Agendar diagnóstico estratégico"
             >
-              📞 Agendar Diagnóstico Estratégico (€299)
+              📞 Agendar Diagnóstico Estratégico
             </Link>
             <Link
               href="/#problemas"
@@ -133,9 +133,9 @@ export default function HeroSection() {
             </div>
             <div className="glass-card text-center p-6">
               <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-accent-copper to-white mb-2 font-heading">
-                €67K-156K
+                Ahorro
               </div>
-              <div className="text-secondary-beige text-sm">Ahorro anual promedio</div>
+              <div className="text-secondary-beige text-sm">Significativo y medible</div>
             </div>
           </motion.div>
         </div>

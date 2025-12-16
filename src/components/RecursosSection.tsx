@@ -240,7 +240,7 @@ export default function RecursosSection() {
             href="/auditoria"
             className="btn-primary text-lg px-10 py-4 inline-block shadow-glow hover:shadow-copper-lg"
           >
-            📞 Agendar Diagnóstico Estratégico (€299)
+            📞 Agendar Diagnóstico Estratégico
           </Link>
           <p className="text-slate-400 text-sm mt-4">
             Incluye roadmap personalizado + ROI calculado | 100% reembolsable

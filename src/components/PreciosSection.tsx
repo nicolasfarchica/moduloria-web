@@ -22,7 +22,7 @@ const PRICING_TIERS: PricingTier[] = [
   {
     name: 'Diagnóstico Estratégico',
     tagline: 'Tu hoja de ruta digital',
-    price: '€299',
+    price: 'Consultar',
     duration: 'Sesión 45 min + Informe',
     roi: 'Inmediato',
     bestFor: 'Empresas que necesitan claridad sobre dónde empezar y cuánto pueden ahorrar',
@@ -39,7 +39,7 @@ const PRICING_TIERS: PricingTier[] = [
   {
     name: 'Quick Win',
     tagline: 'ROI en 1-3 semanas',
-    price: '€3K - €8K',
+    price: 'Inversión Accesible',
     duration: 'Proyecto único',
     roi: '1-3 semanas',
     bestFor: 'Empresas de construcción modular que quieren validar automatización con IA con bajo riesgo antes de comprometerse',
@@ -57,7 +57,7 @@ const PRICING_TIERS: PricingTier[] = [
   {
     name: 'High Impact',
     tagline: 'Transformación operativa',
-    price: '€12K - €25K',
+    price: 'Inversión Completa',
     duration: 'Implementación 2-4 semanas',
     roi: '4-8 semanas',
     bestFor: 'Empresas con múltiples proyectos activos que necesitan visibilidad y automatización avanzada',
@@ -78,12 +78,12 @@ const PRICING_TIERS: PricingTier[] = [
 
 const PRICING_FAQS = [
   {
-    q: "¿Por qué hay rangos de precio (€3K-€8K) y no precios fijos?",
-    a: "Cada empresa es diferente. Procesar 20 facturas/semana no es lo mismo que 200. Los rangos reflejan complejidad. En el Diagnóstico Estratégico te damos un precio exacto basado en tu caso específico."
+    q: "¿Por qué no muestran precios fijos en la página?",
+    a: "Cada empresa es diferente. Procesar 20 facturas/semana no es lo mismo que 200. Los precios dependen de la complejidad de tu caso específico. En el Diagnóstico Estratégico te damos un precio exacto y transparente basado en tus necesidades reales."
   },
   {
     q: "¿Hay costos ocultos o recurrentes obligatorios?",
-    a: "No. El precio incluye todo (implementación + capacitación + soporte inicial). Después del período de soporte incluido, puedes contratar mantenimiento opcional (€500-€1.5K/mes) o gestionar tú mismo las automatizaciones (te entregamos todo documentado)."
+    a: "No. El precio incluye todo (implementación + capacitación + soporte inicial). Después del período de soporte incluido, puedes contratar mantenimiento opcional o gestionar tú mismo las automatizaciones (te entregamos todo documentado)."
   },
   {
     q: "¿Qué pasa si después de pagar no funciona como esperaba?",
@@ -91,19 +91,19 @@ const PRICING_FAQS = [
   },
   {
     q: "¿Puedo empezar con Quick Win y luego escalar a High Impact?",
-    a: "Absolutamente. Es el camino recomendado para implementar IA en construcción modular. Validas con bajo riesgo (Quick Win €3K-€8K), ves resultados reales en tu empresa, y luego decides si escalas. Bonus: Si contratas High Impact después de un Quick Win exitoso, te descontamos el 100% del Quick Win del precio final."
+    a: "Absolutamente. Es el camino recomendado para implementar IA en construcción modular. Validas con bajo riesgo (Quick Win), ves resultados reales en tu empresa, y luego decides si escalas. Bonus: Si contratas High Impact después de un Quick Win exitoso, te descontamos el 100% del Quick Win del precio final."
   },
   {
     q: "¿Los precios incluyen las licencias de herramientas (n8n, Make, etc.)?",
-    a: "Depende de la solución. Quick Win: Usamos herramientas con planes gratuitos o de bajo costo (€0-€50/mes). Ese costo recurrente mínimo corre por tu cuenta. High Impact: Si necesitas herramientas premium, te asesoramos sobre las opciones más cost-effective. Licencias corren por tu cuenta, pero te ayudamos a optimizar costos."
+    a: "Depende de la solución. Para proyectos iniciales: Usamos herramientas con planes gratuitos o de bajo costo. Ese costo recurrente mínimo corre por tu cuenta. Para proyectos avanzados: Si necesitas herramientas premium, te asesoramos sobre las opciones más cost-effective. Licencias corren por tu cuenta, pero te ayudamos a optimizar costos."
   },
   {
     q: "¿Ofrecen descuentos por volumen o contratos anuales?",
-    a: "No hacemos contratos anuales (va contra nuestra filosofía de flexibilidad). Pero sí ofrecemos descuentos en estos casos: 1) Múltiples proyectos: Si contratas 2+ Quick Wins simultáneos, 10% descuento. 2) Escalado: 100% descuento del Quick Win al pasar a High Impact."
+    a: "No hacemos contratos anuales (va contra nuestra filosofía de flexibilidad). Pero sí ofrecemos descuentos en estos casos: 1) Múltiples proyectos: Si contratas 2+ Quick Wins simultáneos, descuento aplicado. 2) Escalado: 100% descuento del Quick Win al pasar a High Impact."
   },
   {
-    q: "¿El Diagnóstico de €299 es reembolsable?",
-    a: "Sí, al 100%. Si decides contratar cualquier solución (Quick Win o High Impact) dentro de los 30 días siguientes, descontamos los €299 del precio final. Cobramos el diagnóstico porque entregamos un plan de trabajo real y accionable, no es una simple llamada de ventas."
+    q: "¿El Diagnóstico Estratégico es reembolsable?",
+    a: "Sí, al 100%. Si decides contratar cualquier solución (Quick Win o High Impact) dentro de los 30 días siguientes, descontamos el costo del diagnóstico del precio final. Cobramos el diagnóstico porque entregamos un plan de trabajo real y accionable, no es una simple llamada de ventas."
   }
 ];
 
@@ -284,19 +284,19 @@ export default function PreciosSection() {
         {/* Bottom Trust Bar */}
         <div className="mt-12 text-center bg-gradient-to-r from-primary-medium/20 to-primary-dark/40 backdrop-blur-md border border-white/10 rounded-2xl p-8 text-white">
           <h3 className="text-2xl font-bold font-heading mb-4">
-            💰 Inversión vs. Ahorro: <span className="text-accent-copper">Haz los números</span>
+            💰 Inversión Inteligente: <span className="text-accent-copper">ROI Medible</span>
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             <div>
-              <div className="text-4xl font-bold text-accent-copper mb-2">€3K-€25K</div>
-              <div className="text-secondary-beige text-sm">Inversión única</div>
+              <div className="text-4xl font-bold text-accent-copper mb-2">Inversión única</div>
+              <div className="text-secondary-beige text-sm">Sin costos recurrentes obligatorios</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-accent-copper mb-2">€67K-€156K</div>
-              <div className="text-secondary-beige text-sm">Ahorro anual promedio</div>
+              <div className="text-4xl font-bold text-accent-copper mb-2">Alto ahorro</div>
+              <div className="text-secondary-beige text-sm">Ahorro anual significativo</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-accent-copper mb-2">2-3 semanas</div>
+              <div className="text-4xl font-bold text-accent-copper mb-2">2-8 semanas</div>
               <div className="text-secondary-beige text-sm">ROI típico</div>
             </div>
           </div>

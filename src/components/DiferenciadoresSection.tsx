@@ -25,8 +25,8 @@ const COMPARISONS: ComparisonRow[] = [
   },
   {
     feature: '💰 Modelo de precios',
-    generic: 'Contratos anuales €50K-€200K. Vendor lock-in.',
-    moduloria: 'Desde €3K. Sin contratos eternos. Pagas por resultados.',
+    generic: 'Contratos anuales costosos. Vendor lock-in.',
+    moduloria: 'Sin contratos eternos. Pagas por resultados.',
     impact: 'high',
   },
   {

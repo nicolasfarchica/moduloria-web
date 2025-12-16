@@ -11,7 +11,6 @@ interface Servicio {
     description: string;
     benefits: string[];
     useCase: string;
-    savings: string;
     timeline: string;
     image: string;
 }
@@ -30,7 +29,6 @@ const SERVICIOS: Servicio[] = [
             'Historial y versionado automático',
         ],
         useCase: 'Empresa de módulos prefabricados redujo tiempo de presupuesto de 3 días a 2 horas.',
-        savings: '€24K-€48K/año',
         timeline: '2-3 semanas',
         image: '/images/budget-problem.png'
     },
@@ -47,7 +45,6 @@ const SERVICIOS: Servicio[] = [
             'Integración con ERP existente',
         ],
         useCase: 'Planta de paneles CLT aumentó throughput un 23% sin inversión adicional.',
-        savings: '€35K-€80K/año',
         timeline: '3-4 semanas',
         image: '/images/production-problem.png'
     },
@@ -64,7 +61,6 @@ const SERVICIOS: Servicio[] = [
             'Trazabilidad completa de cambios',
         ],
         useCase: 'Constructora eliminó 15h/semana de trabajo administrativo.',
-        savings: '€18K-€30K/año',
         timeline: '1-2 semanas',
         image: '/images/docs-problem.png'
     },
@@ -81,7 +77,6 @@ const SERVICIOS: Servicio[] = [
             'Multilingüe para equipos internacionales',
         ],
         useCase: 'Equipo de obra resuelve dudas técnicas en segundos en vez de llamar a oficina.',
-        savings: '€12K-€25K/año',
         timeline: '3-5 días',
         image: '/images/team-problem.png'
     },
@@ -98,7 +93,6 @@ const SERVICIOS: Servicio[] = [
             'Histórico para análisis de tendencias',
         ],
         useCase: 'Fábrica de módulos 3D redujo reclamaciones post-entrega un 40%.',
-        savings: '€20K-€45K/año',
         timeline: '2-3 semanas',
         image: '/images/quality-problem.png'
     },
@@ -115,7 +109,6 @@ const SERVICIOS: Servicio[] = [
             'Dashboard de pipeline en tiempo real',
         ],
         useCase: 'Comercial pasó de gestionar 20 a 60 leads/mes sin contratar.',
-        savings: '€15K-€35K/año',
         timeline: '1-2 semanas',
         image: '/images/sales-problem.png'
     },
@@ -212,12 +205,8 @@ export default function ServiciosSection() {
                                     </ul>
 
                                     {/* Stats Row */}
-                                    <div className="flex items-center justify-between pt-4 border-t border-white/5 mt-auto">
-                                        <div>
-                                            <p className="text-[10px] text-slate-500 uppercase tracking-wider">Ahorro típico</p>
-                                            <p className="text-accent-copper font-bold text-sm">{servicio.savings}</p>
-                                        </div>
-                                        <div className="text-right">
+                                    <div className="flex items-center justify-center pt-4 border-t border-white/5 mt-auto">
+                                        <div className="text-center">
                                             <p className="text-[10px] text-slate-500 uppercase tracking-wider">Implementación</p>
                                             <p className="text-white font-semibold text-sm">{servicio.timeline}</p>
                                         </div>
@@ -261,9 +250,9 @@ export default function ServiciosSection() {
                         </div>
                         <div className="text-center md:text-right">
                             <div className="inline-block bg-slate-800/50 border border-white/10 rounded-xl p-6 mb-6">
-                                <p className="text-slate-400 text-sm mb-2">Ahorro medio anual por cliente</p>
-                                <p className="text-4xl md:text-5xl font-bold text-accent-copper">€67K - €156K</p>
-                                <p className="text-slate-500 text-sm mt-2">Con garantía de ROI</p>
+                                <p className="text-slate-400 text-sm mb-2">Resultados comprobados</p>
+                                <p className="text-4xl md:text-5xl font-bold text-accent-copper">ROI Garantizado</p>
+                                <p className="text-slate-500 text-sm mt-2">Ahorro medible en semanas</p>
                             </div>
                             <div>
                                 <Link
@@ -273,7 +262,7 @@ export default function ServiciosSection() {
                                     📞 Cuéntanos tu caso
                                 </Link>
                                 <p className="text-slate-500 text-sm mt-3">
-                                    Diagnóstico Estratégico €299 (reembolsable)
+                                    Diagnóstico Estratégico (reembolsable)
                                 </p>
                             </div>
                         </div>

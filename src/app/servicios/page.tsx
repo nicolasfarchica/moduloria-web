@@ -62,8 +62,8 @@ export default function ServiciosPage() {
 
             <div className="flex flex-wrap justify-center gap-6 max-w-3xl mx-auto">
               <div className="bg-white/5 border border-white/10 rounded-xl px-6 py-4">
-                <div className="text-3xl font-bold text-accent-copper mb-1">€67K-156K</div>
-                <div className="text-sm text-slate-400">Ahorro Anual Promedio</div>
+                <div className="text-3xl font-bold text-accent-copper mb-1">Alto Ahorro</div>
+                <div className="text-sm text-slate-400">Medible y Garantizado</div>
               </div>
               <div className="bg-white/5 border border-white/10 rounded-xl px-6 py-4">
                 <div className="text-3xl font-bold text-accent-copper mb-1">6+</div>

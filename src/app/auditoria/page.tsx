@@ -348,10 +348,10 @@ export default function AuditoriaPage() {
                     className="w-full px-4 py-3 bg-background-dark border border-white/10 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-accent-copper focus:border-transparent transition-all"
                   >
                     <option value="">Selecciona... (opcional)</option>
-                    <option value="<500">Menos de €500/mes</option>
-                    <option value="500-1500">€500 - €1,500/mes</option>
-                    <option value="1500-3000">€1,500 - €3,000/mes</option>
-                    <option value="3000+">€3,000+/mes</option>
+                    <option value="bajo">Presupuesto bajo</option>
+                    <option value="medio">Presupuesto medio</option>
+                    <option value="alto">Presupuesto alto</option>
+                    <option value="flexible">Presupuesto flexible</option>
                     <option value="proyecto-unico">Prefiero proyecto único</option>
                   </select>
                 </div>

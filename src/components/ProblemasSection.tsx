@@ -13,7 +13,6 @@ interface Problem {
   description: string;
   roi: string;
   timeToValue: string;
-  savings: string;
   slug: string;
   icon: string;
   image: string;
@@ -28,7 +27,6 @@ const PROBLEMS: Problem[] = [
     description: 'Elimina la entrada manual de facturas PDF. De 15 minutos a 30 segundos por factura.',
     roi: '2 semanas',
     timeToValue: '3-5 días',
-    savings: '€8K-€18K/año',
     slug: 'ocr-facturas',
     icon: '📄',
     image: '/images/ocr-pain.png',
@@ -40,7 +38,6 @@ const PROBLEMS: Problem[] = [
     description: 'Organiza automáticamente emails urgentes vs. informativos. Priorización sin esfuerzo.',
     roi: '1 semana',
     timeToValue: '2-3 días',
-    savings: '€6K-€12K/año',
     slug: 'clasificacion-emails',
     icon: '📧',
     image: '/images/email-pain.png',
@@ -52,7 +49,6 @@ const PROBLEMS: Problem[] = [
     description: 'Detecta desviaciones antes de que sean críticas. Notificaciones automáticas a stakeholders.',
     roi: '3 semanas',
     timeToValue: '1 semana',
-    savings: '€12K-€25K/año',
     slug: 'alertas-retrasos',
     icon: '⚠️',
     image: '/images/delay-pain.png',
@@ -66,7 +62,6 @@ const PROBLEMS: Problem[] = [
     description: 'Visibilidad 360° de todos los proyectos activos. KPIs actualizados sin reuniones.',
     roi: '4-6 semanas',
     timeToValue: '2-3 semanas',
-    savings: '€35K-€67K/año',
     slug: 'dashboard-multimodulo',
     icon: '📊',
     image: '/images/dashboard-pain.png',
@@ -78,7 +73,6 @@ const PROBLEMS: Problem[] = [
     description: 'Generación automática de reportes de avance. De 2 horas a 15 minutos.',
     roi: '3-4 semanas',
     timeToValue: '1-2 semanas',
-    savings: '€28K-€52K/año',
     slug: 'reportes-automaticos',
     icon: '📑',
     image: '/images/report-pain.png',
@@ -90,7 +84,6 @@ const PROBLEMS: Problem[] = [
     description: 'Evaluación automática de proveedores. Negociación basada en datos históricos.',
     roi: '6-8 semanas',
     timeToValue: '3-4 semanas',
-    savings: '€45K-€89K/año',
     slug: 'gestion-proveedores',
     icon: '🤝',
     image: '/images/vendor-pain.png',
@@ -104,7 +97,6 @@ const PROBLEMS: Problem[] = [
     description: 'Réplica digital exacta de tu fábrica y productos. Simulación de escenarios y mantenimiento predictivo.',
     roi: '12-18 meses',
     timeToValue: '3-6 meses',
-    savings: '€150K+/año',
     slug: 'digital-twin',
     icon: '🌐',
     image: '/images/digital-twin-problem.png',
@@ -116,7 +108,6 @@ const PROBLEMS: Problem[] = [
     description: 'Líneas de ensamblaje robotizadas con mínima intervención humana. Producción 24/7.',
     roi: '18-24 meses',
     timeToValue: '6-12 meses',
-    savings: '€300K+/año',
     slug: 'produccion-autonoma',
     icon: '🤖',
     image: '/images/autonomous-factory-problem.png',
@@ -273,11 +264,6 @@ export default function ProblemasSection() {
 
                   {/* Metrics */}
                   <div className="space-y-4 mb-8 bg-background-dark/30 p-5 rounded-xl border border-white/5 group-hover:border-white/10 transition-colors">
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-primary-steel font-medium">💰 Ahorro anual</span>
-                      <span className={`font-bold ${config.color} font-heading`}>{problem.savings}</span>
-                    </div>
-                    <div className="w-full h-[1px] bg-white/5" />
                     <div className="flex items-center justify-between text-sm">
                       <span className="text-primary-steel font-medium">⏱️ ROI estimado</span>
                       <span className="font-semibold text-white">{problem.roi}</span>

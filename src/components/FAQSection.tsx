@@ -23,7 +23,7 @@ const FAQS: FAQ[] = [
   },
   {
     question: "¿Cómo sé que realmente voy a ahorrar dinero?",
-    answer: "En el Diagnóstico Estratégico inicial (€299), calculamos el ahorro exacto en euros basado en tus procesos actuales. Te entregamos un informe con ROI proyectado. Además, incluimos un dashboard que muestra el ahorro real vs. proyectado en tiempo real. Si después de 3 meses no ahorras mínimo el doble de la inversión, refinamos hasta que funcione o reembolsamos parcialmente."
+    answer: "En el Diagnóstico Estratégico inicial, calculamos el ahorro exacto en euros basado en tus procesos actuales. Te entregamos un informe con ROI proyectado. Además, incluimos un dashboard que muestra el ahorro real vs. proyectado en tiempo real. Si después de 3 meses no alcanzas el ROI proyectado, refinamos hasta que funcione o reembolsamos parcialmente."
   },
   {
     question: "¿Qué diferencia a ModulorIA de otras agencias de automatización?",
@@ -35,7 +35,7 @@ const FAQS: FAQ[] = [
   },
   {
     question: "¿Hay costes ocultos o recurrentes después de la implementación?",
-    answer: "No hay costes ocultos. El precio inicial incluye todo (implementación + capacitación + soporte). Las herramientas que usamos tienen planes gratuitos o de bajo coste (€0-€50/mes) que corren por tu cuenta. Después del soporte incluido, puedes contratar mantenimiento opcional (€500-€1.5K/mes) o gestionar tú mismo (te entregamos todo documentado)."
+    answer: "No hay costes ocultos. El precio inicial incluye todo (implementación + capacitación + soporte). Las herramientas que usamos tienen planes gratuitos o de bajo coste que corren por tu cuenta. Después del soporte incluido, puedes contratar mantenimiento opcional o gestionar tú mismo (te entregamos todo documentado)."
   },
   {
     question: "¿Qué pasa si mi equipo se resiste al cambio?",
@@ -43,7 +43,7 @@ const FAQS: FAQ[] = [
   },
   {
     question: "¿Puedo empezar con algo pequeño y escalar después?",
-    answer: "Absolutamente. Es el camino recomendado. Empieza con un Quick Win (€3K-€8K) como OCR de facturas o clasificación de emails. Ves resultados reales en 1-3 semanas. Si funciona (siempre funciona), escalas a soluciones más grandes. Bonus: Si contratas High Impact después de un Quick Win exitoso, te descontamos el 100% del Quick Win del precio final."
+    answer: "Absolutamente. Es el camino recomendado. Empieza con un Quick Win como OCR de facturas o clasificación de emails. Ves resultados reales en 1-3 semanas. Si funciona (siempre funciona), escalas a soluciones más grandes. Bonus: Si contratas High Impact después de un Quick Win exitoso, te descontamos el 100% del Quick Win del precio final."
   },
   {
     question: "¿Ofrecen garantía de resultados?",

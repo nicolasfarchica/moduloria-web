@@ -17,10 +17,10 @@ const ServiciosSection = dynamic(() => import('@/components/ServiciosSection'), 
 const ComoFuncionaSection = dynamic(() => import('@/components/ComoFuncionaSection'), {
     loading: () => <div className="section-padding" />,
 });
-const DiferenciadoresSection = dynamic(() => import('@/components/DiferenciadoresSection'), {
+const PreciosSection = dynamic(() => import('@/components/PreciosSection'), {
     loading: () => <div className="section-padding" />,
 });
-const PreciosSection = dynamic(() => import('@/components/PreciosSection'), {
+const DiferenciadoresSection = dynamic(() => import('@/components/DiferenciadoresSection'), {
     loading: () => <div className="section-padding" />,
 });
 const RecursosSection = dynamic(() => import('@/components/RecursosSection'), {
@@ -35,11 +35,11 @@ const CTAFinalSection = dynamic(() => import('@/components/CTAFinalSection'), {
 
 export const metadata = {
     title: 'ModulorIA | IA en Construcción Modular - Automatización Inteligente',
-    description: 'IA para la construcción modular. Automatización en construcción que ahorra €67K-€156K/año. Implementamos IA práctica en empresas constructoras. ROI en 2-3 semanas.',
+    description: 'IA para la construcción modular. Automatización en construcción que ahorra tiempo y reduce errores. Implementamos IA práctica en empresas constructoras. ROI medible en semanas.',
     keywords: 'IA en construcción modular, IA para la construcción modular, automatización en construcción modular, cómo implementar IA en construcción modular, inteligencia artificial construcción, automatización construcción, software construcción modular, construcción industrializada',
     openGraph: {
         title: 'ModulorIA | IA en Construcción Modular - Automatización Inteligente',
-        description: 'Implementamos IA práctica en empresas de construcción modular. Ahorra €67K-€156K/año con automatización inteligente. ROI en 2-3 semanas.',
+        description: 'Implementamos IA práctica en empresas de construcción modular. Ahorra tiempo y reduce errores con automatización inteligente. ROI medible en semanas.',
         url: 'https://moduloria.com',
         siteName: 'ModulorIA',
         images: [
@@ -56,7 +56,7 @@ export const metadata = {
     twitter: {
         card: 'summary_large_image',
         title: 'ModulorIA | IA en Construcción Modular',
-        description: 'Automatización en construcción modular con IA. Ahorra costes y tiempo. ROI en 2-3 semanas.',
+        description: 'Automatización en construcción modular con IA. Ahorra tiempo y reduce errores. ROI medible en semanas.',
         images: ['https://moduloria.com/og-image.jpg'],
     },
 };
@@ -66,7 +66,7 @@ export default function HomePage() {
         '@context': 'https://schema.org',
         '@type': 'Organization',
         name: 'ModulorIA',
-        description: 'IA y automatización para la industria de la construcción modular. Ahorra €67K-€156K/año automatizando procesos operativos.',
+        description: 'IA y automatización para la industria de la construcción modular. Ahorra tiempo y reduce errores automatizando procesos operativos.',
         url: 'https://moduloria.com',
         logo: 'https://moduloria.com/images/moduloria-logo.png',
         contactPoint: {
@@ -127,12 +127,10 @@ export default function HomePage() {
         },
         offers: {
             '@type': 'Offer',
-            priceRange: '€299 - €25,000',
-            priceCurrency: 'EUR',
             availability: 'https://schema.org/InStock',
-            url: 'https://moduloria.com/precios'
+            url: 'https://moduloria.com/auditoria'
         },
-        description: 'Implementamos soluciones de IA práctica en empresas de construcción modular. Ahorra €67K-€156K/año con automatización inteligente. ROI en 2-3 semanas.'
+        description: 'Implementamos soluciones de IA práctica en empresas de construcción modular. Ahorra tiempo y reduce errores con automatización inteligente. ROI medible en semanas.'
     };
 
     return (
@@ -158,14 +156,14 @@ export default function HomePage() {
                 </div>
                 <div className="relative z-10">
                     <HeroSection />
-                    <CalculadoraROI />
                     <NosotrosSection />
                     <ProblemasSection />
                     <ServiciosSection />
                     <ComoFuncionaSection />
-                    <DiferenciadoresSection />
                     <PreciosSection />
+                    <DiferenciadoresSection />
                     <RecursosSection />
+                    <CalculadoraROI />
                     <FAQSection />
                     <CTAFinalSection />
                 </div>
