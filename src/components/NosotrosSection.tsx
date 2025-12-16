@@ -59,7 +59,7 @@ export default function NosotrosSection() {
 
               <p className="text-primary-light font-medium">
                 Conocemos tus procesos. Hablamos tu idioma. Y lo más importante:
-                <strong> entregamos resultados medibles en semanas, no meses</strong>.
+                <strong> entregamos resultados medibles en semanas</strong>.
               </p>
             </div>
           </motion.div>
@@ -148,8 +148,7 @@ export default function NosotrosSection() {
                 <p className="text-slate-300 leading-relaxed mb-4">
                   "Después de ver cómo empresas constructoras perdían tiempo y dinero en tareas repetitivas,
                   decidí crear una solución real. No más consultoras que prometen todo y no entregan nada.
-                  <strong className="text-white"> ModulorIA existe para implementar IA que funciona</strong>,
-                  no para vender humo."
+                  <strong className="text-white"> ModulorIA existe para implementar IA que funciona</strong>."
                 </p>
 
                 <div className="flex flex-wrap gap-3 text-sm">
@@ -157,7 +156,7 @@ export default function NosotrosSection() {
                     Especialista IA
                   </span>
                   <span className="bg-primary-medium/20 text-primary-light px-3 py-1 rounded-full border border-primary-medium/30">
-                    Automatización N8N
+                    Automatización
                   </span>
                   <span className="bg-primary-medium/20 text-primary-light px-3 py-1 rounded-full border border-primary-medium/30">
                     Construcción Modular

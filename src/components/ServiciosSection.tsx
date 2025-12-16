@@ -149,7 +149,7 @@ export default function ServiciosSection() {
                         ¿Qué puede hacer la <span className="text-accent-copper">IA</span> por tu empresa?
                     </h2>
                     <p className="text-xl text-slate-300 max-w-3xl mx-auto font-light">
-                        No vendemos humo. Estas son las automatizaciones reales que implementamos en empresas de construcción modular.
+                        Automatizaciones con resultados medibles implementadas en empresas de construcción modular.
                     </p>
                 </motion.div>
 
@@ -262,7 +262,7 @@ export default function ServiciosSection() {
                                     📞 Cuéntanos tu caso
                                 </Link>
                                 <p className="text-slate-500 text-sm mt-3">
-                                    Diagnóstico Estratégico (reembolsable)
+                                    Diagnóstico Estratégico
                                 </p>
                             </div>
                         </div>

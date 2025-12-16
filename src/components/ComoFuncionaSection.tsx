@@ -16,7 +16,7 @@ const STEPS: Step[] = [
   {
     number: 1,
     title: 'Diagnóstico Estratégico',
-    duration: '45 minutos | Reembolsable',
+    duration: 'Sesión estratégica inicial',
     description: 'Analizamos tus procesos actuales y cuantificamos el potencial de ahorro. Te entregamos un plan.',
     deliverables: [
       'Diagnóstico de oportunidades concretas',
@@ -175,7 +175,7 @@ export default function ComoFuncionaSection() {
           {[
             { icon: "✅", title: "Sin contratos eternos", desc: "Compromisos de 3 meses renovables. Puedes cancelar cuando quieras." },
             { icon: "🔒", title: "Propiedad de tus datos", desc: "Tus procesos, tus datos. 100% exportables. No hay vendor lock-in." },
-            { icon: "💰", title: "Garantía de ROI", desc: "Si no ahorras mínimo el doble de la inversión, refinamos gratis." }
+            { icon: "💰", title: "Garantía de ROI", desc: "ROI garantizado o ajustamos la solución sin coste adicional." }
           ].map((item, idx) => (
             <div key={idx} className="text-center p-6 bg-slate-800/50 rounded-lg border border-white/5 hover:bg-slate-800 transition-colors">
               <div className="text-4xl mb-3">{item.icon}</div>

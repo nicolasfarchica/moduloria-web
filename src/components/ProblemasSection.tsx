@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 
-type ProblemTier = 'quick-wins' | 'high-impact' | 'transformacional';
+type ProblemTier = 'quick-wins' | 'high-impact';
 
 interface Problem {
   id: string;
@@ -89,29 +89,6 @@ const PROBLEMS: Problem[] = [
     image: '/images/vendor-pain.png',
   },
 
-  // TRANSFORMACIONAL
-  {
-    id: '7',
-    tier: 'transformacional',
-    title: 'Digital Twin 4.0',
-    description: 'Réplica digital exacta de tu fábrica y productos. Simulación de escenarios y mantenimiento predictivo.',
-    roi: '12-18 meses',
-    timeToValue: '3-6 meses',
-    slug: 'digital-twin',
-    icon: '🌐',
-    image: '/images/digital-twin-problem.png',
-  },
-  {
-    id: '8',
-    tier: 'transformacional',
-    title: 'Producción Autónoma',
-    description: 'Líneas de ensamblaje robotizadas con mínima intervención humana. Producción 24/7.',
-    roi: '18-24 meses',
-    timeToValue: '6-12 meses',
-    slug: 'produccion-autonoma',
-    icon: '🤖',
-    image: '/images/autonomous-factory-problem.png',
-  },
 ];
 
 const TIER_CONFIG = {
@@ -130,14 +107,6 @@ const TIER_CONFIG = {
     bgColor: 'bg-primary-light/10',
     borderColor: 'border-primary-light',
     dotColor: 'bg-primary-light',
-  },
-  'transformacional': {
-    label: 'Transformacional',
-    description: 'ROI en 8-12 semanas | Implementación 4-8 semanas',
-    color: 'text-primary-steel',
-    bgColor: 'bg-primary-steel/10',
-    borderColor: 'border-primary-steel',
-    dotColor: 'bg-primary-steel',
   },
 };
 
@@ -171,11 +140,11 @@ export default function ProblemasSection() {
         >
           <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 mb-6">
             <span className="w-2 h-2 rounded-full bg-accent-copper animate-pulse" />
-            <span className="text-secondary-beige text-xs font-medium uppercase tracking-widest font-heading">Catálogo de Soluciones</span>
+            <span className="text-secondary-beige text-xs font-medium uppercase tracking-widest font-heading">🏗️ Casos de Uso Reales</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 font-heading tracking-tight">
-            Problemas que resolvemos en <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-copper to-primary-light">la industria de construcción modular</span>
+            Automatiza los Procesos Críticos de tu <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-copper to-primary-light">Constructora Modular con IA</span>
           </h2>
           <p className="text-xl text-primary-steel max-w-3xl mx-auto font-light leading-relaxed">
             Desde quick wins de 3 días hasta transformación digital completa. Elige tu punto de entrada.

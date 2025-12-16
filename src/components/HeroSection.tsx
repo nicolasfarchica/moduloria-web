@@ -42,7 +42,7 @@ export default function HeroSection() {
             IA en Construcción Modular
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-copper to-primary-light">
-              que Ahorra Tiempo
+              que Reduce Costos y Acelera Entregas
             </span>
           </motion.h1>
 
