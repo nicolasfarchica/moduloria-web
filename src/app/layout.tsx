@@ -22,6 +22,12 @@ export const metadata: Metadata = {
   description: "Transformamos empresas de construcción con Inteligencia Artificial. Ahorra €67K-€156K/año automatizando procesos operativos.",
   keywords: "industria de la construcción, inteligencia artificial construcción, automatización obras, software construcción",
   metadataBase: new URL('https://moduloria.com'),
+  alternates: {
+    canonical: 'https://moduloria.com',
+  },
+  verification: {
+    google: 'cd787c1f8c691567',
+  },
 };
 
 export default function RootLayout({

@@ -1,6 +1,9 @@
 export const metadata = {
     title: 'Política de Privacidad | ModulorIA',
-    description: 'Política de privacidad y protección de datos de ModulorIA',
+    description: 'Política de privacidad y protección de datos de ModulorIA. Cumplimiento GDPR y transparencia total en el manejo de información.',
+    alternates: {
+        canonical: 'https://moduloria.com/privacidad',
+    },
 };
 
 export default function PrivacidadPage() {

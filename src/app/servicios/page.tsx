@@ -5,12 +5,30 @@ export const metadata = {
   title: 'Servicios de IA para Construcción Modular | ModulorIA',
   description: 'Soluciones completas de IA para la construcción modular. Desde automatización de presupuestos hasta control de calidad visual. Resolvemos 25 problemas documentados con ROI garantizado.',
   keywords: 'servicios IA construcción modular, automatización construcción, soluciones construcción modular, IA para constructoras, problemas construcción, presupuestos automatizados',
+  alternates: {
+    canonical: 'https://moduloria.com/servicios',
+  },
   openGraph: {
     title: 'Servicios de IA para Construcción Modular | ModulorIA',
     description: '25 problemas resueltos + 6 soluciones de automatización. ROI garantizado en 2-3 semanas.',
     url: 'https://moduloria.com/servicios',
     siteName: 'ModulorIA',
+    images: [
+      {
+        url: 'https://moduloria.com/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'ModulorIA - Servicios de IA para Construcción Modular',
+      },
+    ],
+    locale: 'es_ES',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Servicios de IA para Construcción Modular | ModulorIA',
+    description: '25 problemas resueltos + 6 soluciones de automatización. ROI garantizado en 2-3 semanas.',
+    images: ['https://moduloria.com/og-image.jpg'],
   },
 };
 

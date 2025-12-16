@@ -112,6 +112,29 @@ export default function HomePage() {
         ]
     };
 
+    const serviceStructuredData = {
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        serviceType: 'Automatización con IA para Construcción Modular',
+        provider: {
+            '@type': 'Organization',
+            name: 'ModulorIA',
+            url: 'https://moduloria.com'
+        },
+        areaServed: {
+            '@type': 'Country',
+            name: 'España'
+        },
+        offers: {
+            '@type': 'Offer',
+            priceRange: '€299 - €25,000',
+            priceCurrency: 'EUR',
+            availability: 'https://schema.org/InStock',
+            url: 'https://moduloria.com/precios'
+        },
+        description: 'Implementamos soluciones de IA práctica en empresas de construcción modular. Ahorra €67K-€156K/año con automatización inteligente. ROI en 2-3 semanas.'
+    };
+
     return (
         <>
             {/* JSON-LD Structured Data */}
@@ -122,6 +145,10 @@ export default function HomePage() {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceStructuredData) }}
             />
 
             <main className="min-h-screen bg-background-start overflow-hidden">

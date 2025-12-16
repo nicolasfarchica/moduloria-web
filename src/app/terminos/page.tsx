@@ -1,6 +1,9 @@
 export const metadata = {
     title: 'Términos de Uso | ModulorIA',
-    description: 'Términos y condiciones de uso de los servicios de ModulorIA',
+    description: 'Términos y condiciones de uso de los servicios de ModulorIA. Garantía de ROI y condiciones transparentes.',
+    alternates: {
+        canonical: 'https://moduloria.com/terminos',
+    },
 };
 
 export default function TerminosPage() {

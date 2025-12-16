@@ -4,13 +4,30 @@ export const metadata = {
   title: 'Precios de IA en Construcción Modular | ModulorIA',
   description: 'Precios transparentes para automatización en construcción modular con IA. Desde €299 diagnóstico hasta €25K implementación completa. ROI en 2-8 semanas. Sin contratos eternos.',
   keywords: 'precios IA construcción modular, automatización construcción precios, costos IA construcción, inversión automatización construcción modular',
+  alternates: {
+    canonical: 'https://moduloria.com/precios',
+  },
   openGraph: {
     title: 'Precios de IA en Construcción Modular | ModulorIA',
     description: 'Implementa automatización en construcción modular desde €3K. Precios transparentes, sin letra pequeña, ROI garantizado.',
     url: 'https://moduloria.com/precios',
     siteName: 'ModulorIA',
+    images: [
+      {
+        url: 'https://moduloria.com/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'ModulorIA - Precios de IA para Construcción Modular',
+      },
+    ],
     locale: 'es_ES',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Precios de IA en Construcción Modular | ModulorIA',
+    description: 'Implementa automatización en construcción modular desde €3K. Precios transparentes, ROI garantizado.',
+    images: ['https://moduloria.com/og-image.jpg'],
   },
 };
 
