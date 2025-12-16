@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -76,7 +77,7 @@ export default function Navigation() {
               href="/auditoria"
               className="btn-primary text-sm px-6 py-3"
             >
-              � Diagnóstico Estratégico
+              🎯 Diagnóstico Estratégico
             </Link>
           </div>
 
@@ -99,47 +100,61 @@ export default function Navigation() {
         </div>
 
         {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="lg:hidden bg-primary-dark border-t border-white/10">
-            <div className="py-4 space-y-4">
-              <Link
-                href="/servicios"
-                className="block text-white hover:text-accent-copper transition-colors duration-300 py-2 px-4"
-                onClick={() => setIsMobileMenuOpen(false)}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              className="lg:hidden bg-primary-dark border-t border-white/10 overflow-hidden"
+            >
+              <motion.div
+                initial={{ y: -20 }}
+                animate={{ y: 0 }}
+                exit={{ y: -20 }}
+                transition={{ duration: 0.3 }}
+                className="py-4 space-y-4"
               >
-                Servicios
-              </Link>
-              <Link
-                href="/precios"
-                className="block text-white hover:text-accent-copper transition-colors duration-300 py-2 px-4"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Precios
-              </Link>
-              <Link
-                href="/recursos"
-                className="block text-white hover:text-accent-copper transition-colors duration-300 py-2 px-4"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Recursos
-              </Link>
-              <Link
-                href="/sobre-moduloria"
-                className="block text-white hover:text-accent-copper transition-colors duration-300 py-2 px-4"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Nosotros
-              </Link>
-              <Link
-                href="/auditoria"
-                className="block btn-primary text-center mt-4 mx-4"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                � Diagnóstico Estratégico
-              </Link>
-            </div>
-          </div>
-        )}
+                <Link
+                  href="/servicios"
+                  className="block text-white hover:text-accent-copper transition-colors duration-300 py-2 px-4"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Servicios
+                </Link>
+                <Link
+                  href="/precios"
+                  className="block text-white hover:text-accent-copper transition-colors duration-300 py-2 px-4"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Precios
+                </Link>
+                <Link
+                  href="/recursos"
+                  className="block text-white hover:text-accent-copper transition-colors duration-300 py-2 px-4"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Recursos
+                </Link>
+                <Link
+                  href="/sobre-moduloria"
+                  className="block text-white hover:text-accent-copper transition-colors duration-300 py-2 px-4"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Nosotros
+                </Link>
+                <Link
+                  href="/auditoria"
+                  className="block btn-primary text-center mt-4 mx-4"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  🎯 Diagnóstico Estratégico
+                </Link>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
     </header>
   );

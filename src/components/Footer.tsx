@@ -76,33 +76,33 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Problemas */}
+          {/* Soluciones */}
           <div>
-            <h3 className="text-white font-bold mb-4 text-lg">Problemas que Resolvemos</h3>
+            <h3 className="text-white font-bold mb-4 text-lg">Soluciones</h3>
             <ul className="space-y-3">
               <li>
-                <Link href="/problemas" className="text-slate-400 hover:text-accent-copper transition-colors text-sm">
-                  Ver Todos los Problemas
+                <Link href="/#servicios" className="text-slate-400 hover:text-accent-copper transition-colors text-sm">
+                  Servicios de IA
                 </Link>
               </li>
               <li>
-                <Link href="/problemas/ocr-facturas" className="text-slate-400 hover:text-accent-copper transition-colors text-sm">
-                  OCR Facturas
+                <Link href="/#calculadora" className="text-slate-400 hover:text-accent-copper transition-colors text-sm">
+                  Calculadora de ROI
                 </Link>
               </li>
               <li>
-                <Link href="/problemas/clasificacion-documentos" className="text-slate-400 hover:text-accent-copper transition-colors text-sm">
-                  Clasificación de Documentos
+                <Link href="/#diferenciadores" className="text-slate-400 hover:text-accent-copper transition-colors text-sm">
+                  Nuestros Diferenciadores
                 </Link>
               </li>
               <li>
-                <Link href="/problemas/actualizaciones-erp" className="text-slate-400 hover:text-accent-copper transition-colors text-sm">
-                  Actualizaciones ERP
+                <Link href="/#como-funciona" className="text-slate-400 hover:text-accent-copper transition-colors text-sm">
+                  Cómo Funciona
                 </Link>
               </li>
               <li>
-                <Link href="/problemas/seguimiento-email" className="text-slate-400 hover:text-accent-copper transition-colors text-sm">
-                  Seguimiento Email Automático
+                <Link href="/auditoria" className="text-slate-400 hover:text-accent-copper transition-colors text-sm">
+                  Diagnóstico Estratégico
                 </Link>
               </li>
             </ul>
@@ -113,7 +113,7 @@ export default function Footer() {
             <h3 className="text-white font-bold mb-4 text-lg">Empresa</h3>
             <ul className="space-y-3">
               <li>
-                <Link href="/sobre-nosotros" className="text-slate-400 hover:text-accent-copper transition-colors text-sm">
+                <Link href="/sobre-moduloria" className="text-slate-400 hover:text-accent-copper transition-colors text-sm">
                   Sobre Nosotros
                 </Link>
               </li>

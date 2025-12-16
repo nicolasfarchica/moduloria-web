@@ -3,6 +3,7 @@ import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -49,6 +50,9 @@ export default function RootLayout({
 
         {/* Footer */}
         <Footer />
+
+        {/* Scroll to Top Button */}
+        <ScrollToTop />
       </body>
     </html>
   );

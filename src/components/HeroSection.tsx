@@ -5,7 +5,10 @@ import { motion } from 'framer-motion';
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background-dark via-primary-dark to-background-end">
+    <section
+      aria-label="Hero principal"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background-dark via-primary-dark to-background-end"
+    >
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-medium/10 rounded-full blur-[100px] animate-breathing" />
@@ -65,19 +68,19 @@ export default function HeroSection() {
             className="flex flex-wrap justify-center items-center gap-8 mb-12 text-primary-steel"
           >
             <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-accent-copper" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-5 h-5 text-accent-copper" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
               <span className="font-medium">ROI en 2-3 semanas</span>
             </div>
             <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-accent-copper" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-5 h-5 text-accent-copper" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
               <span className="font-medium">Sin contratos eternos</span>
             </div>
             <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-accent-copper" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-5 h-5 text-accent-copper" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
               <span className="font-medium">100% especializado</span>
@@ -94,12 +97,14 @@ export default function HeroSection() {
             <Link
               href="/auditoria"
               className="btn-primary text-lg px-8 py-4 shadow-glow hover:shadow-copper-lg w-full sm:w-auto"
+              aria-label="Agendar diagnóstico estratégico por 299 euros"
             >
               📞 Agendar Diagnóstico Estratégico (€299)
             </Link>
             <Link
               href="/#problemas"
               className="btn-secondary text-lg px-8 py-4 w-full sm:w-auto"
+              aria-label="Ver los problemas que resolvemos con IA"
             >
               Ver Problemas que Resolvemos
             </Link>
@@ -111,6 +116,8 @@ export default function HeroSection() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.5 }}
             className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto"
+            role="region"
+            aria-label="Indicadores de confianza"
           >
             <div className="glass-card text-center p-6">
               <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-accent-copper to-white mb-2 font-heading">
@@ -143,7 +150,7 @@ export default function HeroSection() {
       >
         <div className="flex flex-col items-center gap-2 text-slate-400">
           <span className="text-sm font-medium tracking-wide">Descubre cómo</span>
-          <svg className="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
         </div>

@@ -1,15 +1,37 @@
-
+import dynamic from 'next/dynamic';
 import HeroSection from '@/components/HeroSection';
-import CalculadoraROI from '@/components/CalculadoraROI';
-import NosotrosSection from '@/components/NosotrosSection';
-import ProblemasSection from '@/components/ProblemasSection';
-import ServiciosSection from '@/components/ServiciosSection';
-import ComoFuncionaSection from '@/components/ComoFuncionaSection';
-import DiferenciadoresSection from '@/components/DiferenciadoresSection';
-import PreciosSection from '@/components/PreciosSection';
-import RecursosSection from '@/components/RecursosSection';
-import FAQSection from '@/components/FAQSection';
-import CTAFinalSection from '@/components/CTAFinalSection';
+
+// Lazy load components below the fold for better performance
+const CalculadoraROI = dynamic(() => import('@/components/CalculadoraROI'), {
+    loading: () => <div className="section-padding bg-background-end" />,
+});
+const NosotrosSection = dynamic(() => import('@/components/NosotrosSection'), {
+    loading: () => <div className="section-padding" />,
+});
+const ProblemasSection = dynamic(() => import('@/components/ProblemasSection'), {
+    loading: () => <div className="section-padding" />,
+});
+const ServiciosSection = dynamic(() => import('@/components/ServiciosSection'), {
+    loading: () => <div className="section-padding" />,
+});
+const ComoFuncionaSection = dynamic(() => import('@/components/ComoFuncionaSection'), {
+    loading: () => <div className="section-padding" />,
+});
+const DiferenciadoresSection = dynamic(() => import('@/components/DiferenciadoresSection'), {
+    loading: () => <div className="section-padding" />,
+});
+const PreciosSection = dynamic(() => import('@/components/PreciosSection'), {
+    loading: () => <div className="section-padding" />,
+});
+const RecursosSection = dynamic(() => import('@/components/RecursosSection'), {
+    loading: () => <div className="section-padding" />,
+});
+const FAQSection = dynamic(() => import('@/components/FAQSection'), {
+    loading: () => <div className="section-padding" />,
+});
+const CTAFinalSection = dynamic(() => import('@/components/CTAFinalSection'), {
+    loading: () => <div className="section-padding" />,
+});
 
 export const metadata = {
     title: 'ModulorIA | IA en Construcción Modular - Automatización Inteligente',
@@ -40,25 +62,87 @@ export const metadata = {
 };
 
 export default function HomePage() {
+    const structuredData = {
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: 'ModulorIA',
+        description: 'IA y automatización para la industria de la construcción modular. Ahorra €67K-€156K/año automatizando procesos operativos.',
+        url: 'https://moduloria.com',
+        logo: 'https://moduloria.com/images/moduloria-logo.png',
+        contactPoint: {
+            '@type': 'ContactPoint',
+            telephone: '+45-5280-1394',
+            contactType: 'customer service',
+            email: 'contacto@moduloria.com',
+            areaServed: 'ES',
+            availableLanguage: 'Spanish'
+        },
+        sameAs: [
+            'https://linkedin.com/company/moduloria',
+            'https://twitter.com/moduloria',
+            'https://instagram.com/moduloria',
+            'https://facebook.com/moduloria'
+        ],
+        address: {
+            '@type': 'PostalAddress',
+            addressCountry: 'ES'
+        }
+    };
+
+    const faqStructuredData = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [
+            {
+                '@type': 'Question',
+                name: '¿Qué es exactamente la automatización con IA en construcción modular?',
+                acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'Es usar Inteligencia Artificial para eliminar tareas manuales repetitivas en tu empresa constructora. Por ejemplo: clasificar emails automáticamente, extraer datos de facturas con OCR, generar reportes de obra por voz, controlar stock de materiales, etc.'
+                }
+            },
+            {
+                '@type': 'Question',
+                name: '¿Cuánto tiempo toma implementar una automatización?',
+                acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'Depende de la complejidad: Quick Wins (OCR facturas, clasificación emails) se implementan en 3-7 días. Soluciones más complejas (dashboards integrados, múltiples automatizaciones) toman 2-4 semanas. Nunca más de 1 mes.'
+                }
+            }
+        ]
+    };
+
     return (
-        <main className="min-h-screen bg-background-start overflow-hidden">
-            <div className="fixed inset-0 pointer-events-none z-0">
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-copper/5 rounded-full blur-[100px]" />
-                <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent-primary/5 rounded-full blur-[100px]" />
-            </div>
-            <div className="relative z-10">
-                <HeroSection />
-                <CalculadoraROI />
-                <NosotrosSection />
-                <ProblemasSection />
-                <ServiciosSection />
-                <ComoFuncionaSection />
-                <DiferenciadoresSection />
-                <PreciosSection />
-                <RecursosSection />
-                <FAQSection />
-                <CTAFinalSection />
-            </div>
-        </main>
+        <>
+            {/* JSON-LD Structured Data */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
+            />
+
+            <main className="min-h-screen bg-background-start overflow-hidden">
+                <div className="fixed inset-0 pointer-events-none z-0">
+                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent-copper/5 rounded-full blur-[100px]" />
+                    <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent-primary/5 rounded-full blur-[100px]" />
+                </div>
+                <div className="relative z-10">
+                    <HeroSection />
+                    <CalculadoraROI />
+                    <NosotrosSection />
+                    <ProblemasSection />
+                    <ServiciosSection />
+                    <ComoFuncionaSection />
+                    <DiferenciadoresSection />
+                    <PreciosSection />
+                    <RecursosSection />
+                    <FAQSection />
+                    <CTAFinalSection />
+                </div>
+            </main>
+        </>
     );
 }
