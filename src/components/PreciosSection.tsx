@@ -23,7 +23,7 @@ const PRICING_TIERS: PricingTier[] = [
     name: 'Diagnóstico Estratégico',
     tagline: 'Tu hoja de ruta digital',
     price: 'Consultar',
-    duration: 'Sesión 45 min + Informe',
+    duration: 'Análisis + Informe Ejecutivo',
     roi: 'Inmediato',
     bestFor: 'Empresas que necesitan claridad sobre dónde empezar y cuánto pueden ahorrar',
     features: [
@@ -144,7 +144,7 @@ export default function PreciosSection() {
               <div
                 key={tier.name}
                 id={tierId}
-                className={`relative rounded-2xl p-8 transition-all duration-300 scroll-mt-24 ${tier.highlighted
+                className={`relative rounded-2xl p-8 transition-all duration-300 scroll-mt-24 flex flex-col ${tier.highlighted
                   ? 'bg-gradient-to-br from-white/10 to-white/5 border border-accent-copper shadow-copper-glow transform md:-translate-y-4'
                   : 'bg-white/5 border border-white/10 hover:border-accent-copper/50 hover:bg-white/10'
                   }`}
@@ -211,7 +211,7 @@ export default function PreciosSection() {
                 {/* CTA */}
                 <Link
                   href={tier.ctaLink}
-                  className={`block text-center py-4 rounded-lg font-semibold transition-all duration-300 ${tier.highlighted
+                  className={`mt-auto block text-center py-4 rounded-lg font-semibold transition-all duration-300 ${tier.highlighted
                     ? 'bg-accent-copper text-white hover:shadow-copper-glow hover:scale-[1.02]'
                     : 'bg-white/10 text-white hover:bg-white/20'
                     }`}
