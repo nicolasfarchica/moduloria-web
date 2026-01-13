@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createNotionLead, AuditoriaFormData } from '@/lib/notion';
 
-export const runtime = 'edge';
+// Note: Using Node.js runtime for Notion SDK compatibility
+export const runtime = 'nodejs';
 
 // Rate limiting map (in production, use Redis or similar)
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
