@@ -37,8 +37,8 @@ export async function createNotionLead(data: AuditoriaFormData) {
         database_id: databaseId,
       },
       properties: {
-        // Nombre (Title)
-        'Nombre': {
+        // Name (Title) - Notion usa "Name" por defecto
+        'Name': {
           title: [
             {
               text: {
@@ -140,7 +140,7 @@ export async function createNewsletterSubscription(data: NewsletterFormData) {
         database_id: databaseId,
       },
       properties: {
-        'Nombre': {
+        'Name': {
           title: [
             {
               text: {
