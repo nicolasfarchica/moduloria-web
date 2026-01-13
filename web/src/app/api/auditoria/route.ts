@@ -85,11 +85,18 @@ export async function POST(request: NextRequest) {
     });
   } catch (error) {
     console.error('Error processing auditoria request:', error);
+    console.error('Error details:', {
+      message: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : undefined,
+    });
 
     return NextResponse.json(
       {
         error: 'Error al procesar la solicitud. Por favor, contacta directamente por WhatsApp.',
         whatsapp: 'https://wa.me/4552801394',
+        debug: process.env.NODE_ENV === 'development' ? {
+          message: error instanceof Error ? error.message : 'Unknown error',
+        } : undefined,
       },
       { status: 500 }
     );
