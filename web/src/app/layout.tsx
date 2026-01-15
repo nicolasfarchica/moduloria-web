@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
-import GoogleAnalytics from "./GoogleAnalytics";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -38,6 +38,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${inter.variable} ${manrope.variable}`}>
+      <head>
+        {/* Google Analytics 4 */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-EK62LC6D3D"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-EK62LC6D3D');
+          `}
+        </Script>
+      </head>
       <body className="antialiased font-sans">
         {/* Skip to main content (accesibilidad) */}
         <a
@@ -60,9 +75,6 @@ export default function RootLayout({
 
         {/* Scroll to Top Button */}
         <ScrollToTop />
-
-        {/* Google Analytics */}
-        <GoogleAnalytics />
       </body>
     </html>
   );
