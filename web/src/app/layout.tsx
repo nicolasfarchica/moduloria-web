@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -39,19 +38,21 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${inter.variable} ${manrope.variable}`}>
       <head>
-        {/* Google Analytics 4 */}
-        <Script
+        <script
+          async
           src="https://www.googletagmanager.com/gtag/js?id=G-EK62LC6D3D"
-          strategy="afterInteractive"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-EK62LC6D3D');
-          `}
-        </Script>
+        <script
+          id="google-analytics"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-EK62LC6D3D');
+            `,
+          }}
+        />
       </head>
       <body className="antialiased font-sans">
         {/* Skip to main content (accesibilidad) */}
