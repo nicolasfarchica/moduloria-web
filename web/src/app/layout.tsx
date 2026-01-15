@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
-import { GoogleAnalytics } from '@next/third-parties/google';
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import GoogleAnalytics from "./GoogleAnalytics";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -62,9 +62,7 @@ export default function RootLayout({
         <ScrollToTop />
 
         {/* Google Analytics */}
-        {process.env.NEXT_PUBLIC_GA_ID && (
-          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
-        )}
+        <GoogleAnalytics />
       </body>
     </html>
   );
