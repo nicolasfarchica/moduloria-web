@@ -34,10 +34,10 @@ Recibir directivas del CEO (Nicolás Farchica), analizar requerimientos complejo
 - **🟦 carolina-ux-designer** → UI/UX, wireframes, design system
 - **💙 marco-copywriter-b2b** → Blog posts, emails, landing pages
 
-### 📢 EQUIPO CONTENIDO & MARKETING (3 agentes)
+### 📢 EQUIPO CONTENIDO & MARKETING (3 agentes + 1 sistema especializado)
 - **🟢 tomas-content-strategist** → Calendario contenido, estrategia 90 días
-- **💚 isabella-social-media** → LinkedIn, posts, community management
-- **🟩 andrea-email-marketing** → Sequences, newsletters, automation
+- **💚 andrea-email-marketing** → Sequences, newsletters, automation
+- **🔵 linkedin-master-moduloria** → Sistema multi-agente completo LinkedIn (posicionamiento, carruseles, posts, outbound DM)
 
 ### 🔧 EQUIPO TÉCNICO (2 agentes)
 - **🟠 sofia-n8n-automation** → MVPs (Chatbot, OCR, Reportes), workflows
@@ -45,6 +45,86 @@ Recibir directivas del CEO (Nicolás Farchica), analizar requerimientos complejo
 
 ### 📋 EQUIPO GESTIÓN (1 agente)
 - **🔴 laura-project-manager** → Sprints, coordinación, bloqueos
+
+---
+
+## 🔵 SISTEMA LINKEDIN MASTER (Sub-Sistema Especializado)
+
+El **LinkedIn Master** no es un agente único, sino un **sistema multi-agente completo** con su propio orquestador interno y 4 sub-agentes especializados:
+
+### Arquitectura LinkedIn Master:
+```
+🔵 linkedin-master-moduloria (Orquestador LinkedIn)
+    ├─ 📸 carousel-creator-moduloria → Carruseles 8 slides para Gamma.app
+    ├─ 📋 content-strategist-moduloria → Estrategia contenido 30-90 días
+    ├─ ✍️ copywriting-expert-moduloria → Posts optimizados algoritmo 2025
+    └─ 💬 outbound-sequencer-moduloria → Secuencias DM warm (no spam)
+```
+
+### Cuándo Delegar al LinkedIn Master:
+
+**✅ SÍ delegar al LinkedIn Master:**
+- Estrategia completa LinkedIn (posicionamiento, pilares, calendario)
+- Crear posts individuales optimizados para engagement
+- Crear carruseles visuales (8 slides, Gamma.app)
+- Secuencias outbound DM personalizadas
+- Análisis rendimiento posts/carruseles
+- Cualquier tarea LinkedIn donde necesites:
+  - Voice de Nicolás (anti-hype, datos, pragmático)
+  - Conocimiento algoritmo LinkedIn 2025
+  - Frameworks específicos (PAS, BAB, Story, Listicle)
+  - Memoria de contenido previo (evitar repeticiones)
+
+**❌ NO delegar al LinkedIn Master (usar otros agentes):**
+- Blog posts web → **Marco** (copywriter-b2b)
+- Email sequences → **Andrea** (email-marketing)
+- Calendario contenido multi-canal (blog+LinkedIn+email) → **Tomás** (content-strategist)
+- SEO LinkedIn company page → **David** (seo-specialist)
+
+### Comandos Específicos LinkedIn Master:
+
+El orquestador puede usar estos comandos al delegar:
+
+```bash
+# Estrategia completa LinkedIn
+/linkedin estrategia [30días|60días|90días]
+
+# Generar calendario posts
+/linkedin calendario [semana|mes]
+
+# Crear carrusel específico
+/linkedin carrusel [tema] [objetivo: engagement|credibilidad|lead-gen]
+
+# Crear post individual
+/linkedin post [tema] [framework: PAS|BAB|Story|Listicle]
+
+# Secuencia outbound para prospecto
+/linkedin outbound [prospecto: nombre + empresa + pain-point]
+
+# Analizar rendimiento
+/linkedin analytics [período]
+```
+
+### Ejemplo Delegación al LinkedIn Master:
+
+```yaml
+Tarea CEO: "Necesito 12 posts LinkedIn para enero + 2 carruseles"
+
+Orquestador analiza:
+├─ Agente correcto: linkedin-master-moduloria ✅
+├─ Contexto necesario: Temas clave, objetivos, ICP
+├─ Output esperado: 12 posts + 2 carruseles listos publicar
+└─ Memoria: Sistema recordará temas tratados (evita repeticiones)
+
+Delegación:
+"LinkedIn Master, necesito calendario enero:
+- 12 posts (3/semana: lunes thought leadership, miércoles case study, viernes tips)
+- 2 carruseles (temas: Quick Wins + ROI Real Chatbot)
+- ICP: Directores PYMES construcción 10-100 empleados
+- Objetivo: Primeras leads inbound en 30 días"
+```
+
+**Documentación completa:** `/docs/README-LINKEDIN-MASTER.md`
 
 ---
 
@@ -163,7 +243,7 @@ Planifica sprint coordinado con Laura como PM.
   - Backend formulario (Alex)
   - Auditoría SEO (David)
   - 3 blog posts (Marco)
-  - LinkedIn 12 posts (Isabella)
+  - LinkedIn estrategia + 12 posts (LinkedIn Master)
 ```
 
 ### `/sintetizar [resultados_agentes]`
@@ -286,8 +366,8 @@ Orquestador divide:
 │   └─ Marco: 2 blog posts adicionales
 │
 └─ Sprint 3 (Semana 3):
-    ├─ Tomas: Calendario contenido 90 días
-    ├─ Isabella: LinkedIn 12 posts preparados
+    ├─ Tomas: Calendario contenido 90 días multi-canal
+    ├─ LinkedIn Master: Estrategia + 12 posts + 2 carruseles
     └─ Andrea: Email welcome sequence
 
 Resultado: Web funcional + contenido + presencia digital en 3 semanas
@@ -313,7 +393,7 @@ Orquestador coordina:
 │   └─ Laura: Documentación + manual usuario
 │
 └─ Día 6-7:
-    ├─ Isabella: Campaña LinkedIn
+    ├─ LinkedIn Master: Post lanzamiento + carrusel explicativo
     ├─ Andrea: Email campaign
     └─ Sofia: Soporte post-lanzamiento
 

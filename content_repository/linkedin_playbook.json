@@ -1,0 +1,236 @@
+{
+  "algorithm_2025": {
+    "core_principle": "Dwell Time > Likes/Comentarios",
+    "priority_factors": [
+      "Tiempo de lectura (Dwell Time)",
+      "Golden Hour (primeros 60 min)",
+      "Engagement temprano (<30 min)",
+      "Formato nativo (texto + PDF > links externos)",
+      "Relevancia para audiencia específica"
+    ],
+    "golden_hour": {
+      "description": "Primeros 60 minutos después de publicar son críticos",
+      "actions": [
+        "Responder comentarios <30 min",
+        "Engagement activo en primeros comentarios",
+        "No editar post en Golden Hour (penaliza)"
+      ]
+    },
+    "penalties": [
+      "Links externos en post body (poner en comentario)",
+      "Engagement bait ('Comenta SÍ si...')",
+      "Hashtags irrelevantes o spam (>5)",
+      "Copiar contenido de otros",
+      "Posts >3,000 caracteres",
+      "Edición frecuente post-publicación"
+    ]
+  },
+  "post_formats": {
+    "text_post": {
+      "optimal_length": "800-1,300 caracteres",
+      "dwell_time": "30-90 segundos",
+      "engagement_rate": "3-6%",
+      "best_for": "Thought leadership, opiniones, insights"
+    },
+    "carousel": {
+      "optimal_slides": 8,
+      "dwell_time": "3-5 minutos",
+      "engagement_rate": "4-8%",
+      "shareability": "5-10x vs text post",
+      "best_for": "Frameworks, listicles, case studies detallados"
+    },
+    "video": {
+      "optimal_length": "60-90 segundos",
+      "dwell_time": "60-120 segundos",
+      "engagement_rate": "5-10%",
+      "best_for": "Demos, explicaciones visuales, storytelling"
+    },
+    "poll": {
+      "optimal_options": "2-4 opciones",
+      "engagement_rate": "8-12%",
+      "best_for": "Calificación de audiencia, research, engagement rápido"
+    }
+  },
+  "content_frameworks": {
+    "PAS": {
+      "name": "Problem-Agitate-Solution",
+      "structure": [
+        "Problem: Identifica dolor específico",
+        "Agitate: Amplifica consecuencias",
+        "Solution: Presenta solución clara"
+      ],
+      "best_for": "Quick Wins, educación sobre problemas",
+      "example_hook": "El 80% de PYMES construcción pierden €50K/año en esto"
+    },
+    "BAB": {
+      "name": "Before-After-Bridge",
+      "structure": [
+        "Before: Situación inicial problemática",
+        "After: Resultado transformado",
+        "Bridge: Cómo llegamos ahí"
+      ],
+      "best_for": "Casos de éxito, transformaciones",
+      "example_hook": "De 40h/mes a 2h/mes gestionando facturas"
+    },
+    "Story": {
+      "name": "Storytelling + Lección",
+      "structure": [
+        "Hook: Situación/Diálogo memorable",
+        "Story: Desarrollo de la historia",
+        "Lección: Aprendizaje aplicable"
+      ],
+      "best_for": "Thought leadership, autoridad, engagement",
+      "example_hook": "'Tu PYME es muy pequeña para IA' - me dijo un director"
+    },
+    "Listicle": {
+      "name": "Lista + Explicación",
+      "structure": [
+        "Hook numérico ('5 procesos que...')",
+        "Items con valor específico cada uno",
+        "CTA pregunta sobre priorización"
+      ],
+      "best_for": "Tips, frameworks, errores comunes",
+      "example_hook": "5 procesos que automatizas ESTE MES"
+    },
+    "Contrarian": {
+      "name": "Opinión Contraria Fundamentada",
+      "structure": [
+        "Statement contrarian",
+        "Por qué la mayoría está equivocada",
+        "Evidencia/Razonamiento",
+        "Conclusión accionable"
+      ],
+      "best_for": "Diferenciación, debate, autoridad",
+      "example_hook": "Dejé de vender 'IA' hace 6 meses"
+    }
+  },
+  "hook_library": {
+    "numeric": [
+      "5 procesos que automatizas ESTE MES",
+      "7 errores que vi en 23 proyectos de automatización",
+      "3 señales de que estás perdiendo €50K/año",
+      "€4,800 ahorrados con 15 minutos de configuración"
+    ],
+    "before_after": [
+      "De 40h/mes a 2h/mes gestionando facturas",
+      "De 200 consultas manuales a 10 min/día",
+      "€2,400/mes → €240/mes (mismo resultado)"
+    ],
+    "question": [
+      "¿Por qué las PYMES construcción ignoran IA?",
+      "¿Cuánto te cuesta gestionar facturas manualmente?",
+      "¿Sabías que estás perdiendo €800/semana en este proceso?"
+    ],
+    "contrarian": [
+      "No, la IA no va a reemplazar a tus empleados",
+      "Por qué rechazo el 60% de proyectos de automatización",
+      "Dejé de vender 'IA' y empecé a vender tiempo"
+    ],
+    "story": [
+      "'Tu PYME es muy pequeña para IA' - me dijo un director",
+      "Cliente: 'Necesito reducir costos.' Yo: 'Muéstrame tus facturas.'",
+      "Hace 3 semanas un director me dijo: 'IA no es para nosotros'"
+    ]
+  },
+  "cta_library": {
+    "low_commitment": [
+      "¿Cuál de estos 5 procesos automatizarías primero?",
+      "¿Cuánto tiempo pierdes TÚ en [proceso X]?",
+      "Comenta 'CHECKLIST' y te envío el framework completo",
+      "Guarda este post si quieres implementarlo después",
+      "Comparte con un director que necesite ver esto"
+    ],
+    "medium_commitment": [
+      "DM 'DEMO' y te muestro cómo funciona en tu caso",
+      "Link al framework completo en primer comentario",
+      "¿Quieres que revisemos UN proceso? Agenda 15 min: [link]",
+      "Descarga checklist completa: [link en comentario]"
+    ],
+    "high_commitment": [
+      "Auditoría gratis de 1 proceso: [link en comentario]",
+      "Agenda llamada 30 min para analizar tu caso: [link]",
+      "¿Hablamos de tu caso específico? DM o email"
+    ]
+  },
+  "benchmarks": {
+    "month_1_3": {
+      "phase": "Construcción de base",
+      "impressions_per_post": "500 → 1,500 → 3,000",
+      "engagement_rate": "2% → 4% → 6%",
+      "profile_views_weekly": "30 → 80 → 150",
+      "dms_inbound": "0-2 → 2-4 → 4-8"
+    },
+    "month_4_6": {
+      "phase": "Generación de pipeline",
+      "impressions_per_post": "5,000 → 10,000 → 15,000",
+      "dms_inbound": "8-15 → 15-25 → 25-40",
+      "meetings_monthly": "2-4 → 4-8 → 8-15",
+      "leads_qualified": "10-15 → 20-30 → 35-50"
+    },
+    "month_7_12": {
+      "phase": "Autoridad y escalabilidad",
+      "impressions_per_post": "10,000 → 20,000 → 30,000",
+      "leads_qualified_monthly": "35-50 → 50-70 → 70-100",
+      "recognition": "Menciones, tags, invitaciones a eventos/podcasts"
+    }
+  },
+  "best_practices": {
+    "posting_schedule": {
+      "best_days": ["Martes", "Miércoles", "Jueves"],
+      "best_times": ["9-11am horario local"],
+      "avoid": ["Lunes 8am", "Viernes 3pm+", "Fines de semana"],
+      "consistency": "3 posts/semana es sostenible y efectivo"
+    },
+    "hashtags": {
+      "quantity": "3-5 hashtags (no más)",
+      "types": {
+        "specific": ["#ConstrucciónModular", "#AutomatizaciónIA"],
+        "industry": ["#Construcción", "#PYMES"],
+        "general": ["#IA", "#Automatización", "#Innovación"]
+      },
+      "placement": "Al final del post, separado con ---"
+    },
+    "visual_formatting": {
+      "line_length": "Max 60 caracteres por línea",
+      "line_breaks": "Generosos (mobile-friendly)",
+      "bullets": "• o ✓ para listas",
+      "numbers": "Destacar con €, %",
+      "emojis": "1-2 máximo estratégicos, no spam"
+    },
+    "engagement_tactics": {
+      "respond_comments": "Primeros 30 min críticos",
+      "thank_saves": "Agradecer guardados en comentarios",
+      "ask_questions": "Terminar con pregunta abierta",
+      "tag_relevant": "Tag personas/empresas cuando relevante (no spam)"
+    }
+  },
+  "quick_wins_topics": [
+    "Clasificar emails automáticamente",
+    "OCR de facturas y albaranes",
+    "Reportes voz-a-texto",
+    "Chatbot WhatsApp FAQ",
+    "Control asistencia digital",
+    "Formularios digitales móvil",
+    "Seguimiento herramientas QR",
+    "Alertas stock bajo",
+    "Recordatorios automáticos",
+    "Registro incidentes rápido"
+  ],
+  "evergreen_topics": [
+    "Por qué fracasa el 80% de proyectos IA en construcción",
+    "Framework 3-Step: De manual a automatizado",
+    "Matriz Impacto-Esfuerzo: Priorizar automatizaciones",
+    "Anatomía de un Quick Win de €4,800/año",
+    "Checklist: 7 preguntas antes de automatizar",
+    "ROI comparado: OCR vs Manual (números reales)",
+    "Cuándo NO automatizar (guía honesta)",
+    "IA que funciona vs IA que es marketing"
+  ],
+  "notes": [
+    "Este playbook debe consultarse antes de crear contenido",
+    "Frameworks deben aplicarse según objetivo del contenido",
+    "Hooks deben rotarse para no repetir estructura",
+    "Benchmarks sirven para evaluar performance y ajustar estrategia",
+    "Best practices son guías, no reglas absolutas - probar y ajustar"
+  ]
+}

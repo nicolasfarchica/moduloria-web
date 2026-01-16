@@ -1,0 +1,117 @@
+{
+  "user_profile": {
+    "name": "Nicolás Farchica",
+    "agency_name": "ModulorIA",
+    "vertical": "Construcción Modular e Industrializada + IA",
+    "icp": "Directores/Gerentes PYMES construcción (10-200 empleados)",
+    "geography": "España + LATAM",
+    "unique_value_prop": "IA práctica para construcción. NO futurismos, SÍ resultados en 2-3 semanas",
+    "contact": {
+      "phone": "+45-5280-1394",
+      "email": "hola@moduloria.com",
+      "linkedin": "linkedin.com/in/nicolasfarchica",
+      "website": "moduloria.com"
+    },
+    "voice_document": {
+      "tone": "Profesional pero cercano, técnico sin jerga, anti-hype",
+      "characteristics": [
+        "Datos sobre promesas (€50K vs 'mucho dinero')",
+        "Anti-futurismos (no 'revolucionario', sí 'funcional')",
+        "Admite limitaciones ('No sirve para todo')",
+        "Específico siempre (3 semanas vs 'rápido')",
+        "Pragmático ('Esto funciona porque...' no 'Esto es increíble')"
+      ],
+      "phrases_to_use": [
+        "No te vendo IA del futuro. Te muestro automatizaciones que funcionan hoy",
+        "ROI en 2-3 semanas, no en 6 meses",
+        "IA práctica para construcción. Sin futurismos"
+      ],
+      "phrases_to_avoid": [
+        "revolucionario", "disruptivo", "game-changer",
+        "exponencial", "transformacional", "innovador"
+      ]
+    }
+  },
+  "content_history": [
+    {
+      "date": "2026-01-15",
+      "type": "system_setup",
+      "topic": "Inicialización LinkedIn Master ModulorIA",
+      "note": "Sistema multi-agente creado. Listo para generar contenido."
+    }
+  ],
+  "strategy": {
+    "pillars": [
+      {
+        "name": "Quick Wins",
+        "percentage": 40,
+        "objective": "Demostrar valor inmediato, generar interés",
+        "formats": ["Tips prácticos", "Checklists", "Frameworks"]
+      },
+      {
+        "name": "Casos de Éxito",
+        "percentage": 30,
+        "objective": "Credibilidad, prueba social, inspiración",
+        "formats": ["Case study", "Storytelling con datos"]
+      },
+      {
+        "name": "Educación IA Práctica",
+        "percentage": 20,
+        "objective": "Posicionamiento experto, desmitificar IA",
+        "formats": ["Thought leadership", "Opinión fundamentada"]
+      },
+      {
+        "name": "Anti-Futurismos",
+        "percentage": 10,
+        "objective": "Diferenciación, romper mitos",
+        "formats": ["Contrarian", "Hot take fundamentado"]
+      }
+    ],
+    "posting_frequency": {
+      "posts_per_week": 3,
+      "schedule": {
+        "monday": "Thought Leadership / Anti-futurismo",
+        "wednesday": "Case Study / Datos",
+        "friday": "Tips Prácticos / Framework"
+      }
+    },
+    "current_phase": "Construcción (Mes 1-3)",
+    "goals": {
+      "short_term": "Primeras leads inbound en 30-60 días",
+      "medium_term": "35+ leads orgánicos/mes en 3-4 meses",
+      "long_term": "Autoridad establecida en 12-18 meses"
+    }
+  },
+  "performance": {
+    "posts_created_total": 0,
+    "carousels_created_total": 0,
+    "best_performing_posts": [],
+    "learnings": [
+      "Sistema recién inicializado. Métricas pendientes."
+    ],
+    "current_metrics": {
+      "avg_impressions_per_post": null,
+      "avg_engagement_rate": null,
+      "dms_inbound_monthly": null,
+      "meetings_monthly": null
+    }
+  },
+  "session_history": [
+    {
+      "date": "2026-01-15",
+      "actions": [
+        "Sistema LinkedIn Master ModulorIA creado",
+        "4 sub-agentes especializados configurados",
+        "Estructura de memoria inicializada",
+        "Pilares de contenido definidos"
+      ]
+    }
+  ],
+  "topics_covered_last_30_days": [],
+  "notes": [
+    "Actualizar memory.json después de cada sesión",
+    "Registrar nuevos posts/carrusels en content_history",
+    "Revisar topics_covered para evitar repeticiones",
+    "Analizar performance mensualmente y ajustar estrategia"
+  ]
+}

@@ -8,69 +8,71 @@
   "master": {
     "tasks": [
       {
-        "id": 1,
+        "id": "1",
         "title": "Configure Email System and Domain Infrastructure",
         "description": "Set up professional email system for moduloria.com including Google Workspace accounts, email signatures, and auto-responders for brand-consistent communication.",
         "details": "Implementation steps:\n\n1. **Domain Configuration (moduloria.com)**:\n   - Verify domain ownership in Google Admin Console\n   - Configure MX records for email routing\n   - Set up SPF, DKIM, and DMARC records for deliverability\n\n2. **Google Workspace Setup** (Alternative: Microsoft 365 or Zoho Mail):\n   - Create accounts: contacto@moduloria.com, hola@moduloria.com, nicolas@moduloria.com\n   - Configure aliases for support@ and info@\n   - Set storage quotas and sharing policies\n\n3. **Email Signatures**:\n   - Create HTML signature template with brand colors (#1a1f36 primary, #d4a574 copper accent)\n   - Include: Name, Role, Phone (+45-5280-1394), Website, LinkedIn, Legal disclaimer\n   - Use tools like Wisestamp or HubSpot Signature Generator\n\n4. **Auto-responders**:\n   - Business hours acknowledgment with 24h response commitment\n   - Out-of-office template for vacations\n   - Lead capture response with Calendly link\n\n5. **Email Templates** (save in Google Docs/Notion):\n   - Initial response template (confirm receipt + next steps)\n   - Proposal submission template\n   - Follow-up sequence (Day 2, Day 5, Day 10)\n\n**Cost estimate**: Google Workspace Business Starter ~€6/user/month",
         "testStrategy": "Send test emails from each account to external addresses. Verify emails arrive without spam flags. Test signature rendering in Gmail, Outlook, Apple Mail. Confirm auto-responders trigger correctly. Run SPF/DKIM validation using mail-tester.com with target score >9/10.",
         "priority": "high",
         "dependencies": [],
-        "status": "pending",
-        "subtasks": []
+        "status": "done",
+        "subtasks": [],
+        "updatedAt": "2026-01-16T12:27:56.987Z"
       },
       {
-        "id": 2,
+        "id": "2",
         "title": "Set Up Notion Workspace and CRM Database",
         "description": "Create comprehensive Notion workspace as the central hub for project management, client tracking, and knowledge base with integrated databases for Clients, Problems, Content, and Tasks.",
         "details": "Implementation steps:\n\n1. **Workspace Structure**:\n   - Create team workspace 'ModulorIA'\n   - Set up page hierarchy: Dashboard → Operations, Clients, Content, Wiki\n   - Configure sidebar navigation and favorites\n\n2. **Client Database** (CRM):\n   - Properties: Name, Company, Sector (multi-select), Contact Email, Phone, WhatsApp, LinkedIn URL\n   - Status (select): Lead → Contactado → Calificado → Reunión → Propuesta → Negociación → Cerrado Ganado/Perdido\n   - Source (select): LinkedIn, Web Form, Referral, Cold Outreach\n   - Deal Value (number), Problems of Interest (relation to Problems DB)\n   - Next Action (text), Next Action Date (date), Notes (rich text)\n   - Views: Pipeline Kanban, By Status Table, By Value sorted\n\n3. **Problems Database** (25 pain points):\n   - Properties: ID, Title, Category, Tier (1/2/3), Monthly ROI Range, Implementation Time, Complexity, Tech Stack, Status (relation to docs/puntos-de-dolor)\n   - Link to existing markdown files as page references\n\n4. **Content Database**:\n   - Properties: Title, Type (Blog/LinkedIn/Email/Video), Channel, Status (Idea/Drafting/Review/Published), Publish Date, Author, URL\n   - Calendar view for editorial planning\n\n5. **Dashboard Page**:\n   - Linked databases showing: This week's tasks, Pipeline summary (count by status), Upcoming content, Key metrics\n   - Quick links to frequently accessed pages\n\n6. **Wiki Section**:\n   - Brand guidelines page (link to docs/estrategia/)\n   - Playbooks placeholder pages\n   - Templates gallery\n\n**Automation**: Use Notion API or Zapier to sync web form submissions → Client Database",
         "testStrategy": "Create 5 test client entries with complete data. Test all Kanban views and filters. Verify relations between databases work correctly. Test dashboard rollups showing accurate counts. Ensure all 25 problems are linked correctly. Time full workflow: adding lead → moving through pipeline → archiving.",
         "priority": "high",
         "dependencies": [
-          1
+          "1"
         ],
         "status": "pending",
         "subtasks": []
       },
       {
-        "id": 3,
+        "id": "3",
         "title": "Implement Individual Problem Landing Pages",
         "description": "Create dynamic landing pages for each of the 25 documented pain points at /problemas/[slug] with problem details, ROI calculator, solution overview, and CTA for audit scheduling.",
         "details": "Implementation steps:\n\n1. **Data Layer** (`web/src/lib/problems.ts`):\n   - Create TypeScript interfaces: Problem { id, slug, title, category, tier, monthlyImpact, implementationTime, complexity, techStack, description, solution, caseStudy? }\n   - Export array of all 25 problems with data from docs/puntos-de-dolor/\n   - Helper functions: getProblemBySlug(), getProblemsByTier(), getProblemsByCategory()\n\n2. **Dynamic Route** (`web/src/app/problemas/[slug]/page.tsx`):\n   - Generate static params from problems list: export async function generateStaticParams()\n   - Create metadata generator for SEO per problem\n   - Fetch problem data using params.slug\n\n3. **Page Layout Components**:\n   - ProblemHero: Title, tier badge, category, monthly impact range\n   - ProblemImpact: Detailed pain description with quotes/scenarios\n   - TechnicalSolution: Tech stack visualization, implementation steps\n   - ROICalculator: Embedded calculator pre-filled with problem defaults\n   - CaseStudy: Placeholder or real data when available\n   - CTASection: 'Agenda tu auditoría' with Calendly embed/link\n\n4. **Index Page Enhancement** (`web/src/app/problemas/page.tsx`):\n   - If not exists, create grid view of all 25 problems\n   - Filters: By Tier (1/2/3), By Category, By Complexity\n   - Search functionality\n   - Cards linking to /problemas/[slug]\n\n5. **SEO per page**:\n   - Dynamic title: '{Problem Title} - Solución IA | ModulorIA'\n   - Meta description from problem data\n   - Schema.org Service structured data\n\n**Stack**: Next.js 14 App Router, TailwindCSS, Framer Motion for animations",
         "testStrategy": "Verify all 25 routes generate correctly using npm run build. Test navigation from /problemas index to each individual page. Confirm SEO metadata renders correctly (view page source). Test mobile responsiveness on all breakpoints. Verify ROI calculator functions correctly on each page. Check Core Web Vitals using Lighthouse (target: all green).",
         "priority": "high",
         "dependencies": [],
-        "status": "pending",
-        "subtasks": []
+        "status": "deferred",
+        "subtasks": [],
+        "updatedAt": "2026-01-15T16:41:59.318Z"
       },
       {
-        "id": 4,
+        "id": "4",
         "title": "Set Up N8N Automation Infrastructure",
         "description": "Install and configure N8N self-hosted or cloud instance with initial demo workflows for form submissions, WhatsApp bot, and OCR processing to demonstrate MVP capabilities.",
         "details": "Implementation steps:\n\n1. **N8N Installation** (Choose one):\n   - **Option A - Self-hosted (Docker)**:\n     ```bash\n     docker run -d --name n8n -p 5678:5678 -v n8n_data:/home/node/.n8n n8nio/n8n\n     ```\n   - **Option B - N8N Cloud**: Sign up at n8n.cloud (free tier: 5 workflows)\n   - Configure subdomain: n8n.moduloria.com or use cloud URL\n\n2. **API Keys Configuration**:\n   - OpenAI API: GPT-4o-mini for text processing (~€0.15/1000 tokens)\n   - Whisper API: Audio transcription (~€0.006/min)\n   - Google Vision API: OCR processing (free tier: 1000 requests/month)\n   - WhatsApp Business API via Twilio or Wati (evaluate: Twilio sandbox free for testing)\n\n3. **Demo Workflow 1 - Web Form to CRM**:\n   - Webhook trigger receives form data from website\n   - Create entry in Airtable/Notion\n   - Send confirmation email via Gmail node\n   - Notify via Slack/WhatsApp\n\n4. **Demo Workflow 2 - WhatsApp FAQ Bot**:\n   - Twilio/Wati webhook receives message\n   - OpenAI node classifies intent and generates response\n   - Send reply via WhatsApp\n   - Log conversation in Airtable\n\n5. **Demo Workflow 3 - OCR Invoice Processing**:\n   - File upload trigger (email attachment or webhook)\n   - Google Vision OCR extraction\n   - GPT-4 structured data parsing (invoice number, date, amount, vendor)\n   - Save to Airtable with extracted fields\n\n6. **Export Workflows**:\n   - Save as .json files for version control and client delivery\n   - Document each workflow with README\n\n**Monthly cost estimate**: €50-200 (APIs + optional cloud hosting)",
         "testStrategy": "Test each workflow end-to-end with sample data. Verify form submission creates correct CRM entry. Send WhatsApp messages and confirm bot responses are appropriate. Upload test invoices and verify OCR extraction accuracy >95%. Monitor N8N execution logs for errors. Test error handling when APIs fail.",
         "priority": "high",
         "dependencies": [
-          1
+          "1"
         ],
         "status": "pending",
         "subtasks": []
       },
       {
-        "id": 5,
+        "id": "5",
         "title": "Configure Contact Page with Calendly Integration",
         "description": "Enhance or create /contacto page with embedded Calendly scheduling for audit calls, contact form connected to CRM, and multiple contact methods (email, WhatsApp, LinkedIn).",
         "details": "Implementation steps:\n\n1. **Calendly Setup**:\n   - Create Calendly account (free tier sufficient initially)\n   - Configure event: 'Diagnóstico Estratégico ModulorIA - 30min'\n   - Set availability (business hours Spain timezone)\n   - Add custom questions: Company name, Employee count, Main pain point\n   - Enable email notifications and reminders\n   - Get embed URL and API key\n\n2. **Contact Page Structure** (`web/src/app/contacto/page.tsx`):\n   - Page title, description, and breadcrumbs\n   - Two-column layout: Form + Calendly embed\n   - Alternative contact section: Email, WhatsApp, LinkedIn links\n\n3. **Contact Form Implementation**:\n   - Fields: Name, Email, Company, Phone (optional), Message, Preferred contact method\n   - Client-side validation with React Hook Form or native HTML5\n   - Form submission to N8N webhook or API route\n   - Success/error states with appropriate messaging\n\n4. **Form Backend** (`web/src/app/api/contact/route.ts`):\n   - POST handler validates input\n   - Sends data to N8N webhook (or directly to Notion API)\n   - Returns success/error response\n   - Rate limiting to prevent spam (10 requests/IP/hour)\n\n5. **Calendly Embed**:\n   - Use react-calendly package: npm install react-calendly\n   - PopupWidget or InlineWidget component\n   - Style to match brand colors\n\n6. **WhatsApp Click-to-Chat**:\n   - Link format: https://wa.me/4552801394?text=Hola,%20me%20interesa%20saber%20más%20sobre%20ModulorIA\n   - Add to contact section with WhatsApp icon\n\n**Cost**: Calendly Basic free, Premium €10/month for branding removal",
         "testStrategy": "Submit test form and verify data reaches CRM/N8N. Book test Calendly appointment and confirm email notifications. Test form validation with invalid inputs. Verify WhatsApp link opens chat correctly. Test page on mobile devices. Verify Calendly embed loads without layout shift (check CLS).",
         "priority": "high",
         "dependencies": [
-          2,
-          4
+          "2",
+          "4"
         ],
         "status": "pending",
         "subtasks": []
       },
       {
-        "id": 6,
+        "id": "6",
         "title": "Optimize LinkedIn Personal and Company Profiles",
         "description": "Create and optimize ModulorIA company page and enhance Nicolás's personal profile for thought leadership positioning, including complete profile setup, custom banner, and service showcase.",
         "details": "Implementation steps:\n\n1. **LinkedIn Company Page Creation**:\n   - Go to linkedin.com/company/setup/new/\n   - Company name: ModulorIA\n   - Tagline (120 chars): 'IA práctica para construcción modular | Automatización que ahorra tiempo y dinero'\n   - Industry: Information Technology & Services\n   - Company size: 2-10 employees\n   - Type: Privately Held\n\n2. **Company Page Optimization**:\n   - Logo: Square version of ModulorIA logo (300x300px)\n   - Banner: Custom design (1128x191px) showing key message + visual\n   - About section (2000 chars max): Include keywords, UVP, services, CTA\n   - Website URL: https://moduloria.com\n   - Specialties: IA, Automatización, Construcción Modular, N8N, etc.\n   - Configure Services tab with pricing tiers\n   - Add CTA button: 'Contactar' → link to /contacto\n\n3. **Nicolás Personal Profile Enhancement**:\n   - Headline formula: 'Ayudo a [quién] a [qué] | [credencial] | [llamada a la acción]'\n   - Example: 'IA para Construcción Modular | Automatización práctica €67K-€156K ahorro/mes | Agenda diagnóstico gratuito'\n   - Custom banner matching company branding\n   - Featured section: Lead magnet, top post, company page link\n   - About section: Story-driven, first person, include keywords\n   - Experience: ModulorIA Founder description with achievements\n   - Skills: Add and request endorsements for key skills\n\n4. **Content Strategy Setup**:\n   - Create LinkedIn content calendar (12 weeks)\n   - Content pillars: Pain points, Case studies, Industry insights, Behind-the-scenes\n   - First 4 posts drafted and scheduled\n   - Enable Creator Mode for analytics and featured content\n\n5. **Network Building**:\n   - Import contacts from email\n   - Identify 50 target connections (decision makers at construction companies)\n   - Send personalized connection requests (10/day limit)",
@@ -81,132 +83,137 @@
         "subtasks": []
       },
       {
-        "id": 7,
+        "id": "7",
         "title": "Create MVP Selection and Technical Specification",
         "description": "Analyze the 3 candidate problems (#01 Email Classification, #08 Tool Tracking QR, #12 Change Orders) and select the optimal MVP based on demand validation, technical feasibility, and demonstrable ROI.",
         "details": "Implementation steps:\n\n1. **Evaluation Matrix Creation**:\n   - Criteria (weight 1-5):\n     - Technical complexity (lower = better) - Weight: 4\n     - Implementation time (faster = better) - Weight: 5\n     - ROI demonstrability (higher = better) - Weight: 5\n     - Market validation potential - Weight: 4\n     - Reusability for other clients - Weight: 3\n\n2. **Candidate Analysis**:\n   - **#01 Email Classification** (€1.5K-3K/month):\n     - Tech: N8N + OpenAI + Gmail API\n     - Time: 3-5 days\n     - Complexity: Low\n     - Demo potential: High (instant visual results)\n   - **#08 Tool Tracking QR** (€5.2K-10.4K/month):\n     - Tech: QR codes + WhatsApp + Airtable\n     - Time: 1-2 weeks\n     - Complexity: Low-Medium\n     - Demo potential: Very High (physical + digital)\n   - **#12 Change Orders** (€18K-33K/month):\n     - Tech: Airtable + N8N + WhatsApp approval flow\n     - Time: 2-3 weeks\n     - Complexity: Medium\n     - Demo potential: High (clear before/after)\n\n3. **Validation Conversations**:\n   - Contact 5-7 target companies from prospect list\n   - Script: 'Investigating main operational challenges in construction'\n   - Document: Which problem resonates most? What would they pay?\n\n4. **Technical Specification Document**:\n   - Selected MVP problem\n   - Detailed workflow diagram (use Mermaid or draw.io)\n   - API integrations required\n   - Data schema design\n   - User journey map\n   - Edge cases and error handling\n   - Acceptance criteria (Definition of Done)\n\n5. **Recommendation Report**:\n   - Executive summary (1 page)\n   - Evaluation matrix results\n   - Recommendation with justification\n   - Implementation timeline\n   - Resource requirements\n\n**Recommendation**: Start with #01 Email Classification or #08 Tool Tracking due to fastest time-to-value and high visual impact.",
         "testStrategy": "Present evaluation matrix to 2-3 trusted advisors for feedback. Validate technical spec with prototype sketch before full development. Confirm API rate limits and costs don't exceed budget. Verify selected MVP can be demoed in under 5 minutes. Test documentation clarity by having someone unfamiliar build from spec.",
         "priority": "high",
         "dependencies": [
-          4
+          "4"
         ],
         "status": "pending",
         "subtasks": []
       },
       {
-        "id": 8,
+        "id": "8",
         "title": "Develop Internal MVP with Demo Environment",
         "description": "Build the selected MVP solution with complete workflow, WhatsApp integration, database, and dashboard for internal testing and client demonstrations.",
         "details": "Implementation steps (using #08 Tool Tracking QR as example):\n\n1. **Environment Setup**:\n   - Create dedicated Airtable base: 'MVP - Tracking Herramientas'\n   - Configure N8N workflow workspace\n   - Set up Twilio sandbox for WhatsApp testing\n\n2. **Database Schema (Airtable)**:\n   - Table: Herramientas\n     - Fields: ID, Nombre, Categoría, Código QR, Estado (Disponible/En uso/Mantenimiento), Ubicación actual, Asignado a, Fecha último movimiento, Historial (linked)\n   - Table: Movimientos\n     - Fields: Herramienta (link), Acción (Check-in/Check-out), Usuario, Ubicación, Fecha/hora, Foto (attachment)\n   - Table: Usuarios\n     - Fields: Nombre, Teléfono WhatsApp, Rol, Activo\n\n3. **QR Code Generation**:\n   - Generate unique QR for each tool linking to: wa.me/4552801394?text=TOOL-001-SCAN\n   - Or use web form: moduloria.com/scan?tool=TOOL-001\n   - Print template: QR + Tool ID + Logo\n\n4. **N8N Workflow**:\n   - Trigger: Twilio WhatsApp webhook\n   - Parse message: Extract tool ID from QR scan\n   - Lookup tool in Airtable\n   - Bot conversation:\n     - 'Herramienta: Taladro DeWalt. ¿Qué acción?' → Check-out / Check-in / Reportar problema\n     - 'Confirma ubicación:' → [user types location]\n     - '¿Foto del estado?' → [user sends photo]\n   - Update Airtable with movement record\n   - Respond: '✅ Registrado: Taladro DeWalt → Check-out → Obra Norte → Juan García'\n\n5. **Dashboard**:\n   - Airtable views: Tools by status, Recent movements, Tools by location\n   - Or custom: Simple Next.js page reading from Airtable API\n   - Key metrics: Total tools, Currently checked-out, Missing, Maintenance due\n\n6. **Demo Script**:\n   - Write 5-minute demo walkthrough\n   - Prepare sample QR codes\n   - Record Loom video demo (3-5 min)\n\n**Export**: Save N8N workflow .json, Airtable base template, QR templates",
         "testStrategy": "Execute full check-out/check-in cycle via WhatsApp. Test with 10+ tool records to verify scale. Simulate concurrent users (3 people scanning QRs). Verify all movements logged correctly in Airtable. Test error scenarios: invalid QR, unknown user, network timeout. Time complete workflow under 60 seconds. Review demo video with team for clarity.",
         "priority": "high",
         "dependencies": [
-          4,
-          7
+          "4",
+          "7"
         ],
         "status": "pending",
         "subtasks": []
       },
       {
-        "id": 9,
+        "id": "9",
         "title": "Build Prospect Database and Outreach System",
         "description": "Create database of 50-100 qualified prospects in construction modular sector with contact information, segmentation, and outreach tracking system.",
         "details": "Implementation steps:\n\n1. **Research and Identification**:\n   - LinkedIn Sales Navigator search (trial available):\n     - Industry: Construction\n     - Company size: 10-200 employees\n     - Geography: Spain (Madrid, Barcelona, Valencia), Mexico, Colombia, Chile\n     - Keywords: 'modular', 'industrializada', 'prefabricada'\n   - Google Maps searches: 'construcción modular [ciudad]'\n   - Industry directories: SEOPAN, Cámaras de Comercio\n   - Competitor client lists (from case studies, testimonials)\n\n2. **Prospect Database Structure** (in Notion):\n   - Company: Name, Website, LinkedIn page, Location, Size estimate\n   - Contact: Name, Title, Email, Phone, LinkedIn profile\n   - Qualification: ICP fit score (A/B/C), Pain points identified, Budget estimate\n   - Outreach: Status, Last contact date, Response, Next action\n   - Notes: Research findings, conversation summaries\n\n3. **Email Verification**:\n   - Use Hunter.io or Apollo.io to find/verify emails\n   - Format patterns: nombre@company.com, n.apellido@company.com\n   - Verify before adding to outreach list\n\n4. **Segmentation**:\n   - Tier A (20%): Perfect ICP match, budget confirmed, active need\n   - Tier B (50%): Good fit, unknown budget, probable need\n   - Tier C (30%): Possible fit, requires more research\n\n5. **Outreach Templates**:\n   - LinkedIn connection request (300 chars)\n   - LinkedIn message sequence (3 messages over 10 days)\n   - Cold email sequence (3 emails over 14 days)\n   - Phone call script\n   - Objection handling responses\n\n6. **Tracking Dashboard**:\n   - Weekly metrics: Connections sent, Accepted, Responses, Meetings booked\n   - Pipeline visualization\n   - Response rate by template version (A/B testing)\n\n**Tools**: Notion/Airtable for database, Hunter.io for emails, LinkedIn Sales Navigator",
         "testStrategy": "Verify 90%+ of emails are valid using verification tool. Test outreach sequence on 10 prospects before scaling. Track open rates with email tracking (Mailtrack or HubSpot). Measure LinkedIn acceptance rate (target: >30%). Confirm CRM correctly tracks all touchpoints. Review prospect quality with ICP criteria after first 25 entries.",
         "priority": "medium",
         "dependencies": [
-          2,
-          6
+          "2",
+          "6"
         ],
         "status": "pending",
         "subtasks": []
       },
       {
-        "id": 10,
+        "id": "10",
         "title": "Create Commercial Proposal System and Pricing",
         "description": "Develop standardized pricing structure, ROI calculator templates, and professional proposal documents for Audit, Implementation, and Retainer services.",
         "details": "Implementation steps:\n\n1. **Pricing Structure Definition**:\n   - **Auditoría Estratégica**: €1,500 - €3,000\n     - 1-2 weeks duration\n     - Deliverables: Diagnosis, 5-10 prioritized quick wins, 90-day roadmap, ROI estimation\n   - **Implementación Quick Wins**:\n     - Starter (€3K-5K): 1-2 automations, basic training\n     - Pro (€8K-12K): 3-4 automations, KPI dashboard, extended support\n     - Enterprise (€15K-25K): Full integration, custom development, on-site training\n   - **Retainer Mensual**: €500 - €1,500/month\n     - Monitoring, optimizations, SLA support, 1-2 new automations/quarter\n\n2. **Proposal Template** (Notion or Google Docs):\n   - Cover page: Client logo, ModulorIA logo, date\n   - Executive summary (1 page)\n   - Client challenge section (personalized)\n   - Proposed solution with scope\n   - Deliverables list with timeline\n   - Investment breakdown\n   - ROI projection with calculator reference\n   - Terms and conditions\n   - Next steps and CTA\n   - Design: Brand colors, professional layout\n\n3. **ROI Calculator Enhancement**:\n   - Create Excel/Sheets version for proposals\n   - Inputs: Company size, manual hours/week, hourly cost, error rate\n   - Outputs: Monthly savings, annual savings, payback period, 3-year ROI\n   - Visualizations: Charts, before/after comparison\n\n4. **Contract Templates**:\n   - Service agreement template\n   - NDA template\n   - Pilot program agreement (discounted terms)\n   - Payment terms: 50% upfront, 50% on delivery (or milestones)\n\n5. **Discount Policy**:\n   - Pilot clients: 50-70% discount in exchange for testimonial + case study\n   - Annual prepay: 10% discount\n   - Referral: 15% discount for referrer's next project\n\n6. **Sales Collateral**:\n   - One-pager PDF (services overview)\n   - Case study template\n   - Comparison chart vs DIY/competitors\n\n**Export**: PDF, editable Google Docs, Notion templates",
         "testStrategy": "Generate 3 sample proposals for different client scenarios. Have external reviewer assess clarity and professionalism. Test ROI calculator with real client data ranges. Verify all links and CTAs in documents work. Time proposal generation (target: <2 hours). Get legal review of contract templates if budget allows.",
         "priority": "medium",
         "dependencies": [
-          2,
-          7
+          "2",
+          "7"
         ],
         "status": "pending",
         "subtasks": []
       },
       {
-        "id": 11,
+        "id": "11",
         "title": "Implement Pilot Program with First Client",
         "description": "Execute full pilot implementation with one qualified client including technical setup, onboarding, 30-day measurement period, and case study documentation.",
         "details": "Implementation steps:\n\n1. **Client Selection Criteria**:\n   - ICP match: Construction modular company, 10-100 employees\n   - Technical readiness: Uses WhatsApp, has smartphone access, basic digital literacy\n   - Commitment: Willing to provide feedback weekly, agree to testimonial\n   - Access: Will share necessary data/systems for implementation\n   - Timeline: Available to start within 2 weeks\n\n2. **Pilot Agreement**:\n   - Duration: 30 days active use\n   - Pricing: 70% discount vs standard (€900-1,500 for implementation)\n   - Commitments from client:\n     - Weekly 15-min feedback call\n     - Video testimonial at end (if satisfied)\n     - Permission to use as case study (anonymized if preferred)\n   - Commitments from ModulorIA:\n     - Dedicated support (WhatsApp, email)\n     - All fixes within 24h\n     - Full documentation and training\n\n3. **Implementation Phase** (Week 1-2):\n   - Day 1-2: Kickoff call, requirements confirmation, access setup\n   - Day 3-5: Technical implementation (N8N, Airtable, WhatsApp)\n   - Day 6-7: Internal testing with mock data\n   - Day 8-10: User onboarding, training session (recorded)\n   - Day 11-14: Soft launch with real data, intensive support\n\n4. **Measurement Phase** (Week 3-6):\n   - Daily: Monitor system usage and errors\n   - Weekly: Feedback call (15 min)\n     - What's working well?\n     - What's frustrating?\n     - Specific improvement suggestions?\n   - Track KPIs: Time saved, errors prevented, user adoption rate\n\n5. **Case Study Documentation**:\n   - Before state: Hours spent, error rate, pain description\n   - Implementation: Solution overview, timeline, effort\n   - After state: Metrics improvement, user quotes\n   - ROI calculation: Actual savings vs projection\n   - Testimonial: Video (2-3 min) + written quote\n\n6. **Post-Pilot**:\n   - Present results report to client\n   - Propose continuation (retainer or additional automations)\n   - Publish case study (with permission)\n   - LinkedIn post announcing success",
         "testStrategy": "Confirm pilot agreement signed before starting technical work. Track all support requests and resolution times. Measure baseline metrics before go-live. Weekly KPI review vs targets. Client satisfaction survey at Day 15 and Day 30 (target NPS >8). Record testimonial within 1 week of pilot end. Document all learnings for MVP v2 improvements.",
         "priority": "high",
         "dependencies": [
-          8,
-          9,
-          10
+          "8",
+          "9",
+          "10"
         ],
         "status": "pending",
         "subtasks": []
       },
       {
-        "id": 12,
+        "id": "12",
         "title": "Set Up Google Search Console and Analytics",
         "description": "Configure Google Search Console for indexing monitoring, Google Analytics 4 for traffic analysis, and establish baseline SEO metrics for the website.",
         "details": "Implementation steps:\n\n1. **Google Search Console Setup**:\n   - Add property: moduloria.com (domain verification via DNS TXT record)\n   - Submit sitemap.xml (already exists at /sitemap.xml)\n   - Request indexing for key pages: /, /servicios, /precios, /auditoria\n   - Configure URL inspection for problem pages\n   - Set up email alerts for indexing issues\n\n2. **Google Analytics 4 Configuration**:\n   - Create GA4 property for moduloria.com\n   - Install gtag via Next.js Script component or @next/third-parties\n   - Configure data streams (Web)\n   - Set up conversions:\n     - Form submission (contact form)\n     - Calendly booking click\n     - WhatsApp click\n     - Download (if any resources)\n   - Create custom events: scroll_depth, time_on_page, calculator_interaction\n\n3. **Implementation in Next.js** (`web/src/app/layout.tsx`):\n   ```typescript\n   import { GoogleAnalytics } from '@next/third-parties/google'\n   // In layout: <GoogleAnalytics gaId=\"G-XXXXXXXXXX\" />\n   ```\n   - Or manual gtag.js implementation for more control\n\n4. **Dashboard Setup**:\n   - Key metrics: Users, Sessions, Page views, Bounce rate, Avg session duration\n   - Traffic sources: Organic, Direct, Referral, Social\n   - Top pages by views\n   - Conversion funnel visualization\n\n5. **SEO Baseline Report**:\n   - Current indexing status (pages indexed)\n   - Initial keyword positions (use free tier of Ubersuggest or manual search)\n   - Core Web Vitals scores (via PageSpeed Insights)\n   - Mobile usability status\n   - Competitors' estimated traffic (SimilarWeb free)\n\n6. **Monthly Reporting Template**:\n   - Traffic trends\n   - Top performing content\n   - Conversion metrics\n   - SEO visibility changes\n   - Action items for next month\n\n**Note**: Existing sitemap.ts and robots.ts are already implemented",
         "testStrategy": "Verify property verification completes successfully. Confirm sitemap submission shows no errors. Test that GA4 events fire correctly using DebugView. Verify conversion tracking with test form submission. Check that no 404s or crawl errors appear in Search Console. Run PageSpeed Insights and document baseline scores.",
         "priority": "medium",
         "dependencies": [],
-        "status": "pending",
-        "subtasks": []
+        "status": "done",
+        "subtasks": [],
+        "updatedAt": "2026-01-15T17:25:34.536Z"
       },
       {
-        "id": 13,
+        "id": "13",
         "title": "Create Content Calendar and First LinkedIn Posts",
         "description": "Develop 12-week content calendar across LinkedIn personal profile and company page with initial batch of 8-12 posts covering thought leadership, pain points, and industry insights.",
         "details": "Implementation steps:\n\n1. **Content Pillars Definition**:\n   - Pillar 1 (40%): Pain Points & Solutions - Educational content from 25 problems\n   - Pillar 2 (25%): Industry Insights - Trends, news, statistics about construction + AI\n   - Pillar 3 (20%): Behind the Scenes - Building ModulorIA, founder journey\n   - Pillar 4 (15%): Case Studies & Social Proof - Client results, testimonials\n\n2. **12-Week Calendar Structure**:\n   - Frequency: 3 posts/week on personal profile, 1-2 on company page\n   - Days: Tuesday, Wednesday, Thursday (optimal B2B engagement)\n   - Time: 8:00-9:00 AM Spain time\n   - Mix: 2 educational, 1 personal/story per week\n\n3. **Post Templates**:\n   - Pain Point Post: Hook question → Problem description → Solution hint → CTA\n   - Insight Post: Stat/trend → Analysis → Takeaway → Question\n   - Story Post: Personal anecdote → Lesson learned → Relatable insight\n   - Carousel Post: Problem → Steps → Solution → CTA (use Canva)\n\n4. **First 12 Posts (Month 1)**:\n   - Post 1: Launch announcement - ModulorIA story\n   - Post 2: Pain point #3 - OCR facturas (cuánto tiempo pierdes?)\n   - Post 3: Industry stat about construction digitalization\n   - Post 4: Pain point #8 - Herramientas perdidas\n   - Post 5: Behind the scenes - Why I started this\n   - Post 6: Pain point #4 - Reportes de obra\n   - Post 7: Poll - Biggest operational challenge?\n   - Post 8: Pain point #1 - Email chaos\n   - Post 9: Quick tip - 3 automations under €500\n   - Post 10: Carousel - 5 ROI quick wins\n   - Post 11: Industry news commentary\n   - Post 12: AMA post - Ask me about construction automation\n\n5. **Scheduling**:\n   - Tool: LinkedIn native scheduler or Buffer (free tier: 3 channels)\n   - Batch create: Write 4 posts every Sunday\n   - Queue 1-2 weeks ahead\n\n6. **Engagement Strategy**:\n   - 30 min/day commenting on relevant posts\n   - Reply to all comments within 4 hours\n   - Connect with engaged users\n\n**Assets needed**: Canva templates for carousels, profile-sized images",
         "testStrategy": "Schedule first 4 posts and verify they publish correctly. Track engagement metrics after first week: impressions, likes, comments, profile views. A/B test post times (8 AM vs 12 PM). Measure follower growth weekly. Analyze which content pillar performs best after 4 weeks. Survey audience with poll about content preferences.",
         "priority": "medium",
         "dependencies": [
-          6
+          "6"
         ],
         "status": "pending",
         "subtasks": []
       },
       {
-        "id": 14,
+        "id": "14",
         "title": "Document Operational Playbooks",
         "description": "Create comprehensive playbook documents for repeatable processes: Client Audit, Quick Win Implementation, Content Creation, and Lead Management workflows.",
         "details": "Implementation steps:\n\n1. **Playbook Format Standard**:\n   - Template in Notion with sections:\n     - Purpose & When to Use\n     - Prerequisites\n     - Step-by-Step Process (numbered, with screenshots)\n     - Checklists\n     - Templates/Assets Used\n     - Common Issues & Solutions\n     - Time Estimate\n   - Video walkthrough embedded (Loom)\n\n2. **Playbook 1: Client Audit Process**:\n   - Pre-call preparation (research, questions list)\n   - Discovery call agenda (60-90 min)\n   - Key questions to ask\n   - Note-taking template\n   - Post-call analysis framework\n   - Deliverable: Audit report generation\n   - Follow-up sequence\n\n3. **Playbook 2: Quick Win Implementation**:\n   - Client kickoff checklist\n   - Technical requirements gathering\n   - Environment setup steps\n   - Development standards\n   - Testing protocol\n   - Client UAT process\n   - Go-live checklist\n   - Handoff documentation\n\n4. **Playbook 3: Content Creation**:\n   - Content ideation process\n   - Research and outline\n   - Writing guidelines (tone, length, structure)\n   - Design asset creation (Canva workflow)\n   - Review and approval\n   - Publishing and distribution\n   - Engagement follow-up\n\n5. **Playbook 4: Lead Management**:\n   - Lead capture and entry\n   - Qualification criteria (BANT or similar)\n   - Initial outreach sequence\n   - Meeting scheduling\n   - CRM status updates\n   - Follow-up cadence\n   - Win/loss documentation\n\n6. **Organization**:\n   - Store all playbooks in Notion Wiki\n   - Create quick-access dashboard\n   - Version control with dates\n   - Feedback mechanism for improvements\n\n**Goal**: Any new team member can execute process independently using playbook",
         "testStrategy": "Have someone unfamiliar with process follow playbook end-to-end. Time actual execution vs estimated time. Identify gaps where questions arise. Test that all linked templates and assets are accessible. Verify video walkthroughs match current process. Update playbooks quarterly based on learnings.",
         "priority": "low",
         "dependencies": [
-          10,
-          11
+          "10",
+          "11"
         ],
         "status": "pending",
         "subtasks": []
       },
       {
-        "id": 15,
+        "id": "15",
         "title": "Configure Instagram Profile and Visual Content",
         "description": "Set up @moduloria Instagram business account with optimized bio, branded highlights, consistent visual grid, and initial content batch including Reels concepts.",
         "details": "Implementation steps:\n\n1. **Account Setup**:\n   - Create Instagram Business account: @moduloria\n   - Link to Facebook Business page\n   - Enable Insights and Professional dashboard\n   - Add action buttons: Email, Contact, Book\n\n2. **Profile Optimization**:\n   - Profile photo: ModulorIA logo (circle-crop optimized)\n   - Name: ModulorIA | IA en Construcción\n   - Bio (150 chars): 'Automatización con IA para construcción modular 🏗️🤖 | Ahorro €67K-156K/mes | Auditoría gratuita ↓'\n   - Link in bio: Linktree or direct to /auditoria\n   - Category: Consulting Agency\n\n3. **Highlight Covers**:\n   - Design consistent covers in brand colors\n   - Categories: Servicios, Problemas, Casos, Equipo, FAQ\n   - Icon-based design for clean look\n\n4. **Visual Grid Strategy**:\n   - Color palette: Brand colors (#1a1f36, #d4a574, white)\n   - Grid pattern: Alternating content types for visual variety\n   - Aspect ratios: Mix of 1:1, 4:5 for feed\n   - Font: Consistent typography across graphics\n\n5. **Canva Templates**:\n   - Quote/Stat card\n   - Before/After comparison\n   - Carousel template (up to 10 slides)\n   - Reel cover template\n   - Story template\n\n6. **Initial Content (First 9 posts)**:\n   - Post 1: Announcement - We're on Instagram\n   - Post 2: Carousel - 3 biggest pain points in construction\n   - Post 3: Stat graphic - 'X hours lost weekly on manual tasks'\n   - Post 4: Behind the scenes - Workspace/tools\n   - Post 5: Problem highlight - OCR invoices\n   - Post 6: Quote - Client testimonial (when available)\n   - Post 7: Carousel - How we work (process)\n   - Post 8: Team/founder introduction\n   - Post 9: CTA - Free audit offer\n\n7. **Reels Concepts** (first 5):\n   - '3 tasks you should automate today' (trending audio)\n   - 'POV: Your email inbox before vs after AI'\n   - 'How we saved X company €5K/month'\n   - 'Quick automation tip' (tutorial style)\n   - 'Day in the life of an AI consultant'\n\n**Frequency**: 2-3 posts/week, 3-5 stories/week, 1 reel/week",
         "testStrategy": "Verify business account features are active (insights, buttons). Test all links in bio and highlights. Post first 3 images and check grid appearance. Verify hashtag strategy reaches target audience. Monitor follower growth and engagement rates weekly. Test Reels viewership vs static posts after 2 weeks.",
         "priority": "low",
         "dependencies": [
-          6,
-          13
+          "6",
+          "13"
         ],
         "status": "pending",
         "subtasks": []
       }
     ],
     "metadata": {
-      "created": "2026-01-08T19:14:39.472Z",
-      "updated": "2026-01-08T19:14:39.472Z",
-      "description": "Tasks for master context"
+      "version": "1.0.0",
+      "lastModified": "2026-01-16T12:27:56.988Z",
+      "taskCount": 15,
+      "completedCount": 2,
+      "tags": [
+        "master"
+      ]
     }
   }
 }
