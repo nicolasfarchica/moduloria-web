@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createNotionLead, AuditoriaFormData } from '@/lib/notion';
+import { sendConfirmacionAuditoria, sendNotificacionNuevoLead } from '@/lib/email';
 
 // Note: Using Node.js runtime for Notion SDK compatibility
 export const runtime = 'nodejs';
@@ -75,8 +76,19 @@ export async function POST(request: NextRequest) {
     // Create lead in Notion
     const result = await createNotionLead(body);
 
-    // TODO: Send confirmation email via Resend or similar
-    // TODO: Send notification to team via Slack/Email
+    // Send emails (non-blocking - don't fail if email fails)
+    try {
+      // Email de confirmación al cliente
+      await sendConfirmacionAuditoria(body);
+      console.log('Email de confirmación enviado a:', body.email);
+
+      // Notificación al equipo
+      await sendNotificacionNuevoLead(body);
+      console.log('Notificación de nuevo lead enviada');
+    } catch (emailError) {
+      // Log pero no fallar - el lead ya está guardado en Notion
+      console.error('Error enviando emails:', emailError);
+    }
 
     return NextResponse.json({
       success: true,
