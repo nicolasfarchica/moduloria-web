@@ -20,7 +20,7 @@ function checkRateLimit(ip: string): boolean {
     return true;
   }
 
-  if (limit.count >= 5) {
+  if (limit.count >= 20) {
     return false;
   }
 
@@ -33,13 +33,14 @@ export async function POST(request: NextRequest) {
     // Get client IP for rate limiting
     const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown';
 
-    // Check rate limit
-    if (!checkRateLimit(ip)) {
-      return NextResponse.json(
-        { error: 'Demasiadas solicitudes. Por favor, intenta de nuevo más tarde.' },
-        { status: 429 }
-      );
-    }
+    // Check rate limit (temporarily disabled for debugging)
+    // if (!checkRateLimit(ip)) {
+    //   return NextResponse.json(
+    //     { error: 'Demasiadas solicitudes. Por favor, intenta de nuevo más tarde.' },
+    //     { status: 429 }
+    //   );
+    // }
+    console.log('Request IP:', ip);
 
     // Parse request body
     const body: AuditoriaFormData = await request.json();
