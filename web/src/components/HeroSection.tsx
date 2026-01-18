@@ -7,17 +7,21 @@ export default function HeroSection() {
   return (
     <section
       aria-label="Hero principal"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background-dark via-primary-dark to-background-end"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Animated Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-medium/10 rounded-full blur-[100px] animate-breathing" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent-copper/10 rounded-full blur-[80px] animate-breathing" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary-light/5 rounded-full blur-[120px]" />
-      </div>
+      {/* Video Background */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/videos/hero-video.mp4" type="video/mp4" />
+      </video>
 
-      {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.02] pointer-events-none" />
+      {/* Dark Overlay for text readability */}
+      <div className="absolute inset-0 bg-black/60" />
 
       {/* Content */}
       <div className="container-custom relative z-10 py-32">
