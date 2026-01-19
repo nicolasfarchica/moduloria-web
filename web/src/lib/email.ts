@@ -33,79 +33,100 @@ export async function sendConfirmacionAuditoria(data: AuditoriaEmailData) {
       <td align="center">
         <table width="600" cellpadding="0" cellspacing="0" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
 
-          <!-- Header -->
+          <!-- Header with Logo -->
           <tr>
-            <td style="padding: 40px 40px 20px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1);">
-              <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: 700;">
+            <td style="padding: 40px 40px 30px; text-align: center;">
+              <img src="https://moduloria.com/images/moduloria-logo-v2.png" alt="ModulorIA" width="50" height="50" style="display: inline-block; vertical-align: middle;" />
+              <span style="display: inline-block; vertical-align: middle; margin-left: 12px; color: #ffffff; font-size: 28px; font-weight: 700;">
                 Modulor<span style="color: #c9a56c;">IA</span>
-              </h1>
-              <p style="margin: 8px 0 0; color: #8892b0; font-size: 14px;">
-                Automatización Inteligente para Construcción
-              </p>
+              </span>
             </td>
           </tr>
 
           <!-- Main Content -->
           <tr>
-            <td style="padding: 40px;">
+            <td style="padding: 0 40px 40px;">
 
               <!-- Greeting -->
-              <h2 style="margin: 0 0 20px; color: #ffffff; font-size: 24px; font-weight: 600;">
+              <h2 style="margin: 0 0 24px; color: #ffffff; font-size: 26px; font-weight: 700;">
                 Hola ${primerNombre},
               </h2>
 
-              <p style="margin: 0 0 24px; color: #ccd6f6; font-size: 16px; line-height: 1.7;">
-                Gracias por confiar en <strong style="color: #c9a56c;">ModulorIA</strong> para optimizar los procesos de <strong style="color: #ffffff;">${empresa}</strong>.
+              <p style="margin: 0 0 20px; color: #ccd6f6; font-size: 16px; line-height: 1.7;">
+                Soy <strong style="color: #ffffff;">Nicolás</strong>. Gracias por confiar en <strong style="color: #c9a56c;">ModulorIA</strong> para optimizar <strong style="color: #ffffff;">${empresa}</strong>.
               </p>
 
-              <p style="margin: 0 0 24px; color: #ccd6f6; font-size: 16px; line-height: 1.7;">
-                Hemos recibido tu solicitud de auditoría y <strong style="color: #ffffff;">nos pondremos en contacto contigo en las próximas 24 horas</strong> para agendar nuestra sesión de diagnóstico.
+              <p style="margin: 0 0 28px; color: #ccd6f6; font-size: 16px; line-height: 1.7;">
+                Hemos recibido tu solicitud y nos pondremos en contacto contigo en las próximas <strong style="color: #ffffff;">24 horas</strong> para agendar nuestra sesión de diagnóstico.
               </p>
 
               <!-- Highlight Box -->
-              <table width="100%" cellpadding="0" cellspacing="0" style="margin: 32px 0;">
+              <table width="100%" cellpadding="0" cellspacing="0" style="margin: 0 0 28px;">
                 <tr>
-                  <td style="background: rgba(201, 165, 108, 0.1); border-left: 4px solid #c9a56c; padding: 24px; border-radius: 0 12px 12px 0;">
-                    <p style="margin: 0 0 12px; color: #c9a56c; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">
-                      Qué esperar en tu auditoría
+                  <td style="background: rgba(30, 35, 50, 0.8); border: 1px solid rgba(255,255,255,0.1); padding: 24px; border-radius: 12px;">
+                    <p style="margin: 0 0 16px; color: #c9a56c; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
+                      Qué lograremos en tu auditoría:
                     </p>
-                    <ul style="margin: 0; padding-left: 20px; color: #ccd6f6; font-size: 15px; line-height: 1.8;">
-                      <li>Análisis de 3-5 oportunidades de automatización específicas para tu empresa</li>
-                      <li>Cálculo de ROI con tus números reales</li>
-                      <li>Propuesta de Quick Win implementable en menos de 1 semana</li>
-                      <li>Sin compromiso, sin ventas agresivas</li>
-                    </ul>
+                    <table width="100%" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td style="padding: 8px 0; color: #ccd6f6; font-size: 15px; line-height: 1.6;">
+                          <span style="color: #22c55e; margin-right: 8px;">✓</span>
+                          <strong style="color: #ffffff;">Claridad total:</strong> 3-5 cuellos de botella identificados.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding: 8px 0; color: #ccd6f6; font-size: 15px; line-height: 1.6;">
+                          <span style="margin-right: 8px;">💰</span>
+                          <strong style="color: #ffffff;">ROI Real:</strong> Cálculo de ahorro con tus números.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding: 8px 0; color: #ccd6f6; font-size: 15px; line-height: 1.6;">
+                          <span style="margin-right: 8px;">🚀</span>
+                          <strong style="color: #ffffff;">Quick Win:</strong> Propuesta implementable en 1 semana.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding: 8px 0; color: #ccd6f6; font-size: 15px; line-height: 1.6;">
+                          <span style="margin-right: 8px;">🎯</span>
+                          <strong style="color: #ffffff;">Cero presión:</strong> Consultoría honesta, sin ventas.
+                        </td>
+                      </tr>
+                    </table>
                   </td>
                 </tr>
               </table>
 
-              <p style="margin: 0 0 24px; color: #ccd6f6; font-size: 16px; line-height: 1.7;">
-                Mientras tanto, si tienes alguna pregunta urgente, puedes responder directamente a este email o escribirnos por WhatsApp.
+              <p style="margin: 0 0 20px; color: #ccd6f6; font-size: 16px; line-height: 1.7;">
+                Mientras analizamos tus datos, si tienes alguna duda urgente, estamos a un clic:
               </p>
 
               <!-- CTA Button -->
-              <table width="100%" cellpadding="0" cellspacing="0" style="margin: 32px 0;">
+              <table width="100%" cellpadding="0" cellspacing="0" style="margin: 0 0 32px;">
                 <tr>
                   <td align="center">
-                    <a href="https://wa.me/4552801394?text=Hola%20Nicolás,%20acabo%20de%20solicitar%20una%20auditoría%20para%20${encodeURIComponent(empresa)}"
-                       style="display: inline-block; background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); color: #ffffff; text-decoration: none; padding: 16px 32px; border-radius: 8px; font-weight: 600; font-size: 16px;">
-                      Enviar WhatsApp
+                    <a href="https://wa.me/4552801394?text=Hola,%20acabo%20de%20solicitar%20una%20auditoría%20para%20${encodeURIComponent(empresa)}"
+                       style="display: inline-block; background: #1a1a2e; border: 2px solid #c9a56c; color: #ffffff; text-decoration: none; padding: 16px 32px; border-radius: 8px; font-weight: 600; font-size: 16px;">
+                      Hablar por WhatsApp con el equipo
                     </a>
                   </td>
                 </tr>
               </table>
 
-              <!-- Signature -->
-              <table width="100%" cellpadding="0" cellspacing="0" style="margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px;">
+              <!-- Signature with Photo -->
+              <table width="100%" cellpadding="0" cellspacing="0" style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px;">
                 <tr>
-                  <td>
-                    <p style="margin: 0 0 8px; color: #ffffff; font-size: 16px; font-weight: 600;">
+                  <td width="70" style="vertical-align: top; padding-right: 16px;">
+                    <img src="https://moduloria.com/images/nicolas-farchica-ceo.jpg" alt="Nicolás Farchica" width="60" height="60" style="border-radius: 50%; border: 2px solid #c9a56c;" />
+                  </td>
+                  <td style="vertical-align: middle;">
+                    <p style="margin: 0 0 4px; color: #ffffff; font-size: 16px; font-weight: 600;">
                       Nicolás Farchica
                     </p>
-                    <p style="margin: 0; color: #8892b0; font-size: 14px;">
+                    <p style="margin: 0 0 2px; color: #8892b0; font-size: 14px;">
                       Fundador, ModulorIA
                     </p>
-                    <p style="margin: 8px 0 0; color: #8892b0; font-size: 13px;">
+                    <p style="margin: 0; color: #8892b0; font-size: 13px;">
                       Especialista en Automatización para Construcción Modular
                     </p>
                   </td>
@@ -124,7 +145,7 @@ export async function sendConfirmacionAuditoria(data: AuditoriaEmailData) {
               <p style="margin: 0; color: #5a6380; font-size: 12px;">
                 <a href="https://moduloria.com" style="color: #c9a56c; text-decoration: none;">moduloria.com</a>
                 &nbsp;|&nbsp;
-                <a href="mailto:hola@moduloria.com" style="color: #c9a56c; text-decoration: none;">hola@moduloria.com</a>
+                <a href="mailto:consulta@moduloria.com" style="color: #c9a56c; text-decoration: none;">consulta@moduloria.com</a>
               </p>
             </td>
           </tr>
