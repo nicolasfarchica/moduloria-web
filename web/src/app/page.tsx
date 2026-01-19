@@ -68,7 +68,7 @@ export default function HomePage() {
         name: 'ModulorIA',
         description: 'IA y automatización para la industria de la construcción modular. Ahorra tiempo y reduce errores automatizando procesos operativos.',
         url: 'https://moduloria.com',
-        logo: 'https://moduloria.com/images/moduloria-logo.png',
+        logo: 'https://moduloria.com/images/moduloria-logo-v2.png',
         contactPoint: {
             '@type': 'ContactPoint',
             telephone: '+45-5280-1394',

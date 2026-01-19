@@ -14,7 +14,7 @@ export default function Footer() {
           <div>
             <Link href="/" className="flex items-center space-x-2 group mb-6">
               <Image
-                src="/images/moduloria-logo.png"
+                src="/images/moduloria-logo-v2.png"
                 alt="ModulorIA Logo"
                 width={40}
                 height={40}

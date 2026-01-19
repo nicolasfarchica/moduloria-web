@@ -69,7 +69,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
       name: 'ModulorIA',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://moduloria.com/images/moduloria-logo.png',
+        url: 'https://moduloria.com/images/moduloria-logo-v2.png',
       },
     },
   };
