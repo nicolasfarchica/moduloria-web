@@ -1,85 +1,95 @@
-# 🏗️ ModulorIA - Sitio Web Oficial
+# ModulorIA - Sitio Web
 
-**Automatización IA para Construcción Modular**
-
-Sitio web profesional construido con Next.js 14, TypeScript y Tailwind CSS, optimizado para SEO, performance y conversión B2B.
+Sitio web oficial de ModulorIA construido con Next.js 14.
 
 ---
 
-## 🚀 **CÓMO CORRER EL PROYECTO**
+## Identificadores
 
-### **Pre-requisitos:**
-- Node.js 18+ instalado
-- npm o yarn
+| Recurso | Valor |
+|---------|-------|
+| Repositorio | `nicolasfarchica/moduloria-web` |
+| Proyecto Vercel | `web` |
+| Dominio | https://moduloria.com |
 
-### **Instalación:**
+---
+
+## Desarrollo
 
 ```bash
-# 1. Clonar el repositorio
-git clone https://github.com/nicolasfarchica/moduloria-web.git
-cd moduloria-web
-
-# 2. Instalar dependencias
+# Instalar dependencias
 npm install
 
-# 3. Correr en desarrollo
+# Servidor desarrollo
 npm run dev
 
-# 4. Abrir en navegador
-# http://localhost:3000
+# Build produccion
+npm run build
+
+# Verificar codigo
+npm run lint
 ```
 
-### **Comandos disponibles:**
+---
 
+## Despliegue
+
+### Automatico
 ```bash
-npm run dev      # Modo desarrollo (hot reload)
-npm run build    # Build producción
-npm run start    # Correr build de producción
-npm run lint     # Verificar código
+git add .
+git commit -m "descripcion"
+git push origin main
+```
+Vercel despliega automaticamente cada push a main.
+
+### Manual
+```bash
+npx vercel --prod
 ```
 
 ---
 
-## 🎯 **CARACTERÍSTICAS**
-
-✅ Next.js 14 con App Router  
-✅ TypeScript  
-✅ Tailwind CSS  
-✅ Componentes reutilizables  
-✅ Calculadora ROI interactiva  
-✅ SEO optimizado  
-✅ Responsive design  
-
----
-
-## 📁 **ESTRUCTURA**
+## Estructura
 
 ```
-moduloria-web/
+web/
 ├── src/
-│   ├── app/           # Páginas Next.js
-│   └── components/    # Componentes React
-├── public/            # Archivos estáticos
-└── tailwind.config.ts # Configuración Tailwind
+│   ├── app/              # Paginas (App Router)
+│   │   ├── api/          # API Routes
+│   │   ├── auditoria/    # Pagina formulario
+│   │   └── page.tsx      # Homepage
+│   ├── components/       # Componentes React
+│   └── lib/              # Servicios (Notion, Resend)
+├── public/images/        # Assets estaticos
+└── tailwind.config.ts    # Configuracion Tailwind
 ```
 
 ---
 
-## 🎨 **PALETA DE COLORES**
+## Stack
 
-- **Azules dominantes** (60%): `#1B3C53`, `#234C6A`, `#456882`
-- **Beige complementario** (30%): `#D2C1B6`
-- **Naranja cobre** (10%): `#C67A52`
-
----
-
-## 📞 **CONTACTO**
-
-- **Email:** nicolas@moduloria.com
-- **WhatsApp:** +4552801394
-- **Web:** moduloria.com
+- Next.js 14 (App Router)
+- TypeScript
+- Tailwind CSS
+- Vercel (hosting)
+- Notion (CRM)
+- Resend (emails)
+- Google Analytics 4
 
 ---
 
-**Versión:** 0.5.0  
-**Estado:** 🟢 En desarrollo
+## Variables de Entorno
+
+Configuradas en Vercel Dashboard:
+
+- `NOTION_API_KEY`
+- `NOTION_DATABASE_ID`
+- `RESEND_API_KEY`
+- `NEXT_PUBLIC_GA_ID`
+
+---
+
+## Contacto
+
+- Web: https://moduloria.com
+- Email: nicolas@moduloria.com
