@@ -113,25 +113,17 @@ export async function createNotionLead(data: AuditoriaFormData) {
             ],
           },
         }),
-        // Source (Text) - changed from Select for reliability
+        // Source (Select) - fixed value that exists in Notion
         'Source': {
-          rich_text: [
-            {
-              text: {
-                content: 'Web - Auditoría',
-              },
-            },
-          ],
+          select: {
+            name: 'Web - Auditoría',
+          },
         },
-        // Status (Text) - changed from Select for reliability
+        // Status (Select) - fixed value that exists in Notion
         'Status': {
-          rich_text: [
-            {
-              text: {
-                content: 'Nuevo',
-              },
-            },
-          ],
+          select: {
+            name: 'Nuevo',
+          },
         },
         // Fecha (Date)
         'Fecha': {
@@ -190,22 +182,14 @@ export async function createNewsletterSubscription(data: NewsletterFormData) {
           email: data.email,
         },
         'Source': {
-          rich_text: [
-            {
-              text: {
-                content: data.source || 'Web - Newsletter',
-              },
-            },
-          ],
+          select: {
+            name: data.source || 'Web - Newsletter',
+          },
         },
         'Status': {
-          rich_text: [
-            {
-              text: {
-                content: 'Newsletter',
-              },
-            },
-          ],
+          select: {
+            name: 'Newsletter',
+          },
         },
         'Fecha': {
           date: {
