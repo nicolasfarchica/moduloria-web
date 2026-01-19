@@ -32,8 +32,8 @@ export default function Navigation() {
             <Image
               src="/images/moduloria-logo.png"
               alt="ModulorIA Logo"
-              width={40}
-              height={40}
+              width={44}
+              height={36}
               className="transition-transform duration-300 group-hover:scale-110 object-contain"
               priority
             />

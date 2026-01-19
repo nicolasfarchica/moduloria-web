@@ -155,23 +155,23 @@ export default function CalculadoraROI() {
               <div className="text-center mb-8">
                 <div className="text-slate-400 text-sm uppercase tracking-wider mb-2">Ahorro anual estimado</div>
                 <div className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-accent-copper to-white mb-2 font-heading">
-                  €{ahorroTotal.toLocaleString()}
+                  €{ahorroTotal.toLocaleString('es-ES')}
                 </div>
-                <div className="text-slate-300 text-sm">≈ €{Math.round(ahorroTotal / 12).toLocaleString()}/mes</div>
+                <div className="text-slate-300 text-sm">≈ €{Math.round(ahorroTotal / 12).toLocaleString('es-ES')}/mes</div>
               </div>
 
               <div className="space-y-4 mb-8">
                 <div className="flex justify-between items-center p-4 bg-white/5 rounded-lg">
                   <span className="text-slate-300">💰 Ahorro en facturas</span>
-                  <span className="text-white font-bold">€{ahorroFacturas.toLocaleString()}/año</span>
+                  <span className="text-white font-bold">€{ahorroFacturas.toLocaleString('es-ES')}/año</span>
                 </div>
                 <div className="flex justify-between items-center p-4 bg-white/5 rounded-lg">
                   <span className="text-slate-300">📊 Ahorro en gestión de proyectos</span>
-                  <span className="text-white font-bold">€{ahorroProyectos.toLocaleString()}/año</span>
+                  <span className="text-white font-bold">€{ahorroProyectos.toLocaleString('es-ES')}/año</span>
                 </div>
                 <div className="flex justify-between items-center p-4 bg-white/5 rounded-lg">
                   <span className="text-slate-300">⏱️ Ahorro en horas administrativas</span>
-                  <span className="text-white font-bold">€{ahorroHoras.toLocaleString()}/año</span>
+                  <span className="text-white font-bold">€{ahorroHoras.toLocaleString('es-ES')}/año</span>
                 </div>
               </div>
 
