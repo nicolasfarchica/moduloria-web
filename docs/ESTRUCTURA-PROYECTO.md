@@ -46,6 +46,14 @@
 │
 ├── docs/                             # DOCUMENTACION
 │   ├── ESTRUCTURA-PROYECTO.md        # Este archivo
+│   ├── puntos-de-dolor/              # 37 problemas documentados (y creciendo)
+│   │   ├── 00-INDICE-MAESTRO.md      # Indice principal con tiers
+│   │   ├── 01-25 + 26,27,29,31,38,41,44-49  # Archivos individuales
+│   │   └── README.md                 # Guia de uso
+│   ├── investigacion/                # Fuentes de investigacion
+│   │   ├── Investigacion Puntos de dolor VENTAS...
+│   │   ├── Diagnóstico Operativo Integral...
+│   │   └── [Informes consolidados y analisis]
 │   ├── estrategia/                   # Estrategia de negocio
 │   ├── diseno-web/                   # Wireframes y diseno
 │   └── SESION-*.md                   # Notas de sesiones

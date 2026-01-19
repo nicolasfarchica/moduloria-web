@@ -2,36 +2,45 @@
 
 ## 🎯 RESUMEN EJECUTIVO
 
-Hemos consolidado **todas las investigaciones** (ChatGPT, Gemini, Claude × 2) y extraído **25 puntos de dolor** específicos, **simples y administrativos** con soluciones realistas basadas en IA.
+Hemos consolidado **todas las investigaciones** y extraído **37 puntos de dolor** específicos, **simples y administrativos** con soluciones realistas basadas en IA. Este catálogo es un **documento vivo** que crece con cada nueva investigación.
 
 ### ✅ Lo que tienes ahora:
 
-1. **Tabla Maestra Consolidada** con 25 problemas clasificados por TIER
+1. **Tabla Maestra Consolidada** con 37 problemas clasificados por TIER
 2. **Impacto cuantificado** de cada problema (€ y horas/mes)
 3. **Soluciones técnicas específicas** con stack tecnológico exacto
-4. **Archivos individuales desarrollados** (ejemplos: #1, #8, #12)
+4. **Archivos individuales desarrollados** para cada problema
 5. **Estrategia completa** contenido/marketing/SEO
+6. **Arquitectura de expansión** para añadir nuevos problemas
 
 ---
 
 ## 📊 NÚMEROS CLAVE
 
-### Impacto Total
-- **Problemas identificados**: 25
-- **Ahorro mensual potencial**: €67,170-156,500
-- **Ahorro anual**: €806,040-1,878,000
-- **Inversión total**: €9,000-16,000
-- **ROI**: 5,000-11,737%
-- **Payback**: 2-3 semanas
+### Impacto Total (37 Puntos de Dolor)
+- **Problemas identificados**: 37 (y creciendo)
+- **Ahorro mensual potencial**: €122,000-274,000
+- **Ahorro anual**: €1,464,000-3,288,000
+- **Inversión total**: €18,000-35,000
+- **ROI**: 4,000-9,000%
+- **Payback**: 2-4 semanas
 
 ### Por Categoría
 | Categoría | # Problemas | Ahorro Mensual | Prioridad |
 |-----------|-------------|----------------|-----------|
+| Ventas y Comercial | 8 | €35,000-75,000 | ⚡ ALTA |
 | Comunicación y Admin | 10 | €23,000-48,000 | ⚡ ALTA |
 | Materiales e Inventario | 6 | €20,000-40,000 | ⚡ ALTA |
-| Seguridad y Cumplimiento | 3 | €5,000-12,000 | 🔥 CRÍTICA |
-| Coordinación Equipos | 4 | €10,000-22,000 | 🚀 MEDIA |
-| Financiero y Facturación | 2 | €9,000-18,000 | 🚀 MEDIA |
+| Operaciones y Producción | 5 | €25,000-55,000 | 🚀 ALTA |
+| Seguridad y Cumplimiento | 4 | €15,000-30,000 | 🔥 CRÍTICA |
+| Finanzas y Facturación | 4 | €15,000-35,000 | 🚀 MEDIA |
+
+### Fuentes de Investigación
+| Fecha | Investigación | Puntos Añadidos |
+|-------|--------------|-----------------|
+| 2025-01 | Análisis inicial PYMES construcción | #1-#25 |
+| 2026-01 | Puntos de dolor Ventas y Oficina | #26-#31 |
+| 2026-01 | Diagnóstico Operativo Integral | #32-#37 |
 
 ---
 
@@ -41,40 +50,54 @@ Hemos consolidado **todas las investigaciones** (ChatGPT, Gemini, Claude × 2) y
 Puntos-de-Dolor/
 │
 ├── README.md (este archivo)
-├── 00-INDICE-MAESTRO.md (tabla completa 25 problemas)
+├── 00-INDICE-MAESTRO.md (tabla completa 37 problemas)
 ├── ESTRATEGIA-CONTENIDO-MARKETING.md (plan 12 meses)
 │
-├── TIER 1: Quick Wins (10 archivos)
-│   ├── 01-clasificacion-emails.md ✅ [DESARROLLADO]
-│   ├── 02-chatbot-faq.md
-│   ├── 03-ocr-facturas.md
-│   ├── 04-reportes-voz.md
-│   ├── 05-alertas-stock.md
-│   ├── 06-asistencia-digital.md
-│   ├── 07-incidentes-seguridad.md
-│   ├── 08-tracking-herramientas.md ✅ [DESARROLLADO]
-│   ├── 09-recordatorios-auto.md
-│   └── 10-formularios-digitales.md
+├── TIER 1: Quick Wins (13 archivos)
+│   ├── 01-clasificacion-emails.md ✅
+│   ├── 02-chatbot-faq.md ✅
+│   ├── 03-ocr-facturas.md ✅
+│   ├── 04-reportes-voz.md ✅
+│   ├── 05-alertas-stock.md ✅
+│   ├── 06-asistencia-digital.md ✅
+│   ├── 07-incidentes-seguridad.md ✅
+│   ├── 08-tracking-herramientas.md ✅
+│   ├── 09-recordatorios-auto.md ✅
+│   ├── 10-formularios-digitales.md ✅
+│   ├── 26-respuesta-instantanea-leads.md ✅ [NUEVO 2026-01]
+│   ├── 28-seguimiento-propuestas.md ✅ [NUEVO 2026-01]
+│   └── 37-actualizacion-proactiva-cliente.md ✅ [NUEVO 2026-01]
 │
-├── TIER 2: Alto Impacto (10 archivos)
-│   ├── 11-docs-subcontratistas.md
-│   ├── 12-ordenes-cambio.md ✅ [DESARROLLADO]
-│   ├── 13-entregas-albaranes.md
-│   ├── 14-reservas-grua.md
-│   ├── 15-presupuestos-ia.md
-│   ├── 16-onboarding-digital.md
-│   ├── 17-busqueda-documentos.md
-│   ├── 18-faltantes-materiales.md
-│   ├── 19-consumo-materiales.md
-│   └── 20-aprobaciones-urgentes.md
+├── TIER 2: Alto Impacto (18 archivos)
+│   ├── 11-docs-subcontratistas.md ✅
+│   ├── 12-ordenes-cambio.md ✅
+│   ├── 13-entregas-albaranes.md ✅
+│   ├── 14-reservas-grua.md ✅
+│   ├── 15-presupuestos-ia.md ✅
+│   ├── 16-onboarding-digital.md ✅
+│   ├── 17-busqueda-documentos.md ✅
+│   ├── 18-faltantes-materiales.md ✅
+│   ├── 19-consumo-materiales.md ✅
+│   ├── 20-aprobaciones-urgentes.md ✅
+│   ├── 27-crm-centralizado-multicanal.md ✅ [NUEVO 2026-01]
+│   ├── 30-handoff-ventas-produccion.md ✅ [NUEVO 2026-01]
+│   ├── 31-calificacion-leads.md ✅ [NUEVO 2026-01]
+│   ├── 32-investigacion-zonificacion.md ✅ [NUEVO 2026-01]
+│   ├── 33-gestion-seguros-coi.md ✅ [NUEVO 2026-01]
+│   ├── 34-permisos-transporte.md ✅ [NUEVO 2026-01]
+│   ├── 35-facturacion-avance.md ✅ [NUEVO 2026-01]
+│   └── 36-sincronizacion-pm-contabilidad.md ✅ [NUEVO 2026-01]
 │
-└── TIER 3: Transformacional (5 archivos)
-    ├── 21-certificaciones.md
-    ├── 22-ticketing-postventa.md
-    ├── 23-lessons-learned.md
-    ├── 24-planificacion-equipos.md
-    └── 25-inventarios-rapidos.md
+└── TIER 3: Transformacional (6 archivos)
+    ├── 21-certificaciones.md ✅
+    ├── 22-ticketing-postventa.md ✅
+    ├── 23-lessons-learned.md ✅
+    ├── 24-planificacion-equipos.md ✅
+    ├── 25-inventarios-rapidos.md ✅
+    └── 29-retencion-conocimiento.md ✅ [NUEVO 2026-01]
 ```
+
+> **NOTA**: La numeración es secuencial del #1 al #37. Los nuevos problemas se añadirán a partir del #38.
 
 ---
 
@@ -386,14 +409,14 @@ CLUSTER 3: Entregas (#13)
 
 ## 💬 PREGUNTAS FRECUENTES
 
-**Q: ¿Debo desarrollar TODOS los 25 problemas?**
-A: No necesariamente. Empieza con top 10 que más resuenan con tu ICP (Ideal Customer Profile). Los otros mantén en backlog para contenido futuro.
+**Q: ¿Debo usar TODOS los 37 problemas?**
+A: No necesariamente. Empieza con top 10-15 que más resuenan con tu ICP. El catálogo seguirá creciendo, pero puedes priorizar según tu mercado.
 
-**Q: ¿En qué orden desarrollo los archivos restantes?**
-A: Sugerencia:
-1. Quick Wins (#2-#7, #9-#10) - Fáciles demo/implementar
-2. Alto impacto (#11, #14, #15) - Cierran deals grandes
-3. Transformacional (#21-#25) - Diferenciación largo plazo
+**Q: ¿Cómo funciona la numeración?**
+A: La numeración es secuencial del #1 al #37. Los nuevos problemas que se añadan en el futuro continuarán desde el #38 en adelante.
+
+**Q: ¿Cómo añado nuevos puntos de dolor?**
+A: Ver sección "Arquitectura de Expansión" en 00-INDICE-MAESTRO.md. Seguir formato estándar y actualizar índice maestro.
 
 **Q: ¿Puedo modificar las soluciones técnicas propuestas?**
 A: Absolutamente. Los stacks sugeridos son baselines. Si tienes expertise en herramientas diferentes (Zapier vs N8N, Notion vs Airtable), adapta. Lo crítico es el PROBLEMA cuantificado, no la herramienta específica.
@@ -477,11 +500,12 @@ TOP CONTENIDO:
 
 ---
 
-**Última actualización**: 2025-01-05
-**Próxima revisión**: Trimestral
+**Última actualización**: 2026-01-19
+**Total puntos de dolor**: 37 (y creciendo)
+**Próxima revisión**: Continua + Trimestral
 
 **Creado por**: Claude + Nicolás
-**Uso**: Libre para ModulorIA, privado para competencia 😉
+**Uso**: Libre para ModulorIA, privado para competencia
 
 ---
 
@@ -490,11 +514,14 @@ TOP CONTENIDO:
 Esta biblioteca no vale nada si no se usa.
 
 **Tu misión esta semana**:
-1. Lee los 3 archivos desarrollados completos
-2. Elige TU top 5 problemas para desarrollar
-3. Publica primer post LinkedIn (usa problema #8 como base)
-4. Agenda 2 horas setup calculadora ROI básica
+1. Revisa los nuevos archivos de ventas (#26-#31)
+2. Prioriza según tu pipeline actual
+3. Implementa al menos 1 solución de alto ROI
+4. Documenta resultados para próximos clientes
 
-**Recuerda**: Perfecto es enemigo de hecho. Mejor publicar 1 problema bien ejecutado esta semana que 25 perfectos en 6 meses.
+**Recuerda**:
+- El catálogo crece con cada investigación
+- Perfecto es enemigo de hecho
+- 1 problema bien resuelto > 37 sin implementar
 
-¡A construir! 🏗️⚡
+¡A construir! 🏗️

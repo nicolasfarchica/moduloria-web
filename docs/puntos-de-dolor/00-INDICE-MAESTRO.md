@@ -22,10 +22,13 @@
 | 8 | **Seguimiento herramientas QR** | €5,200-10,400 | 1-2 semanas | Baja | QR codes + WhatsApp bot + Airtable | [08-tracking-herramientas.md](./08-tracking-herramientas.md) |
 | 9 | **Recordatorios/seguimientos automáticos** | €1,000-2,000 | 2-4 horas | Muy Baja | N8N + WhatsApp | [09-recordatorios-auto.md](./09-recordatorios-auto.md) |
 | 10 | **Formularios digitales móviles** | €800-1,500 | 1 día | Muy Baja | Google Forms + Airtable | [10-formularios-digitales.md](./10-formularios-digitales.md) |
+| 26 | **Respuesta instantánea a leads** | €5,000-10,000 | 1 semana | Baja | N8N + WhatsApp + OpenAI | [26-respuesta-instantanea-leads.md](./26-respuesta-instantanea-leads.md) |
+| 28 | **Seguimiento sistemático propuestas** | €5,000-10,000 | 1-2 semanas | Baja | N8N + Airtable + Email | [28-seguimiento-propuestas.md](./28-seguimiento-propuestas.md) |
+| 37 | **Actualización proactiva al cliente** | €15,000-30,000 | 1-2 semanas | Baja | N8N + WhatsApp + Airtable | [37-actualizacion-proactiva-cliente.md](./37-actualizacion-proactiva-cliente.md) |
 
-**Inversión TIER 1**: €2,000-4,000
-**Ahorro mensual**: €19,100-38,800
-**Payback**: 2-3 semanas
+**Inversión TIER 1**: €4,000-8,000
+**Ahorro mensual**: €44,100-88,800
+**Payback**: 1-2 semanas
 
 ---
 
@@ -43,9 +46,17 @@
 | 18 | **Pánico faltantes materiales** | €5,000-20,000 | 2-3 semanas | Media | Inventario perpetuo + N8N + QR | [18-faltantes-materiales.md](./18-faltantes-materiales.md) |
 | 19 | **Consumo materiales fin de día** | €6,250-9,300 | 2-3 semanas | Media | WhatsApp logging + OCR + Airtable | [19-consumo-materiales.md](./19-consumo-materiales.md) |
 | 20 | **Aprobaciones urgentes campo** | €3,000-6,000 | 2-3 semanas | Media | WhatsApp bot + Lógica aprobación | [20-aprobaciones-urgentes.md](./20-aprobaciones-urgentes.md) |
+| 27 | **CRM centralizado multicanal** | €9,500/mes | 2-3 semanas | Media | Airtable + N8N + APIs canales | [27-crm-centralizado-multicanal.md](./27-crm-centralizado-multicanal.md) |
+| 30 | **Handoff ventas-producción** | €20,000-50,000/año | 2-3 semanas | Media | N8N + Airtable + GPT-4 | [30-handoff-ventas-produccion.md](./30-handoff-ventas-produccion.md) |
+| 31 | **Calificación y scoring de leads** | €5,000-10,000/mes | 2-3 semanas | Media | N8N + Airtable + OpenAI | [31-calificacion-leads.md](./31-calificacion-leads.md) |
+| 32 | **Investigación zonificación automatizada** | €6,000-12,000/mes | 3-4 semanas | Alta | N8N + OpenAI + APIs GIS | [32-investigacion-zonificacion.md](./32-investigacion-zonificacion.md) |
+| 33 | **Gestión seguros y certificados (COI)** | €100,000+ riesgo | 2-3 semanas | Media | N8N + OCR + Airtable | [33-gestion-seguros-coi.md](./33-gestion-seguros-coi.md) |
+| 34 | **Permisos transporte sobredimensionado** | €5,000-15,000/año | 3-4 semanas | Alta | N8N + Airtable + Calendar | [34-permisos-transporte.md](./34-permisos-transporte.md) |
+| 35 | **Facturación por avance de obra** | €10,000-30,000/año | 3-4 semanas | Alta | N8N + GPT-4 + Drive | [35-facturacion-avance.md](./35-facturacion-avance.md) |
+| 36 | **Sincronización PM-Contabilidad** | €20,000-50,000/año | 2-3 semanas | Media | N8N + APIs PM + APIs Contabilidad | [36-sincronizacion-pm-contabilidad.md](./36-sincronizacion-pm-contabilidad.md) |
 
-**Inversión adicional TIER 2**: €3,000-5,000
-**Ahorro adicional mensual**: €34,950-91,900
+**Inversión adicional TIER 2**: €8,000-15,000
+**Ahorro adicional mensual**: €60,000-150,000
 **Payback**: 1-2 meses
 
 ---
@@ -59,31 +70,33 @@
 | 23 | **Lessons Learned (knowledge base)** | €3,000-6,000 | 4-8 semanas | Alta | Vector DB + RAG + OCR histórico | [23-lessons-learned.md](./23-lessons-learned.md) |
 | 24 | **Planificación equipos campo** | €2,000-4,000 | 3-4 semanas | Media-Alta | Algoritmo rutas + GPS tracking | [24-planificacion-equipos.md](./24-planificacion-equipos.md) |
 | 25 | **Inventarios rápidos sin parar obra** | €4,320-7,200 | 4-6 semanas | Media | Inventario perpetuo + IA visión | [25-inventarios-rapidos.md](./25-inventarios-rapidos.md) |
+| 29 | **Retención conocimiento al salir empleado** | €50,000-100,000/evento | 4-6 semanas | Alta | Airtable/HubSpot + N8N + Whisper | [29-retencion-conocimiento.md](./29-retencion-conocimiento.md) |
 
-**Inversión adicional TIER 3**: €4,000-7,000
-**Ahorro adicional mensual**: €13,120-25,800
+**Inversión adicional TIER 3**: €6,000-12,000
+**Ahorro adicional mensual**: €18,000-35,000
 **Payback**: 2-4 meses
 
 ---
 
 ## 📈 RESUMEN EJECUTIVO
 
-### Impacto Total Anual
-- **Inversión total**: €9,000-16,000
-- **Ahorro mensual total**: €67,170-156,500
-- **Ahorro anual**: €806,040-1,878,000
-- **ROI**: 5,000-11,737%
-- **Payback general**: 2-3 semanas
+### Impacto Total Anual (37 Puntos de Dolor)
+- **Inversión total**: €18,000-35,000
+- **Ahorro mensual total**: €122,000-274,000
+- **Ahorro anual**: €1,464,000-3,288,000
+- **ROI**: 4,000-9,000%
+- **Payback general**: 2-4 semanas
 
 ### Por Categoría Operativa
 
 | Categoría | # Problemas | Ahorro Mensual | Prioridad |
 |-----------|-------------|----------------|-----------|
+| **Ventas y Comercial** | 8 | €35,000-75,000 | ⚡ ALTA |
 | **Comunicación y Admin** | 10 | €23,000-48,000 | ⚡ ALTA |
 | **Materiales e Inventario** | 6 | €20,000-40,000 | ⚡ ALTA |
-| **Seguridad y Cumplimiento** | 3 | €5,000-12,000 | 🔥 CRÍTICA |
-| **Coordinación Equipos** | 4 | €10,000-22,000 | 🚀 MEDIA |
-| **Financiero y Facturación** | 2 | €9,000-18,000 | 🚀 MEDIA |
+| **Operaciones y Producción** | 5 | €25,000-55,000 | 🚀 ALTA |
+| **Seguridad y Cumplimiento** | 4 | €15,000-30,000 | 🔥 CRÍTICA |
+| **Finanzas y Facturación** | 4 | €15,000-35,000 | 🚀 MEDIA |
 
 ---
 
@@ -168,14 +181,68 @@ Cada punto de dolor tiene su archivo dedicado con:
 ## 🚀 PRÓXIMOS PASOS
 
 1. ✅ Revisar tabla maestra
-2. ⏳ Desarrollar archivos individuales (1-25)
-3. ⏳ Crear calculadora ROI interactiva
-4. ⏳ Diseñar flujos de trabajo visuales
-5. ⏳ Preparar demos en video
-6. ⏳ Estructura contenido SEO
-7. ⏳ Calendario contenido redes (52 semanas)
+2. ✅ Desarrollar archivos individuales (1-25)
+3. ✅ Añadir puntos de dolor de ventas/oficina (#26-#31)
+4. ✅ Añadir puntos de dolor de diagnóstico operativo (#32-#37)
+5. ⏳ Crear calculadora ROI interactiva
+6. ⏳ Diseñar flujos de trabajo visuales
+7. ⏳ Preparar demos en video
+8. ⏳ Estructura contenido SEO
+9. ⏳ Calendario contenido redes (52+ semanas)
 
 ---
 
-**Última actualización**: 2025-01-05
-**Próxima revisión**: Trimestral (actualizar costos y nuevas soluciones)
+## 📚 FUENTES DE INVESTIGACIÓN
+
+Este catálogo se alimenta de investigaciones continuas:
+
+### Investigaciones Completadas
+| Fecha | Investigación | Puntos Añadidos |
+|-------|--------------|-----------------|
+| 2025-01 | Análisis inicial PYMES construcción | #1-#25 |
+| 2026-01 | Puntos de dolor Ventas y Oficina | #26-#31 |
+| 2026-01 | Diagnóstico Operativo Integral | #32-#37 |
+
+### Archivos de Investigación
+- `docs/investigacion/Investigacion Puntos de dolor VENTAS y Oficina.md`
+- `docs/investigacion/Diagnóstico Operativo Integral_ Fricciones Administrativas...md`
+
+> **NOTA**: Este catálogo es un documento vivo. Se añadirán nuevos puntos de dolor a medida que se identifiquen en el mercado o en investigaciones futuras. La numeración es secuencial (1-37 actualmente), y los nuevos problemas se añadirán a partir del #38.
+
+---
+
+## 🔄 ARQUITECTURA DE EXPANSIÓN
+
+El sistema está diseñado para crecer:
+
+```
+FUENTES DE NUEVOS PAIN POINTS
+├─ Investigaciones de mercado
+├─ Feedback de clientes
+├─ Análisis de competencia
+├─ Tendencias de la industria
+└─ Nuevas tecnologías disponibles
+
+       ↓
+
+PROCESO DE ADICIÓN
+1. Identificar problema no cubierto
+2. Validar con datos/estadísticas
+3. Diseñar solución técnica
+4. Calcular ROI
+5. Crear archivo siguiendo formato estándar
+6. Actualizar índice maestro
+
+       ↓
+
+RESULTADO
+Catálogo siempre actualizado con
+soluciones relevantes para PYMES
+de construcción modular
+```
+
+---
+
+**Última actualización**: 2026-01-19
+**Total puntos de dolor**: 37 (y creciendo)
+**Próxima revisión**: Continua + Trimestral (actualizar costos y nuevas soluciones)
