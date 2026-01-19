@@ -32,6 +32,18 @@ export async function createNotionLead(data: AuditoriaFormData) {
       throw new Error('NOTION_DATABASE_ID is not configured');
     }
 
+    // Truncate text fields to prevent Notion API errors (max 2000 chars)
+    const truncate = (text: string, maxLength: number = 2000) =>
+      text.length > maxLength ? text.substring(0, maxLength - 3) + '...' : text;
+
+    console.log('Creating Notion lead with data:', {
+      nombre: data.nombre,
+      empresa: data.empresa,
+      email: data.email,
+      empleados: data.empleados,
+      presupuesto: data.presupuesto,
+    });
+
     const response = await notion.pages.create({
       parent: {
         database_id: databaseId,
@@ -65,32 +77,40 @@ export async function createNotionLead(data: AuditoriaFormData) {
         'Teléfono': {
           phone_number: data.telefono,
         },
-        // Empleados (Select)
+        // Empleados (Text) - Changed from Select for reliability
         'Empleados': {
-          select: {
-            name: data.empleados,
-          },
+          rich_text: [
+            {
+              text: {
+                content: data.empleados,
+              },
+            },
+          ],
         },
         // Proyectos Activos (Number)
         'Proyectos Activos': {
           number: parseInt(data.proyectosActivos) || 0,
         },
-        // Mayor Problema (Text)
+        // Mayor Problema (Text) - truncated to prevent API errors
         'Mayor Problema': {
           rich_text: [
             {
               text: {
-                content: data.mayorProblema,
+                content: truncate(data.mayorProblema),
               },
             },
           ],
         },
-        // Presupuesto (Select) - optional
+        // Presupuesto (Text) - optional, changed from Select for reliability
         ...(data.presupuesto && {
           'Presupuesto': {
-            select: {
-              name: data.presupuesto,
-            },
+            rich_text: [
+              {
+                text: {
+                  content: data.presupuesto,
+                },
+              },
+            ],
           },
         }),
         // Source (Select)
@@ -118,8 +138,17 @@ export async function createNotionLead(data: AuditoriaFormData) {
       success: true,
       pageId: response.id,
     };
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error creating Notion lead:', error);
+
+    // Log detailed error info for debugging
+    if (error && typeof error === 'object' && 'body' in error) {
+      console.error('Notion API error body:', (error as { body: unknown }).body);
+    }
+    if (error && typeof error === 'object' && 'code' in error) {
+      console.error('Notion API error code:', (error as { code: unknown }).code);
+    }
+
     throw error;
   }
 }
