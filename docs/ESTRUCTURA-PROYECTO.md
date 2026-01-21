@@ -1,7 +1,7 @@
 # ModulorIA - Estructura del Proyecto
 
 > Documentacion oficial de la arquitectura, configuracion y despliegue.
-> Ultima actualizacion: 2026-01-21
+> Ultima actualizacion: 2026-01-22
 
 ---
 
@@ -134,9 +134,23 @@ Estas variables estan configuradas en: https://vercel.com/nicolasfarchicas-proje
 - **Archivo**: `src/app/layout.tsx`
 - **ID**: `G-EK62LC6D3D`
 
-### 5. N8N Workflows (Pendiente de activar)
-- **Diario**: `01-daily-content-collector.json` - Recolecta RSS → AI filtra → Guarda en Newsletter Content
-- **Semanal**: `02-weekly-newsletter-sender.json` - Lee contenido → AI genera → Envia con Resend
+### 5. N8N Workflows
+
+| Workflow | Archivo | Estado | Trigger |
+|----------|---------|--------|---------|
+| **Recolector Diario** | `01-daily-content-collector.json` | ACTIVO | Diario 8:00 AM |
+| **Envio Newsletter** | `02-weekly-newsletter-sender.json` | PENDIENTE | Miercoles 9:00 AM |
+
+**Workflow 1 - Recolector Diario (ACTIVO):**
+- Fuentes RSS: Autodesk, Construction Dive, Offsite Hub, Modular Building Institute, BuiltWorlds, Procore
+- AI filtra contenido relevante para construccion modular
+- Guarda en Notion: Newsletter Content
+
+**Workflow 2 - Envio Newsletter (PENDIENTE):**
+- Lee contenido de Newsletter Content + Suscriptores activos
+- AI genera contenido del newsletter
+- Envia via Resend API
+- Falta: Configurar credenciales Notion, OpenAI y Resend
 
 ---
 

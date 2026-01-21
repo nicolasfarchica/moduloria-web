@@ -56,8 +56,23 @@
           "1"
         ],
         "status": "in-progress",
-        "subtasks": [],
-        "updatedAt": "2026-01-21T13:59:49.500Z"
+        "subtasks": [
+          {
+            "id": "4.1",
+            "title": "Workflow 1: Recolector Diario de Contenido",
+            "description": "Configura RSS feeds, AI filter con GPT-4o-mini, y guarda en Notion Newsletter Content",
+            "status": "done",
+            "details": "COMPLETADO 2026-01-22: 6 fuentes RSS (Autodesk, Construction Dive, Offsite Hub, Modular Building Institute, BuiltWorlds, Procore). AI filtra contenido relevante para construccion modular. Trigger diario 8:00 AM. Credencial Notion 'ModulorIA N8N' configurada."
+          },
+          {
+            "id": "4.2",
+            "title": "Workflow 2: Envio Newsletter Semanal",
+            "description": "Lee contenido de Notion, genera newsletter con AI, envia via Resend",
+            "status": "pending",
+            "details": "PENDIENTE: JSON importado en N8N. Falta configurar credenciales (Notion, OpenAI, Resend Header Auth). Trigger: Miercoles 9:00 AM."
+          }
+        ],
+        "updatedAt": "2026-01-22T23:30:00.000Z"
       },
       {
         "id": "5",
