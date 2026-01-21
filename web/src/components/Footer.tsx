@@ -122,6 +122,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/newsletter" className="text-slate-400 hover:text-accent-copper transition-colors text-sm">
+                  Newsletter
+                </Link>
+              </li>
+              <li>
                 <Link href="/#faq" className="text-slate-400 hover:text-accent-copper transition-colors text-sm">
                   FAQ
                 </Link>

@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
@@ -73,6 +74,38 @@ const RESOURCES: Resource[] = [
 ];
 
 export default function RecursosSection() {
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setError('');
+
+    try {
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Error al suscribirse');
+      }
+
+      setIsSuccess(true);
+      setEmail('');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Error al suscribirse');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="recursos" className="section-padding bg-gradient-to-b from-background-end to-background-dark relative overflow-hidden">
       {/* Background Elements */}
@@ -209,16 +242,37 @@ export default function RecursosSection() {
                 Recibe cada semana <strong className="text-white">1 automatización práctica</strong> para tu constructora.
                 Explicado simple, con ROI estimado y sin spam.
               </p>
-              <div className="flex gap-2">
-                <input
-                  type="email"
-                  placeholder="tu@email.com"
-                  className="flex-1 px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:border-accent-copper transition-colors"
-                />
-                <button className="px-6 py-2 bg-accent-copper text-white rounded-lg font-medium hover:shadow-copper-glow transition-all duration-300">
-                  Suscribir
-                </button>
-              </div>
+
+              {isSuccess ? (
+                <div className="bg-green-500/20 border border-green-500/50 rounded-lg p-4 text-center">
+                  <p className="text-green-400 font-medium">¡Suscrito! Revisa tu email.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleNewsletterSubmit}>
+                  <div className="flex gap-2">
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="tu@email.com"
+                      required
+                      disabled={isSubmitting}
+                      className="flex-1 px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:border-accent-copper transition-colors disabled:opacity-50"
+                    />
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="px-6 py-2 bg-accent-copper text-white rounded-lg font-medium hover:shadow-copper-glow transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {isSubmitting ? '...' : 'Suscribir'}
+                    </button>
+                  </div>
+                  {error && (
+                    <p className="text-red-400 text-sm mt-2">{error}</p>
+                  )}
+                </form>
+              )}
+
               <p className="text-xs text-slate-400 mt-2">
                 🔒 Cancelar cuando quieras. Sin vender tu email.
               </p>
