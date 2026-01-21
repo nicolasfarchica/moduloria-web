@@ -320,7 +320,7 @@ export default function AuditoriaPage() {
                 {/* Proyectos Activos */}
                 <div>
                   <label htmlFor="proyectosActivos" className="block text-sm font-medium text-gray-300 mb-2">
-                    Proyectos activos simultáneos *
+                    Proyectos activos simultáneos <span className="text-gray-500">(opcional)</span>
                   </label>
                   <input
                     type="number"
@@ -328,7 +328,6 @@ export default function AuditoriaPage() {
                     name="proyectosActivos"
                     value={formData.proyectosActivos}
                     onChange={handleChange}
-                    required
                     min="0"
                     className="w-full px-4 py-3 bg-background-dark border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-copper focus:border-transparent transition-all"
                     placeholder="Ej: 5"
@@ -338,14 +337,13 @@ export default function AuditoriaPage() {
                 {/* Mayor Problema */}
                 <div>
                   <label htmlFor="mayorProblema" className="block text-sm font-medium text-gray-300 mb-2">
-                    ¿Cuál es tu mayor problema operativo? *
+                    ¿Cuál es tu mayor problema operativo? <span className="text-gray-500">(opcional)</span>
                   </label>
                   <textarea
                     id="mayorProblema"
                     name="mayorProblema"
                     value={formData.mayorProblema}
                     onChange={handleChange}
-                    required
                     rows={4}
                     className="w-full px-4 py-3 bg-background-dark border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-copper focus:border-transparent transition-all resize-none"
                     placeholder="Ej: Paso 3 horas diarias procesando facturas manualmente..."

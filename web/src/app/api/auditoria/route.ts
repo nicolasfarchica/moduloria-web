@@ -52,8 +52,6 @@ export async function POST(request: NextRequest) {
       'email',
       'telefono',
       'empleados',
-      'proyectosActivos',
-      'mayorProblema',
     ];
 
     for (const field of requiredFields) {
