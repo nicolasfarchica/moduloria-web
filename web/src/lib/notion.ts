@@ -156,19 +156,13 @@ export async function createNotionLead(data: AuditoriaFormData) {
 
 /**
  * Creates a newsletter subscription entry in Notion (separate database)
+ * Database: Suscriptores Newsletter (ID: 1bf2788f3a7f45608f437a9280e0b691)
  */
 export async function createNewsletterSubscription(data: NewsletterFormData) {
   try {
     const databaseId = process.env.NOTION_NEWSLETTER_DB_ID;
 
-    // Debug logging
-    console.log('=== NEWSLETTER SUBSCRIPTION DEBUG ===');
-    console.log('NOTION_NEWSLETTER_DB_ID:', databaseId ? `${databaseId.substring(0, 8)}...` : 'NOT SET');
-    console.log('NOTION_DATABASE_ID:', process.env.NOTION_DATABASE_ID ? 'SET' : 'NOT SET');
-    console.log('Email:', data.email);
-
     if (!databaseId) {
-      console.error('NOTION_NEWSLETTER_DB_ID is not configured!');
       throw new Error('NOTION_NEWSLETTER_DB_ID is not configured');
     }
 
