@@ -1,0 +1,262 @@
+{
+  "name": "ModulorIA - Envio Newsletter Semanal",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 9 * * 3"
+            }
+          ]
+        }
+      },
+      "id": "schedule-trigger",
+      "name": "Miercoles 9:00 AM",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [0, 200]
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "getAll",
+        "databaseId": {
+          "__rl": true,
+          "value": "061483b8b89b48d0beece04cbefb2300",
+          "mode": "id"
+        },
+        "returnAll": false,
+        "limit": 10,
+        "filterType": "manual",
+        "filters": {
+          "conditions": [
+            {
+              "key": "Usado|checkbox",
+              "condition": "equals",
+              "checkboxValue": false
+            }
+          ]
+        },
+        "sort": {
+          "sortValue": [
+            {
+              "key": "Fecha Recolección|date",
+              "direction": "descending"
+            }
+          ]
+        }
+      },
+      "id": "notion-get-content",
+      "name": "Leer Contenido de Notion",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [220, 100],
+      "credentials": {
+        "notionApi": {
+          "id": "YOUR_NOTION_CREDENTIAL_ID",
+          "name": "Notion account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "getAll",
+        "databaseId": {
+          "__rl": true,
+          "value": "1bf2788f3a7f45608f437a9280e0b691",
+          "mode": "id"
+        },
+        "returnAll": true,
+        "filterType": "manual",
+        "filters": {
+          "conditions": [
+            {
+              "key": "Activo|checkbox",
+              "condition": "equals",
+              "checkboxValue": true
+            }
+          ]
+        }
+      },
+      "id": "notion-get-subscribers",
+      "name": "Leer Suscriptores",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [220, 300],
+      "credentials": {
+        "notionApi": {
+          "id": "YOUR_NOTION_CREDENTIAL_ID",
+          "name": "Notion account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtener articulos del primer input y suscriptores del segundo\nconst contentItems = $('Leer Contenido de Notion').all();\nconst subscriberItems = $('Leer Suscriptores').all();\n\nif (contentItems.length === 0) {\n  throw new Error('No hay contenido nuevo para el newsletter');\n}\n\nif (subscriberItems.length === 0) {\n  throw new Error('No hay suscriptores activos');\n}\n\n// Formatear articulos para AI\nconst articles = contentItems.map(item => {\n  const props = item.json.properties;\n  return {\n    id: item.json.id,\n    titulo: props['Título']?.title?.[0]?.plain_text || 'Sin titulo',\n    url: props['URL']?.url || '',\n    fuente: props['Fuente']?.rich_text?.[0]?.plain_text || '',\n    resumen: props['Resumen AI']?.rich_text?.[0]?.plain_text || '',\n    categoria: props['Categoría']?.select?.name || 'Industria'\n  };\n});\n\n// Formatear suscriptores\nconst subscribers = subscriberItems.map(item => {\n  const props = item.json.properties;\n  return {\n    email: props['Email']?.title?.[0]?.plain_text || '',\n    nombre: props['Nombre']?.rich_text?.[0]?.plain_text || ''\n  };\n}).filter(s => s.email);\n\n// Crear texto para AI\nconst articlesForAI = articles.map((a, i) => \n  `${i + 1}. [${a.categoria}] ${a.titulo}\\n   ${a.resumen}\\n   Link: ${a.url}`\n).join('\\n\\n');\n\nreturn [{\n  json: {\n    articlesForAI,\n    articles,\n    subscribers,\n    articleIds: articles.map(a => a.id),\n    subscriberCount: subscribers.length,\n    articleCount: articles.length\n  }\n}];"
+      },
+      "id": "code-prepare",
+      "name": "Preparar Datos",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 200]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "options": {
+          "temperature": 0.7
+        },
+        "messages": {
+          "values": [
+            {
+              "role": "system",
+              "content": "Eres el redactor del newsletter semanal de ModulorIA, empresa de automatizacion con IA para construccion modular.\n\nEstilo:\n- Profesional pero accesible\n- Enfocado en valor practico\n- Breve y al grano\n- Usa emojis con moderacion (1-2 por seccion)\n\nEstructura del newsletter:\n1. Saludo breve\n2. \"Esta semana en IA + Construccion\" - resumen de 2-3 lineas\n3. Articulos destacados (maximo 4) con:\n   - Emoji de categoria\n   - Titulo llamativo\n   - Por que importa (1-2 oraciones)\n   - Link\n4. Tip rapido de automatizacion (algo que puedan implementar)\n5. CTA a agendar diagnostico\n\nCategorias y emojis:\n- Construccion: 🏗️\n- IA: 🤖\n- Modular: 📦\n- Industria: 🏭\n\nFormato: HTML simple, sin CSS inline complejo. El template HTML se aplicara despues."
+            },
+            {
+              "role": "user",
+              "content": "=Genera el contenido del newsletter con estos articulos:\n\n{{ $json.articlesForAI }}\n\nTotal articulos: {{ $json.articleCount }}\n\nGenera SOLO el contenido HTML del cuerpo del email (sin <html>, <head>, <body>). Usa <h2>, <h3>, <p>, <a>, <ul>, <li>."
+            }
+          ]
+        }
+      },
+      "id": "openai-generate",
+      "name": "AI Generar Newsletter",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [680, 200],
+      "credentials": {
+        "openAiApi": {
+          "id": "YOUR_OPENAI_CREDENTIAL_ID",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtener contenido generado y datos originales\nconst aiContent = $input.first().json.message?.content || '';\nconst originalData = $('Preparar Datos').first().json;\n\n// Template HTML del email\nconst htmlTemplate = `\n<!DOCTYPE html>\n<html>\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n</head>\n<body style=\"margin: 0; padding: 0; background-color: #f5f5f5; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;\">\n  <div style=\"max-width: 600px; margin: 0 auto; background-color: #ffffff;\">\n    <!-- Header -->\n    <div style=\"background: linear-gradient(135deg, #1a1f36 0%, #2d3748 100%); padding: 30px; text-align: center;\">\n      <h1 style=\"color: #d4a574; margin: 0; font-size: 28px; font-weight: 700;\">ModulorIA</h1>\n      <p style=\"color: #a0aec0; margin: 10px 0 0 0; font-size: 14px;\">Newsletter Semanal | IA + Construccion Modular</p>\n    </div>\n    \n    <!-- Content -->\n    <div style=\"padding: 30px; color: #2d3748; line-height: 1.6;\">\n      ${aiContent}\n    </div>\n    \n    <!-- CTA -->\n    <div style=\"padding: 20px 30px; background-color: #f7fafc; text-align: center;\">\n      <p style=\"margin: 0 0 15px 0; color: #4a5568;\">¿Quieres automatizar procesos en tu constructora?</p>\n      <a href=\"https://moduloria.com/auditoria\" style=\"display: inline-block; background-color: #d4a574; color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: 600;\">Agendar Diagnostico Gratuito</a>\n    </div>\n    \n    <!-- Footer -->\n    <div style=\"padding: 20px 30px; background-color: #1a1f36; text-align: center;\">\n      <p style=\"color: #a0aec0; margin: 0; font-size: 12px;\">ModulorIA - Automatizacion con IA para Construccion Modular</p>\n      <p style=\"color: #718096; margin: 10px 0 0 0; font-size: 11px;\">Recibes este email porque te suscribiste en moduloria.com</p>\n      <p style=\"color: #718096; margin: 5px 0 0 0; font-size: 11px;\"><a href=\"https://moduloria.com\" style=\"color: #d4a574;\">moduloria.com</a></p>\n    </div>\n  </div>\n</body>\n</html>\n`;\n\n// Crear items para cada suscriptor\nreturn originalData.subscribers.map(subscriber => ({\n  json: {\n    to: subscriber.email,\n    nombre: subscriber.nombre,\n    htmlContent: htmlTemplate,\n    subject: `🏗️ Newsletter ModulorIA - Semana ${new Date().toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit' })}`,\n    articleIds: originalData.articleIds\n  }\n}));"
+      },
+      "id": "code-template",
+      "name": "Aplicar Template",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [900, 200]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.resend.com/emails",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"from\": \"ModulorIA <newsletter@moduloria.com>\",\n  \"to\": [\"{{ $json.to }}\"],\n  \"subject\": \"{{ $json.subject }}\",\n  \"html\": {{ JSON.stringify($json.htmlContent) }}\n}",
+        "options": {}
+      },
+      "id": "resend-send",
+      "name": "Enviar con Resend",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1120, 200],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "YOUR_RESEND_CREDENTIAL_ID",
+          "name": "Resend API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Marcar articulos como usados\nconst firstItem = $('Aplicar Template').first().json;\nconst articleIds = firstItem.articleIds || [];\n\nreturn articleIds.map(id => ({\n  json: { pageId: id }\n}));"
+      },
+      "id": "code-get-ids",
+      "name": "Obtener IDs",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1340, 100]
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "update",
+        "pageId": {
+          "__rl": true,
+          "value": "={{ $json.pageId }}",
+          "mode": "id"
+        },
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Usado|checkbox",
+              "checkboxValue": true
+            }
+          ]
+        }
+      },
+      "id": "notion-mark-used",
+      "name": "Marcar como Usado",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [1560, 100],
+      "credentials": {
+        "notionApi": {
+          "id": "YOUR_NOTION_CREDENTIAL_ID",
+          "name": "Notion account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Miercoles 9:00 AM": {
+      "main": [
+        [
+          { "node": "Leer Contenido de Notion", "type": "main", "index": 0 },
+          { "node": "Leer Suscriptores", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Leer Contenido de Notion": {
+      "main": [
+        [{ "node": "Preparar Datos", "type": "main", "index": 0 }]
+      ]
+    },
+    "Leer Suscriptores": {
+      "main": [
+        [{ "node": "Preparar Datos", "type": "main", "index": 1 }]
+      ]
+    },
+    "Preparar Datos": {
+      "main": [
+        [{ "node": "AI Generar Newsletter", "type": "main", "index": 0 }]
+      ]
+    },
+    "AI Generar Newsletter": {
+      "main": [
+        [{ "node": "Aplicar Template", "type": "main", "index": 0 }]
+      ]
+    },
+    "Aplicar Template": {
+      "main": [
+        [
+          { "node": "Enviar con Resend", "type": "main", "index": 0 },
+          { "node": "Obtener IDs", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Obtener IDs": {
+      "main": [
+        [{ "node": "Marcar como Usado", "type": "main", "index": 0 }]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [
+    { "name": "ModulorIA" },
+    { "name": "Newsletter" },
+    { "name": "Semanal" }
+  ]
+}
