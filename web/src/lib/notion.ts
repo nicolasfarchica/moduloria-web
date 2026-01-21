@@ -18,6 +18,7 @@ export interface AuditoriaFormData {
 
 export interface NewsletterFormData {
   email: string;
+  nombre?: string;
   source?: string;
 }
 
@@ -154,14 +155,14 @@ export async function createNotionLead(data: AuditoriaFormData) {
 }
 
 /**
- * Creates a newsletter subscription entry in Notion
+ * Creates a newsletter subscription entry in Notion (separate database)
  */
 export async function createNewsletterSubscription(data: NewsletterFormData) {
   try {
-    const databaseId = process.env.NOTION_DATABASE_ID;
+    const databaseId = process.env.NOTION_NEWSLETTER_DB_ID;
 
     if (!databaseId) {
-      throw new Error('NOTION_DATABASE_ID is not configured');
+      throw new Error('NOTION_NEWSLETTER_DB_ID is not configured');
     }
 
     const response = await notion.pages.create({
@@ -169,32 +170,47 @@ export async function createNewsletterSubscription(data: NewsletterFormData) {
         database_id: databaseId,
       },
       properties: {
-        'Name': {
+        // Email (Title field in new database)
+        'Email': {
           title: [
             {
               text: {
-                content: 'Newsletter Subscriber',
+                content: data.email,
               },
             },
           ],
         },
-        'Email': {
-          email: data.email,
-        },
-        'Source': {
-          select: {
-            name: data.source || 'Web - Newsletter',
+        // Nombre (Text) - optional
+        ...(data.nombre && {
+          'Nombre': {
+            rich_text: [
+              {
+                text: {
+                  content: data.nombre,
+                },
+              },
+            ],
           },
-        },
-        'Status': {
-          select: {
-            name: 'Newsletter',
-          },
-        },
-        'Fecha': {
+        }),
+        // Fecha Suscripción (Date)
+        'Fecha Suscripción': {
           date: {
             start: new Date().toISOString(),
           },
+        },
+        // Activo (Checkbox) - default true
+        'Activo': {
+          checkbox: true,
+        },
+        // Source (Text)
+        'Source': {
+          rich_text: [
+            {
+              text: {
+                content: data.source || 'Web - Newsletter',
+              },
+            },
+          ],
         },
       },
     });

@@ -1,0 +1,180 @@
+{
+  "name": "Newsletter Diario AI - ModulorIA",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 24,
+              "triggerAtHour": 12
+            }
+          ]
+        }
+      },
+      "id": "schedule-trigger",
+      "name": "Diario 12:00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [0, 0]
+    },
+    {
+      "parameters": {
+        "url": "https://techcrunch.com/category/artificial-intelligence/feed/"
+      },
+      "id": "rss-techcrunch",
+      "name": "TechCrunch AI",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1,
+      "position": [220, -100]
+    },
+    {
+      "parameters": {
+        "url": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"
+      },
+      "id": "rss-verge",
+      "name": "The Verge AI",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1,
+      "position": [220, 100]
+    },
+    {
+      "parameters": {
+        "url": "https://feeds.arstechnica.com/arstechnica/technology-lab"
+      },
+      "id": "rss-ars",
+      "name": "Ars Technica",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1,
+      "position": [220, 300]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "merge-feeds",
+      "name": "Combinar Feeds",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [440, 100]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtener todos los items de los feeds\nconst allItems = $input.all();\n\n// Extraer y formatear las noticias (últimas 24h)\nconst now = new Date();\nconst yesterday = new Date(now.getTime() - 24 * 60 * 60 * 1000);\n\nconst news = allItems\n  .map(item => ({\n    title: item.json.title || 'Sin título',\n    link: item.json.link || item.json.guid || '',\n    description: (item.json.contentSnippet || item.json.description || '').substring(0, 300),\n    pubDate: item.json.pubDate || item.json.isoDate || '',\n    source: item.json.creator || 'Fuente desconocida'\n  }))\n  .filter(item => {\n    if (!item.pubDate) return true;\n    const pubDate = new Date(item.pubDate);\n    return pubDate >= yesterday;\n  })\n  .slice(0, 10); // Máximo 10 noticias\n\n// Crear texto para el prompt de AI\nconst newsText = news.map((n, i) => \n  `${i + 1}. **${n.title}**\\n   ${n.description}...\\n   Fuente: ${n.link}`\n).join('\\n\\n');\n\nreturn [{\n  json: {\n    newsText,\n    newsCount: news.length,\n    news\n  }\n}];"
+      },
+      "id": "code-format",
+      "name": "Formatear Noticias",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [660, 100]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "options": {
+          "temperature": 0.7
+        },
+        "messages": {
+          "values": [
+            {
+              "role": "system",
+              "content": "Eres un experto en inteligencia artificial que crea newsletters ejecutivos en español. Tu trabajo es resumir las noticias más relevantes de AI de forma clara, concisa y útil para un profesional de tecnología.\n\nFormato del newsletter:\n1. Usa emojis relevantes para cada sección\n2. Máximo 3-4 oraciones por noticia\n3. Destaca por qué es importante cada noticia\n4. Incluye el link original\n5. Al final, añade una sección \"🎯 Lo más importante hoy\" con 1-2 frases"
+            },
+            {
+              "role": "user",
+              "content": "=Crea el newsletter de hoy con estas noticias de AI:\n\n{{ $json.newsText }}\n\n---\nGenera un newsletter profesional en español con las noticias más relevantes. Incluye los links originales."
+            }
+          ]
+        }
+      },
+      "id": "openai-summary",
+      "name": "AI Resumen",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [880, 100],
+      "credentials": {
+        "openAiApi": {
+          "id": "YOUR_OPENAI_CREDENTIAL_ID",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $env.MY_EMAIL || 'tu-email@ejemplo.com' }}",
+        "subject": "=🤖 Newsletter AI - {{ $now.format('dd/MM/yyyy') }}",
+        "emailType": "html",
+        "message": "=<div style=\"font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;\">\n  <div style=\"background: linear-gradient(135deg, #1a1f36 0%, #2d3748 100%); padding: 30px; border-radius: 10px 10px 0 0;\">\n    <h1 style=\"color: #d4a574; margin: 0; font-size: 24px;\">🤖 Newsletter Diario de AI</h1>\n    <p style=\"color: #a0aec0; margin: 10px 0 0 0;\">{{ $now.format('dddd, dd MMMM yyyy') }}</p>\n  </div>\n  \n  <div style=\"background: #ffffff; padding: 30px; border: 1px solid #e2e8f0; border-top: none;\">\n    <div style=\"white-space: pre-wrap; line-height: 1.8; color: #2d3748;\">\n{{ $json.message.content.replace(/\\n/g, '<br>').replace(/\\*\\*(.*?)\\*\\*/g, '<strong>$1</strong>') }}\n    </div>\n  </div>\n  \n  <div style=\"background: #f7fafc; padding: 20px; border-radius: 0 0 10px 10px; border: 1px solid #e2e8f0; border-top: none; text-align: center;\">\n    <p style=\"color: #718096; margin: 0; font-size: 12px;\">Generado automáticamente por ModulorIA</p>\n    <p style=\"color: #a0aec0; margin: 5px 0 0 0; font-size: 11px;\">{{ $json.newsCount }} fuentes analizadas</p>\n  </div>\n</div>",
+        "options": {}
+      },
+      "id": "gmail-send",
+      "name": "Enviar Email",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [1100, 100],
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "YOUR_GMAIL_CREDENTIAL_ID",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Diario 12:00": {
+      "main": [
+        [
+          { "node": "TechCrunch AI", "type": "main", "index": 0 },
+          { "node": "The Verge AI", "type": "main", "index": 0 },
+          { "node": "Ars Technica", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "TechCrunch AI": {
+      "main": [
+        [{ "node": "Combinar Feeds", "type": "main", "index": 0 }]
+      ]
+    },
+    "The Verge AI": {
+      "main": [
+        [{ "node": "Combinar Feeds", "type": "main", "index": 1 }]
+      ]
+    },
+    "Ars Technica": {
+      "main": [
+        [{ "node": "Combinar Feeds", "type": "main", "index": 2 }]
+      ]
+    },
+    "Combinar Feeds": {
+      "main": [
+        [{ "node": "Formatear Noticias", "type": "main", "index": 0 }]
+      ]
+    },
+    "Formatear Noticias": {
+      "main": [
+        [{ "node": "AI Resumen", "type": "main", "index": 0 }]
+      ]
+    },
+    "AI Resumen": {
+      "main": [
+        [{ "node": "Enviar Email", "type": "main", "index": 0 }]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [
+    {
+      "name": "ModulorIA",
+      "id": "1"
+    },
+    {
+      "name": "Newsletter",
+      "id": "2"
+    }
+  ]
+}

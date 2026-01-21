@@ -65,6 +65,7 @@ export async function POST(request: NextRequest) {
     // Create subscription in Notion
     const result = await createNewsletterSubscription({
       email,
+      nombre: nombre || undefined,
       source: 'Web - Newsletter',
     });
 
