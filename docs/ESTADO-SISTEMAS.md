@@ -1,7 +1,7 @@
 # ModulorIA - Estado de Sistemas
 
 > Resumen ejecutivo de todos los sistemas implementados y pendientes
-> Ultima actualizacion: 2026-01-22 (Sesion PM - Workflow 2 completado)
+> Ultima actualizacion: 2026-01-22 (Sesion PM - Sistema Redes Sociales documentado)
 
 ---
 
@@ -13,9 +13,11 @@
 | APIs | 2 | 0 | 2 |
 | Integraciones | 4 | 0 | 4 |
 | Automatizaciones N8N | 2 | 0 | 2 |
-| **TOTAL** | **13** | **0** | **13** |
+| Redes Sociales | 0 | 1 | 1 |
+| **TOTAL** | **13** | **1** | **14** |
 
 > **SISTEMA NEWSLETTER 100% OPERATIVO** - Todos los componentes funcionando
+> **SISTEMA REDES SOCIALES** - Documentado, pendiente implementacion (23 enero)
 
 ---
 
@@ -59,7 +61,32 @@
 
 ## Sistemas PENDIENTES
 
-> **No hay sistemas pendientes.** Todos los componentes estan operativos.
+### Sistema de Redes Sociales
+
+**Estado:** Documentado - Pendiente implementacion
+
+| Componente | Estado | Fecha Estimada |
+|------------|--------|----------------|
+| Pago Metricool Plan Start | Pendiente | 23 enero 2026 |
+| Configurar cuenta Metricool | Pendiente | 24-26 enero |
+| Conectar LinkedIn personal | Pendiente | 24-26 enero |
+| Crear templates Gamma | Pendiente | Semana siguiente |
+| Primera sesion batching | Pendiente | Semana siguiente |
+
+**Documentacion disponible:**
+- `docs/estrategia/SISTEMA-REDES-SOCIALES.md` - Plan completo
+- `docs/estrategia/pilares-contenido.md` - Pilares de contenido
+- `docs/templates/carrusel-*.md` - 4 templates de carrusel
+- `docs/workflows/sesion-batching-contenido.md` - Checklist batching
+- `docs/contenido-linkedin/calendario-tipo.md` - Calendario tipo
+
+**Stack confirmado:**
+- Metricool Plan Start (~13 EUR/mes)
+- Gamma (carruseles)
+- FreePik (imagenes)
+- Claude (ideacion)
+
+**Filosofia:** "Crear 1 vez, distribuir 4 veces" - 4 horas cada 2 semanas
 
 ---
 
@@ -211,15 +238,26 @@ Marca articulos como usados (HTTP Request a Notion)
 | 2026-01-21 | Sistema Newsletter (Web) | `docs/SESION-2026-01-21-newsletter.md` |
 | 2026-01-22 AM | Workflows N8N (Workflow 1) | `docs/SESION-2026-01-22-n8n-workflows.md` |
 | 2026-01-22 PM | Workflow 2 completado | `docs/SESION-2026-01-22-n8n-workflows.md` |
+| 2026-01-22 PM | Sistema Redes Sociales | `docs/SESION-2026-01-22-redes-sociales.md` |
 
 ---
 
-## Proximas Tareas (Mantenimiento)
+## Proximas Tareas
 
-1. **Monitorear** ejecucion automatica del miercoles 9:00 AM
-2. **Verificar** que Workflow 1 recolecta contenido diariamente
-3. **Revisar** metricas de apertura de emails en Resend
-4. **Opcional**: Agregar mas fuentes RSS relevantes
+### Inmediatas (23-26 enero)
+1. **Pagar** Metricool Plan Start (23 enero)
+2. **Configurar** cuenta Metricool y conectar LinkedIn
+3. **Monitorear** ejecucion newsletter miercoles 9:00 AM
+
+### Esta semana
+4. **Verificar** que Workflow 1 recolecta contenido diariamente
+5. **Decidir** si crear pagina LinkedIn empresa o solo personal
+6. **Revisar** metricas de apertura de emails en Resend
+
+### Semana siguiente
+7. **Crear** templates de carrusel en Gamma
+8. **Realizar** primera sesion de batching de contenido
+9. **Programar** primeras 2 semanas de contenido en Metricool
 
 ---
 

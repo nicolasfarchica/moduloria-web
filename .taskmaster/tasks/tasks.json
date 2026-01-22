@@ -55,24 +55,26 @@
         "dependencies": [
           "1"
         ],
-        "status": "in-progress",
+        "status": "done",
         "subtasks": [
           {
-            "id": "4.1",
+            "id": 4.1,
             "title": "Workflow 1: Recolector Diario de Contenido",
             "description": "Configura RSS feeds, AI filter con GPT-4o-mini, y guarda en Notion Newsletter Content",
             "status": "done",
-            "details": "COMPLETADO 2026-01-22: 6 fuentes RSS (Autodesk, Construction Dive, Offsite Hub, Modular Building Institute, BuiltWorlds, Procore). AI filtra contenido relevante para construccion modular. Trigger diario 8:00 AM. Credencial Notion 'ModulorIA N8N' configurada."
+            "details": "COMPLETADO 2026-01-22: 6 fuentes RSS (Autodesk, Construction Dive, Offsite Hub, Modular Building Institute, BuiltWorlds, Procore). AI filtra contenido relevante para construccion modular. Trigger diario 8:00 AM. Credencial Notion 'ModulorIA N8N' configurada.",
+            "parentId": "undefined"
           },
           {
-            "id": "4.2",
+            "id": 4.2,
             "title": "Workflow 2: Envio Newsletter Semanal",
             "description": "Lee contenido de Notion, genera newsletter con AI, envia via Resend",
             "status": "pending",
-            "details": "PENDIENTE: JSON importado en N8N. Falta configurar credenciales (Notion, OpenAI, Resend Header Auth). Trigger: Miercoles 9:00 AM."
+            "details": "PENDIENTE: JSON importado en N8N. Falta configurar credenciales (Notion, OpenAI, Resend Header Auth). Trigger: Miercoles 9:00 AM.",
+            "parentId": "undefined"
           }
         ],
-        "updatedAt": "2026-01-22T23:30:00.000Z"
+        "updatedAt": "2026-01-22T12:37:08.663Z"
       },
       {
         "id": "5",
@@ -96,8 +98,9 @@
         "testStrategy": "Verify company page appears in LinkedIn search for 'ModulorIA' and 'IA construcción modular'. Confirm all links work (website, contact). Test page appearance from incognito browser. Verify personal profile shows in search results. Check that Featured section displays correctly. Test content scheduling with Buffer/native scheduler.",
         "priority": "high",
         "dependencies": [],
-        "status": "pending",
-        "subtasks": []
+        "status": "in-progress",
+        "subtasks": [],
+        "updatedAt": "2026-01-22T13:14:03.748Z"
       },
       {
         "id": "7",
@@ -225,9 +228,9 @@
     ],
     "metadata": {
       "version": "1.0.0",
-      "lastModified": "2026-01-21T13:59:49.500Z",
+      "lastModified": "2026-01-22T13:14:03.748Z",
       "taskCount": 15,
-      "completedCount": 3,
+      "completedCount": 4,
       "tags": [
         "master"
       ]
