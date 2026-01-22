@@ -1,7 +1,7 @@
 # ModulorIA - Estado de Sistemas
 
 > Resumen ejecutivo de todos los sistemas implementados y pendientes
-> Ultima actualizacion: 2026-01-22
+> Ultima actualizacion: 2026-01-22 (Sesion PM - Workflow 2 completado)
 
 ---
 
@@ -12,8 +12,10 @@
 | Web/Frontend | 5 | 0 | 5 |
 | APIs | 2 | 0 | 2 |
 | Integraciones | 4 | 0 | 4 |
-| Automatizaciones N8N | 1 | 1 | 2 |
-| **TOTAL** | **12** | **1** | **13** |
+| Automatizaciones N8N | 2 | 0 | 2 |
+| **TOTAL** | **13** | **0** | **13** |
+
+> **SISTEMA NEWSLETTER 100% OPERATIVO** - Todos los componentes funcionando
 
 ---
 
@@ -51,30 +53,13 @@
 | Workflow | Trigger | Estado |
 |----------|---------|--------|
 | Recolector Diario de Contenido | Diario 8:00 AM | ACTIVO |
+| Envio Newsletter Semanal | Miercoles 9:00 AM | ACTIVO |
 
 ---
 
 ## Sistemas PENDIENTES
 
-### 1. Workflow N8N: Envio Newsletter Semanal
-| Componente | Estado |
-|------------|--------|
-| Archivo JSON importado | Listo |
-| Credencial Notion | PENDIENTE |
-| Credencial OpenAI | PENDIENTE |
-| Credencial Resend (Header Auth) | PENDIENTE |
-| Activacion del workflow | PENDIENTE |
-
-**Pasos para completar:**
-1. Abrir workflow "ModulorIA - Envio Newsletter Semanal" en N8N
-2. Configurar nodos Notion con credencial "ModulorIA N8N"
-3. Configurar nodo OpenAI con credencial existente
-4. Crear credencial Header Auth para Resend:
-   - Name: `Resend API Key`
-   - Header Name: `Authorization`
-   - Header Value: `Bearer [RESEND_API_KEY]`
-5. Probar workflow manualmente
-6. Activar workflow
+> **No hay sistemas pendientes.** Todos los componentes estan operativos.
 
 ---
 
@@ -104,19 +89,31 @@
                                                     │
                                                     └──> [Email Bienvenida]
 
-                    ENVIO (Miercoles 9:00 AM) - PENDIENTE
-                    =====================================
+                    ENVIO (Miercoles 9:00 AM) - ACTIVO
+                    ====================================
 
-[N8N Workflow 2] ──> [Lee Notion Content + Suscriptores]
+[N8N Workflow 2] ──> [Leer Contenido] + [Leer Suscriptores]
+        │                    │
+        v                    v
+   [Merge: Append] <─────────┘
         │
         v
-   [AI Genera Newsletter]
+   [Preparar Datos] ──> Separa articulos y suscriptores
         │
         v
-   [Resend API] ──> [Email a cada suscriptor]
+   [AI Genera Newsletter] ──> GPT-4o genera contenido personalizado
         │
         v
-   [Marca articulos como "Usado"]
+   [Aplicar Template HTML]
+        │
+        v
+   [Enviar via Resend] ──> Loop por cada suscriptor
+        │
+        v
+   [Obtener IDs] ──> Extrae IDs de articulos
+        │
+        v
+   [Marcar como Usado] ──> HTTP Request a Notion API
 ```
 
 ---
@@ -137,7 +134,8 @@
 |------------|------|-------------|
 | ModulorIA N8N | Notion API | SI |
 | OpenAI | OpenAI API | SI |
-| Resend API Key | Header Auth | NO (pendiente Workflow 2) |
+| Resend API Key | Header Auth | SI |
+| Notion API Key | Header Auth | SI (para HTTP Request) |
 
 ---
 
@@ -182,19 +180,25 @@ AI filtra por relevancia (construccion modular)
 Guarda max 4 articulos en Notion (Newsletter Content)
 ```
 
-### Flujo 4: Envio Newsletter (PENDIENTE)
+### Flujo 4: Envio Newsletter (ACTIVO)
 ```
 Trigger miercoles 9:00 AM
     ↓
-Lee articulos no usados de Notion
+Lee articulos no usados de Notion (Usado = false)
     ↓
-Lee suscriptores activos
+Lee suscriptores activos (Activo = true)
     ↓
-AI genera contenido personalizado
+Merge: Append (mantiene items separados)
+    ↓
+Preparar Datos (separa por tipo de item)
+    ↓
+AI genera contenido personalizado (GPT-4o)
+    ↓
+Aplica template HTML con branding ModulorIA
     ↓
 Envia email a cada suscriptor via Resend
     ↓
-Marca articulos como usados
+Marca articulos como usados (HTTP Request a Notion)
 ```
 
 ---
@@ -205,16 +209,17 @@ Marca articulos como usados
 |-------|------|---------------|
 | 2026-01-19 | Setup inicial | `docs/SESION-2026-01-19.md` |
 | 2026-01-21 | Sistema Newsletter (Web) | `docs/SESION-2026-01-21-newsletter.md` |
-| 2026-01-22 | Workflows N8N | `docs/SESION-2026-01-22-n8n-workflows.md` |
+| 2026-01-22 AM | Workflows N8N (Workflow 1) | `docs/SESION-2026-01-22-n8n-workflows.md` |
+| 2026-01-22 PM | Workflow 2 completado | `docs/SESION-2026-01-22-n8n-workflows.md` |
 
 ---
 
-## Proximas Tareas Prioritarias
+## Proximas Tareas (Mantenimiento)
 
-1. **URGENTE**: Configurar Workflow 2 (Newsletter Semanal)
-2. Verificar que Workflow 1 recolecta contenido correctamente
-3. Probar envio de newsletter completo
-4. Monitorear primeras ejecuciones automaticas
+1. **Monitorear** ejecucion automatica del miercoles 9:00 AM
+2. **Verificar** que Workflow 1 recolecta contenido diariamente
+3. **Revisar** metricas de apertura de emails en Resend
+4. **Opcional**: Agregar mas fuentes RSS relevantes
 
 ---
 

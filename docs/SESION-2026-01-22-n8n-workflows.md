@@ -2,7 +2,12 @@
 
 ## Resumen Ejecutivo
 
-Se configuro exitosamente el **Workflow 1: Recolector Diario de Contenido** en N8N. El workflow esta activo y funcionando, recolectando noticias relevantes para construccion modular y guardandolas en Notion.
+Se configuraron exitosamente **ambos workflows de N8N**:
+
+1. **Workflow 1: Recolector Diario de Contenido** - Configurado en la sesion AM
+2. **Workflow 2: Envio Newsletter Semanal** - Configurado en la sesion PM
+
+**El sistema de newsletter esta 100% operativo.**
 
 ---
 
@@ -177,27 +182,19 @@ Si ninguna es relevante para construccion modular, devuelve: []
 
 ---
 
-## Workflow 2: Envio Newsletter Semanal - PENDIENTE CONFIGURAR
+## Workflow 2: Envio Newsletter Semanal - COMPLETADO
 
-### Estado: IMPORTADO, PENDIENTE CONFIGURAR CREDENCIALES
+### Estado: ACTIVO Y FUNCIONANDO
 
-### Lo que falta hacer:
+### Configuracion Final
 
-1. **Nodos de Notion** (2 nodos):
-   - Seleccionar credencial "ModulorIA N8N" en:
-     - "Leer Contenido de Notion"
-     - "Leer Suscriptores"
-
-2. **Nodo OpenAI**:
-   - Seleccionar credencial de OpenAI existente
-
-3. **Nodo "Enviar con Resend"** (HTTP Request):
-   - Crear nueva credencial Header Auth:
-     - Name: `Resend API Key`
-     - Header Name: `Authorization`
-     - Header Value: `Bearer [RESEND_API_KEY]`
-
-4. **Activar el workflow**
+| Componente | Detalle |
+|------------|---------|
+| **Trigger** | Miercoles a las 9:00 AM |
+| **Credencial Notion** | ModulorIA N8N |
+| **Credencial OpenAI** | Configurada (GPT-4o) |
+| **Credencial Resend** | Header Auth con Bearer token |
+| **Credencial Notion HTTP** | Header Auth para marcar articulos |
 
 ### Flujo del Workflow 2
 
@@ -205,27 +202,152 @@ Si ninguna es relevante para construccion modular, devuelve: []
 [Miercoles 9:00 AM]
     |
     v
-[Leer contenido no usado] + [Leer suscriptores activos]
-    |
-    v
-[Preparar datos para AI]
-    |
-    v
-[AI genera contenido del newsletter]
-    |
-    v
-[Aplicar template HTML]
-    |
-    v
-[Enviar email via Resend] --> Loop por cada suscriptor
-    |
-    v
-[Marcar articulos como "Usado" en Notion]
+[Leer Contenido de Notion] ──────┐
+    (Filter: Usado = false)      │
+                                 v
+[Leer Suscriptores] ─────────> [Merge: APPEND]
+    (Filter: Activo = true)      │
+                                 v
+                        [Preparar Datos]
+                          (Separa items por tipo)
+                                 │
+                                 v
+                        [AI Generar Newsletter]
+                          (GPT-4o crea contenido)
+                                 │
+                                 v
+                        [Aplicar Template]
+                          (HTML con branding)
+                                 │
+                                 v
+                        [Enviar con Resend]
+                          (Loop por suscriptor)
+                                 │
+                                 v
+                        [Obtener IDs]
+                          (Extrae articleIds)
+                                 │
+                                 v
+                        [Marcar como Usado]
+                          (HTTP Request a Notion API)
 ```
+
+### Codigo Clave - Nodo "Preparar Datos"
+
+```javascript
+// Obtener datos del Merge (mode: Append)
+const allData = $input.all();
+
+// Separar por la base de datos de origen
+const contentItems = [];
+const subscriberItems = [];
+
+for (const item of allData) {
+  const data = item.json;
+  const parentDbId = data.parent?.database_id?.replace(/-/g, '') || '';
+
+  if (parentDbId === '061483b8b89b48d0beece04cbefb2300') {
+    // Newsletter Content
+    contentItems.push(item);
+  } else if (parentDbId === '1bf2788f3a7f45608f437a9280e0b691') {
+    // Suscriptores
+    subscriberItems.push(item);
+  } else {
+    // Fallback por propiedades
+    if (data.property_usado !== undefined || data.property_url !== undefined) {
+      contentItems.push(item);
+    } else if (data.property_activo !== undefined) {
+      subscriberItems.push(item);
+    }
+  }
+}
+
+if (contentItems.length === 0) {
+  throw new Error('No hay contenido nuevo para el newsletter');
+}
+
+if (subscriberItems.length === 0) {
+  throw new Error('No hay suscriptores activos');
+}
+
+// Formatear articulos
+const articles = contentItems.map(item => {
+  const data = item.json;
+  return {
+    id: data.id,
+    titulo: data.name || data.property_t_tulo || 'Sin titulo',
+    url: data.property_url || '',
+    fuente: data.property_fuente || '',
+    resumen: data.property_resumen_ai || '',
+    categoria: data.property_categor_a || 'Industria'
+  };
+});
+
+// Formatear suscriptores
+const subscribers = subscriberItems.map(item => {
+  const data = item.json;
+  return {
+    email: data.name || '',
+    nombre: data.property_nombre || ''
+  };
+}).filter(s => s.email && s.email.includes('@'));
+
+// Crear texto para AI
+const articlesForAI = articles.map((a, i) =>
+  `${i + 1}. [${a.categoria}] ${a.titulo}\n   ${a.resumen}\n   Link: ${a.url}`
+).join('\n\n');
+
+return [{
+  json: {
+    articlesForAI,
+    articles,
+    subscribers,
+    articleIds: articles.map(a => a.id),
+    subscriberCount: subscribers.length,
+    articleCount: articles.length
+  }
+}];
+```
+
+### Codigo Clave - Nodo "Obtener IDs"
+
+```javascript
+// Obtener IDs de articulos para marcar como usados
+const previousData = $('Preparar Datos').first().json;
+const articleIds = previousData.articleIds || [];
+
+if (articleIds.length === 0) {
+  return [];
+}
+
+return articleIds.map(id => ({
+  json: { pageId: id }
+}));
+```
+
+### Nodo "Marcar como Usado" (HTTP Request)
+
+| Configuracion | Valor |
+|---------------|-------|
+| Method | PATCH |
+| URL | `https://api.notion.com/v1/pages/{{ $json.pageId }}` |
+| Authentication | Header Auth (Notion API Key) |
+| Header | Notion-Version: 2022-06-28 |
+| Body (JSON) | `{"properties": {"Usado": {"checkbox": true}}}` |
+
+### Credencial Notion API Key (Header Auth)
+
+| Campo | Valor |
+|-------|-------|
+| Name | Notion API Key |
+| Header Name | Authorization |
+| Header Value | Bearer [NOTION_API_KEY] |
 
 ---
 
 ## Errores Resueltos Durante la Sesion
+
+### Sesion AM (Workflow 1)
 
 | Error | Causa | Solucion |
 |-------|-------|----------|
@@ -236,32 +358,59 @@ Si ninguna es relevante para construccion modular, devuelve: []
 | "Sin titulo" en Notion | Items de error pasaban | Filtrar `!item.json.error && item.json.title` |
 | Campos con nombres diferentes | AI devuelve title/link vs titulo/url | Aceptar ambos formatos |
 
+### Sesion PM (Workflow 2)
+
+| Error | Causa | Solucion |
+|-------|-------|----------|
+| "Leer Suscriptores hasn't been executed" | Nodos paralelos sin Merge | Agregar nodo Merge entre reads y Preparar Datos |
+| "No hay suscriptores activos" | Merge en modo Combine mezclaba datos | Cambiar Merge a modo **Append** |
+| "Usado is not a property that exists" | pageId era de suscriptor, no de articulo | Corregir flujo de datos con Merge Append |
+| Notion node no encontraba propiedad | Bug del nodo nativo de Notion | Usar HTTP Request con Notion API directamente |
+
+### Error Critico Resuelto: Merge en modo incorrecto
+
+**Problema**: El nodo Merge estaba en modo "Combine" que fusionaba un articulo + un suscriptor en un solo registro mezclado. Esto hacia que:
+- El ID del registro combinado fuera el del suscriptor
+- Al intentar marcar como "Usado", fallaba porque los suscriptores no tienen esa propiedad
+
+**Solucion**: Cambiar el nodo Merge a modo **"Append"** para mantener los items separados:
+- Items 1-N: Articulos de Newsletter Content
+- Items N+1-M: Suscriptores
+
 ---
 
 ## Credenciales Creadas en N8N
 
-| Credencial | Tipo | Uso |
-|------------|------|-----|
-| ModulorIA N8N | Notion API | Acceso a bases de datos Newsletter |
-| OpenAI | OpenAI API | Filtrado y generacion de contenido |
-| Resend API Key | Header Auth | PENDIENTE CREAR para Workflow 2 |
+| Credencial | Tipo | Uso | Estado |
+|------------|------|-----|--------|
+| ModulorIA N8N | Notion API | Leer bases de datos | ACTIVO |
+| OpenAI | OpenAI API | Filtrado y generacion de contenido | ACTIVO |
+| Resend API Key | Header Auth | Enviar emails via HTTP Request | ACTIVO |
+| Notion API Key | Header Auth | Actualizar paginas via HTTP Request | ACTIVO |
 
 ---
 
-## Proximos Pasos (Manana)
+## Verificacion del Sistema
 
-1. [ ] Configurar credenciales en Workflow 2
-2. [ ] Crear credencial Resend Header Auth
-3. [ ] Probar Workflow 2 manualmente
-4. [ ] Activar Workflow 2
-5. [ ] Verificar que Workflow 1 recolecto contenido (revisar Notion)
+### Workflow 1 (Recolector Diario)
+- **Trigger**: Diario 8:00 AM
+- **Verificar**: Notion > Newsletter Content > articulos nuevos
+- **Test manual**: Ejecutar workflow en N8N
+
+### Workflow 2 (Envio Newsletter)
+- **Trigger**: Miercoles 9:00 AM
+- **Verificar**: Email recibido por suscriptores
+- **Verificar**: Articulos marcados como Usado = true en Notion
+- **Test manual**: Ejecutar workflow en N8N
 
 ---
 
-## Verificacion Workflow 1
+## Resumen Final
 
-Para verificar que funciona:
-1. Ir a Notion > Newsletter Content
-2. Verificar si hay articulos nuevos con fecha de hoy
-3. O ejecutar manualmente el workflow en N8N
+| Componente | Estado |
+|------------|--------|
+| Workflow 1: Recolector Diario | ACTIVO |
+| Workflow 2: Envio Newsletter | ACTIVO |
+| Todas las credenciales | CONFIGURADAS |
+| Sistema Newsletter | 100% OPERATIVO |
 
