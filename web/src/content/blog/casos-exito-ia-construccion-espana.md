@@ -434,5 +434,6 @@ Se recomienda empezar con una, validar ROI en 4-6 semanas, y luego escalar. Impl
 ---
 
 **Artículos relacionados**:
+- [IA en Construcción Modular: Guía Completa 2026 para PYMEs](/blog/como-implementar-ia-construccion-modular)
 - [OCR Facturas Construcción: Ahorra €18K/Año con IA](/blog/ocr-facturas-construccion-roi)
 - [Chatbot WhatsApp Construcción: Ahorra 6h/Semana](/blog/chatbot-whatsapp-construccion)

@@ -1,7 +1,7 @@
 # ModulorIA - Estado de Sistemas
 
 > Resumen ejecutivo de todos los sistemas implementados y pendientes
-> Ultima actualizacion: 2026-01-23 (Blog SEO: 3 articulos publicados, tablas fix)
+> Ultima actualizacion: 2026-01-23 (Blog SEO: 5/5 articulos completados, topic cluster cerrado)
 
 ---
 
@@ -13,11 +13,11 @@
 | APIs | 2 | 0 | 2 |
 | Integraciones | 4 | 0 | 4 |
 | Automatizaciones N8N | 2 | 0 | 2 |
-| Blog SEO | 3 | 2 | 5 |
+| Blog SEO | 5 | 0 | 5 |
 | Redes Sociales | 0 | 1 | 1 |
-| **TOTAL** | **16** | **3** | **19** |
+| **TOTAL** | **18** | **1** | **19** |
 
-> **BLOG SEO** - 3/5 articulos publicados, tablas markdown funcionando, internal linking activo
+> **BLOG SEO** - 5/5 articulos escritos, topic cluster completo, internal linking activo
 > **SISTEMA NEWSLETTER 100% OPERATIVO** - Todos los componentes funcionando
 > **SISTEMA REDES SOCIALES** - Documentado, pendiente implementacion
 
@@ -65,8 +65,8 @@
 | OCR Facturas Construccion ROI | ocr-facturas-construccion-roi | 5 | PUBLICADO | 22-ene |
 | 10 Casos Exito IA Construccion | casos-exito-ia-construccion-espana | 5 | PUBLICADO | 23-ene |
 | Chatbot WhatsApp Construccion | chatbot-whatsapp-construccion | 8 | PUBLICADO | 23-ene |
-| IA Construccion Modular (PILLAR) | como-implementar-ia-construccion-modular | 18 | PENDIENTE (reescribir) | - |
-| Reportes Obra con IA de Voz | (nuevo) | 8 | PENDIENTE | - |
+| IA Construccion Modular (PILLAR) | como-implementar-ia-construccion-modular | 18 | PUBLICADO | 27-ene |
+| Reportes Obra con IA de Voz | reportes-voz-construccion-ia | 8 | PUBLICADO | 27-ene |
 
 **Infraestructura blog:**
 - Directorio: `src/content/blog/` (markdown con frontmatter)

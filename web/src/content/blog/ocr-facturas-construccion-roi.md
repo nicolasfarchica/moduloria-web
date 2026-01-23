@@ -514,4 +514,4 @@ Si quieres reducir 15 minutos a 30 segundos por factura y recuperar 20-30 horas/
 **Artículos relacionados**:
 - [10 Casos de Éxito IA en Construcción España 2026: ROI Real](/blog/casos-exito-ia-construccion-espana)
 - [Chatbot WhatsApp Construcción: Ahorra 6h/Semana](/blog/chatbot-whatsapp-construccion)
-- [Cómo Implementar IA en Construcción Modular: Guía Completa](/blog/como-implementar-ia-construccion-modular)
+- [IA en Construcción Modular: Guía Completa 2026 para PYMEs](/blog/como-implementar-ia-construccion-modular)

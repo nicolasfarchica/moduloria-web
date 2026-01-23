@@ -425,5 +425,6 @@ Para un análisis detallado de tu caso específico, incluyendo cálculo de ROI e
 ---
 
 **Artículos relacionados**:
+- [IA en Construcción Modular: Guía Completa 2026 para PYMEs](/blog/como-implementar-ia-construccion-modular)
 - [OCR Facturas Construcción: Ahorra €18K/Año con IA](/blog/ocr-facturas-construccion-roi)
 - [10 Casos de Éxito IA en Construcción España 2026](/blog/casos-exito-ia-construccion-espana)
