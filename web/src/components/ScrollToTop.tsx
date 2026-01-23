@@ -38,7 +38,7 @@ export default function ScrollToTop() {
           exit={{ opacity: 0, scale: 0.5 }}
           transition={{ duration: 0.2 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-40 bg-accent-copper hover:bg-accent-copper/90 text-white p-4 rounded-full shadow-copper-glow hover:shadow-lg transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-accent-copper focus:ring-offset-2"
+          className="fixed bottom-8 left-8 z-40 bg-accent-copper hover:bg-accent-copper/90 text-white p-3 rounded-full shadow-copper-glow hover:shadow-lg transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-accent-copper focus:ring-offset-2"
           aria-label="Volver arriba"
         >
           <svg

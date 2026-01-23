@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
+import dynamic from "next/dynamic";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+
+const Chatbot = dynamic(() => import("@/components/Chatbot"), { ssr: false });
 
 const inter = Inter({
   subsets: ["latin"],
@@ -76,6 +79,9 @@ export default function RootLayout({
 
         {/* Scroll to Top Button */}
         <ScrollToTop />
+
+        {/* Chatbot */}
+        <Chatbot />
       </body>
     </html>
   );
