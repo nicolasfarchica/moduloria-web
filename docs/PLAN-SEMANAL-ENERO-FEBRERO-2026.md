@@ -6,30 +6,34 @@
 
 ---
 
-## Estado Actual (23 enero 2026)
+## Estado Actual (23 enero 2026 - ACTUALIZADO)
 
 | Area | Progreso | Notas |
 |------|----------|-------|
-| Blog SEO | 3/5 articulos publicados | KD bajos primero, funciona |
+| Blog SEO | **5/5 articulos publicados** | Topic cluster completo, imagenes, styling |
 | Newsletter | 100% operativo | Workflow N8N activo |
 | Redes Sociales | 0% implementado | Documentado, pendiente Metricool |
 | Lead Magnets | 0% | Planificar con articulos existentes |
-| Google Search Console | Pendiente submit | 3 articulos listos para indexar |
+| Google Search Console | **Pendiente submit 5 URLs** | Sitemap activo, robots.txt OK |
+| Dominio | **moduloria.com ACTIVO** | Auto-deploy en git push |
 
 ---
 
-## SEMANA 2: 27 enero - 2 febrero
+## SEMANA 2: 27 enero - 2 febrero (COMPLETADA)
 
 ### Prioridad: Completar Blog SEO
 
-| # | Tarea | Tipo | Tiempo Est. | Dependencia |
-|---|-------|------|-------------|-------------|
-| 2.1 | Escribir Articulo 4: PILLAR "IA Construccion Modular" | Contenido | Sesion larga | Ninguna |
-| 2.2 | Publicar Articulo 4 (commit + deploy) | Deploy | - | 2.1 |
-| 2.3 | Escribir Articulo 5: "Reportes Obra con IA de Voz" | Contenido | Sesion media | Ninguna |
-| 2.4 | Publicar Articulo 5 (commit + deploy) | Deploy | - | 2.3 |
-| 2.5 | Submit articulos 1-3 a Google Search Console | SEO | Rapido | Ninguna |
-| 2.6 | Verificar indexacion despues de 48h | SEO | Rapido | 2.5 |
+| # | Tarea | Tipo | Estado |
+|---|-------|------|--------|
+| 2.1 | Escribir Articulo 4: PILLAR "IA Construccion Modular" (4,400 palabras) | Contenido | HECHO |
+| 2.2 | Publicar Articulo 4 (commit + deploy) | Deploy | HECHO |
+| 2.3 | Escribir Articulo 5: "Reportes Obra con IA de Voz" (2,100 palabras) | Contenido | HECHO |
+| 2.4 | Publicar Articulo 5 (commit + deploy) | Deploy | HECHO |
+| 2.5 | Crear 5 hero images para blog (Canva/NanoBanana) | Visual | HECHO |
+| 2.6 | Optimizar images (JPEG, 1200px, <300KB) | Performance | HECHO |
+| 2.7 | Mejorar CSS blog (headings, spacing, tables, HR) | UX | HECHO |
+| 2.8 | Corregir dominio moduloria.com (domains + alias) | Infra | HECHO |
+| 2.9 | Submit articulos 1-5 a Google Search Console | SEO | PENDIENTE |
 
 ### Detalles Articulo 4 (PILLAR - Reescritura)
 
@@ -63,19 +67,17 @@
 
 ## SEMANA 3: 3 - 9 febrero
 
-### Prioridad: Consolidacion + Inicio Redes
+### Prioridad: Articulo 6 + Inicio Redes
 
 | # | Tarea | Tipo | Tiempo Est. | Dependencia |
 |---|-------|------|-------------|-------------|
-| 3.1 | Actualizar internal links en PILLAR (Art. 4) | SEO | Rapido | Art. 4 publicado |
-| 3.2 | Crear 5 imagenes hero para blog posts | Visual | Sesion Canva | Ninguna |
+| 3.1 | **MARTES 4 FEB: Publicar Articulo 6** (Cotizaciones) | Contenido | Sesion | Ver calendario editorial |
+| 3.2 | Submit 5 URLs pendientes a GSC | SEO | 10 min | Ninguna |
 | 3.3 | Pagar Metricool Plan Start (~13 EUR/mes) | Admin | 5 min | Ninguna |
 | 3.4 | Configurar Metricool + conectar LinkedIn personal | Config | 30 min | 3.3 |
 | 3.5 | Repurposing: Art. 1 (OCR) -> 2 posts LinkedIn | Contenido | 45 min | 3.4 |
 | 3.6 | Repurposing: Art. 2 (Casos) -> 2 posts LinkedIn | Contenido | 45 min | 3.4 |
-| 3.7 | Repurposing: Art. 3 (Chatbot) -> 2 posts LinkedIn | Contenido | 45 min | 3.4 |
-| 3.8 | Programar 6 posts en Metricool (2 semanas) | Programacion | 30 min | 3.5-3.7 |
-| 3.9 | Submit articulos 4-5 a GSC | SEO | 10 min | Art. 4-5 publicados |
+| 3.7 | Programar 4-6 posts en Metricool | Programacion | 30 min | 3.5-3.6 |
 
 ### Imagenes Blog (Tarea 3.2)
 
@@ -103,15 +105,15 @@ Formatos sugeridos:
 
 ## SEMANA 4: 10 - 16 febrero
 
-### Prioridad: Metricas + Lead Magnet + LinkedIn
+### Prioridad: Articulo 7 + Metricas + Lead Magnet
 
 | # | Tarea | Tipo | Tiempo Est. | Dependencia |
 |---|-------|------|-------------|-------------|
-| 4.1 | Revisar metricas GSC (impresiones, clics, posiciones) | Analytics | 20 min | Semana 2-3 |
-| 4.2 | Crear lead magnet PDF: "Checklist OCR Facturas" | Contenido | 1.5h | Art. 1 existente |
-| 4.3 | Implementar descarga lead magnet en web | Dev | Sesion | 4.2 |
-| 4.4 | Primera sesion batching LinkedIn (6-8 posts) | Contenido | 4h | Metricool activo |
-| 4.5 | Planificar articulos 6-10 (siguientes keywords) | Estrategia | 1h | Metricas GSC |
+| 4.1 | **MARTES 11 FEB: Publicar Articulo 7** (WhatsApp Business) | Contenido | Sesion | Ver calendario editorial |
+| 4.2 | Revisar metricas GSC (impresiones, clics, posiciones) | Analytics | 20 min | Semana 2-3 |
+| 4.3 | Crear lead magnet PDF: "Checklist OCR Facturas" | Contenido | 1.5h | Art. 1 existente |
+| 4.4 | Implementar descarga lead magnet en web | Dev | Sesion | 4.3 |
+| 4.5 | Sesion batching LinkedIn (6-8 posts) | Contenido | 4h | Metricool activo |
 | 4.6 | Verificar newsletter incluye links a blog | Revision | 15 min | Ninguna |
 
 ### Lead Magnet: Checklist OCR Facturas
@@ -139,16 +141,16 @@ Resultado: 6-8 posts programados para 2 semanas
 
 ## SEMANA 5: 17 - 23 febrero
 
-### Prioridad: Expansion SEO + Optimizacion
+### Prioridad: Articulo 8 + Optimizacion SEO
 
 | # | Tarea | Tipo | Tiempo Est. | Dependencia |
 |---|-------|------|-------------|-------------|
-| 5.1 | Escribir Articulo 6 (siguiente keyword plan) | Contenido | Sesion | Plan articulos 6-10 |
+| 5.1 | **MARTES 18 FEB: Publicar Articulo 8** (Digitalizacion Espana) | Contenido | Sesion | Ver calendario editorial |
 | 5.2 | Optimizar articulos existentes segun datos GSC | SEO | 1h | Datos GSC semana 4 |
 | 5.3 | Revisar analytics LinkedIn (engagement rate) | Analytics | 20 min | Posts semana 3-4 |
 | 5.4 | Crear 2do lead magnet: "ROI Calculator IA" | Contenido | 2h | Ninguna |
-| 5.5 | A/B test CTAs en articulos blog | Dev | 1h | Trafico existente |
-| 5.6 | Evaluar resultados newsletter (open rate, clicks) | Analytics | 30 min | N8N data |
+| 5.5 | Evaluar resultados newsletter (open rate, clicks) | Analytics | 30 min | N8N data |
+| 5.6 | Actualizar PILLAR con links a articulos 6-8 | SEO | 15 min | Art. 6-8 publicados |
 
 ---
 
