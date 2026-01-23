@@ -173,7 +173,12 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
               prose-code:text-accent-copper prose-code:bg-slate-800/50 prose-code:px-2 prose-code:py-1 prose-code:rounded
               prose-pre:bg-slate-800/50 prose-pre:border prose-pre:border-white/10
               prose-blockquote:border-l-accent-copper prose-blockquote:text-slate-300
-              prose-img:rounded-xl prose-img:shadow-lg"
+              prose-img:rounded-xl prose-img:shadow-lg
+              prose-table:border-collapse prose-table:w-full prose-table:overflow-x-auto
+              prose-thead:border-b prose-thead:border-white/20
+              prose-th:text-white prose-th:text-left prose-th:p-3 prose-th:text-sm prose-th:font-semibold
+              prose-td:p-3 prose-td:text-sm prose-td:border-b prose-td:border-white/5
+              prose-tr:border-b prose-tr:border-white/5"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
 
