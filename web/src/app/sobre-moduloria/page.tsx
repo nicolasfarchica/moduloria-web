@@ -4,6 +4,9 @@ export const metadata = {
   title: 'Sobre ModulorIA - Especialistas en IA para Construcción Modular',
   description: 'Somos especialistas en implementar IA práctica para empresas de construcción modular. No somos una consultora genérica. 100% enfocados en el sector construcción. ROI garantizado.',
   keywords: 'sobre ModulorIA, quiénes somos, especialistas IA construcción modular, consultoría IA construcción, automatización construcción especializada',
+  alternates: {
+    canonical: 'https://moduloria.com/sobre-moduloria',
+  },
   openGraph: {
     title: 'Sobre ModulorIA - Especialistas en IA para Construcción',
     description: 'Consultoría 100% enfocada en implementar IA práctica en empresas de construcción modular e industrializada.',

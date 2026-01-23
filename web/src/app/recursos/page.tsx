@@ -8,6 +8,9 @@ export const metadata = {
   title: 'Recursos: Guias y Casos de Exito IA en Construccion Modular | ModulorIA',
   description: 'Articulos practicos sobre automatizacion con IA en construccion modular. Casos de exito reales, ROI calculado, guias paso a paso para PYMEs constructoras.',
   keywords: 'recursos ia construccion, guias automatizacion construccion modular, casos exito ia construccion, roi ia construccion pymes',
+  alternates: {
+    canonical: 'https://moduloria.com/recursos',
+  },
   openGraph: {
     title: 'Recursos sobre IA en Construccion Modular | ModulorIA',
     description: 'Articulos, guias y casos de exito para implementar automatizacion con IA en tu empresa de construccion modular.',

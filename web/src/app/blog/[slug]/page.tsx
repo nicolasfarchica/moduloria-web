@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { getAllPostSlugs, getPostBySlug } from '@/lib/blog';
 
@@ -20,21 +21,27 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     };
   }
 
+  const baseUrl = 'https://moduloria.com';
+  const imageUrl = post.image
+    ? post.image.startsWith('http') ? post.image : `${baseUrl}${post.image}`
+    : `${baseUrl}/og-image.jpg`;
+
   return {
     title: `${post.title} | ModulorIA Blog`,
     description: post.excerpt,
     keywords: post.tags.join(', '),
     alternates: {
-      canonical: `https://moduloria.com/blog/${params.slug}`,
+      canonical: `${baseUrl}/blog/${params.slug}`,
     },
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      url: `https://moduloria.com/blog/${params.slug}`,
+      url: `${baseUrl}/blog/${params.slug}`,
       siteName: 'ModulorIA',
-      images: post.image ? [{ url: post.image }] : [],
+      images: [{ url: imageUrl, width: 1200, height: 630, alt: post.title }],
       type: 'article',
       publishedTime: post.date,
+      modifiedTime: post.date,
       authors: [post.author],
       tags: post.tags,
     },
@@ -42,7 +49,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       card: 'summary_large_image',
       title: post.title,
       description: post.excerpt,
-      images: post.image ? [post.image] : [],
+      images: [imageUrl],
     },
   };
 }
@@ -54,27 +61,78 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
     notFound();
   }
 
-  // Article structured data for SEO
+  const baseUrl = 'https://moduloria.com';
+  const imageUrl = post.image
+    ? post.image.startsWith('http') ? post.image : `${baseUrl}${post.image}`
+    : undefined;
+
+  // Article structured data (improved)
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: post.title,
     description: post.excerpt,
-    image: post.image,
+    image: imageUrl,
     datePublished: post.date,
+    dateModified: post.date,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${baseUrl}/blog/${params.slug}`,
+    },
     author: {
       '@type': 'Organization',
       name: post.author,
+      url: baseUrl,
     },
     publisher: {
       '@type': 'Organization',
       name: 'ModulorIA',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://moduloria.com/images/moduloria-logo-v2.png',
+        url: `${baseUrl}/images/moduloria-logo-v2.png`,
       },
     },
   };
+
+  // BreadcrumbList structured data
+  const breadcrumbData = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Inicio',
+        item: baseUrl,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Blog',
+        item: `${baseUrl}/blog`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: post.title,
+        item: `${baseUrl}/blog/${params.slug}`,
+      },
+    ],
+  };
+
+  // FAQ structured data (if article has FAQs)
+  const faqData = post.faqs.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: post.faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  } : null;
 
   return (
     <>
@@ -83,19 +141,45 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData) }}
+      />
+      {faqData && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqData) }}
+        />
+      )}
 
       <main className="min-h-screen bg-background-start">
         <article className="container-custom section-padding max-w-4xl mx-auto">
-          {/* Back Link */}
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 text-accent-copper hover:text-accent-copper/80 transition-colors mb-8"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-            Volver al Blog
-          </Link>
+          {/* Breadcrumbs */}
+          <nav aria-label="Breadcrumb" className="mb-6">
+            <ol className="flex items-center gap-2 text-sm text-slate-400">
+              <li>
+                <Link href="/" className="hover:text-accent-copper transition-colors">
+                  Inicio
+                </Link>
+              </li>
+              <li className="flex items-center gap-2">
+                <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                </svg>
+                <Link href="/blog" className="hover:text-accent-copper transition-colors">
+                  Blog
+                </Link>
+              </li>
+              <li className="flex items-center gap-2">
+                <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                </svg>
+                <span className="text-slate-500 truncate max-w-[200px] md:max-w-none">
+                  {post.title}
+                </span>
+              </li>
+            </ol>
+          </nav>
 
           {/* Header */}
           <header className="mb-12">
@@ -148,13 +232,16 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
             )}
           </header>
 
-          {/* Featured Image */}
+          {/* Featured Image - Using Next.js Image for optimization */}
           {post.image && (
             <div className="relative h-96 mb-12 overflow-hidden rounded-2xl">
-              <img
+              <Image
                 src={post.image}
-                alt={post.title}
-                className="w-full h-full object-cover"
+                alt={`${post.title} - ModulorIA Blog`}
+                fill
+                className="object-cover"
+                priority
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 896px"
               />
             </div>
           )}
@@ -197,7 +284,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
               href="/auditoria"
               className="btn-primary px-8 py-4 inline-block shadow-copper-glow"
             >
-              📞 Agendar Diagnóstico Estratégico
+              Agendar Diagnóstico Estratégico
             </Link>
           </div>
         </article>

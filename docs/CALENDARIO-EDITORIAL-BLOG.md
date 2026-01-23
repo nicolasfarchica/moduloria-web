@@ -245,7 +245,7 @@ Cada articulo publicado debe tener:
 1. [x] 5 articulos publicados y desplegados en moduloria.com
 2. [x] Sitemap incluye los 5 blog posts
 3. [x] Robots.txt configurado correctamente
-4. [ ] **Submit 5 URLs a Google Search Console** (hacer ahora o proximo login)
+4. [x] **Submit 5 URLs a Google Search Console** (HECHO - 23 enero 2026)
 5. [ ] Crear evento recurrente calendario (lunes 9:00 AM)
 6. [ ] Preparar articulo 6 para martes 4 febrero
 

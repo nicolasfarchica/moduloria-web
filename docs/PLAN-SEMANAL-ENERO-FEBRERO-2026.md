@@ -14,7 +14,7 @@
 | Newsletter | 100% operativo | Workflow N8N activo |
 | Redes Sociales | 0% implementado | Documentado, pendiente Metricool |
 | Lead Magnets | 0% | Planificar con articulos existentes |
-| Google Search Console | **Pendiente submit 5 URLs** | Sitemap activo, robots.txt OK |
+| Google Search Console | **5 URLs submitted** | Indexacion solicitada 23 ene 2026 |
 | Dominio | **moduloria.com ACTIVO** | Auto-deploy en git push |
 
 ---
@@ -33,7 +33,7 @@
 | 2.6 | Optimizar images (JPEG, 1200px, <300KB) | Performance | HECHO |
 | 2.7 | Mejorar CSS blog (headings, spacing, tables, HR) | UX | HECHO |
 | 2.8 | Corregir dominio moduloria.com (domains + alias) | Infra | HECHO |
-| 2.9 | Submit articulos 1-5 a Google Search Console | SEO | PENDIENTE |
+| 2.9 | Submit articulos 1-5 a Google Search Console | SEO | HECHO |
 
 ### Detalles Articulo 4 (PILLAR - Reescritura)
 
