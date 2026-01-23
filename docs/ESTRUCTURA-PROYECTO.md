@@ -123,6 +123,13 @@
 | Sitemap dinamico | 15 URLs, prioridades configuradas |
 | Robots.txt | Allow all, sitemap referenciado |
 
+### Bugs Corregidos (23 ene 2026)
+| Bug | Archivo Afectado | Solucion |
+|-----|-------------------|----------|
+| 404 `/grid.svg` | ComoFuncionaSection, CTAFinal, Calculadora | Creado `public/grid.svg` |
+| 404 `/images/problemas-bg.jpg` | ProblemasSection.tsx | Reemplazado con grid pattern CSS |
+| WhatsApp placeholder `34XXXXXXXXX` | CTAFinalSection.tsx | Corregido a numero real |
+
 ### Google Search Console
 - **Propiedad:** https://moduloria.com/
 - **Verificacion:** Meta tag (cd787c1f8c691567)

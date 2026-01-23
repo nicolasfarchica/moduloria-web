@@ -12,11 +12,13 @@
 |------|----------|-------|
 | Blog SEO | **5/5 articulos publicados** | Topic cluster completo, imagenes, styling |
 | SEO Tecnico | **100% optimizado** | FAQ schema, breadcrumbs, Image opt, canonicals |
+| Auditoria Web | **Completada 23 ene** | 3 bugs tecnicos corregidos, 0 errores consola |
 | Newsletter | 100% operativo | Workflow N8N activo |
 | Redes Sociales | 0% implementado | Documentado, pendiente Metricool |
 | Lead Magnets | 0% | Planificar con articulos existentes |
 | Google Search Console | **15/15 URLs indexadas** | Todas paginas + blog indexadas 23 ene 2026 |
 | Dominio | **moduloria.com ACTIVO** | Auto-deploy en git push |
+| Credibilidad/Social Proof | PENDIENTE | Testimonios cuando haya clientes reales |
 
 ---
 
