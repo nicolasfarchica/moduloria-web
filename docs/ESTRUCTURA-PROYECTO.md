@@ -99,6 +99,38 @@
 
 ---
 
+## SEO Tecnico (Implementado 23 ene 2026)
+
+### Structured Data (JSON-LD)
+| Schema | Pagina | Datos |
+|--------|--------|-------|
+| Organization | Homepage | Nombre, logo, contacto, redes sociales |
+| Service | Homepage | Tipo servicio, area (Espana), ofertas |
+| FAQPage | Homepage | 11 preguntas/respuestas |
+| Article | Blog posts | headline, dates, author, publisher, mainEntityOfPage |
+| FAQPage | Blog posts | Auto-extraido de seccion "Preguntas Frecuentes" |
+| BreadcrumbList | Blog posts | Inicio > Blog > Titulo articulo |
+
+### Optimizaciones por Pagina
+| Elemento | Implementacion |
+|----------|---------------|
+| Canonical URLs | Todas las 15 paginas |
+| OG/Twitter Cards | URLs absolutas en todas las paginas |
+| Meta keywords | En todas las paginas |
+| Next.js Image | Hero images blog (WebP, responsive, lazy) |
+| Breadcrumbs visuales | Blog posts (nav + schema) |
+| ISR | revalidate=3600 en blog |
+| Sitemap dinamico | 15 URLs, prioridades configuradas |
+| Robots.txt | Allow all, sitemap referenciado |
+
+### Google Search Console
+- **Propiedad:** https://moduloria.com/
+- **Verificacion:** Meta tag (cd787c1f8c691567)
+- **Paginas indexadas:** 15/15 (todas)
+- **Sitemap:** Enviado y procesado
+
+---
+
 ## Variables de Entorno (Vercel Dashboard)
 
 Estas variables estan configuradas en: https://vercel.com/nicolasfarchicas-projects/web/settings/environment-variables

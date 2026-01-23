@@ -8,17 +8,24 @@
 
 ## Estado SEO Actual
 
-### Infraestructura (Todo OK)
-| Componente | Estado | URL |
-|------------|--------|-----|
-| Sitemap.xml | ACTIVO (dinamico) | https://moduloria.com/sitemap.xml |
+### Infraestructura (Todo OK - Actualizado 23 ene 2026)
+| Componente | Estado | Detalles |
+|------------|--------|----------|
+| Sitemap.xml | ACTIVO (dinamico, 15 URLs) | https://moduloria.com/sitemap.xml |
 | Robots.txt | ACTIVO | https://moduloria.com/robots.txt |
 | Google Analytics | ACTIVO (G-EK62LC6D3D) | analytics.google.com |
-| Google Search Console | ACTIVO | search.google.com/search-console |
+| Google Search Console | ACTIVO - 15/15 indexadas | search.google.com/search-console |
 | ISR Cache | 1 hora (revalidate=3600) | - |
-| Structured Data | JSON-LD Article en cada post | - |
-| Open Graph / Twitter Cards | En cada post via metadata | - |
-| Canonical URLs | Configuradas por post | - |
+| Structured Data: Article | JSON-LD con dateModified + mainEntityOfPage | Cada blog post |
+| Structured Data: FAQPage | JSON-LD auto-extraido de markdown | Cada post con FAQs |
+| Structured Data: BreadcrumbList | JSON-LD 3 niveles (Inicio>Blog>Post) | Cada blog post |
+| Structured Data: Organization | JSON-LD completo | Homepage |
+| Structured Data: Service | JSON-LD con areaServed | Homepage |
+| Structured Data: FAQPage (Home) | JSON-LD con 11 preguntas | Homepage |
+| Open Graph / Twitter Cards | URLs absolutas en cada pagina | - |
+| Canonical URLs | Todas las paginas (15/15) | - |
+| Next.js Image | Hero images optimizadas (WebP, responsive) | Blog posts |
+| Breadcrumbs visuales | Inicio > Blog > Titulo | Blog posts |
 
 ### Topic Cluster #1 (COMPLETADO)
 | # | Articulo | Keyword Principal | Vol/mes | KD | Estado |
