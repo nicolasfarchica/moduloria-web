@@ -1,7 +1,7 @@
 # ModulorIA - Estado de Sistemas
 
 > Resumen ejecutivo de todos los sistemas implementados y pendientes
-> Ultima actualizacion: 2026-01-22 (Sesion PM - Sistema Redes Sociales documentado)
+> Ultima actualizacion: 2026-01-23 (Blog SEO: 3 articulos publicados, tablas fix)
 
 ---
 
@@ -13,11 +13,13 @@
 | APIs | 2 | 0 | 2 |
 | Integraciones | 4 | 0 | 4 |
 | Automatizaciones N8N | 2 | 0 | 2 |
+| Blog SEO | 3 | 2 | 5 |
 | Redes Sociales | 0 | 1 | 1 |
-| **TOTAL** | **13** | **1** | **14** |
+| **TOTAL** | **16** | **3** | **19** |
 
+> **BLOG SEO** - 3/5 articulos publicados, tablas markdown funcionando, internal linking activo
 > **SISTEMA NEWSLETTER 100% OPERATIVO** - Todos los componentes funcionando
-> **SISTEMA REDES SOCIALES** - Documentado, pendiente implementacion (23 enero)
+> **SISTEMA REDES SOCIALES** - Documentado, pendiente implementacion
 
 ---
 
@@ -56,6 +58,29 @@
 |----------|---------|--------|
 | Recolector Diario de Contenido | Diario 8:00 AM | ACTIVO |
 | Envio Newsletter Semanal | Miercoles 9:00 AM | ACTIVO |
+
+### 6. Blog SEO (Estrategia Contenido Organico)
+| Articulo | Slug | KD | Estado | Fecha |
+|----------|------|----|--------|-------|
+| OCR Facturas Construccion ROI | ocr-facturas-construccion-roi | 5 | PUBLICADO | 22-ene |
+| 10 Casos Exito IA Construccion | casos-exito-ia-construccion-espana | 5 | PUBLICADO | 23-ene |
+| Chatbot WhatsApp Construccion | chatbot-whatsapp-construccion | 8 | PUBLICADO | 23-ene |
+| IA Construccion Modular (PILLAR) | como-implementar-ia-construccion-modular | 18 | PENDIENTE (reescribir) | - |
+| Reportes Obra con IA de Voz | (nuevo) | 8 | PENDIENTE | - |
+
+**Infraestructura blog:**
+- Directorio: `src/content/blog/` (markdown con frontmatter)
+- Libreria: gray-matter + remark + remark-gfm + remark-html
+- ISR: revalidate = 3600 (1 hora)
+- Sitemap: dinamico, incluye posts automaticamente
+- SEO: metadata, structured data JSON-LD, canonical URLs
+- Pagina listado: `/recursos` (blog grid + newsletter + diagnostico CTA)
+
+**Documentacion:**
+- `docs/research/SEO-PLAN-EJECUCION-NICOLAS.md` - Plan completo 5 articulos
+- `docs/research/keywords-master-list.md` - 50+ keywords
+- `docs/SESION-2026-01-23-blog-deploy.md` - Registro deploy
+- `docs/PLAN-SEMANAL-ENERO-FEBRERO-2026.md` - Planificacion detallada semanas 2-6
 
 ---
 
@@ -243,25 +268,30 @@ Marca articulos como usados (HTTP Request a Notion)
 | 2026-01-22 AM | Workflows N8N (Workflow 1) | `docs/SESION-2026-01-22-n8n-workflows.md` |
 | 2026-01-22 PM | Workflow 2 completado | `docs/SESION-2026-01-22-n8n-workflows.md` |
 | 2026-01-22 PM | Sistema Redes Sociales | `docs/SESION-2026-01-22-redes-sociales.md` |
+| 2026-01-22 PM | Estrategia Blog SEO | `docs/SESION-2026-01-22-blog-seo.md` |
+| 2026-01-23 | Blog deploy + /recursos overhaul | `docs/SESION-2026-01-23-blog-deploy.md` |
 
 ---
 
 ## Proximas Tareas
 
-### Inmediatas (23-26 enero)
-1. **Pagar** Metricool Plan Start (23 enero)
-2. **Configurar** cuenta Metricool y conectar LinkedIn
-3. **Monitorear** ejecucion newsletter miercoles 9:00 AM
+### Semana 2 (27 ene - 2 feb) - Blog SEO
+1. **Escribir** Articulo 4: PILLAR "IA Construccion Modular" (4,500 palabras, reescribir filler)
+2. **Escribir** Articulo 5: "Reportes Obra con IA de Voz" (2,100 palabras)
+3. **Submit** articulos 1-3 a Google Search Console (Request Indexing)
+4. **Monitorear** newsletter miercoles (incluir articulos nuevos)
 
-### Esta semana
-4. **Verificar** que Workflow 1 recolecta contenido diariamente
-5. **Decidir** si crear pagina LinkedIn empresa o solo personal
-6. **Revisar** metricas de apertura de emails en Resend
+### Semana 3 (3-9 feb) - Consolidacion + Redes
+5. **Actualizar** internal links en PILLAR (enlazar a todos los cluster articles)
+6. **Crear** imagenes hero para los 5 articulos (Canva)
+7. **Configurar** Metricool + LinkedIn
+8. **Repurposing**: 3 articulos blog -> 5-6 posts LinkedIn
 
-### Semana siguiente
-7. **Crear** templates de carrusel en Gamma
-8. **Realizar** primera sesion de batching de contenido
-9. **Programar** primeras 2 semanas de contenido en Metricool
+### Semana 4 (10-16 feb) - Expansion
+9. **Revisar** metricas GSC (impresiones, clics, posiciones)
+10. **Planificar** articulos 6-10 (siguientes keywords del plan)
+11. **Crear** primer lead magnet PDF (Checklist OCR o ROI Calculator)
+12. **Primera** sesion batching contenido LinkedIn
 
 ---
 
