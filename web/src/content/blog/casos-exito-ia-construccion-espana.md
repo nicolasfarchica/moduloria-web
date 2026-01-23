@@ -4,7 +4,7 @@ date: "2026-01-23"
 excerpt: "10 casos reales de PYMEs españolas de construcción modular que implementaron IA. ROI entre 300% y 800%, tiempos de implementación de 1-4 semanas. Datos verificables, inversión exacta, ahorro medido."
 author: "ModulorIA Team"
 category: "Casos de Éxito"
-image: "/images/blog/casos-exito-ia-construccion.jpg"
+image: "/images/blog/hero-casos-exito.jpg"
 tags: ["Casos de Éxito", "IA", "Construcción Modular", "ROI", "España", "Automatización"]
 ---
 

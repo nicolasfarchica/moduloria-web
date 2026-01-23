@@ -4,11 +4,9 @@ date: "2026-01-27"
 excerpt: "Reportes diarios de obra por voz en 2 minutos. La IA transcribe, estructura y envía automáticamente. ROI 450% demostrado. Herramientas + implementación paso a paso."
 author: "ModulorIA Team"
 category: "Automatización"
-image: "/images/blog/reportes-voz-construccion.jpg"
+image: "/images/blog/hero-reportes-voz.jpg"
 tags: ["Reportes Obra", "IA Voz", "Whisper", "Automatización", "Jefes de Obra"]
 ---
-
-# Reportes de Obra con IA de Voz: Ahorra 5h/Semana
 
 Tu jefe de obra termina la jornada agotado. Después de 10 horas en obra, lo último que quiere es sentarse 45 minutos a escribir un reporte. El resultado: reportes incompletos, inconsistentes, o directamente inexistentes.
 

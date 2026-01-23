@@ -4,7 +4,7 @@ date: "2026-01-23"
 excerpt: "Implementa un chatbot WhatsApp para tu constructora. Atiende clientes 24/7, califica leads automáticamente y agenda visitas. ROI 600% en 3 semanas. Guía completa con herramientas y costes reales."
 author: "ModulorIA Team"
 category: "Automatización"
-image: "/images/blog/chatbot-whatsapp-construccion.jpg"
+image: "/images/blog/hero-chatbot-whatsapp.jpg"
 tags: ["Chatbot", "WhatsApp", "Automatización", "IA", "Construcción Modular", "Leads"]
 ---
 

@@ -4,7 +4,7 @@ date: "2026-01-23"
 excerpt: "Automatiza el procesamiento de facturas en tu constructora con OCR e IA. ROI 800% en 3 semanas. Caso real: PYME española ahorra €18,240/año. Guía paso a paso con herramientas y costes."
 author: "ModulorIA Team"
 category: "Automatización"
-image: "/images/blog/ocr-facturas-construccion.jpg"
+image: "/images/blog/hero-ocr-facturas.jpg"
 tags: ["OCR", "Facturas", "Automatización", "IA", "Construcción Modular", "ROI"]
 ---
 

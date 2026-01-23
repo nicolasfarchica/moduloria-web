@@ -4,11 +4,9 @@ date: "2026-01-27"
 excerpt: "Guía definitiva de IA en construcción modular. 15 casos de uso, ROI real (350%-800%), herramientas, implementación paso a paso. Para PYMEs de 10-100 empleados con datos 2026."
 author: "ModulorIA Team"
 category: "Guías"
-image: "/images/blog/ia-construccion-modular.jpg"
+image: "/images/blog/hero-ia-construccion-modular.jpg"
 tags: ["IA", "Construcción Modular", "Automatización", "Guía Completa", "PYMEs", "ROI"]
 ---
-
-# IA en Construcción Modular: Guía Completa 2026
 
 La construcción modular tiene una ventaja que la mayoría de constructoras no está explotando: **procesos estandarizados que la IA puede optimizar inmediatamente**.
 

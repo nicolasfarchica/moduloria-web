@@ -94,6 +94,71 @@
   }
 }
 
+/* Blog Content Styles */
+.blog-content h2 {
+  border-left: 4px solid #B87333;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.blog-content h3 {
+  color: #B87333;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 0.5rem;
+}
+
+.blog-content hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(184, 115, 51, 0.4), transparent);
+  margin: 3rem 0;
+}
+
+.blog-content blockquote {
+  background: rgba(30, 41, 59, 0.5);
+  border-radius: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  border-left-width: 4px;
+}
+
+.blog-content ul,
+.blog-content ol {
+  padding-left: 1.5rem;
+}
+
+.blog-content li {
+  padding-left: 0.5rem;
+  line-height: 1.8;
+}
+
+.blog-content table {
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.blog-content thead {
+  background: rgba(30, 41, 59, 0.6);
+}
+
+.blog-content tbody tr:nth-child(even) {
+  background: rgba(30, 41, 59, 0.2);
+}
+
+.blog-content tbody tr:hover {
+  background: rgba(30, 41, 59, 0.4);
+}
+
+.blog-content pre {
+  padding: 1.5rem;
+}
+
+.blog-content > p:first-of-type {
+  font-size: 1.2rem;
+  color: #cbd5e1;
+  line-height: 1.8;
+}
+
 /* Utilidades */
 @layer utilities {
   .text-glow {

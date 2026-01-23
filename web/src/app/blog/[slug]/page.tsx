@@ -161,24 +161,27 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
 
           {/* Content */}
           <div
-            className="prose prose-invert prose-lg max-w-none
+            className="blog-content prose prose-invert prose-lg max-w-none
               prose-headings:text-white prose-headings:font-heading
-              prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
-              prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
-              prose-p:text-slate-300 prose-p:leading-relaxed
+              prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-6 prose-h2:pb-4
+              prose-h3:text-xl prose-h3:mt-10 prose-h3:mb-4
+              prose-h4:text-lg prose-h4:mt-8 prose-h4:mb-3
+              prose-p:text-slate-300 prose-p:leading-relaxed prose-p:mb-5
               prose-a:text-accent-copper prose-a:no-underline hover:prose-a:underline
               prose-strong:text-white prose-strong:font-semibold
               prose-ul:text-slate-300 prose-ol:text-slate-300
-              prose-li:marker:text-accent-copper
-              prose-code:text-accent-copper prose-code:bg-slate-800/50 prose-code:px-2 prose-code:py-1 prose-code:rounded
-              prose-pre:bg-slate-800/50 prose-pre:border prose-pre:border-white/10
-              prose-blockquote:border-l-accent-copper prose-blockquote:text-slate-300
+              prose-ul:my-6 prose-ol:my-6
+              prose-li:marker:text-accent-copper prose-li:my-2
+              prose-code:text-accent-copper prose-code:bg-slate-800/50 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm
+              prose-pre:bg-slate-900/80 prose-pre:border prose-pre:border-white/10 prose-pre:rounded-xl prose-pre:my-8
+              prose-blockquote:border-l-accent-copper prose-blockquote:text-slate-300 prose-blockquote:not-italic prose-blockquote:my-8
               prose-img:rounded-xl prose-img:shadow-lg
-              prose-table:border-collapse prose-table:w-full prose-table:overflow-x-auto
-              prose-thead:border-b prose-thead:border-white/20
-              prose-th:text-white prose-th:text-left prose-th:p-3 prose-th:text-sm prose-th:font-semibold
+              prose-table:border-collapse prose-table:w-full
+              prose-thead:border-b-2 prose-thead:border-accent-copper/30
+              prose-th:text-white prose-th:text-left prose-th:p-3 prose-th:text-sm prose-th:font-semibold prose-th:bg-slate-800/30
               prose-td:p-3 prose-td:text-sm prose-td:border-b prose-td:border-white/5
-              prose-tr:border-b prose-tr:border-white/5"
+              prose-tr:border-b prose-tr:border-white/5
+              prose-hr:border-white/10 prose-hr:my-12"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
 
