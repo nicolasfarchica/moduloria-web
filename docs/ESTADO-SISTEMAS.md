@@ -1,7 +1,7 @@
 # ModulorIA - Estado de Sistemas
 
 > Resumen ejecutivo de todos los sistemas implementados y pendientes
-> Ultima actualizacion: 2026-01-23 (Blog SEO: 5/5 articulos completados, topic cluster cerrado)
+> Ultima actualizacion: 2026-01-23 (Chatbot IA implementado en produccion con GPT-4o-mini)
 
 ---
 
@@ -10,13 +10,14 @@
 | Categoria | Implementado | Pendiente | Total |
 |-----------|--------------|-----------|-------|
 | Web/Frontend | 5 | 0 | 5 |
-| APIs | 2 | 0 | 2 |
+| APIs | 3 | 0 | 3 |
 | Integraciones | 4 | 0 | 4 |
 | Automatizaciones N8N | 2 | 0 | 2 |
 | Blog SEO | 5 | 0 | 5 |
 | Redes Sociales | 0 | 1 | 1 |
-| **TOTAL** | **18** | **1** | **19** |
+| **TOTAL** | **19** | **1** | **20** |
 
+> **CHATBOT IA** - Operativo en produccion (GPT-4o-mini, streaming, edge runtime)
 > **BLOG SEO** - 5/5 articulos escritos, topic cluster completo, internal linking activo
 > **SISTEMA NEWSLETTER 100% OPERATIVO** - Todos los componentes funcionando
 > **SISTEMA REDES SOCIALES** - Documentado, pendiente implementacion
@@ -33,6 +34,8 @@
 | Pagina Newsletter | https://moduloria.com/newsletter | ACTIVO |
 | API Auditoria | https://moduloria.com/api/auditoria | ACTIVO |
 | API Newsletter | https://moduloria.com/api/newsletter | ACTIVO |
+| API Chatbot IA | https://moduloria.com/api/chat | ACTIVO |
+| Chatbot Widget | Boton flotante en toda la web | ACTIVO |
 
 ### 2. Bases de Datos Notion
 | Base de Datos | ID | Proposito | Estado |
@@ -53,13 +56,23 @@
 |---------|-----|--------|
 | Google Analytics 4 | `G-EK62LC6D3D` | ACTIVO |
 
-### 5. Automatizaciones N8N
+### 5. Chatbot IA
+| Parametro | Valor |
+|-----------|-------|
+| Modelo | GPT-4o-mini (OpenAI) |
+| Runtime | Edge (Vercel) |
+| API Key Name | `moduloria-chatbot-web` |
+| Endpoint | /api/chat (POST, streaming) |
+| Costo | ~$2 USD / 1000 conversaciones |
+| Documentacion | `docs/SESION-2026-01-23-chatbot-ia.md` |
+
+### 6. Automatizaciones N8N
 | Workflow | Trigger | Estado |
 |----------|---------|--------|
 | Recolector Diario de Contenido | Diario 8:00 AM | ACTIVO |
 | Envio Newsletter Semanal | Miercoles 9:00 AM | ACTIVO |
 
-### 6. Blog SEO (Estrategia Contenido Organico)
+### 7. Blog SEO (Estrategia Contenido Organico)
 | Articulo | Slug | KD | Estado | Fecha |
 |----------|------|----|--------|-------|
 | OCR Facturas Construccion ROI | ocr-facturas-construccion-roi | 5 | PUBLICADO | 22-ene |
