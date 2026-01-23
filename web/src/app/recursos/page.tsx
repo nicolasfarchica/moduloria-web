@@ -2,13 +2,15 @@ import Link from 'next/link';
 import RecursosSection from '@/components/RecursosSection';
 import { getAllPosts } from '@/lib/blog';
 
+export const revalidate = 3600;
+
 export const metadata = {
-  title: 'Recursos Gratuitos de IA en Construcción Modular | ModulorIA',
-  description: 'Guías, calculadoras y templates gratuitos para implementar automatización con IA en construcción modular. 25 procesos automatizables, checklist de preparación, casos de éxito reales.',
-  keywords: 'recursos IA construcción, guías automatización construcción modular, calculadora ROI construcción, templates IA construcción, casos éxito automatización',
+  title: 'Recursos: Guias y Casos de Exito IA en Construccion Modular | ModulorIA',
+  description: 'Articulos practicos sobre automatizacion con IA en construccion modular. Casos de exito reales, ROI calculado, guias paso a paso para PYMEs constructoras.',
+  keywords: 'recursos ia construccion, guias automatizacion construccion modular, casos exito ia construccion, roi ia construccion pymes',
   openGraph: {
-    title: 'Recursos Gratuitos de IA en Construcción | ModulorIA',
-    description: 'Descarga guías, calculadoras y templates para automatizar tu empresa de construcción modular con IA.',
+    title: 'Recursos sobre IA en Construccion Modular | ModulorIA',
+    description: 'Articulos, guias y casos de exito para implementar automatizacion con IA en tu empresa de construccion modular.',
     url: 'https://moduloria.com/recursos',
     siteName: 'ModulorIA',
     locale: 'es_ES',
@@ -32,17 +34,17 @@ export default async function RecursosPage() {
         <section className="container-custom section-padding">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-heading">
-              Blog y <span className="text-accent-copper">Artículos</span>
+              Blog: <span className="text-accent-copper">Articulos y Guias</span>
             </h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Guías prácticas y casos de éxito sobre IA en construcción modular
+              Guias practicas y casos de exito sobre automatizacion con IA en construccion modular
             </p>
           </div>
 
           {posts.length === 0 ? (
             <div className="text-center py-8">
               <p className="text-slate-400">
-                Próximamente publicaremos artículos sobre IA en construcción modular.
+                Proximamente publicaremos articulos sobre IA en construccion modular.
               </p>
             </div>
           ) : (
@@ -51,19 +53,8 @@ export default async function RecursosPage() {
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className="group glass-card hover:border-accent-copper/50 transition-all duration-300"
+                  className="group glass-card p-6 hover:border-accent-copper/50 transition-all duration-300"
                 >
-                  {/* Image */}
-                  {post.image && (
-                    <div className="relative h-48 mb-4 overflow-hidden rounded-lg">
-                      <img
-                        src={post.image}
-                        alt={post.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                  )}
-
                   {/* Category Badge */}
                   <div className="flex items-center gap-3 mb-3">
                     <span className="bg-accent-copper/20 text-accent-copper px-3 py-1 rounded-full text-xs font-semibold">
@@ -111,6 +102,22 @@ export default async function RecursosPage() {
               ))}
             </div>
           )}
+
+          {/* Bottom CTA */}
+          <div className="text-center mt-16">
+            <p className="text-slate-300 mb-6 text-lg">
+              Publicamos semanalmente. Cada articulo incluye datos reales y ROI calculado.
+            </p>
+            <Link
+              href="/auditoria"
+              className="btn-primary text-lg px-10 py-4 inline-block shadow-glow hover:shadow-copper-lg"
+            >
+              Agendar Diagnostico Estrategico
+            </Link>
+            <p className="text-slate-400 text-sm mt-4">
+              Incluye roadmap personalizado + ROI calculado para tu empresa
+            </p>
+          </div>
         </section>
       </div>
     </main>
