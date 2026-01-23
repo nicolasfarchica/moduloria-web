@@ -117,13 +117,9 @@ export default function ProblemasSection() {
 
   return (
     <section id="problemas" className="section-padding bg-background-dark relative overflow-hidden">
-      {/* Background Image */}
-      {/* Background Image */}
+      {/* Background */}
       <div className="absolute inset-0 z-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40 mix-blend-overlay"
-          style={{ backgroundImage: "url('/images/problemas-bg.jpg')" }}
-        />
+        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5 pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-b from-background-dark/90 via-background-dark/80 to-background-dark" />
       </div>
 

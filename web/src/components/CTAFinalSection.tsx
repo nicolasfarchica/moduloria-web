@@ -145,7 +145,7 @@ export default function CTAFinalSection() {
               Envíanos un email
             </a>
             {' '}o{' '}
-            <a href="https://wa.me/34XXXXXXXXX" className="text-accent-copper hover:underline">
+            <a href="https://wa.me/4552801394" className="text-accent-copper hover:underline">
               WhatsApp
             </a>
           </motion.p>
