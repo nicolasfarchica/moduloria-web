@@ -20,11 +20,15 @@ cd /Users/nicolasfarchica/Desktop/ModulorIA/web
 # Desarrollo local
 npm run dev          # localhost:3000
 
-# Deploy a produccion
-git add . && git commit -m "mensaje" && git push origin main
+# Deploy a produccion (git push triggers Vercel auto-deploy)
+git add <archivos> && git commit -m "mensaje" && git push origin main
 
-# Deploy manual (si es necesario)
-npx vercel --prod
+# Deploy manual (DESDE LA RAIZ del repo, NO desde web/)
+cd /Users/nicolasfarchica/Desktop/ModulorIA && npx vercel --prod
+
+# Si el dominio no apunta al deployment correcto:
+npx vercel ls                                          # Ver deployments
+npx vercel alias <URL-DEPLOYMENT> moduloria.com        # Asignar dominio
 ```
 
 ---
@@ -70,10 +74,12 @@ Ver documentacion completa: `docs/ESTRUCTURA-PROYECTO.md`
 ## Reglas
 
 1. **UN repositorio**: `nicolasfarchica/moduloria-web`
-2. **UN proyecto Vercel**: `web`
-3. **UN dominio**: `moduloria.com`
+2. **UN proyecto Vercel**: `web` (Root Directory = `web`)
+3. **UN dominio**: `moduloria.com` + `www.moduloria.com`
 4. **NO modificar**: `.vercel/project.json`
 5. **SIEMPRE trabajar desde**: `ModulorIA/web/`
+6. **Git root es ModulorIA/**, no web/ - el .git esta en la raiz
+7. **Deploy manual** requiere ejecutar desde `ModulorIA/` (raiz), NO desde `web/`
 
 ---
 

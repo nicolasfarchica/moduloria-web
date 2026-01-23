@@ -1,7 +1,7 @@
 # ModulorIA - Estructura del Proyecto
 
 > Documentacion oficial de la arquitectura, configuracion y despliegue.
-> Ultima actualizacion: 2026-01-22
+> Ultima actualizacion: 2026-01-23
 
 ---
 
@@ -42,6 +42,13 @@
 │   │   └── lib/                      # Servicios y utilidades
 │   │       ├── notion.ts             # Integracion Notion API
 │   │       └── resend.ts             # Envio de emails
+│   ├── src/content/blog/             # Articulos blog (Markdown)
+│   │   ├── como-implementar-ia-construccion-modular.md  # PILLAR
+│   │   ├── ocr-facturas-construccion-roi.md             # Cluster 1
+│   │   ├── casos-exito-ia-construccion-espana.md        # Cluster 2
+│   │   ├── chatbot-whatsapp-construccion.md             # Cluster 3
+│   │   └── reportes-voz-construccion-ia.md              # Cluster 4
+│   ├── public/images/blog/           # Hero images blog (JPEG optimizados)
 │   ├── public/images/                # Assets estaticos
 │   ├── .vercel/                      # Config Vercel (NO MODIFICAR)
 │   ├── next.config.ts                # Configuracion Next.js
@@ -156,19 +163,56 @@ Estas variables estan configuradas en: https://vercel.com/nicolasfarchicas-proje
 
 ## Flujo de Despliegue
 
-### Opcion 1: Automatico (Recomendado)
-```
-1. git add .
-2. git commit -m "descripcion del cambio"
-3. git push origin main
-4. Vercel despliega automaticamente
-5. Verificar en https://moduloria.com (2-3 minutos)
+### Opcion 1: Automatico via Git (Recomendado)
+```bash
+cd /Users/nicolasfarchica/Desktop/ModulorIA/web   # Directorio de trabajo
+git add <archivos>
+git commit -m "descripcion del cambio"
+git push origin main
+# Vercel despliega automaticamente en ~60 segundos
+# Verificar: curl -sI https://moduloria.com | head -5
 ```
 
-### Opcion 2: Manual
+**Como funciona:**
+1. El push llega a GitHub (`nicolasfarchica/moduloria-web`)
+2. Vercel detecta el push y clona el repo
+3. Vercel usa Root Directory = `web` para encontrar el Next.js app
+4. Build: `npm run build` dentro de `web/`
+5. Deployment automatico asignado a `moduloria.com`
+
+### Opcion 2: Manual con CLI (desde raiz del repo)
+```bash
+# IMPORTANTE: Ejecutar desde la RAIZ del repo, NO desde web/
+cd /Users/nicolasfarchica/Desktop/ModulorIA
+npx vercel --prod
+```
+
+**Por que NO funciona desde `web/`:**
+El proyecto Vercel tiene Root Directory = `web`. Si ejecutas `vercel --prod` desde dentro de `web/`, intenta buscar `web/web/` que no existe.
+
+### Opcion 3: Forzar alias manual (si el dominio no apunta al deploy)
 ```bash
 cd /Users/nicolasfarchica/Desktop/ModulorIA/web
-npx vercel --prod
+# Ver deployments recientes
+npx vercel ls
+# Asignar el mas reciente al dominio
+npx vercel alias <URL-DEL-DEPLOYMENT> moduloria.com
+npx vercel alias <URL-DEL-DEPLOYMENT> www.moduloria.com
+```
+
+### Dominios Configurados
+| Dominio | Tipo | Estado |
+|---------|------|--------|
+| `moduloria.com` | Principal | Activo (NS Vercel) |
+| `www.moduloria.com` | Redirect | Activo (NS Vercel) |
+| `web-khaki-eight-97.vercel.app` | Vercel default | Activo |
+
+**Si los dominios se desvinculan del proyecto:**
+```bash
+cd /Users/nicolasfarchica/Desktop/ModulorIA/web
+npx vercel domains add moduloria.com
+npx vercel domains add www.moduloria.com
+# Luego asignar alias al deployment mas reciente
 ```
 
 ---
@@ -196,15 +240,36 @@ npx vercel --prod
 3. Verificar que la integracion Notion tenga acceso a "Suscriptores Newsletter"
 
 ### Dominio no muestra cambios recientes
-El dominio `moduloria.com` puede quedar apuntando a un deployment viejo. Solucion:
+El dominio `moduloria.com` puede quedar apuntando a un deployment viejo. Esto pasa cuando:
+- El dominio se desvincula del proyecto
+- Vercel no asigna automaticamente el alias
+
+**Diagnostico:**
 ```bash
 cd /Users/nicolasfarchica/Desktop/ModulorIA/web
-npx vercel alias [URL-DEL-DEPLOYMENT] moduloria.com
-```
-Para obtener la URL del deployment mas reciente:
-```bash
+# Verificar que el dominio esta asignado al proyecto
+npx vercel domains ls
+# Ver deployments recientes
 npx vercel ls
+# Inspeccionar aliases del deployment
+npx vercel inspect <URL-DEL-DEPLOYMENT>
 ```
+
+**Solucion rapida:**
+```bash
+npx vercel alias <URL-DEL-DEPLOYMENT> moduloria.com
+npx vercel alias <URL-DEL-DEPLOYMENT> www.moduloria.com
+```
+
+**Solucion definitiva (re-agregar dominio al proyecto):**
+```bash
+npx vercel domains add moduloria.com
+npx vercel domains add www.moduloria.com
+# Los proximos deploys asignaran automaticamente
+```
+
+### Build local falla con "Missing API key" (Resend)
+Esto es NORMAL al construir localmente. La API route `/api/auditoria` necesita `RESEND_API_KEY` que solo existe en Vercel. El build en Vercel funciona correctamente con las env vars configuradas.
 
 ---
 
