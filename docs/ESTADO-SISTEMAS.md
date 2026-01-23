@@ -80,11 +80,15 @@
 - `docs/workflows/sesion-batching-contenido.md` - Checklist batching
 - `docs/contenido-linkedin/calendario-tipo.md` - Calendario tipo
 
-**Stack confirmado:**
-- Metricool Plan Start (~13 EUR/mes)
-- Gamma (carruseles)
-- FreePik (imagenes)
-- Claude (ideacion)
+**Stack completo:**
+- Metricool Plan Start (~13 EUR/mes) - Programacion y analytics
+- Gamma (carruseles y presentaciones)
+- Canva (diseno visual, PDFs, infografias)
+- FreePik (imagenes y recursos)
+- Flow (contenido visual, cupos disponibles)
+- Claude (estrategia, redaccion, analisis)
+- ChatGPT (borradores, brainstorming)
+- Gemini (investigacion, analisis alternativo)
 
 **Filosofia:** "Crear 1 vez, distribuir 4 veces" - 4 horas cada 2 semanas
 

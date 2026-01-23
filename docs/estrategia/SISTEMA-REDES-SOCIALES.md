@@ -12,7 +12,7 @@
 | **Inversion tiempo** | 4 horas cada 2 semanas |
 | **Herramienta programacion** | Metricool Plan Start |
 | **Foco principal** | LinkedIn personal de Nicolas |
-| **Stack** | Metricool + Gamma + FreePik + Claude |
+| **Stack** | Metricool + Gamma + Canva + FreePik + Flow + Claude + ChatGPT + Gemini |
 
 ---
 
@@ -35,14 +35,32 @@
 
 ---
 
-## Herramientas Confirmadas
+## Herramientas Disponibles (Stack Completo)
 
-| Herramienta | Uso | Costo |
-|-------------|-----|-------|
-| **Metricool Start** | Programacion + analytics | ~13 EUR/mes |
-| Gamma | Carruseles | Gratis/Premium |
-| FreePik | Imagenes | Ya tiene |
-| Claude | Ideacion + borradores | Ya tiene |
+### Programacion y Analytics
+| Herramienta | Uso | Estado |
+|-------------|-----|--------|
+| **Metricool Start** | Programacion + analytics redes | Pendiente pago |
+
+### Creacion Visual
+| Herramienta | Uso | Estado |
+|-------------|-----|--------|
+| **Gamma** | Carruseles y presentaciones | Ya tiene |
+| **Canva** | Diseno visual (posts, PDFs, infografias) | Ya tiene |
+| **FreePik** | Imagenes y recursos visuales | Ya tiene |
+| **Flow** | Contenido visual (cupos disponibles) | Ya tiene |
+
+### Ideacion y Redaccion (IA)
+| Herramienta | Uso | Estado |
+|-------------|-----|--------|
+| **Claude** | Estrategia, redaccion, analisis profundo | Ya tiene |
+| **ChatGPT** | Borradores, brainstorming, variaciones | Ya tiene |
+| **Gemini** | Investigacion, analisis alternativo | Ya tiene |
+
+### Nota sobre uso de IA
+- Usar **Claude** como principal para estrategia y contenido largo
+- Usar **ChatGPT/Gemini** para variaciones, brainstorming o cuando se necesite perspectiva diferente
+- Cualquier herramienta de IA puede generar borradores; Nicolas siempre revisa y ajusta voz
 
 ---
 

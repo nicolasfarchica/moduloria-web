@@ -1,6 +1,6 @@
 ---
-title: "Cómo Implementar IA en Construcción Modular: Guía Completa 2025"
-date: "2025-01-15"
+title: "Cómo Implementar IA en Construcción Modular: Guía Completa 2026"
+date: "2026-01-15"
 excerpt: "Descubre cómo la Inteligencia Artificial está transformando la industria de la construcción modular, desde la planificación hasta la entrega final."
 author: "ModulorIA Team"
 category: "Guías"
@@ -8,7 +8,7 @@ image: "/images/blog/ia-construccion-modular.jpg"
 tags: ["IA", "Construcción Modular", "Automatización", "Guías"]
 ---
 
-# Cómo Implementar IA en Construcción Modular: Guía Completa 2025
+# Cómo Implementar IA en Construcción Modular: Guía Completa 2026
 
 La industria de la construcción modular está experimentando una transformación digital sin precedentes. La **Inteligencia Artificial (IA)** ya no es una tecnología del futuro: es una realidad que está mejorando la eficiencia, reduciendo costos y eliminando errores en empresas constructoras de toda España.
 
