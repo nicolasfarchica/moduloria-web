@@ -1,0 +1,149 @@
+📁 ModulorIA Blog B2B Research
+│
+├── 🚀 EMPIEZA AQUÍ
+│   └── GUIA-RAPIDA.md (5 min)
+│       ├─ ¿Qué necesitas? (navegación rápida)
+│       ├─ Flujo de trabajo recomendado
+│       ├─ Cheat sheet números clave
+│       ├─ FAQ
+│       └─ Checklist antes de empezar
+│
+├── 📊 DECISIÓN
+│   └── RESUMEN-EJECUTIVO-BLOG.md (10 min)
+│       ├─ TL;DR: €3-4.5K → ROI 33%-233% M3
+│       ├─ Hallazgos principales (5 secciones)
+│       ├─ Recomendaciones accionables ModulorIA
+│       ├─ Roadmap visual 90 días
+│       ├─ ROI proyectado 6-12 meses
+│       └─ Decisión: ¿Vale la pena?
+│
+├── 🔑 KEYWORDS
+│   └── keywords-master-list.md (15 min)
+│       ├─ 15 keywords primarias (vol/KD/intención)
+│       ├─ 35+ long-tail keywords
+│       ├─ 5 clusters de contenido
+│       ├─ Calendario keywords 8 artículos
+│       ├─ Oportunidades featured snippets
+│       └─ Tracking setup (Semrush)
+│
+├── ✍️ ESCRITURA
+│   └── blog-templates-checklists.md (15 min)
+│       ├─ Template artículo TOFU (educativo 1,800-2,200 palabras)
+│       ├─ Template artículo BOFU (conversión 1,200-1,600 palabras)
+│       ├─ Checklist pre-publicación (75 items)
+│       │   ├─ SEO on-page (25)
+│       │   ├─ Contenido (20)
+│       │   ├─ Performance (10)
+│       │   ├─ Social (12)
+│       │   └─ Post-publicación (6)
+│       ├─ Template brief contenido
+│       ├─ Calendario editorial plantilla
+│       └─ Tracking resultados spreadsheet
+│
+├── 🗺️ EJECUCIÓN
+│   └── blog-implementation-roadmap.md (20 min)
+│       ├─ Fase 1: Setup Técnico (Semanas 1-2)
+│       │   ├─ Código Next.js (copy-paste ready)
+│       │   ├─ Schema markup BlogPosting
+│       │   ├─ Sitemap dinámico
+│       │   └─ Herramientas SEO
+│       │
+│       ├─ Fase 2: Contenido Inicial (Semanas 3-8)
+│       │   ├─ Calendario 6 artículos
+│       │   ├─ Briefs detallados por artículo
+│       │   │   ├─ Pillar: IA Construcción Modular
+│       │   │   ├─ Chatbot WhatsApp
+│       │   │   ├─ OCR Facturas
+│       │   │   ├─ Caso Éxito
+│       │   │   ├─ Reportes Voz
+│       │   │   └─ Automatizar Cotizaciones
+│       │   └─ Templates producción
+│       │
+│       ├─ Fase 3: Promoción (Semanas 3-12)
+│       │   ├─ Checklist post-publicación
+│       │   ├─ Link building (5 tácticas)
+│       │   ├─ Email outreach templates
+│       │   └─ Social media repurposing
+│       │
+│       ├─ Fase 4: Optimización (Semanas 9-12)
+│       │   ├─ Análisis métricas
+│       │   ├─ Acciones según resultados
+│       │   └─ Scaling producción
+│       │
+│       └─ Extras
+│           ├─ Métricas objetivo 90 días
+│           ├─ Presupuesto detallado
+│           └─ Checklist go-live
+│
+├── 📚 REFERENCIA
+│   └── blog-b2b-best-practices.md (25 min)
+│       ├─ 1. Estructura Artículos Exitosos
+│       │   ├─ Longitud óptima SEO
+│       │   ├─ Estructura headings
+│       │   ├─ Elementos engagement
+│       │   └─ Frecuencia publicación
+│       │
+│       ├─ 2. Estrategia de Contenido
+│       │   ├─ Pillar pages vs Clusters
+│       │   ├─ Content funnel (TOFU/MOFU/BOFU)
+│       │   └─ Balance educativo vs comercial
+│       │
+│       ├─ 3. SEO Técnico para Blogs
+│       │   ├─ Meta descriptions óptimas
+│       │   ├─ Internal linking best practices
+│       │   ├─ Schema markup (BlogPosting, FAQ, HowTo)
+│       │   └─ Core Web Vitals optimization
+│       │
+│       ├─ 4. Ejemplos Blogs B2B Exitosos
+│       │   ├─ Procore Blog (180K/mes, DA 71)
+│       │   ├─ HubSpot Blog (6.2M/mes, DA 91)
+│       │   ├─ Autodesk Construction Blog
+│       │   ├─ Zapier, UiPath
+│       │   └─ Gap de contenido detectado
+│       │
+│       └─ 5. Métricas Clave Blogs B2B
+│           ├─ KPIs primarios (tráfico, keywords, leads)
+│           ├─ KPIs secundarios (engagement, SEO)
+│           ├─ Attribution model blog → cliente
+│           ├─ Dashboard recomendado
+│           └─ Herramientas stack
+│
+└── 📖 NAVEGACIÓN
+    └── README.md (5 min)
+        ├─ Índice todos los documentos
+        ├─ Qué contiene cada uno
+        ├─ Flujo de trabajo recomendado
+        ├─ Números clave rápidos
+        └─ Estructura carpetas
+
+═══════════════════════════════════════════════════════
+
+📊 ESTADÍSTICAS INVESTIGACIÓN
+
+Total documentos: 7
+Total tamaño: 130KB
+Tiempo lectura completo: 95 min
+Tiempo lectura esencial: 40 min (GUIA-RAPIDA + RESUMEN + keywords)
+
+Keywords identificadas: 50+
+Volumen total: 3,376+ búsquedas/mes
+Artículos planificados: 8 (primeros 90 días)
+
+Inversión estimada: €3,000-4,500
+ROI esperado Mes 3: 33%-233%
+Leads esperados Mes 3: 8-12
+
+═══════════════════════════════════════════════════════
+
+🎯 PRÓXIMO PASO
+
+1. Leer GUIA-RAPIDA.md (5 min)
+2. Leer RESUMEN-EJECUTIVO-BLOG.md (10 min)
+3. Decidir: Go / No-Go
+4. Si Go → blog-implementation-roadmap.md Semana 1
+
+═══════════════════════════════════════════════════════
+
+Investigación completada: 2026-01-22
+Investigador: David Chen - SEO Specialist
+Status: Ready to Execute ✅

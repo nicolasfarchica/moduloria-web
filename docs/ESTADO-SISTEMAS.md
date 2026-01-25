@@ -12,14 +12,17 @@
 | Web/Frontend | 5 | 0 | 5 |
 | APIs | 3 | 0 | 3 |
 | Integraciones | 4 | 0 | 4 |
-| Automatizaciones N8N | 2 | 0 | 2 |
+| Automatizaciones N8N | 2 | 1 | 3 |
 | Blog SEO | 5 | 0 | 5 |
+| MVPs/Productos | 0 | 2 | 2 |
 | Redes Sociales | 0 | 1 | 1 |
-| **TOTAL** | **19** | **1** | **20** |
+| **TOTAL** | **19** | **4** | **23** |
 
 > **CHATBOT IA** - Operativo en produccion (GPT-4o-mini, streaming, edge runtime)
 > **BLOG SEO** - 5/5 articulos escritos, topic cluster completo, internal linking activo
 > **SISTEMA NEWSLETTER 100% OPERATIVO** - Todos los componentes funcionando
+> **MVP SELECCIONADO** - #08 Tool Tracking QR (ROI 650%, especificacion tecnica completa)
+> **EMAIL CLASSIFIER** - Especificacion completa, pendiente implementacion en N8N
 > **SISTEMA REDES SOCIALES** - Documentado, pendiente implementacion
 
 ---
@@ -94,6 +97,30 @@
 - `docs/research/keywords-master-list.md` - 50+ keywords
 - `docs/SESION-2026-01-23-blog-deploy.md` - Registro deploy
 - `docs/PLAN-SEMANAL-ENERO-FEBRERO-2026.md` - Planificacion detallada semanas 2-6
+
+### 8. MVP Strategy (Documentado)
+
+**MVP Seleccionado:** #08 Tool Tracking QR
+| Parametro | Valor |
+|-----------|-------|
+| Problema | Herramientas perdidas/buscadas en obras |
+| Ahorro mensual | €5,200-10,400 |
+| ROI | 650% |
+| Implementacion | 1-2 semanas |
+| Costo operativo | €30/mes |
+| Stack | QR + WhatsApp + N8N + Airtable |
+| Documentacion | `docs/mvp/MVP-SELECCION-ESPECIFICACION.md` |
+
+**Email Classifier (Add-on):**
+| Parametro | Valor |
+|-----------|-------|
+| Problema | Tiempo perdido clasificando/respondiendo emails |
+| Ahorro mensual | €600-1,200 |
+| ROI | 1,000% |
+| Implementacion | 3-5 dias |
+| Stack | IMAP + N8N + OpenAI + Notion |
+| Estado | Especificacion completa, pendiente construir en N8N |
+| Documentacion | `docs/mvp/EMAIL-CLASSIFIER-SPEC.md` |
 
 ---
 
@@ -282,7 +309,10 @@ Marca articulos como usados (HTTP Request a Notion)
 | 2026-01-22 PM | Workflow 2 completado | `docs/SESION-2026-01-22-n8n-workflows.md` |
 | 2026-01-22 PM | Sistema Redes Sociales | `docs/SESION-2026-01-22-redes-sociales.md` |
 | 2026-01-22 PM | Estrategia Blog SEO | `docs/SESION-2026-01-22-blog-seo.md` |
-| 2026-01-23 | Blog deploy + /recursos overhaul | `docs/SESION-2026-01-23-blog-deploy.md` |
+| 2026-01-23 AM | Blog deploy + /recursos overhaul | `docs/SESION-2026-01-23-blog-deploy.md` |
+| 2026-01-23 PM | Chatbot IA implementado | `docs/SESION-2026-01-23-chatbot-ia.md` |
+| 2026-01-23 PM | MVP Selection completado | `docs/mvp/MVP-SELECCION-ESPECIFICACION.md` |
+| 2026-01-23 PM | Email Classifier especificado | `docs/mvp/EMAIL-CLASSIFIER-SPEC.md` |
 
 ---
 

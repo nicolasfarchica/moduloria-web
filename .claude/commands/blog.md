@@ -85,9 +85,68 @@ Usar estas keywords en los artículos:
 - OCR facturas construcción
 - Gestión proyectos modulares
 
+## Directrices SEO (MUY IMPORTANTE)
+
+### Estructura de Keywords
+Cada artículo debe incluir:
+- **1 keyword principal** (short-tail): en título, H1, primer párrafo, meta description
+- **2-3 keywords secundarias** (long-tail): distribuidas en H2s y contenido
+- **Keywords LSI** (relacionadas): variaciones naturales en el texto
+
+### Keywords prioritarias ModulorIA
+**Short-tail (alta competencia, alto volumen):**
+- automatización construcción
+- IA construcción
+- software construcción modular
+- digitalización obra
+
+**Long-tail (menor competencia, alta conversión):**
+- automatizar facturas empresa constructora
+- chatbot para constructoras modulares
+- reducir tiempo reportes obra
+- OCR documentos construcción
+- automatización PYMES construcción España
+
+### Formato del artículo (SEO-friendly)
+- **Longitud:** 600-900 palabras (conciso, escaneable)
+- **Párrafos:** Máximo 3-4 líneas
+- **H2 cada 150-200 palabras** con keyword
+- **Listas y bullets:** Mínimo 2 por artículo
+- **Negrita** en frases clave (ayuda al escaneo)
+- **Primer párrafo:** Debe contener keyword principal y enganchar en 2 líneas
+
+### Estructura visual recomendada
+```
+[Título con keyword] (H1)
+[Párrafo intro corto - 2-3 líneas con keyword]
+
+[H2 con keyword secundaria]
+[Párrafo corto]
+[Lista de 3-5 puntos]
+
+[H2 problema/solución]
+[Párrafo con dato concreto]
+
+[H2 ejemplo práctico]
+[Caso real o hipotético con números]
+
+[H2 CTA]
+[Párrafo final + link a /auditoria]
+```
+
+### Meta Description
+- Exactamente 150-160 caracteres
+- Incluir keyword principal
+- Incluir beneficio claro
+- Terminar con gancho o pregunta
+
+Ejemplo: "Descubre cómo automatizar facturas en tu constructora y pasar de 15 min a 30 seg por documento. Guía práctica con ejemplos reales."
+
 ## Notas importantes
 
 - No inventar estadísticas, usar datos reales o indicar "según estudios del sector"
 - Mantener el tono de ModulorIA: práctico, sin humo, orientado a resultados
 - Cada artículo debe tener UN objetivo claro (educar sobre un problema o mostrar una solución)
 - Siempre terminar con CTA hacia la auditoría gratuita
+- **Priorizar valor + posicionamiento SEO en cada artículo**
+- **Contenido escaneable:** el lector debe entender el valor en 10 segundos
