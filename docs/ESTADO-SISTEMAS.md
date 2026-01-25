@@ -283,7 +283,7 @@
 | Instancia | nfarchica.app.n8n.cloud |
 | API URL | https://nfarchica.app.n8n.cloud/api/v1 |
 | API Key Label | Claude-MCP-ModulorIA |
-| API Key Expira | 24 febrero 2026 (renovar antes) |
+| API Key Expira | No expira (sin fecha limite) |
 | Paquete NPM | @leonardsellem/n8n-mcp-server |
 
 **Capacidades n8n-server:**
