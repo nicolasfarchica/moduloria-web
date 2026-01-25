@@ -1,7 +1,7 @@
 # ModulorIA - Estado de Sistemas
 
 > Resumen ejecutivo de todos los sistemas implementados y pendientes
-> Ultima actualizacion: 2026-01-25 (Imagenes blog completadas, base de datos prospectos verificada)
+> Ultima actualizacion: 2026-01-25 (Imagenes blog completadas, base de datos prospectos verificada, 10 articulos indexados en GSC)
 
 ---
 
@@ -86,6 +86,27 @@
 | Chatbot WhatsApp Construccion | chatbot-whatsapp-construccion | 8 | PUBLICADO | 23-ene |
 | IA Construccion Modular (PILLAR) | como-implementar-ia-construccion-modular | 18 | PUBLICADO | 27-ene |
 | Reportes Obra con IA de Voz | reportes-voz-construccion-ia | 8 | PUBLICADO | 27-ene |
+| 5 Tareas Automatizar Constructora | 5-tareas-automatizar-constructora-modular | 12 | PUBLICADO | 28-ene |
+| Por Que Pierden Dinero Tareas Manuales | por-que-constructoras-modulares-pierden-dinero-tareas-manuales | 10 | PUBLICADO | 04-feb |
+| OCR Facturas 15 Min a 30 Seg | ocr-facturas-constructora-15-minutos-30-segundos | 5 | PUBLICADO | 11-feb |
+| Reportes Automaticos Obra | reportes-automaticos-obra-minutos-no-horas | 8 | PUBLICADO | 18-feb |
+| Chatbots Construccion 24/7 | chatbot-construccion-modular-responder-24-7 | 8 | PUBLICADO | 25-feb |
+
+**Indexacion Google Search Console (verificado 25-ene-2026):**
+| URL | Estado |
+|-----|--------|
+| /blog/ocr-facturas-construccion-roi | INDEXADO |
+| /blog/casos-exito-ia-construccion-espana | INDEXADO |
+| /blog/chatbot-whatsapp-construccion | INDEXADO |
+| /blog/como-implementar-ia-construccion-modular | INDEXADO |
+| /blog/reportes-voz-construccion-ia | INDEXADO |
+| /blog/5-tareas-automatizar-constructora-modular | INDEXADO |
+| /blog/por-que-constructoras-modulares-pierden-dinero-tareas-manuales | INDEXADO |
+| /blog/ocr-facturas-constructora-15-minutos-30-segundos | INDEXADO |
+| /blog/reportes-automaticos-obra-minutos-no-horas | INDEXADO |
+| /blog/chatbot-construccion-modular-responder-24-7 | INDEXADO |
+
+> Todas las URLs del blog estan indexadas en Google Search Console al 25 de enero 2026.
 
 **Infraestructura blog:**
 - Directorio: `src/content/blog/` (markdown con frontmatter)

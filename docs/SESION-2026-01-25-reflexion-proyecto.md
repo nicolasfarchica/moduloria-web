@@ -140,6 +140,7 @@ Campos principales:
 - ✅ 15 agentes Claude definidos
 - ✅ 3 comandos personalizados (/inicio, /blog, /metricas)
 - ✅ Base de datos de 100+ prospectos en Espana
+- ✅ 10 articulos blog indexados en Google Search Console
 
 ### Pendiente
 - ⏳ SaaS del profesor (llega manana)
@@ -155,6 +156,7 @@ Campos principales:
 - [x] Revision del proyecto
 - [x] Correccion imagenes blog
 - [x] Verificacion base de datos prospectos
+- [x] Verificacion indexacion GSC (10 articulos indexados)
 - [ ] Redes sociales con Gaby (parte visual)
 
 ### Manana (lunes 26)
