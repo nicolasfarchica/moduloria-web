@@ -1,7 +1,7 @@
 # ModulorIA - Estado de Sistemas
 
 > Resumen ejecutivo de todos los sistemas implementados y pendientes
-> Ultima actualizacion: 2026-01-25 (MCPs N8N instalados, imagenes blog, prospectos, 10 articulos indexados)
+> Ultima actualizacion: 2026-01-25 (MCP n8n-server para conexion directa N8N Cloud)
 
 ---
 
@@ -16,9 +16,9 @@
 | Blog SEO | 10 | 0 | 10 |
 | MVPs/Productos | 0 | 2 | 2 |
 | Redes Sociales | 0 | 1 | 1 |
-| Claude MCPs | 12 | 0 | 12 |
+| Claude MCPs | 13 | 0 | 13 |
 | Claude Skills | 7 | 0 | 7 |
-| **TOTAL** | **43** | **4** | **47** |
+| **TOTAL** | **44** | **4** | **48** |
 
 > **CHATBOT IA** - Operativo en produccion (GPT-4o-mini, streaming, edge runtime)
 > **BLOG SEO** - 10/10 articulos publicados con imagenes optimizadas
@@ -274,7 +274,26 @@
 | task-master-ai | Gestion de tareas | ACTIVO |
 | fetch | HTTP requests | ACTIVO |
 | context7 | Documentacion librerias | ACTIVO |
-| n8n-mcp | Documentacion N8N (1,084 nodos) | ACTIVO (nuevo 25-ene) |
+| n8n-mcp | Documentacion N8N (1,084 nodos) | ACTIVO |
+| n8n-server | **Conexion directa N8N Cloud API** | ACTIVO (nuevo 25-ene) |
+
+### Credenciales N8N Cloud (MCP n8n-server)
+| Parametro | Valor |
+|-----------|-------|
+| Instancia | nfarchica.app.n8n.cloud |
+| API URL | https://nfarchica.app.n8n.cloud/api/v1 |
+| API Key Label | Claude-MCP-ModulorIA |
+| API Key Expira | 24 febrero 2026 (renovar antes) |
+| Paquete NPM | @leonardsellem/n8n-mcp-server |
+
+**Capacidades n8n-server:**
+- `workflow_list` - Listar workflows
+- `workflow_get` - Ver detalles workflow
+- `workflow_create` - Crear workflows desde Claude
+- `workflow_update` - Modificar workflows
+- `workflow_activate/deactivate` - Activar/desactivar
+- `execution_run` - Ejecutar workflow
+- `execution_list` - Ver historial ejecuciones
 
 ### Claude Code Skills (Instalados en ~/.claude/skills/)
 | Skill | Funcion | Estado |
@@ -287,9 +306,11 @@
 | n8n-code-javascript | Funciones `$helpers`, 10 patrones produccion | ACTIVO |
 | n8n-code-python | Referencia Python con limitaciones | ACTIVO |
 
-> **Instalacion 25-ene-2026:** n8n-mcp + n8n-skills (autor: czlonkowski)
-> **Repositorios:** github.com/czlonkowski/n8n-mcp, github.com/czlonkowski/n8n-skills
-> **Pendiente opcional:** leonardsellem/n8n-mcp-server (conexion directa a N8N Cloud API)
+> **Instalacion 25-ene-2026:** n8n-mcp + n8n-skills (czlonkowski) + n8n-server (leonardsellem)
+> **Repositorios:**
+> - github.com/czlonkowski/n8n-mcp (documentacion nodos)
+> - github.com/czlonkowski/n8n-skills (skills para Claude)
+> - github.com/leonardsellem/n8n-mcp-server (conexion directa API)
 
 ---
 
