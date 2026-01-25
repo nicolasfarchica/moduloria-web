@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface Servicio {
     id: string;
@@ -168,10 +169,12 @@ export default function ServiciosSection() {
                                 {/* Image Header */}
                                 <div className="h-48 relative overflow-hidden">
                                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent z-10" />
-                                    <img
+                                    <Image
                                         src={servicio.image}
                                         alt={servicio.title}
-                                        className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                                        fill
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                        className="object-cover transform group-hover:scale-110 transition-transform duration-700"
                                     />
                                     <div className="absolute top-4 right-4 z-20 w-10 h-10 rounded-lg bg-accent-copper/90 backdrop-blur-sm border border-white/20 flex items-center justify-center text-xl shadow-lg">
                                         {servicio.icon}

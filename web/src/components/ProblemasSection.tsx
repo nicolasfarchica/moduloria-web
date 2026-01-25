@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 
 type ProblemTier = 'quick-wins' | 'high-impact';
@@ -200,10 +201,12 @@ export default function ProblemasSection() {
                   {/* Image */}
                   <div className="relative h-48 w-full mb-6 rounded-xl overflow-hidden group-hover:shadow-lg transition-all duration-500">
                     <div className="absolute inset-0 bg-gradient-to-t from-background-dark to-transparent z-10 opacity-60" />
-                    <img
+                    <Image
                       src={problem.image}
                       alt={problem.title}
-                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transform group-hover:scale-110 transition-transform duration-700"
                     />
                     <div className="absolute top-4 right-4 z-20">
                       <span className={`inline-block px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${config.bgColor} ${config.color} border border-white/5 backdrop-blur-md`}>

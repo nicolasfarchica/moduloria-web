@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function NosotrosSection() {
   return (
@@ -133,10 +134,12 @@ export default function NosotrosSection() {
               {/* Profile Image */}
               <div className="flex-shrink-0 relative group">
                 <div className="absolute inset-0 bg-accent-copper rounded-full blur-md opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
-                <img
+                <Image
                   src="/images/nicolas-farchica-ceo.jpg"
                   alt="Nicolás Farchica - CEO ModulorIA"
-                  className="w-40 h-40 rounded-full object-cover border-4 border-accent-copper/20 shadow-xl relative z-10 group-hover:scale-105 transition-transform duration-500"
+                  width={160}
+                  height={160}
+                  className="rounded-full object-cover border-4 border-accent-copper/20 shadow-xl relative z-10 group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
 

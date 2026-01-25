@@ -33,14 +33,13 @@ export async function POST(request: NextRequest) {
     // Get client IP for rate limiting
     const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown';
 
-    // Check rate limit (temporarily disabled for debugging)
-    // if (!checkRateLimit(ip)) {
-    //   return NextResponse.json(
-    //     { error: 'Demasiadas solicitudes. Por favor, intenta de nuevo más tarde.' },
-    //     { status: 429 }
-    //   );
-    // }
-    console.log('Request IP:', ip);
+    // Check rate limit
+    if (!checkRateLimit(ip)) {
+      return NextResponse.json(
+        { error: 'Demasiadas solicitudes. Por favor, intenta de nuevo más tarde.' },
+        { status: 429 }
+      );
+    }
 
     // Parse request body
     const body: AuditoriaFormData = await request.json();
@@ -79,14 +78,14 @@ export async function POST(request: NextRequest) {
     try {
       // Email de confirmación al cliente
       await sendConfirmacionAuditoria(body);
-      console.log('Email de confirmación enviado a:', body.email);
 
       // Notificación al equipo
       await sendNotificacionNuevoLead(body);
-      console.log('Notificación de nuevo lead enviada');
     } catch (emailError) {
       // Log pero no fallar - el lead ya está guardado en Notion
-      console.error('Error enviando emails:', emailError);
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Error enviando emails:', emailError);
+      }
     }
 
     return NextResponse.json({
@@ -95,11 +94,13 @@ export async function POST(request: NextRequest) {
       pageId: result.pageId,
     });
   } catch (error) {
-    console.error('Error processing auditoria request:', error);
-    console.error('Error details:', {
-      message: error instanceof Error ? error.message : 'Unknown error',
-      stack: error instanceof Error ? error.stack : undefined,
-    });
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error processing auditoria request:', error);
+      console.error('Error details:', {
+        message: error instanceof Error ? error.message : 'Unknown error',
+        stack: error instanceof Error ? error.stack : undefined,
+      });
+    }
 
     return NextResponse.json(
       {

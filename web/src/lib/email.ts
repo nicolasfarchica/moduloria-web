@@ -14,11 +14,26 @@ export interface AuditoriaEmailData {
 }
 
 /**
+ * Escapa caracteres HTML para prevenir XSS en emails
+ */
+function escapeHtml(text: string): string {
+  const map: { [key: string]: string } = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;',
+  };
+  return text.replace(/[&<>"']/g, (m) => map[m]);
+}
+
+/**
  * Envía email de confirmación al cliente cuando solicita auditoría
  */
 export async function sendConfirmacionAuditoria(data: AuditoriaEmailData) {
   const { nombre, empresa, email } = data;
-  const primerNombre = nombre.split(' ')[0];
+  const primerNombre = escapeHtml(nombre.split(' ')[0]);
+  const empresaSafe = escapeHtml(empresa);
 
   const htmlContent = `
 <!DOCTYPE html>
@@ -53,7 +68,7 @@ export async function sendConfirmacionAuditoria(data: AuditoriaEmailData) {
               </h2>
 
               <p style="margin: 0 0 20px; color: #ccd6f6; font-size: 16px; line-height: 1.7;">
-                Soy <strong style="color: #ffffff;">Nicolás</strong>. Gracias por confiar en <strong style="color: #c9a56c;">ModulorIA</strong> para optimizar <strong style="color: #ffffff;">${empresa}</strong>.
+                Soy <strong style="color: #ffffff;">Nicolás</strong>. Gracias por confiar en <strong style="color: #c9a56c;">ModulorIA</strong> para optimizar <strong style="color: #ffffff;">${empresaSafe}</strong>.
               </p>
 
               <p style="margin: 0 0 28px; color: #ccd6f6; font-size: 16px; line-height: 1.7;">
@@ -105,7 +120,7 @@ export async function sendConfirmacionAuditoria(data: AuditoriaEmailData) {
               <table width="100%" cellpadding="0" cellspacing="0" style="margin: 0 0 32px;">
                 <tr>
                   <td align="center">
-                    <a href="https://wa.me/4552801394?text=Hola,%20acabo%20de%20solicitar%20una%20auditoría%20para%20${encodeURIComponent(empresa)}"
+                    <a href="https://wa.me/4552801394?text=Hola,%20acabo%20de%20solicitar%20una%20auditoría%20para%20${encodeURIComponent(empresaSafe)}"
                        style="display: inline-block; background: #1a1a2e; border: 2px solid #c9a56c; color: #ffffff; text-decoration: none; padding: 16px 32px; border-radius: 8px; font-weight: 600; font-size: 16px;">
                       Hablar por WhatsApp con el equipo
                     </a>
@@ -175,6 +190,18 @@ export async function sendConfirmacionAuditoria(data: AuditoriaEmailData) {
 export async function sendNotificacionNuevoLead(data: AuditoriaEmailData) {
   const { nombre, empresa, email, telefono, empleados, proyectosActivos, mayorProblema, presupuesto } = data;
 
+  // Sanitizar todos los datos del usuario
+  const safe = {
+    nombre: escapeHtml(nombre),
+    empresa: escapeHtml(empresa),
+    email: escapeHtml(email),
+    telefono: escapeHtml(telefono),
+    empleados: escapeHtml(empleados),
+    proyectosActivos: escapeHtml(proyectosActivos),
+    mayorProblema: escapeHtml(mayorProblema),
+    presupuesto: escapeHtml(presupuesto || 'No especificado'),
+  };
+
   const htmlContent = `
 <!DOCTYPE html>
 <html lang="es">
@@ -200,35 +227,35 @@ export async function sendNotificacionNuevoLead(data: AuditoriaEmailData) {
         <table width="100%" cellpadding="8" cellspacing="0" style="font-size: 14px;">
           <tr>
             <td style="color: #666; width: 140px; vertical-align: top;"><strong>Nombre:</strong></td>
-            <td style="color: #333;">${nombre}</td>
+            <td style="color: #333;">${safe.nombre}</td>
           </tr>
           <tr style="background: #f9f9f9;">
             <td style="color: #666; vertical-align: top;"><strong>Empresa:</strong></td>
-            <td style="color: #333; font-weight: bold;">${empresa}</td>
+            <td style="color: #333; font-weight: bold;">${safe.empresa}</td>
           </tr>
           <tr>
             <td style="color: #666; vertical-align: top;"><strong>Email:</strong></td>
-            <td><a href="mailto:${email}" style="color: #c9a56c;">${email}</a></td>
+            <td><a href="mailto:${safe.email}" style="color: #c9a56c;">${safe.email}</a></td>
           </tr>
           <tr style="background: #f9f9f9;">
             <td style="color: #666; vertical-align: top;"><strong>Teléfono:</strong></td>
-            <td><a href="tel:${telefono}" style="color: #c9a56c;">${telefono}</a></td>
+            <td><a href="tel:${safe.telefono}" style="color: #c9a56c;">${safe.telefono}</a></td>
           </tr>
           <tr>
             <td style="color: #666; vertical-align: top;"><strong>Empleados:</strong></td>
-            <td style="color: #333;">${empleados}</td>
+            <td style="color: #333;">${safe.empleados}</td>
           </tr>
           <tr style="background: #f9f9f9;">
             <td style="color: #666; vertical-align: top;"><strong>Proyectos activos:</strong></td>
-            <td style="color: #333;">${proyectosActivos}</td>
+            <td style="color: #333;">${safe.proyectosActivos}</td>
           </tr>
           <tr>
             <td style="color: #666; vertical-align: top;"><strong>Presupuesto:</strong></td>
-            <td style="color: #333;">${presupuesto || 'No especificado'}</td>
+            <td style="color: #333;">${safe.presupuesto}</td>
           </tr>
           <tr style="background: #fff3cd;">
             <td style="color: #666; vertical-align: top;"><strong>Mayor problema:</strong></td>
-            <td style="color: #333;">${mayorProblema}</td>
+            <td style="color: #333;">${safe.mayorProblema}</td>
           </tr>
         </table>
 
@@ -236,7 +263,7 @@ export async function sendNotificacionNuevoLead(data: AuditoriaEmailData) {
         <table width="100%" cellpadding="0" cellspacing="0" style="margin-top: 24px;">
           <tr>
             <td align="center">
-              <a href="https://wa.me/${telefono.replace(/[^0-9]/g, '')}?text=Hola%20${encodeURIComponent(nombre)},%20soy%20Nicolás%20de%20ModulorIA.%20Recibimos%20tu%20solicitud%20de%20auditoría%20para%20${encodeURIComponent(empresa)}."
+              <a href="https://wa.me/${telefono.replace(/[^0-9]/g, '')}?text=Hola%20${encodeURIComponent(safe.nombre)},%20soy%20Nicolás%20de%20ModulorIA.%20Recibimos%20tu%20solicitud%20de%20auditoría%20para%20${encodeURIComponent(safe.empresa)}."
                  style="display: inline-block; background: #25D366; color: #ffffff; text-decoration: none; padding: 12px 24px; border-radius: 6px; font-weight: bold; margin-right: 8px;">
                 WhatsApp
               </a>
@@ -266,7 +293,7 @@ export async function sendNotificacionNuevoLead(data: AuditoriaEmailData) {
   const result = await resend.emails.send({
     from: 'Sistema ModulorIA <notificaciones@moduloria.com>',
     to: ['nicolasfarchica@gmail.com'],
-    subject: `🔔 Nuevo Lead: ${empresa} - ${empleados} empleados`,
+    subject: `🔔 Nuevo Lead: ${safe.empresa} - ${safe.empleados} empleados`,
     html: htmlContent,
   });
 
@@ -277,7 +304,7 @@ export async function sendNotificacionNuevoLead(data: AuditoriaEmailData) {
  * Envia email de bienvenida al suscriptor del newsletter
  */
 export async function sendNewsletterWelcome(email: string, nombre?: string) {
-  const primerNombre = nombre ? nombre.split(' ')[0] : null;
+  const primerNombre = nombre ? escapeHtml(nombre.split(' ')[0]) : null;
   const saludo = primerNombre ? `Hola ${primerNombre}` : 'Hola';
 
   const htmlContent = `
