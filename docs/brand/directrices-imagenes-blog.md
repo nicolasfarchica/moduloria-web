@@ -1,90 +1,129 @@
 # Directrices de Imágenes - Blog ModulorIA
 
-## Colores del Proyecto
-
-Basados en `tailwind.config.ts`:
-
-| Color | Hex | Uso |
-|-------|-----|-----|
-| Primary Dark | #1B3C53 | Fondo principal |
-| Primary Medium | #2D5A7B | Acentos |
-| Accent Copper | #C67A52 | Destacados, CTAs |
-| Background Dark | #0A1628 | Fondos oscuros |
-| White/Light | #FFFFFF | Texto sobre oscuro |
-
-## Estilo Visual
-
-- **Tema:** Tecnología + Construcción industrial
-- **Mood:** Profesional, moderno, confiable
-- **Elementos:** Módulos, fábricas, IA, datos, dashboards
-
-## Prompt Base para Generación de Imágenes
-
-### Para DALL-E / Midjourney:
-
-```
-Professional tech illustration for construction industry blog.
-Dark blue background (#1B3C53), copper/bronze accent highlights (#C67A52).
-Modern, clean, minimalist style.
-[TEMA ESPECÍFICO DEL ARTÍCULO]
-No text, no words, no letters.
-16:9 aspect ratio, high quality, digital art style.
-```
-
-### Ejemplos por artículo:
-
-**Automatización general:**
-```
-Professional tech illustration, modular construction factory with robotic arms and digital workflows, dark blue background #1B3C53 with copper highlights #C67A52, futuristic but realistic, no text, 16:9
-```
-
-**OCR Facturas:**
-```
-Professional illustration of invoice documents being scanned by AI, digital data extraction visualization, dark blue #1B3C53 background with copper #C67A52 accents, modern tech style, no text, 16:9
-```
-
-**Reportes automáticos:**
-```
-Professional illustration of automated dashboard and reports generation, construction data visualization, dark blue #1B3C53 with copper #C67A52 highlights, clean modern style, no text, 16:9
-```
-
-**Chatbot:**
-```
-Professional illustration of AI chatbot for business, conversation bubbles and construction elements, dark blue #1B3C53 background with copper #C67A52 accents, modern tech style, no text, 16:9
-```
-
-**Pérdida de dinero/eficiencia:**
-```
-Professional illustration of business efficiency, time and money visualization with construction elements, dark blue #1B3C53 with copper #C67A52 warning highlights, modern corporate style, no text, 16:9
-```
-
-## Especificaciones Técnicas
+## Especificaciones Técnicas (USAR SIEMPRE)
 
 | Propiedad | Valor |
 |-----------|-------|
-| Formato | JPG o WebP |
-| Dimensiones | 1792 x 1024 px (16:9) |
-| Tamaño máximo | 200 KB (optimizar) |
-| Nombre archivo | hero-[slug-del-articulo].jpg |
-| Ubicación | /public/images/blog/ |
+| **Tamaño** | 1200 x 630 px (ratio OG para redes sociales) |
+| **Formato** | WebP o JPG |
+| **Peso máximo** | < 200 KB |
+| **Estilo** | Profesional, minimalista, tonos oscuros con acentos cobre/naranja |
+
+## Paleta de Colores
+
+| Color | Hex | Uso |
+|-------|-----|-----|
+| Fondo oscuro | #0f172a o #1e293b | Background principal |
+| Acento cobre | #c77b42 | Elementos destacados, datos digitales |
+| Texto | #FFFFFF | Si hubiera texto (evitar) |
+
+## Estructura del Prompt
+
+Cada prompt debe seguir este formato:
+
+```
+Professional tech illustration for a blog post about [TEMA].
+Dark navy background (#0f172a). [DESCRIPCIÓN VISUAL ESPECÍFICA].
+Copper/orange accent color (#c77b42) for [ELEMENTOS DESTACADOS].
+Clean, minimal, modern SaaS style. No text.
+1200x630px.
+```
+
+---
+
+## Prompts para Artículos Nuevos
+
+### 1. 5 Tareas que tu Constructora Puede Automatizar
+**Archivo:** `automatizacion-construccion-modular.jpg`
+
+```
+Professional tech illustration for a blog post about construction automation tasks.
+Dark navy background (#0f172a). Show 5 floating icons representing different
+business tasks (invoice, email, report, chat bubble, calendar) connected by
+flowing digital lines to a central automation hub. Copper/orange accent color
+(#c77b42) for the digital connections and hub glow. Clean, minimal, modern
+SaaS style. No text. 1200x630px.
+```
+
+### 2. Por Qué el 80% Pierde Dinero en Tareas Manuales
+**Archivo:** `perdida-dinero-tareas-manuales.jpg`
+
+```
+Professional tech illustration for a blog post about money lost in manual tasks.
+Dark navy background (#0f172a). Show a visual metaphor of time/money draining
+through manual paperwork on the left side, contrasted with efficient digital
+automation on the right side. Copper/orange accent color (#c77b42) for the
+digital/efficient elements. Clean, minimal, modern SaaS style. No text.
+1200x630px.
+```
+
+### 3. OCR para Facturas: De 15 Minutos a 30 Segundos
+**Archivo:** `ocr-facturas-construccion.jpg`
+
+```
+Professional tech illustration for a blog post about OCR invoice automation
+in construction. Dark navy background (#0f172a). Show a stack of paper invoices
+on the left transforming into organized digital data on the right, with subtle
+AI neural network lines connecting them. Copper/orange accent color (#c77b42)
+for the digital elements. Clean, minimal, modern SaaS style. No text.
+1200x630px.
+```
+
+### 4. Reportes Automáticos de Obra en Minutos
+**Archivo:** `reportes-automaticos-obra.jpg`
+
+```
+Professional tech illustration for a blog post about automated construction reports.
+Dark navy background (#0f172a). Show data flowing from multiple construction
+project sources into a central dashboard that generates a polished PDF report.
+Copper/orange accent color (#c77b42) for the dashboard elements and data flows.
+Clean, minimal, modern SaaS style. No text. 1200x630px.
+```
+
+### 5. Chatbots para Construcción: Responder 24/7
+**Archivo:** `chatbot-construccion-modular.jpg`
+
+```
+Professional tech illustration for a blog post about AI chatbots for construction.
+Dark navy background (#0f172a). Show a friendly chat interface with conversation
+bubbles, connected to a 24/7 clock symbol and construction industry icons
+(building, hardhat). Copper/orange accent color (#c77b42) for the chat bubbles
+and AI elements. Clean, minimal, modern SaaS style. No text. 1200x630px.
+```
+
+---
+
+## Imágenes Existentes (Referencia)
+
+Estas imágenes ya existen en `/public/images/blog/`:
+
+| Archivo | Artículo |
+|---------|----------|
+| hero-casos-exito.jpg | Casos de éxito IA España |
+| hero-chatbot-whatsapp.jpg | Chatbot WhatsApp |
+| hero-ia-construccion-modular.jpg | Cómo implementar IA |
+| hero-ocr-facturas.jpg | OCR Facturas ROI |
+| hero-reportes-voz.jpg | Reportes por voz |
+
+---
 
 ## Proceso de Creación
 
-1. Usar el prompt base + tema específico
+1. Copiar el prompt correspondiente
 2. Generar en DALL-E, Midjourney o similar
-3. Optimizar tamaño (TinyPNG, Squoosh)
-4. Nombrar correctamente
-5. Subir a `/public/images/blog/`
+3. Verificar que el tamaño sea 1200x630px
+4. Optimizar para que pese < 200KB (TinyPNG, Squoosh)
+5. Guardar con el nombre correcto en `/public/images/blog/`
+6. Verificar que el artículo referencia el archivo correcto
 
-## Imágenes Pendientes (Artículos Nuevos)
+---
 
-| Artículo | Nombre archivo necesario |
-|----------|-------------------------|
-| 5 Tareas Automatizar | automatizacion-construccion-modular.jpg |
-| 80% Pierde Dinero | perdida-dinero-tareas-manuales.jpg |
-| OCR Facturas | ocr-facturas-construccion.jpg |
-| Reportes Automáticos | reportes-automaticos-obra.jpg |
-| Chatbots 24/7 | chatbot-construccion-modular.jpg |
+## Notas Importantes
+
+- **NO incluir texto** en las imágenes (se ve mal al escalar)
+- **Mantener consistencia** en el estilo entre todas las imágenes
+- **Fondo siempre oscuro** (#0f172a o #1e293b)
+- **Acento siempre cobre** (#c77b42) para elementos digitales/tecnológicos
 
 ---
 
