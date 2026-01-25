@@ -212,7 +212,65 @@ web/public/images/blog/
 
 ---
 
-## 8. Proxima Sesion
+## 8. Instalacion MCPs N8N
+
+### Investigacion realizada
+Se investigaron MCPs para N8N con objetivo de poder disenar y crear workflows desde Claude:
+
+**Opciones analizadas:**
+1. `czlonkowski/n8n-mcp` - Documentacion de 1,084 nodos N8N
+2. `czlonkowski/n8n-skills` - 7 skills para usar n8n-mcp correctamente
+3. `leonardsellem/n8n-mcp-server` - Conexion directa a API de N8N (opcional)
+
+**Decision:** Instalar los dos primeros (mismo autor, recomendados en tutoriales)
+
+### n8n-mcp (MCP Server)
+- **Repositorio:** https://github.com/czlonkowski/n8n-mcp
+- **Funcion:** Provee documentacion de nodos N8N a Claude
+- **Contenido:** 1,084 nodos (537 core + 547 community), 2,646 configuraciones
+- **Instalacion:** Agregado a `~/.mcp.json`
+
+**Configuracion en .mcp.json:**
+```json
+"n8n-mcp": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "n8n-mcp"],
+    "env": {
+        "MCP_MODE": "stdio",
+        "LOG_LEVEL": "error",
+        "DISABLE_CONSOLE_OUTPUT": "true"
+    }
+}
+```
+
+### n8n-skills (7 Claude Code Skills)
+- **Repositorio:** https://github.com/czlonkowski/n8n-skills
+- **Funcion:** Ensenan a Claude a usar n8n-mcp correctamente
+- **Instalacion:** Copiados a `~/.claude/skills/`
+
+**Skills instalados:**
+| Skill | Funcion |
+|-------|---------|
+| n8n-expression-syntax | Patrones `{{}}`, variables `$json/$node` |
+| n8n-mcp-tools-expert | Seleccion correcta de herramientas |
+| n8n-workflow-patterns | 5 patrones, 2,653+ ejemplos |
+| n8n-validation-expert | Interpretar errores N8N |
+| n8n-node-configuration | Configuracion por operacion |
+| n8n-code-javascript | Funciones `$helpers`, 10 patrones |
+| n8n-code-python | Referencia Python |
+
+### Pendiente opcional
+- `leonardsellem/n8n-mcp-server` - Para conexion directa a N8N Cloud API
+- Requiere: URL de instancia + API key de N8N Cloud
+- Permitiria: Crear/ejecutar workflows directamente desde Claude
+
+### Activacion
+**IMPORTANTE:** Reiniciar Claude Code para que se carguen los nuevos MCPs y skills.
+
+---
+
+## 9. Proxima Sesion
 
 **Fecha estimada:** Lunes 26 o Martes 27 enero 2026
 
@@ -221,6 +279,7 @@ web/public/images/blog/
 2. Definir como integrarlo al flujo de trabajo
 3. Preparar mensajes de outreach
 4. Revisar redes sociales
+5. Probar MCPs de N8N con workflow de ejemplo
 
 ---
 

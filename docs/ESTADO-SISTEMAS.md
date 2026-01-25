@@ -1,7 +1,7 @@
 # ModulorIA - Estado de Sistemas
 
 > Resumen ejecutivo de todos los sistemas implementados y pendientes
-> Ultima actualizacion: 2026-01-25 (Imagenes blog completadas, base de datos prospectos verificada, 10 articulos indexados en GSC)
+> Ultima actualizacion: 2026-01-25 (MCPs N8N instalados, imagenes blog, prospectos, 10 articulos indexados)
 
 ---
 
@@ -16,7 +16,9 @@
 | Blog SEO | 10 | 0 | 10 |
 | MVPs/Productos | 0 | 2 | 2 |
 | Redes Sociales | 0 | 1 | 1 |
-| **TOTAL** | **19** | **4** | **23** |
+| Claude MCPs | 12 | 0 | 12 |
+| Claude Skills | 7 | 0 | 7 |
+| **TOTAL** | **43** | **4** | **47** |
 
 > **CHATBOT IA** - Operativo en produccion (GPT-4o-mini, streaming, edge runtime)
 > **BLOG SEO** - 10/10 articulos publicados con imagenes optimizadas
@@ -26,6 +28,7 @@
 > **EMAIL CLASSIFIER** - Especificacion completa, pendiente implementacion en N8N
 > **SISTEMA REDES SOCIALES** - Documentado, pendiente implementacion
 > **SAAS AUDITORIA** - Llega 26 enero (herramienta del profesor)
+> **MCPs N8N** - n8n-mcp + 7 skills instalados (czlonkowski) para disenar workflows
 
 ---
 
@@ -257,6 +260,37 @@
 | Resend API Key | Header Auth | SI |
 | Notion API Key | Header Auth | SI (para HTTP Request) |
 
+### Claude Code MCPs (Configurados en ~/.mcp.json)
+| MCP | Funcion | Estado |
+|-----|---------|--------|
+| filesystem | Acceso a archivos Desktop | ACTIVO |
+| github | Operaciones GitHub | ACTIVO |
+| playwright | Automatizacion browser | ACTIVO |
+| memory | Memoria persistente | ACTIVO |
+| notion | Acceso a Notion | ACTIVO |
+| sequential-thinking | Razonamiento paso a paso | ACTIVO |
+| brave-search | Busqueda web | ACTIVO |
+| markitdown | Conversion markdown | ACTIVO |
+| task-master-ai | Gestion de tareas | ACTIVO |
+| fetch | HTTP requests | ACTIVO |
+| context7 | Documentacion librerias | ACTIVO |
+| n8n-mcp | Documentacion N8N (1,084 nodos) | ACTIVO (nuevo 25-ene) |
+
+### Claude Code Skills (Instalados en ~/.claude/skills/)
+| Skill | Funcion | Estado |
+|-------|---------|--------|
+| n8n-expression-syntax | Patrones `{{}}`, variables `$json/$node` | ACTIVO |
+| n8n-mcp-tools-expert | Seleccion correcta de herramientas MCP | ACTIVO |
+| n8n-workflow-patterns | 5 patrones arquitectonicos, 2,653+ ejemplos | ACTIVO |
+| n8n-validation-expert | Interpretar y arreglar errores N8N | ACTIVO |
+| n8n-node-configuration | Configuracion por operacion | ACTIVO |
+| n8n-code-javascript | Funciones `$helpers`, 10 patrones produccion | ACTIVO |
+| n8n-code-python | Referencia Python con limitaciones | ACTIVO |
+
+> **Instalacion 25-ene-2026:** n8n-mcp + n8n-skills (autor: czlonkowski)
+> **Repositorios:** github.com/czlonkowski/n8n-mcp, github.com/czlonkowski/n8n-skills
+> **Pendiente opcional:** leonardsellem/n8n-mcp-server (conexion directa a N8N Cloud API)
+
 ---
 
 ## Flujos de Usuario Activos
@@ -337,6 +371,7 @@ Marca articulos como usados (HTTP Request a Notion)
 | 2026-01-23 PM | Chatbot IA implementado | `docs/SESION-2026-01-23-chatbot-ia.md` |
 | 2026-01-23 PM | MVP Selection completado | `docs/mvp/MVP-SELECCION-ESPECIFICACION.md` |
 | 2026-01-23 PM | Email Classifier especificado | `docs/mvp/EMAIL-CLASSIFIER-SPEC.md` |
+| 2026-01-25 | Reflexion proyecto + MCPs N8N | `docs/SESION-2026-01-25-reflexion-proyecto.md` |
 
 ---
 
