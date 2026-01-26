@@ -1,0 +1,897 @@
+{
+  "name": "ModulorIA - Sistema Contenido Redes Sociales v4.4 (Rotacion + Auto-Trigger)",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "trigger-manual",
+      "name": "Trigger Manual",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [100, 600]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 8 * * 1-5"
+            }
+          ]
+        }
+      },
+      "id": "trigger-schedule",
+      "name": "Schedule Diario 8AM",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [100, 400]
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute",
+              "minute": 15
+            }
+          ]
+        },
+        "event": "pageAddedToDatabase",
+        "databaseId": {
+          "__rl": true,
+          "value": "018b5945-2eea-488c-ae35-0bc91acee98c",
+          "mode": "id"
+        },
+        "simple": true
+      },
+      "id": "trigger-notion-nuevo",
+      "name": "Notion: Nueva Fuente",
+      "type": "n8n-nodes-base.notionTrigger",
+      "typeVersion": 1,
+      "position": [100, 200],
+      "credentials": {
+        "notionApi": {
+          "id": "YOUR_NOTION_CREDENTIAL_ID",
+          "name": "ModulorIA Notion"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "getAll",
+        "databaseId": {
+          "__rl": true,
+          "value": "018b5945-2eea-488c-ae35-0bc91acee98c",
+          "mode": "id"
+        },
+        "returnAll": false,
+        "limit": 5,
+        "filterType": "json",
+        "filterJson": "{\n  \"and\": [\n    {\n      \"property\": \"Estado\",\n      \"select\": {\n        \"equals\": \"Nuevo\"\n      }\n    },\n    {\n      \"or\": [\n        {\n          \"property\": \"Relevancia\",\n          \"select\": {\n            \"equals\": \"Alta\"\n          }\n        },\n        {\n          \"property\": \"Relevancia\",\n          \"select\": {\n            \"equals\": \"Media\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+        "options": {}
+      },
+      "id": "notion-leer-fuentes",
+      "name": "1. Leer Fuentes Nuevas",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [340, 400],
+      "credentials": {
+        "notionApi": {
+          "id": "YOUR_NOTION_CREDENTIAL_ID",
+          "name": "ModulorIA Notion"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// v4.4 - Preparar datos con ROTACION de tipos de contenido por red social\nconst items = $input.all();\n\n// TONOS por dia de la semana\nconst tonos = {\n  1: 'Formal-Tecnico',\n  2: 'Storytelling',\n  3: 'Datos-Duros',\n  4: 'Cercano-Profesional',\n  5: 'Opinion-Experta',\n  6: 'Reflexivo',\n  0: 'Inspiracional'\n};\n\n// ROTACION de formatos por RED SOCIAL\nconst formatosLinkedIn = ['post_texto','post_imagen','carrusel','thought_leadership','caso_estudio','lista_tips','pregunta_debate'];\nconst formatosInstagram = ['post_imagen','carrusel','tip_rapido','dato_curioso','behind_scenes','antes_despues'];\nconst formatosFacebook = ['pregunta','reflexion','compartir_articulo','encuesta_opinion','historia_corta','tip_practico'];\n\nconst today = new Date();\nconst dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));\n\nreturn items.map((item, index) => {\n  const fechaProgramada = new Date(today);\n  fechaProgramada.setDate(fechaProgramada.getDate() + index);\n  \n  const dayOfWeek = fechaProgramada.getDay();\n  const tono = tonos[dayOfWeek];\n  \n  // EXTRAER ID DE LA PAGINA (robusto para diferentes fuentes)\n  const pageId = item.json.id || item.json.pageId || item.json.page_id || '';\n  \n  // Extraer datos de la fuente\n  const props = item.json.properties || item.json;\n  const titulo = props.Titulo?.title?.[0]?.plain_text || props['Título']?.title?.[0]?.plain_text || item.json.name || 'Sin titulo';\n  const tipo = props.Tipo?.select?.name || props.property_tipo_contenido || 'Noticia';\n  const resumen = props.Resumen?.rich_text?.[0]?.plain_text || '';\n  const url = props['Fuente URL']?.url || item.json.url || '';\n  const relevancia = props.Relevancia?.select?.name || 'Media';\n  \n  // ROTACION basada en dia del ano + indice\n  const rotacionBase = dayOfYear + index;\n  const formatoLI = formatosLinkedIn[rotacionBase % formatosLinkedIn.length];\n  const formatoIG = formatosInstagram[rotacionBase % formatosInstagram.length];\n  const formatoFB = formatosFacebook[rotacionBase % formatosFacebook.length];\n  \n  const formatoLinkedInFinal = relevancia === 'Alta' ? (formatoLI === 'post_texto' ? 'carrusel' : formatoLI) : formatoLI;\n  \n  return {\n    json: {\n      sourcePageId: pageId,\n      titulo,\n      tipo,\n      resumen,\n      url,\n      relevancia,\n      tono,\n      formatoLinkedIn: formatoLinkedInFinal,\n      formatoInstagram: formatoIG,\n      formatoFacebook: formatoFB,\n      fechaProgramada: fechaProgramada.toISOString().split('T')[0],\n      diaSemana: dayOfWeek,\n      diaNombre: ['Domingo','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado'][dayOfWeek],\n      esFinDeSemana: dayOfWeek === 0 || dayOfWeek === 6,\n      semanaDelAno: Math.ceil(dayOfYear / 7)\n    }\n  };\n});"
+      },
+      "id": "code-preparar-datos",
+      "name": "2. Preparar Datos + Tono",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [560, 400]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "condition-investigacion",
+              "leftValue": "={{ false }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "if-necesita-investigacion",
+      "name": "3. Necesita Investigacion?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [780, 400]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.perplexity.ai/chat/completions",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"llama-3.1-sonar-small-128k-online\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Eres un investigador especializado en construccion modular y automatizacion. Proporciona informacion actualizada, datos y tendencias relevantes. Responde en espanol de forma concisa.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Investiga sobre: {{ $json.titulo }}\\n\\nContexto: {{ $json.resumen }}\\n\\nProporciona: 1) Datos actuales relevantes, 2) Tendencias del sector, 3) Estadisticas si las hay, 4) Puntos clave para contenido B2B\"\n    }\n  ],\n  \"max_tokens\": 1000,\n  \"temperature\": 0.3\n}"
+      },
+      "id": "perplexity-investigar",
+      "name": "4a. Perplexity Investigar",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1000, 300],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "YOUR_PERPLEXITY_CREDENTIAL_ID",
+          "name": "Perplexity API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Combinar datos originales con investigacion\nconst original = $('2. Preparar Datos + Tono').item.json;\nconst investigacion = $input.first().json;\n\nlet datosInvestigacion = '';\ntry {\n  datosInvestigacion = investigacion.choices?.[0]?.message?.content || '';\n} catch (e) {\n  datosInvestigacion = 'No se pudo obtener investigacion adicional.';\n}\n\nreturn [{\n  json: {\n    ...original,\n    investigacion: datosInvestigacion,\n    tieneInvestigacion: true\n  }\n}];"
+      },
+      "id": "code-combinar-investigacion",
+      "name": "4b. Combinar Investigacion",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1220, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Pasar datos sin investigacion\nconst original = $('2. Preparar Datos + Tono').item.json;\n\nreturn [{\n  json: {\n    ...original,\n    investigacion: '',\n    tieneInvestigacion: false\n  }\n}];"
+      },
+      "id": "code-sin-investigacion",
+      "name": "4c. Sin Investigacion",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1000, 500]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "mergeByFields": {
+          "values": []
+        },
+        "options": {}
+      },
+      "id": "merge-datos",
+      "name": "5. Merge Datos",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [1440, 400]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o",
+        "options": {
+          "temperature": 0.7,
+          "maxTokens": 3000
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "Eres el ORQUESTADOR del sistema de contenido de ModulorIA. Tu trabajo es analizar la fuente y crear una ESTRATEGIA COMPLETA para cada red social.\n\nCONTEXTO DE MARCA:\n- ModulorIA: Agencia de automatizacion con IA para construccion modular\n- Audiencia: Directores y gerentes de PYMES construccion en Espana (40-55 anos)\n- Voz: Nicolas, 32 anos, ingeniero que habla de igual a igual\n- Tono: Profesional pero cercano, datos reales, sin exageraciones\n- PROHIBIDO: 'revolucionario', 'game-changer', 'el futuro es...', promesas vacias\n\nTONO DEL DIA: {{ $json.tono }}\n- Formal-Tecnico: Datos, estadisticas, lenguaje tecnico\n- Cercano-Profesional: Conversacional pero experto\n- Datos-Duros: Numeros concretos, comparativas, ROI\n- Reflexivo: Preguntas, tendencias, opinion fundamentada\n\nTU TRABAJO:\n1. Crear un TITULO ATRACTIVO para el post (max 60 chars, sin emojis)\n2. Definir el ANGULO UNICO para cada red social\n3. Determinar el HOOK (gancho) principal\n4. Sugerir hashtags ESPECIFICOS del sector\n\nResponde SOLO con JSON valido:\n{\n  \"tituloPost\": \"Titulo atractivo y conciso para el contenido\",\n  \"hookPrincipal\": \"La frase gancho que abre el post\",\n  \"analisis\": \"Por que este contenido es relevante para la audiencia\",\n  \"angulo_linkedin\": \"Enfoque especifico: educativo/caso/opinion/tendencia\",\n  \"angulo_instagram\": \"Enfoque visual: tip rapido/dato/behind scenes\", \n  \"angulo_facebook\": \"Enfoque comunidad: pregunta/reflexion/debate\",\n  \"puntosClave\": [\"punto1\", \"punto2\", \"punto3\"],\n  \"es_apto_carrusel\": true,\n  \"tipo_imagen\": \"conceptual|datos|proceso|comparativa\",\n  \"hashtags_linkedin\": [\"#ConstruccionModular\", \"#AutomatizacionIA\", \"...3-5 mas\"],\n  \"hashtags_instagram\": [\"#construccion\", \"#innovacion\", \"...10-12 mas\"]\n}",
+              "role": "system"
+            },
+            {
+              "content": "=FUENTE DE CONTENIDO:\n- Titulo: {{ $json.titulo }}\n- Tipo: {{ $json.tipo }}\n- Resumen: {{ $json.resumen }}\n- URL: {{ $json.url }}\n- Relevancia: {{ $json.relevancia }}\n\nFORMATOS ASIGNADOS (RESPETAR):\n- LinkedIn: {{ $json.formatoLinkedIn }}\n- Instagram: {{ $json.formatoInstagram }}\n- Facebook: {{ $json.formatoFacebook }}\n\nCONTEXTO TEMPORAL:\n- Dia: {{ $json.diaNombre }}\n- Es fin de semana: {{ $json.esFinDeSemana }}\n\nINVESTIGACION:\n{{ $json.investigacion }}\n\nCrea la estrategia adaptada a los FORMATOS ASIGNADOS. El titulo y hook deben funcionar para el formato de LinkedIn especificado.",
+              "role": "user"
+            }
+          ]
+        }
+      },
+      "id": "openai-orquestador",
+      "name": "6. Orquestador GPT-4o",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [1660, 400],
+      "credentials": {
+        "openAiApi": {
+          "id": "YOUR_OPENAI_CREDENTIAL_ID",
+          "name": "OpenAI ModulorIA"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parsear respuesta del orquestador y preparar para agentes\nconst item = $input.first();\nconst datosBase = $('5. Merge Datos').first().json;\n\nlet estrategia;\ntry {\n  const content = item.json.message?.content || item.json.text || '';\n  const jsonMatch = content.match(/\\{[\\s\\S]*\\}/);\n  if (jsonMatch) {\n    estrategia = JSON.parse(jsonMatch[0]);\n  } else {\n    throw new Error('No JSON found');\n  }\n} catch (e) {\n  estrategia = {\n    tituloPost: datosBase.titulo || 'Post ModulorIA',\n    hookPrincipal: 'Descubre como la automatizacion esta transformando la construccion modular.',\n    analisis: 'Contenido relevante para PYMES de construccion',\n    angulo_linkedin: 'Contenido educativo sobre ' + datosBase.titulo,\n    angulo_instagram: 'Tip rapido sobre ' + datosBase.titulo,\n    angulo_facebook: 'Reflexion sobre ' + datosBase.titulo,\n    puntosClave: ['Eficiencia', 'Automatizacion', 'Resultados'],\n    es_apto_carrusel: false,\n    tipo_imagen: 'conceptual',\n    hashtags_linkedin: ['#ConstruccionModular', '#Automatizacion', '#IA', '#PYMES'],\n    hashtags_instagram: ['#construccion', '#tecnologia', '#innovacion', '#modular']\n  };\n}\n\n// Usar titulo generado por orquestador o el original\nconst tituloFinal = estrategia.tituloPost || datosBase.titulo || 'Post ModulorIA';\n\nreturn [{\n  json: {\n    ...datosBase,\n    tituloPost: tituloFinal,\n    hookPrincipal: estrategia.hookPrincipal || '',\n    puntosClave: estrategia.puntosClave || [],\n    estrategia\n  }\n}];"
+      },
+      "id": "code-parsear-estrategia",
+      "name": "7. Parsear Estrategia",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1880, 400]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "options": {
+          "temperature": 0.8,
+          "maxTokens": 1500
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "Eres un COPYWRITER SENIOR especializado en LinkedIn B2B para construccion modular.\n\nPERFIL DEL AUTOR:\n- Nicolas, 32 anos, ingeniero y fundador de ModulorIA\n- Escribe como si hablara con un colega del sector\n- Comparte experiencias reales, no teoria\n- Usa datos cuando los tiene, no inventa\n\nAUDIENCIA:\n- Directores de PYMES construccion (45-55 anos)\n- Jefes de obra y gerentes\n- CANSADOS de promesas vacias de tecnologia\n\nFORMATOS DE LINKEDIN (adaptar segun el asignado):\n\n- post_texto: Solo texto, maximo impacto. Hook potente + desarrollo + cierre.\n- post_imagen: Texto + descripcion de imagen. Hook visual.\n- carrusel: Indica 'CARRUSEL:' al inicio. Lista de 6-8 puntos que seran slides.\n- thought_leadership: Opinion experta sobre tendencia. Posicionamiento.\n- caso_estudio: Historia real: problema → solucion → resultado.\n- lista_tips: '5 formas de...' o '3 errores que...' Formato lista.\n- pregunta_debate: Pregunta controversial que genera comentarios.\n\nESTRUCTURA BASE:\n1. HOOK (primera linea): Pregunta | Dato | Contradiccion | Confesion\n2. CONTEXTO (2-3 lineas): Situacion reconocible\n3. INSIGHT (3-4 lineas): Tu perspectiva\n4. EJEMPLO (2-3 lineas): Dato concreto\n5. CIERRE (1-2 lineas): Pregunta para comentarios\n\nEJEMPLOS DE HOOKS POR FORMATO:\n- post_texto: 'El 73% de las PYMES siguen usando Excel para presupuestos.'\n- caso_estudio: 'Hace 6 meses, un cliente me dijo que automatizar era tirar dinero.'\n- lista_tips: '5 senales de que tu proceso de cotizacion necesita ayuda:'\n- pregunta_debate: 'Pregunta honesta: cuantas horas pierdes por semana en tareas repetitivas?'\n\nREGLAS:\n- Max 1,200 caracteres\n- Parrafos cortos (1-2 oraciones)\n- 3-5 hashtags al final\n- 0-2 emojis\n- PROHIBIDO: 'revolucionario', 'game-changer', 'el futuro es...'\n\nResponde SOLO con JSON:\n{\n  \"post\": \"texto con \\n\\n entre parrafos\",\n  \"hashtags\": [\"#ConstruccionModular\", \"#Automatizacion\", \"#PYMES\"],\n  \"tipo\": \"el formato usado\",\n  \"imagenPrompt\": \"Professional minimalist photograph, [descripcion visual], dark blue gradient #1a1a2e, purple accent #4f46e5, corporate B2B, no text, no faces, 1080x1080\"\n}",
+              "role": "system"
+            },
+            {
+              "content": "=FORMATO ASIGNADO: {{ $json.formatoLinkedIn }} ← USAR ESTE FORMATO\nTONO: {{ $json.tono }}\nDIA: {{ $json.diaNombre }}\n\nFUENTE:\n- Titulo: {{ $json.titulo }}\n- Resumen: {{ $json.resumen }}\n\nDEL ORQUESTADOR:\n- Hook sugerido: {{ $json.hookPrincipal }}\n- Puntos clave: {{ $json.puntosClave }}\n- Hashtags: {{ $json.estrategia.hashtags_linkedin }}\n\nGenera el post de LinkedIn usando el FORMATO ASIGNADO. Adapta la estructura al formato especifico.",
+              "role": "user"
+            }
+          ]
+        }
+      },
+      "id": "openai-agente-linkedin",
+      "name": "8a. Agente LinkedIn",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [2100, 200],
+      "credentials": {
+        "openAiApi": {
+          "id": "YOUR_OPENAI_CREDENTIAL_ID",
+          "name": "OpenAI ModulorIA"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "options": {
+          "temperature": 0.8,
+          "maxTokens": 1000
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "Eres un CONTENT CREATOR para Instagram B2B especializado en construccion modular.\n\nFORMATOS DE INSTAGRAM (adaptar segun el asignado):\n\n- post_imagen: Imagen impactante + caption con gancho. Visual primero.\n- carrusel: Indica 'CARRUSEL (X slides):' Lista de puntos visuales.\n- tip_rapido: Un tip concreto. Gancho directo + valor inmediato.\n- dato_curioso: Estadistica o dato sorprendente. Numeros grandes.\n- behind_scenes: Mostrar proceso real. Autenticidad.\n- antes_despues: Comparativa visual. Contraste claro.\n\nESTRUCTURA CAPTION:\n1. GANCHO (125 chars visibles): 'Menos papeles, mas obra.' | 'Error #1 en presupuestos:'\n2. DESARROLLO (2-3 lineas): Contexto rapido\n3. VALOR (2-3 lineas): El insight\n4. CTA (1 linea): Pregunta o invitacion\n\nREGLAS:\n- Caption: 200-350 caracteres\n- Hashtags: 10-15 en bloque separado\n- Emojis: 2-4 estrategicos\n- Tono: Profesional pero cercano\n\nResponde con JSON:\n{\n  \"caption\": \"texto con emojis estrategicos\",\n  \"hashtags\": \"#construccionmodular #automatizacion #pymes #eficiencia #obra #arquitectura #ingenieria #espana #tech #innovacion\",\n  \"imagenPrompt\": \"Professional Instagram photo, [descripcion], bright modern aesthetic, square 1080x1080, construction theme, high quality\",\n  \"altText\": \"Descripcion accesible\"\n}",
+              "role": "system"
+            },
+            {
+              "content": "=FORMATO ASIGNADO: {{ $json.formatoInstagram }} ← USAR ESTE FORMATO\nTONO: {{ $json.tono }}\n\nFUENTE:\n- Titulo: {{ $json.titulo }}\n- Resumen: {{ $json.resumen }}\n- Puntos clave: {{ $json.puntosClave }}\n\nHASHTAGS BASE: {{ $json.estrategia.hashtags_instagram }}\n\nGenera el caption de Instagram usando el FORMATO ASIGNADO.",
+              "role": "user"
+            }
+          ]
+        }
+      },
+      "id": "openai-agente-instagram",
+      "name": "8b. Agente Instagram",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [2100, 400],
+      "credentials": {
+        "openAiApi": {
+          "id": "YOUR_OPENAI_CREDENTIAL_ID",
+          "name": "OpenAI ModulorIA"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "options": {
+          "temperature": 0.8,
+          "maxTokens": 800
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "Eres un COMMUNITY MANAGER para Facebook orientado a PYMES de construccion en Espana.\n\nFORMATOS DE FACEBOOK (adaptar segun el asignado):\n\n- pregunta: Pregunta directa que genera debate. Opinion controversial.\n- reflexion: Reflexion personal sobre el sector. Tono pensativo.\n- compartir_articulo: Comentario sobre noticia/tendencia + link.\n- encuesta_opinion: 'Que opinais?' 'A o B?' Generar respuestas.\n- historia_corta: Mini anecdota real. Storytelling breve.\n- tip_practico: Consejo aplicable hoy. Valor inmediato.\n\nESTRUCTURA:\n1. APERTURA: 'Pregunta sincera:' | 'Esto me paso:' | 'Cada vez veo mas...'\n2. CONTEXTO (2-3 lineas): Situacion reconocible\n3. REFLEXION (2-3 lineas): Tu punto de vista\n4. INVITACION (1 linea): Pregunta para comentarios\n\nREGLAS:\n- Max 400 caracteres (corto = mejor)\n- 1-2 hashtags maximo\n- 1-2 emojis\n- Tono: Colega tomando cafe\n- Objetivo: CONVERSACION, no likes\n\nResponde con JSON:\n{\n  \"post\": \"texto conversacional que invite a comentar\",\n  \"hashtags\": \"#ConstruccionModular #PYMES\",\n  \"imagenPrompt\": \"Professional Facebook image, [descripcion], warm approachable aesthetic, horizontal 1200x630, construction theme, high quality\"\n}",
+              "role": "system"
+            },
+            {
+              "content": "=FORMATO ASIGNADO: {{ $json.formatoFacebook }} ← USAR ESTE FORMATO\nTONO: {{ $json.tono }}\n\nFUENTE:\n- Titulo: {{ $json.titulo }}\n- Resumen: {{ $json.resumen }}\n- Puntos clave: {{ $json.puntosClave }}\n\nGenera el post de Facebook usando el FORMATO ASIGNADO. Objetivo: generar comentarios.",
+              "role": "user"
+            }
+          ]
+        }
+      },
+      "id": "openai-agente-facebook",
+      "name": "8c. Agente Facebook",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [2100, 600],
+      "credentials": {
+        "openAiApi": {
+          "id": "YOUR_OPENAI_CREDENTIAL_ID",
+          "name": "OpenAI ModulorIA"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "mergeByFields": {
+          "values": []
+        },
+        "options": {}
+      },
+      "id": "merge-agentes",
+      "name": "9. Merge Agentes",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [2320, 400]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parsear respuestas de los 3 agentes\nconst datosBase = $('7. Parsear Estrategia').first().json;\nconst respuestaLinkedIn = $('8a. Agente LinkedIn').first().json;\nconst respuestaInstagram = $('8b. Agente Instagram').first().json;\nconst respuestaFacebook = $('8c. Agente Facebook').first().json;\n\nfunction parseJSON(response) {\n  try {\n    const content = response.message?.content || response.text || '';\n    const jsonMatch = content.match(/\\{[\\s\\S]*\\}/);\n    if (jsonMatch) {\n      return JSON.parse(jsonMatch[0]);\n    }\n  } catch (e) {}\n  return null;\n}\n\nconst linkedin = parseJSON(respuestaLinkedIn) || {\n  post: 'Error generando post LinkedIn',\n  hashtags: ['#ConstruccionModular', '#Automatizacion'],\n  tipo: 'error',\n  imagenPrompt: 'Professional minimalist photograph of modular construction site, dark blue gradient background, purple accent lighting, clean modern composition, corporate B2B style, no text, no logos, high quality 1080x1080'\n};\n\nconst instagram = parseJSON(respuestaInstagram) || {\n  caption: 'Error generando post Instagram',\n  hashtags: '#construccionmodular #automatizacion #pymes',\n  imagenPrompt: 'Professional Instagram photo of construction technology, bright modern aesthetic, square format 1080x1080',\n  altText: 'Imagen de construccion modular'\n};\n\nconst facebook = parseJSON(respuestaFacebook) || {\n  post: 'Error generando post Facebook',\n  hashtags: '#ConstruccionModular',\n  imagenPrompt: 'Professional Facebook image of construction scene, warm aesthetic, horizontal format 1200x630'\n};\n\n// Usar el mejor prompt de imagen (LinkedIn tiene el mas detallado)\nconst imagenPromptPrincipal = linkedin.imagenPrompt || instagram.imagenPrompt || facebook.imagenPrompt;\n\n// Formatear hashtags de LinkedIn\nconst hashtagsLI = Array.isArray(linkedin.hashtags) \n  ? linkedin.hashtags.map(h => h.startsWith('#') ? h : '#' + h).join(' ') \n  : linkedin.hashtags || '';\n\nreturn [{\n  json: {\n    // Datos base incluyendo el titulo generado por el orquestador\n    titulo: datosBase.tituloPost || datosBase.titulo,\n    tituloOriginal: datosBase.titulo,\n    tipo: datosBase.tipo,\n    tono: datosBase.tono,\n    fechaProgramada: datosBase.fechaProgramada,\n    sourcePageId: datosBase.sourcePageId,\n    hookPrincipal: datosBase.hookPrincipal,\n    \n    // Posts generados\n    postLinkedIn: linkedin.post,\n    hashtagsLinkedIn: hashtagsLI,\n    tipoLinkedIn: linkedin.tipo,\n    \n    postInstagram: instagram.caption,\n    hashtagsInstagram: instagram.hashtags,\n    altTextInstagram: instagram.altText,\n    \n    postFacebook: facebook.post,\n    hashtagsFacebook: facebook.hashtags,\n    \n    // Prompts de imagen\n    imagenPromptPrincipal,\n    imagenPromptLinkedIn: linkedin.imagenPrompt,\n    imagenPromptInstagram: instagram.imagenPrompt,\n    imagenPromptFacebook: facebook.imagenPrompt\n  }\n}];"
+      },
+      "id": "code-parsear-agentes",
+      "name": "10. Parsear Agentes",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2540, 400]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.replicate.com/v1/predictions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"version\": \"black-forest-labs/flux-schnell\",\n  \"input\": {\n    \"prompt\": \"{{ $json.imagenPromptPrincipal }}\\n\\nEstilo: Fotografia profesional, iluminacion natural, composicion limpia. Alta calidad, moderno, B2B profesional.\\nEvitar: Texto en la imagen, logos, marcas de agua.\",\n    \"aspect_ratio\": \"1:1\",\n    \"output_format\": \"webp\",\n    \"output_quality\": 90\n  }\n}",
+        "options": {
+          "timeout": 60000
+        }
+      },
+      "id": "replicate-crear-prediccion",
+      "name": "11a. Replicate Crear Prediccion",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [2760, 400],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "YOUR_REPLICATE_CREDENTIAL_ID",
+          "name": "Replicate API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Esperar y obtener resultado de Replicate\nconst prediction = $input.first().json;\nconst predictionId = prediction.id;\n\n// Replicate es asincrono, hay que esperar el resultado\nlet attempts = 0;\nconst maxAttempts = 30; // 30 segundos max\n\nwhile (attempts < maxAttempts) {\n  const response = await this.helpers.httpRequest({\n    method: 'GET',\n    url: `https://api.replicate.com/v1/predictions/${predictionId}`,\n    headers: {\n      'Authorization': `Token ${$credentials.httpHeaderAuth.value}`\n    }\n  });\n  \n  if (response.status === 'succeeded') {\n    return [{\n      json: {\n        data: [{ url: response.output[0] || response.output }],\n        status: 'succeeded',\n        modelo: 'flux-schnell',\n        costo_estimado: '$0.003'\n      }\n    }];\n  }\n  \n  if (response.status === 'failed') {\n    throw new Error(`Replicate falló: ${response.error}`);\n  }\n  \n  // Esperar 1 segundo antes de reintentar\n  await new Promise(resolve => setTimeout(resolve, 1000));\n  attempts++;\n}\n\nthrow new Error('Timeout esperando imagen de Replicate');"
+      },
+      "id": "replicate-esperar-resultado",
+      "name": "11b. Esperar Resultado Imagen",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2980, 400]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.cloudinary.com/v1_1/YOUR_CLOUD_NAME/image/upload",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"file\": \"{{ $json.data[0].url }}\",\n  \"upload_preset\": \"moduloria_posts\",\n  \"folder\": \"posts/{{ $('10. Parsear Agentes').first().json.fechaProgramada }}\",\n  \"public_id\": \"post_{{ Date.now() }}\"\n}"
+      },
+      "id": "cloudinary-upload",
+      "name": "12. Cloudinary Upload",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [3200, 400],
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "YOUR_CLOUDINARY_CREDENTIAL_ID",
+          "name": "Cloudinary"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Combinar todo y preparar para guardar en Notion (SIN IMAGEN)\nconst d = $input.first().json;\n\n// Crear prompt de imagen completo y organizado\nconst promptCompleto = `=== PROMPT PRINCIPAL (LinkedIn/General) ===\n${d.imagenPromptPrincipal || 'Sin prompt generado'}\n\n=== PROMPT INSTAGRAM (1080x1080) ===\n${d.imagenPromptInstagram || d.imagenPromptPrincipal || 'Usar prompt principal'}\n\n=== PROMPT FACEBOOK (1200x630) ===\n${d.imagenPromptFacebook || 'Usar prompt principal en formato horizontal'}\n\n---\nESTILO MODULORIA:\n- Colores: Azul oscuro #1a1a2e + Morado #4f46e5\n- Estilo: Profesional, minimalista, B2B\n- EVITAR: Texto en imagen, logos, caras de personas\n- Herramientas: NanoBanana, Freepik, DALL-E, Midjourney`;\n\n// Formatear post LinkedIn (post + hashtags)\nconst postLI = d.postLinkedIn + (d.hashtagsLinkedIn ? '\\n\\n' + d.hashtagsLinkedIn : '');\n\n// Formatear post Facebook (post + hashtags)\nconst postFB = d.postFacebook + (d.hashtagsFacebook ? '\\n\\n' + d.hashtagsFacebook : '');\n\nreturn [{\n  json: {\n    titulo: d.titulo || 'Post ModulorIA',\n    tipoContenido: d.tipo || 'Noticia',\n    tono: d.tono || 'Cercano-Profesional',\n    \n    postLinkedIn: postLI,\n    postInstagram: d.postInstagram,\n    hashtagsInstagram: d.hashtagsInstagram,\n    postFacebook: postFB,\n    \n    imagenURL: '',\n    promptImagen: promptCompleto,\n    \n    fechaProgramada: d.fechaProgramada,\n    sourcePageId: d.sourcePageId,\n    \n    estado: 'Borrador',\n    redPrincipal: 'LinkedIn'\n  }\n}];"
+      },
+      "id": "code-preparar-notion",
+      "name": "13. Preparar para Notion",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [3200, 400]
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "create",
+        "databaseId": {
+          "__rl": true,
+          "value": "b9a8420c-f289-4ca1-ab49-25271e21e71a",
+          "mode": "id"
+        },
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Título|title",
+              "title": "={{ $json.titulo }}"
+            },
+            {
+              "key": "Tipo Contenido|select",
+              "selectValue": "={{ $json.tipoContenido }}"
+            },
+            {
+              "key": "Tono|select",
+              "selectValue": "={{ $json.tono }}"
+            },
+            {
+              "key": "Post LinkedIn|rich_text",
+              "textContent": "={{ $json.postLinkedIn }}"
+            },
+            {
+              "key": "Post Facebook|rich_text",
+              "textContent": "={{ $json.postFacebook }}"
+            },
+            {
+              "key": "Post Instagram|rich_text",
+              "textContent": "={{ $json.postInstagram }}"
+            },
+            {
+              "key": "Hashtags Instagram|rich_text",
+              "textContent": "={{ $json.hashtagsInstagram }}"
+            },
+            {
+              "key": "Imagen Sugerida|rich_text",
+              "textContent": "={{ $json.promptImagen }}"
+            },
+            {
+              "key": "Estado|select",
+              "selectValue": "Borrador"
+            },
+            {
+              "key": "Fecha Programada|date",
+              "date": "={{ $json.fechaProgramada }}"
+            },
+            {
+              "key": "Red Principal|select",
+              "selectValue": "LinkedIn"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "notion-crear-post",
+      "name": "14. Guardar en Notion",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [3420, 400],
+      "credentials": {
+        "notionApi": {
+          "id": "YOUR_NOTION_CREDENTIAL_ID",
+          "name": "ModulorIA Notion"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "update",
+        "pageId": "={{ $('2. Preparar Datos + Tono').item.json.sourcePageId }}",
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Estado|select",
+              "selectValue": "Usado"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "notion-marcar-usado",
+      "name": "15. Marcar Fuente Usada",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [3640, 400],
+      "credentials": {
+        "notionApi": {
+          "id": "YOUR_NOTION_CREDENTIAL_ID",
+          "name": "ModulorIA Notion"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "id": "aggregate-resultados",
+      "name": "16. Agregar Resultados",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [3860, 400]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Resumen final de ejecucion\nconst items = $input.first().json.data || [];\nconst count = items.length;\n\nconst resumen = {\n  mensaje: `Se generaron ${count} posts para redes sociales`,\n  postsGenerados: count,\n  fechaEjecucion: new Date().toISOString(),\n  plataformas: ['LinkedIn', 'Instagram', 'Facebook'],\n  proximoPaso: 'Revisar posts en Notion → Cambiar estado a Aprobado → Workflow de publicacion se activara automaticamente'\n};\n\nreturn [{ json: resumen }];"
+      },
+      "id": "code-resumen-final",
+      "name": "17. Resumen Final",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [4080, 400]
+    },
+    {
+      "parameters": {
+        "content": "## SISTEMA CONTENIDO v4.4\n### ModulorIA - Rotacion + Auto-Trigger\n\n**NUEVO v4.4:**\n✓ 3 Triggers: Manual | 8AM L-V | Notion auto\n✓ ROTACION de formatos por red social\n✓ 7 formatos LinkedIn (carrusel, tips, etc)\n✓ 6 formatos Instagram\n✓ 6 formatos Facebook\n✓ Tonos por dia de la semana\n\n**TRIGGERS:**\n1. Manual - Para pruebas\n2. Schedule 8AM L-V - Diario automatico\n3. Notion Trigger - Al agregar fuente nueva\n\n**ROTACION AUTOMATICA:**\nCada dia rota entre formatos diferentes\npara mantener variedad en el contenido.\n\n**Siguiente:** Aprobar posts en Notion",
+        "height": 380,
+        "width": 420
+      },
+      "id": "sticky-nota-principal",
+      "name": "Nota: Sistema v4.1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [60, 60]
+    },
+    {
+      "parameters": {
+        "content": "## FORMATOS POR RED SOCIAL\n\n**LINKEDIN (7 formatos):**\n- post_texto (solo texto, alto engagement)\n- post_imagen (texto + imagen)\n- carrusel (educativo 6-8 slides)\n- thought_leadership (opinion experta)\n- caso_estudio (problema→solucion→resultado)\n- lista_tips (5 formas de...)\n- pregunta_debate (genera comentarios)\n\n**INSTAGRAM (6 formatos):**\n- post_imagen | carrusel | tip_rapido\n- dato_curioso | behind_scenes | antes_despues\n\n**FACEBOOK (6 formatos):**\n- pregunta | reflexion | compartir_articulo\n- encuesta_opinion | historia_corta | tip_practico\n\n**TONOS POR DIA:**\nL: Formal-Tecnico | M: Storytelling\nX: Datos-Duros | J: Cercano-Profesional\nV: Opinion-Experta | S-D: Reflexivo/Inspiracional",
+        "height": 400,
+        "width": 380
+      },
+      "id": "sticky-configuracion",
+      "name": "Nota: Configuracion",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [500, 60]
+    },
+    {
+      "parameters": {
+        "content": "## TONOS POR DIA\n\n| Dia | Tono |\n|-----|------|\n| Lunes | Formal-Tecnico |\n| Martes | Cercano-Profesional |\n| Miercoles | Datos-Duros |\n| Jueves | Cercano-Profesional |\n| Viernes | Formal-Tecnico |\n| Sabado | Reflexivo |\n| Domingo | Reflexivo |\n\n**Objetivo:** Variar el contenido para mantener engagement",
+        "height": 280,
+        "width": 300
+      },
+      "id": "sticky-tonos",
+      "name": "Nota: Tonos",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [900, 60]
+    },
+    {
+      "parameters": {},
+      "id": "error-trigger",
+      "name": "Error Trigger",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [100, 720]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Procesar error y generar notificacion\nconst errorData = $input.first().json;\n\nconst errorInfo = {\n  workflow: 'Sistema Contenido Redes Sociales v4.1',\n  fechaError: new Date().toISOString(),\n  nodoFallido: errorData.execution?.lastNodeExecuted || 'Desconocido',\n  mensajeError: errorData.execution?.error?.message || 'Error sin mensaje',\n  stackTrace: errorData.execution?.error?.stack || '',\n  executionId: errorData.execution?.id || '',\n  \n  // Formato para notificacion\n  notificacion: `⚠️ ERROR en ModulorIA\\n\\n` +\n    `📍 Nodo: ${errorData.execution?.lastNodeExecuted || 'Desconocido'}\\n` +\n    `❌ Error: ${errorData.execution?.error?.message || 'Sin detalles'}\\n` +\n    `🕐 Hora: ${new Date().toLocaleString('es-ES')}\\n\\n` +\n    `Revisar ejecucion en N8N.`\n};\n\nreturn [{ json: errorInfo }];"
+      },
+      "id": "code-procesar-error",
+      "name": "Procesar Error",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [320, 720]
+    },
+    {
+      "parameters": {
+        "content": "## ERROR HANDLING\n\nCaptura errores del workflow y prepara notificacion.\n\n**Proximos pasos:**\n- Conectar nodo Email/Telegram para notificar\n- Configurar webhook para alertas\n\n**Errores comunes:**\n- Replicate timeout (>30s)\n- API rate limits\n- Notion connection",
+        "height": 220,
+        "width": 300
+      },
+      "id": "sticky-error-handling",
+      "name": "Nota: Error Handling",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [60, 660]
+    }
+  ],
+  "connections": {
+    "Notion: Nueva Fuente": {
+      "main": [
+        [
+          {
+            "node": "1. Leer Fuentes Nuevas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Procesar Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trigger Manual": {
+      "main": [
+        [
+          {
+            "node": "1. Leer Fuentes Nuevas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Diario 8AM": {
+      "main": [
+        [
+          {
+            "node": "1. Leer Fuentes Nuevas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "1. Leer Fuentes Nuevas": {
+      "main": [
+        [
+          {
+            "node": "2. Preparar Datos + Tono",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "2. Preparar Datos + Tono": {
+      "main": [
+        [
+          {
+            "node": "3. Necesita Investigacion?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "3. Necesita Investigacion?": {
+      "main": [
+        [
+          {
+            "node": "4a. Perplexity Investigar",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "4c. Sin Investigacion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "4a. Perplexity Investigar": {
+      "main": [
+        [
+          {
+            "node": "4b. Combinar Investigacion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "4b. Combinar Investigacion": {
+      "main": [
+        [
+          {
+            "node": "5. Merge Datos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "4c. Sin Investigacion": {
+      "main": [
+        [
+          {
+            "node": "5. Merge Datos",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "5. Merge Datos": {
+      "main": [
+        [
+          {
+            "node": "6. Orquestador GPT-4o",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "6. Orquestador GPT-4o": {
+      "main": [
+        [
+          {
+            "node": "7. Parsear Estrategia",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "7. Parsear Estrategia": {
+      "main": [
+        [
+          {
+            "node": "8a. Agente LinkedIn",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "8b. Agente Instagram",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "8c. Agente Facebook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "8a. Agente LinkedIn": {
+      "main": [
+        [
+          {
+            "node": "9. Merge Agentes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "8b. Agente Instagram": {
+      "main": [
+        [
+          {
+            "node": "9. Merge Agentes",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "8c. Agente Facebook": {
+      "main": [
+        [
+          {
+            "node": "9. Merge Agentes",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "9. Merge Agentes": {
+      "main": [
+        [
+          {
+            "node": "10. Parsear Agentes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "10. Parsear Agentes": {
+      "main": [
+        [
+          {
+            "node": "13. Preparar para Notion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "13. Preparar para Notion": {
+      "main": [
+        [
+          {
+            "node": "14. Guardar en Notion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "14. Guardar en Notion": {
+      "main": [
+        [
+          {
+            "node": "15. Marcar Fuente Usada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "15. Marcar Fuente Usada": {
+      "main": [
+        [
+          {
+            "node": "16. Agregar Resultados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "16. Agregar Resultados": {
+      "main": [
+        [
+          {
+            "node": "17. Resumen Final",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": {
+    "instanceId": "moduloria",
+    "templateCredsSetupCompleted": false
+  },
+  "tags": [
+    {
+      "name": "Redes Sociales"
+    },
+    {
+      "name": "Content"
+    },
+    {
+      "name": "v4"
+    },
+    {
+      "name": "Multi-Agente"
+    }
+  ]
+}

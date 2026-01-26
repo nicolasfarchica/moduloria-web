@@ -1,0 +1,489 @@
+{
+  "name": "ModulorIA - Generador Carruseles LinkedIn",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "trigger-manual",
+      "name": "Trigger Manual",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [100, 300]
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "getAll",
+        "databaseId": {
+          "__rl": true,
+          "value": "b9a8420c-f289-4ca1-ab49-25271e21e71a",
+          "mode": "id"
+        },
+        "returnAll": false,
+        "limit": 5,
+        "filterType": "json",
+        "filterJson": "{\n  \"and\": [\n    {\n      \"property\": \"Estado\",\n      \"select\": {\n        \"equals\": \"Pendiente Carrusel\"\n      }\n    },\n    {\n      \"property\": \"Tipo Contenido\",\n      \"select\": {\n        \"equals\": \"Carrusel\"\n      }\n    }\n  ]\n}",
+        "options": {}
+      },
+      "id": "notion-leer-carruseles",
+      "name": "1. Leer Posts Carrusel",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [320, 300],
+      "credentials": {
+        "notionApi": {
+          "id": "YOUR_NOTION_CREDENTIAL_ID",
+          "name": "ModulorIA Notion"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extraer datos del post para generar carrusel\nconst item = $input.first();\nconst props = item.json.properties || item.json;\n\nconst titulo = props['Título']?.title?.[0]?.plain_text || props.Titulo?.title?.[0]?.plain_text || 'Sin titulo';\nconst contenido = props['Post LinkedIn']?.rich_text?.[0]?.plain_text || '';\nconst tema = props['Tema Carrusel']?.rich_text?.[0]?.plain_text || titulo;\n\nreturn [{\n  json: {\n    pageId: item.json.id,\n    titulo,\n    contenido,\n    tema,\n    numSlides: 8 // Por defecto 8 slides para LinkedIn\n  }\n}];"
+      },
+      "id": "code-preparar-datos",
+      "name": "2. Preparar Datos",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [540, 300]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o",
+        "options": {
+          "temperature": 0.7,
+          "maxTokens": 4000
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "Eres un experto en crear carruseles virales para LinkedIn especializados en construccion modular y automatizacion con IA.\n\nREGLAS PARA CARRUSELES:\n1. 8 slides exactamente\n2. Slide 1: Hook potente (pregunta o dato impactante)\n3. Slides 2-7: Contenido de valor (1 idea por slide)\n4. Slide 8: CTA + resumen + invitacion a seguir\n\nFORMATO POR SLIDE:\n- Titulo corto (max 5 palabras, en mayusculas)\n- Texto principal (max 50 palabras)\n- Punto clave destacado (max 10 palabras)\n\nESTILO VISUAL:\n- Fondo: #1a1a2e (azul oscuro ModulorIA)\n- Texto principal: #ffffff\n- Acento: #4f46e5 (morado)\n- Tipografia: Sans-serif moderna\n\nVOZ DE MARCA:\n- Profesional pero accesible\n- Datos concretos, no promesas vacias\n- Tono de experto que comparte conocimiento\n\nResponde SOLO con JSON valido:\n{\n  \"slides\": [\n    {\n      \"numero\": 1,\n      \"tipo\": \"hook\",\n      \"titulo\": \"TITULO EN MAYUSCULAS\",\n      \"texto\": \"Texto explicativo del slide\",\n      \"destacado\": \"Frase clave a destacar\"\n    },\n    ...\n  ],\n  \"hashtags\": [\"hashtag1\", \"hashtag2\", \"hashtag3\"],\n  \"descripcion_post\": \"Texto que acompana al carrusel en el post\"\n}",
+              "role": "system"
+            },
+            {
+              "content": "=TEMA DEL CARRUSEL: {{ $json.tema }}\n\nCONTENIDO BASE:\n{{ $json.contenido }}\n\nGenera un carrusel de 8 slides sobre este tema.",
+              "role": "user"
+            }
+          ]
+        }
+      },
+      "id": "openai-generar-slides",
+      "name": "3. GPT-4o Generar Slides",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [760, 300],
+      "credentials": {
+        "openAiApi": {
+          "id": "YOUR_OPENAI_CREDENTIAL_ID",
+          "name": "OpenAI ModulorIA"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parsear respuesta de GPT y preparar datos de slides\nconst respuesta = $input.first().json;\nconst datosBase = $('2. Preparar Datos').first().json;\n\nlet carruselData;\ntry {\n  const content = respuesta.message?.content || respuesta.text || '';\n  const jsonMatch = content.match(/\\{[\\s\\S]*\\}/);\n  if (jsonMatch) {\n    carruselData = JSON.parse(jsonMatch[0]);\n  } else {\n    throw new Error('No JSON found');\n  }\n} catch (e) {\n  carruselData = {\n    slides: [\n      { numero: 1, tipo: 'hook', titulo: 'ERROR', texto: 'No se pudo generar el carrusel', destacado: 'Reintentar' }\n    ],\n    hashtags: ['#ConstruccionModular'],\n    descripcion_post: 'Error generando carrusel'\n  };\n}\n\nreturn [{\n  json: {\n    ...datosBase,\n    slides: carruselData.slides,\n    hashtags: carruselData.hashtags,\n    descripcionPost: carruselData.descripcion_post,\n    totalSlides: carruselData.slides.length\n  }\n}];"
+      },
+      "id": "code-parsear-slides",
+      "name": "4. Parsear Slides",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [980, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Generar prompts de imagen para cada slide\nconst data = $input.first().json;\n\nconst slidesConPrompts = data.slides.map((slide, index) => {\n  // Estilo visual consistente ModulorIA\n  const estiloBase = 'Professional minimalist design, dark blue background #1a1a2e, modern sans-serif typography, clean layout, B2B aesthetic, purple accent #4f46e5';\n  \n  let promptImagen;\n  \n  if (slide.tipo === 'hook') {\n    promptImagen = `${estiloBase}, slide 1 of carousel, bold hook statement, eye-catching design, question mark or exclamation visual element, construction industry theme`;\n  } else if (index === data.slides.length - 1) {\n    promptImagen = `${estiloBase}, final slide, call to action design, follow button visual, summary slide, professional conclusion, ModulorIA branding space`;\n  } else {\n    promptImagen = `${estiloBase}, content slide ${index + 1}, single key point focus, numbered element, modular construction or AI automation visual metaphor, data visualization style`;\n  }\n  \n  return {\n    ...slide,\n    promptImagen,\n    indice: index\n  };\n});\n\n// Retornar cada slide como item separado para procesamiento paralelo\nreturn slidesConPrompts.map(slide => ({ json: { ...data, slideActual: slide } }));"
+      },
+      "id": "code-preparar-imagenes",
+      "name": "5. Preparar Prompts Imagenes",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1200, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.replicate.com/v1/predictions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"version\": \"black-forest-labs/flux-schnell\",\n  \"input\": {\n    \"prompt\": \"{{ $json.slideActual.promptImagen }}\\n\\nText overlay: {{ $json.slideActual.titulo }}\\n\\nStyle: LinkedIn carousel slide, 1080x1350 portrait format, professional B2B\",\n    \"aspect_ratio\": \"4:5\",\n    \"output_format\": \"png\",\n    \"output_quality\": 95\n  }\n}",
+        "options": {
+          "timeout": 60000
+        }
+      },
+      "id": "replicate-generar-slide",
+      "name": "6. Replicate Generar Slide",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1420, 300],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "YOUR_REPLICATE_CREDENTIAL_ID",
+          "name": "Replicate API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Esperar resultado de Replicate para cada slide\nconst prediction = $input.first().json;\nconst predictionId = prediction.id;\nconst slideData = $('5. Preparar Prompts Imagenes').first().json;\n\nlet attempts = 0;\nconst maxAttempts = 30;\n\nwhile (attempts < maxAttempts) {\n  const response = await this.helpers.httpRequest({\n    method: 'GET',\n    url: `https://api.replicate.com/v1/predictions/${predictionId}`,\n    headers: {\n      'Authorization': `Token ${$credentials.httpHeaderAuth.value}`\n    }\n  });\n  \n  if (response.status === 'succeeded') {\n    return [{\n      json: {\n        ...slideData,\n        slideActual: {\n          ...slideData.slideActual,\n          imagenUrl: response.output[0] || response.output\n        }\n      }\n    }];\n  }\n  \n  if (response.status === 'failed') {\n    throw new Error(`Replicate fallo en slide ${slideData.slideActual.numero}: ${response.error}`);\n  }\n  \n  await new Promise(resolve => setTimeout(resolve, 1000));\n  attempts++;\n}\n\nthrow new Error('Timeout esperando imagen de Replicate');"
+      },
+      "id": "code-esperar-slide",
+      "name": "7. Esperar Resultado Slide",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1640, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.cloudinary.com/v1_1/YOUR_CLOUD_NAME/image/upload",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"file\": \"{{ $json.slideActual.imagenUrl }}\",\n  \"upload_preset\": \"moduloria_posts\",\n  \"folder\": \"carruseles/{{ $json.pageId }}\",\n  \"public_id\": \"slide_{{ $json.slideActual.indice }}\"\n}"
+      },
+      "id": "cloudinary-upload-slide",
+      "name": "8. Cloudinary Upload Slide",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1860, 300],
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "YOUR_CLOUDINARY_CREDENTIAL_ID",
+          "name": "Cloudinary"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "id": "aggregate-slides",
+      "name": "9. Agregar Todos Slides",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [2080, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Consolidar todos los slides y preparar para PDF\nconst allSlides = $input.first().json.data;\n\n// Ordenar por indice\nconst slidesOrdenados = allSlides.sort((a, b) => \n  a.slideActual.indice - b.slideActual.indice\n);\n\nconst primerSlide = slidesOrdenados[0];\n\nreturn [{\n  json: {\n    pageId: primerSlide.pageId,\n    titulo: primerSlide.titulo,\n    descripcionPost: primerSlide.descripcionPost,\n    hashtags: primerSlide.hashtags,\n    totalSlides: slidesOrdenados.length,\n    slides: slidesOrdenados.map(s => ({\n      numero: s.slideActual.numero,\n      titulo: s.slideActual.titulo,\n      texto: s.slideActual.texto,\n      destacado: s.slideActual.destacado,\n      imagenUrl: s.slideActual.imagenUrl,\n      cloudinaryUrl: s.json?.secure_url || s.slideActual.imagenUrl\n    })),\n    urlsImagenes: slidesOrdenados.map(s => s.json?.secure_url || s.slideActual.imagenUrl)\n  }\n}];"
+      },
+      "id": "code-consolidar-slides",
+      "name": "10. Consolidar Slides",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2300, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.cloudinary.com/v1_1/YOUR_CLOUD_NAME/image/multi",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"tag\": \"carrusel_{{ $json.pageId }}\",\n  \"format\": \"pdf\",\n  \"transformation\": \"w_1080,h_1350,c_fill\"\n}",
+        "options": {
+          "timeout": 120000
+        }
+      },
+      "id": "cloudinary-crear-pdf",
+      "name": "11. Crear PDF Carrusel",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [2520, 300],
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "YOUR_CLOUDINARY_CREDENTIAL_ID",
+          "name": "Cloudinary"
+        }
+      },
+      "notes": "NOTA: Este metodo puede no funcionar directamente. Alternativa: usar biblioteca PDF en Code node o servicio externo como API2PDF"
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "update",
+        "pageId": "={{ $json.pageId }}",
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Estado|select",
+              "selectValue": "Carrusel Generado"
+            },
+            {
+              "key": "Carrusel PDF URL|url",
+              "urlValue": "={{ $json.pdfUrl || $json.urlsImagenes[0] }}"
+            },
+            {
+              "key": "Slides Generados|number",
+              "numberValue": "={{ $json.totalSlides }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "notion-actualizar-post",
+      "name": "12. Actualizar Post Notion",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [2740, 300],
+      "credentials": {
+        "notionApi": {
+          "id": "YOUR_NOTION_CREDENTIAL_ID",
+          "name": "ModulorIA Notion"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Resumen final de generacion de carrusel\nconst data = $('10. Consolidar Slides').first().json;\n\nreturn [{\n  json: {\n    mensaje: `Carrusel generado exitosamente`,\n    titulo: data.titulo,\n    totalSlides: data.totalSlides,\n    descripcionPost: data.descripcionPost,\n    hashtags: data.hashtags.join(' '),\n    slidesGenerados: data.slides.map(s => ({\n      slide: s.numero,\n      titulo: s.titulo\n    })),\n    proximoPaso: 'Revisar en Notion → Descargar PDF → Publicar manualmente o via API LinkedIn Documents'\n  }\n}];"
+      },
+      "id": "code-resumen-final",
+      "name": "13. Resumen Final",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2960, 300]
+    },
+    {
+      "parameters": {
+        "content": "## GENERADOR CARRUSELES LINKEDIN\n### ModulorIA v1.0\n\n**Flujo:**\n1. Leer posts marcados como carrusel en Notion\n2. GPT-4o genera contenido de 8 slides\n3. Replicate Flux genera imagenes por slide\n4. Upload a Cloudinary\n5. Crear PDF consolidado\n6. Actualizar Notion con URLs\n\n**Formato slides:** 1080x1350 (4:5 portrait)\n**Estilo:** ModulorIA brand colors\n\n**Nota:** La publicacion de carruseles en LinkedIn\nrequiere subir el PDF manualmente o usar\nLinkedIn Documents API (mas complejo)",
+        "height": 340,
+        "width": 400
+      },
+      "id": "sticky-principal",
+      "name": "Nota: Carruseles",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [60, 60]
+    },
+    {
+      "parameters": {
+        "content": "## CREDENCIALES REQUERIDAS\n\n- Notion API\n- OpenAI API (GPT-4o)\n- Replicate API (Flux-schnell)\n- Cloudinary\n\n**Estados Notion necesarios:**\n- 'Pendiente Carrusel' (entrada)\n- 'Carrusel Generado' (salida)\n\n**Propiedades Notion adicionales:**\n- Tema Carrusel (text)\n- Carrusel PDF URL (url)\n- Slides Generados (number)",
+        "height": 300,
+        "width": 320
+      },
+      "id": "sticky-config",
+      "name": "Nota: Configuracion",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [500, 60]
+    },
+    {
+      "parameters": {
+        "content": "## LIMITACIONES ACTUALES\n\n1. **PDF Generation:** El metodo de Cloudinary\n   para crear PDF desde imagenes puede\n   requerir configuracion adicional.\n   \n   **Alternativas:**\n   - API2PDF.com\n   - PDFShift.io\n   - jsPDF via Code node\n\n2. **LinkedIn API:** Los carruseles se suben\n   como Documents, requiere:\n   - registerUpload\n   - uploadDocument\n   - createPost with document\n\n3. **Costo:** ~$0.024/carrusel\n   (8 imagenes x $0.003)",
+        "height": 320,
+        "width": 320
+      },
+      "id": "sticky-limitaciones",
+      "name": "Nota: Limitaciones",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [860, 60]
+    },
+    {
+      "parameters": {},
+      "id": "error-trigger",
+      "name": "Error Trigger",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [100, 520]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Procesar error de carrusel\nconst errorData = $input.first().json;\n\nreturn [{\n  json: {\n    workflow: 'Generador Carruseles LinkedIn',\n    fechaError: new Date().toISOString(),\n    nodoFallido: errorData.execution?.lastNodeExecuted || 'Desconocido',\n    mensajeError: errorData.execution?.error?.message || 'Error sin mensaje',\n    notificacion: `Error generando carrusel: ${errorData.execution?.error?.message || 'Sin detalles'}`\n  }\n}];"
+      },
+      "id": "code-procesar-error",
+      "name": "Procesar Error",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [320, 520]
+    }
+  ],
+  "connections": {
+    "Trigger Manual": {
+      "main": [
+        [
+          {
+            "node": "1. Leer Posts Carrusel",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "1. Leer Posts Carrusel": {
+      "main": [
+        [
+          {
+            "node": "2. Preparar Datos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "2. Preparar Datos": {
+      "main": [
+        [
+          {
+            "node": "3. GPT-4o Generar Slides",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "3. GPT-4o Generar Slides": {
+      "main": [
+        [
+          {
+            "node": "4. Parsear Slides",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "4. Parsear Slides": {
+      "main": [
+        [
+          {
+            "node": "5. Preparar Prompts Imagenes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "5. Preparar Prompts Imagenes": {
+      "main": [
+        [
+          {
+            "node": "6. Replicate Generar Slide",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "6. Replicate Generar Slide": {
+      "main": [
+        [
+          {
+            "node": "7. Esperar Resultado Slide",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "7. Esperar Resultado Slide": {
+      "main": [
+        [
+          {
+            "node": "8. Cloudinary Upload Slide",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "8. Cloudinary Upload Slide": {
+      "main": [
+        [
+          {
+            "node": "9. Agregar Todos Slides",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "9. Agregar Todos Slides": {
+      "main": [
+        [
+          {
+            "node": "10. Consolidar Slides",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "10. Consolidar Slides": {
+      "main": [
+        [
+          {
+            "node": "11. Crear PDF Carrusel",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "11. Crear PDF Carrusel": {
+      "main": [
+        [
+          {
+            "node": "12. Actualizar Post Notion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "12. Actualizar Post Notion": {
+      "main": [
+        [
+          {
+            "node": "13. Resumen Final",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Procesar Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": {
+    "instanceId": "moduloria",
+    "templateCredsSetupCompleted": false
+  },
+  "tags": [
+    {
+      "name": "Redes Sociales"
+    },
+    {
+      "name": "Carruseles"
+    },
+    {
+      "name": "LinkedIn"
+    }
+  ]
+}

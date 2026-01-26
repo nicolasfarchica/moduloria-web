@@ -1,0 +1,306 @@
+{
+  "name": "ModulorIA - Generador Posts SIN IMAGENES (Test)",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "trigger-manual",
+      "name": "Trigger Manual",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [100, 500]
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "getAll",
+        "databaseId": {
+          "__rl": true,
+          "value": "018b5945-2eea-488c-ae35-0bc91acee98c",
+          "mode": "id"
+        },
+        "returnAll": false,
+        "limit": 3,
+        "filterType": "json",
+        "filterJson": "{\n  \"and\": [\n    {\n      \"property\": \"Estado\",\n      \"select\": {\n        \"equals\": \"Nuevo\"\n      }\n    },\n    {\n      \"or\": [\n        {\n          \"property\": \"Relevancia\",\n          \"select\": {\n            \"equals\": \"Alta\"\n          }\n        },\n        {\n          \"property\": \"Relevancia\",\n          \"select\": {\n            \"equals\": \"Media\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+        "options": {}
+      },
+      "id": "notion-leer-fuentes",
+      "name": "1. Leer Fuentes Nuevas",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [340, 500],
+      "credentials": {
+        "notionApi": {
+          "id": "YOUR_NOTION_CREDENTIAL_ID",
+          "name": "ModulorIA Notion"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Preparar datos y asignar tono segun dia de la semana\nconst items = $input.all();\nconst tonos = {\n  1: 'Formal-Tecnico',\n  2: 'Cercano-Profesional',\n  3: 'Datos-Duros',\n  4: 'Cercano-Profesional',\n  5: 'Formal-Tecnico',\n  6: 'Reflexivo',\n  0: 'Reflexivo'\n};\n\nconst today = new Date();\n\nreturn items.map((item, index) => {\n  const fechaProgramada = new Date(today);\n  fechaProgramada.setDate(fechaProgramada.getDate() + index);\n  \n  const dayOfWeek = fechaProgramada.getDay();\n  const tono = tonos[dayOfWeek];\n  \n  const props = item.json.properties || item.json;\n  const titulo = props.Titulo?.title?.[0]?.plain_text || props['Título']?.title?.[0]?.plain_text || 'Sin titulo';\n  const tipo = props.Tipo?.select?.name || 'Noticia';\n  const resumen = props.Resumen?.rich_text?.[0]?.plain_text || '';\n  const url = props['Fuente URL']?.url || '';\n  const relevancia = props.Relevancia?.select?.name || 'Media';\n  \n  return {\n    json: {\n      sourcePageId: item.json.id,\n      titulo,\n      tipo,\n      resumen,\n      url,\n      relevancia,\n      tono,\n      fechaProgramada: fechaProgramada.toISOString().split('T')[0],\n      diaNombre: ['Domingo','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado'][dayOfWeek]\n    }\n  };\n});"
+      },
+      "id": "code-preparar-datos",
+      "name": "2. Preparar Datos",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [560, 500]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "options": {
+          "temperature": 0.8,
+          "maxTokens": 2000
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "Eres un experto en contenido B2B para LinkedIn especializado en construccion modular y automatizacion con IA.\n\nCONTEXTO DE MARCA - ModulorIA:\n- Agencia de automatizacion con IA para construccion modular\n- Audiencia: Directores y gerentes de PYMES construccion en Espana\n- Voz: Profesional, humilde, directa, sin exageraciones\n- NUNCA usar: \"No vendemos humo\", \"Somos los mejores\"\n\nGENERA 3 POSTS (uno por red social):\n\n1. LINKEDIN (max 1300 chars):\n- Hook potente en primera linea\n- Parrafos cortos\n- 3-5 hashtags al final\n- Maximo 2 emojis\n\n2. INSTAGRAM (max 300 chars caption):\n- Frase de impacto corta\n- Tono mas cercano\n- Hashtags separados (10-15)\n\n3. FACEBOOK (max 500 chars):\n- Conversacional\n- Pregunta para engagement\n- 1-2 hashtags\n\nResponde SOLO con JSON:\n{\n  \"linkedin\": {\n    \"post\": \"texto completo\",\n    \"hashtags\": [\"h1\", \"h2\"]\n  },\n  \"instagram\": {\n    \"caption\": \"texto\",\n    \"hashtags\": \"#h1 #h2 ...\"\n  },\n  \"facebook\": {\n    \"post\": \"texto\",\n    \"hashtags\": \"#h1 #h2\"\n  },\n  \"imagenSugerida\": \"descripcion de imagen ideal para este contenido\"\n}",
+              "role": "system"
+            },
+            {
+              "content": "=TONO DEL DIA: {{ $json.tono }}\n\nFUENTE:\n- Titulo: {{ $json.titulo }}\n- Tipo: {{ $json.tipo }}\n- Resumen: {{ $json.resumen }}\n- URL: {{ $json.url }}\n\nGenera los 3 posts adaptados a cada plataforma.",
+              "role": "user"
+            }
+          ]
+        }
+      },
+      "id": "openai-generar-posts",
+      "name": "3. GPT Generar Posts",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [780, 500],
+      "credentials": {
+        "openAiApi": {
+          "id": "YOUR_OPENAI_CREDENTIAL_ID",
+          "name": "OpenAI ModulorIA"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parsear respuesta y preparar para Notion\nconst datosBase = $('2. Preparar Datos').first().json;\nconst respuesta = $input.first().json;\n\nlet posts;\ntry {\n  const content = respuesta.message?.content || respuesta.text || '';\n  const jsonMatch = content.match(/\\{[\\s\\S]*\\}/);\n  if (jsonMatch) {\n    posts = JSON.parse(jsonMatch[0]);\n  } else {\n    throw new Error('No JSON found');\n  }\n} catch (e) {\n  posts = {\n    linkedin: { post: 'Error generando contenido', hashtags: ['#ConstruccionModular'] },\n    instagram: { caption: 'Error', hashtags: '#construccion' },\n    facebook: { post: 'Error', hashtags: '#construccion' },\n    imagenSugerida: 'Imagen de construccion modular profesional'\n  };\n}\n\nconst hashtagsLI = Array.isArray(posts.linkedin.hashtags) \n  ? posts.linkedin.hashtags.join(' ') \n  : posts.linkedin.hashtags || '';\n\nreturn [{\n  json: {\n    titulo: datosBase.titulo,\n    tipoContenido: datosBase.tipo,\n    tono: datosBase.tono,\n    \n    postLinkedIn: posts.linkedin.post + '\\n\\n' + hashtagsLI,\n    postInstagram: posts.instagram.caption,\n    hashtagsInstagram: posts.instagram.hashtags,\n    postFacebook: posts.facebook.post + '\\n\\n' + posts.facebook.hashtags,\n    \n    imagenSugerida: posts.imagenSugerida,\n    imagenURL: '', // Sin imagen por ahora\n    \n    fechaProgramada: datosBase.fechaProgramada,\n    sourcePageId: datosBase.sourcePageId,\n    estado: 'Borrador',\n    redPrincipal: 'LinkedIn'\n  }\n}];"
+      },
+      "id": "code-parsear-posts",
+      "name": "4. Parsear Posts",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1000, 500]
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "create",
+        "databaseId": {
+          "__rl": true,
+          "value": "b9a8420c-f289-4ca1-ab49-25271e21e71a",
+          "mode": "id"
+        },
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Título|title",
+              "title": "={{ $json.titulo }}"
+            },
+            {
+              "key": "Tipo Contenido|select",
+              "selectValue": "={{ $json.tipoContenido }}"
+            },
+            {
+              "key": "Tono|select",
+              "selectValue": "={{ $json.tono }}"
+            },
+            {
+              "key": "Post LinkedIn|rich_text",
+              "textContent": "={{ $json.postLinkedIn }}"
+            },
+            {
+              "key": "Post Facebook|rich_text",
+              "textContent": "={{ $json.postFacebook }}"
+            },
+            {
+              "key": "Post Instagram|rich_text",
+              "textContent": "={{ $json.postInstagram }}"
+            },
+            {
+              "key": "Hashtags Instagram|rich_text",
+              "textContent": "={{ $json.hashtagsInstagram }}"
+            },
+            {
+              "key": "Imagen Sugerida|rich_text",
+              "textContent": "={{ $json.imagenSugerida }}"
+            },
+            {
+              "key": "Estado|select",
+              "selectValue": "Borrador"
+            },
+            {
+              "key": "Fecha Programada|date",
+              "date": "={{ $json.fechaProgramada }}"
+            },
+            {
+              "key": "Red Principal|select",
+              "selectValue": "LinkedIn"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "notion-crear-post",
+      "name": "5. Guardar en Notion",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [1220, 500],
+      "credentials": {
+        "notionApi": {
+          "id": "YOUR_NOTION_CREDENTIAL_ID",
+          "name": "ModulorIA Notion"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "update",
+        "pageId": "={{ $('4. Parsear Posts').item.json.sourcePageId }}",
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Estado|select",
+              "selectValue": "Usado"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "notion-marcar-usado",
+      "name": "6. Marcar Fuente Usada",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [1440, 500],
+      "credentials": {
+        "notionApi": {
+          "id": "YOUR_NOTION_CREDENTIAL_ID",
+          "name": "ModulorIA Notion"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Resumen de ejecucion\nconst items = $input.all();\n\nreturn [{\n  json: {\n    mensaje: `Se generaron ${items.length} posts para redes sociales`,\n    postsGenerados: items.length,\n    fechaEjecucion: new Date().toISOString(),\n    nota: 'Posts guardados SIN imagen. Agregar imagen manualmente en Notion.',\n    proximoPaso: 'Revisar posts en Notion → Agregar imagen → Cambiar estado a Aprobado'\n  }\n}];"
+      },
+      "id": "code-resumen",
+      "name": "7. Resumen",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1660, 500]
+    },
+    {
+      "parameters": {
+        "content": "## TEST: GENERADOR SIN IMAGENES\n### ModulorIA - Version Simplificada\n\n**Flujo:**\n1. Trigger Manual\n2. Leer fuentes nuevas de Notion (limit 3)\n3. GPT-4o-mini genera posts para 3 redes\n4. Guardar en Notion como Borrador\n5. Marcar fuente como usada\n\n**SIN generacion de imagenes**\nAgrega la imagen manualmente despues.\n\n**Credenciales necesarias:**\n- Notion API\n- OpenAI API",
+        "height": 300,
+        "width": 380
+      },
+      "id": "sticky-nota",
+      "name": "Nota",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [60, 200]
+    }
+  ],
+  "connections": {
+    "Trigger Manual": {
+      "main": [
+        [
+          {
+            "node": "1. Leer Fuentes Nuevas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "1. Leer Fuentes Nuevas": {
+      "main": [
+        [
+          {
+            "node": "2. Preparar Datos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "2. Preparar Datos": {
+      "main": [
+        [
+          {
+            "node": "3. GPT Generar Posts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "3. GPT Generar Posts": {
+      "main": [
+        [
+          {
+            "node": "4. Parsear Posts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "4. Parsear Posts": {
+      "main": [
+        [
+          {
+            "node": "5. Guardar en Notion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "5. Guardar en Notion": {
+      "main": [
+        [
+          {
+            "node": "6. Marcar Fuente Usada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "6. Marcar Fuente Usada": {
+      "main": [
+        [
+          {
+            "node": "7. Resumen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": {
+    "instanceId": "moduloria"
+  },
+  "tags": [
+    {
+      "name": "Test"
+    },
+    {
+      "name": "Sin Imagenes"
+    }
+  ]
+}
