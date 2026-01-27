@@ -30,7 +30,7 @@ export default function Footer() {
             </p>
             <div className="flex gap-4">
               <a
-                href="https://www.linkedin.com/company/108241372/"
+                href="https://www.linkedin.com/company/moduloria"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-slate-400 hover:text-accent-copper transition-colors"
