@@ -52,7 +52,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://facebook.com/moduloria"
+                href="https://www.facebook.com/profile.php?id=61585194150495"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-slate-400 hover:text-accent-copper transition-colors"
