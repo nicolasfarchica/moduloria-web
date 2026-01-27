@@ -14,11 +14,11 @@ export default function Footer() {
           <div>
             <Link href="/" className="flex items-center space-x-2 group mb-6">
               <Image
-                src="/images/moduloria-logo-v2.png"
+                src="/images/moduloria-logo-circular.png"
                 alt="ModulorIA Logo"
                 width={40}
                 height={40}
-                className="transition-transform duration-300 group-hover:scale-110 object-contain"
+                className="transition-transform duration-300 group-hover:scale-110 rounded-full"
               />
               <span className="text-2xl font-bold text-white tracking-tight">
                 Modulor<span className="text-accent-copper">IA</span>

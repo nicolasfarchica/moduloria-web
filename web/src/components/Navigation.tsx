@@ -30,11 +30,11 @@ export default function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 group">
             <Image
-              src="/images/moduloria-logo-v2.png"
+              src="/images/moduloria-logo-circular.png"
               alt="ModulorIA Logo"
               width={44}
-              height={36}
-              className="transition-transform duration-300 group-hover:scale-110 object-contain"
+              height={44}
+              className="transition-transform duration-300 group-hover:scale-110 rounded-full"
               priority
             />
             <span className="text-2xl font-bold text-white tracking-tight">
