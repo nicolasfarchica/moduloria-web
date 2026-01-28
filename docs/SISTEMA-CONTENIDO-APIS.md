@@ -2,6 +2,68 @@
 
 > **IMPORTANTE**: Este archivo contiene credenciales sensibles. No compartir públicamente.
 > Fecha de configuración: 27 de enero 2026
+> Ultima actualizacion: 28 de enero 2026 (Scripts Quote Cards + Banner LinkedIn)
+
+---
+
+## Script Quote Cards (NUEVO)
+
+Genera quote cards profesionales para redes sociales con un solo comando.
+
+### Uso
+
+```bash
+cd web
+node scripts/generate-quote-card.js "Tu texto aqui"
+```
+
+### Opciones
+
+```bash
+# Especificar carpeta de salida
+node scripts/generate-quote-card.js "Texto" --output ./mi-carpeta
+
+# Usar imagen de fondo personalizada
+node scripts/generate-quote-card.js "Texto" --background ./fondo.jpg
+```
+
+### Salida
+
+Genera automaticamente 3 imagenes:
+- `instagram-1080x1080.jpg`
+- `facebook-1200x1200.jpg`
+- `linkedin-1200x1200.jpg`
+
+### Caracteristicas
+
+- Fondo gradiente con colores de marca
+- Tipografia Inter Bold
+- Logo ModulorIA automatico
+- Linea decorativa dorada
+- Firma "— ModulorIA"
+
+---
+
+## Script Banner LinkedIn
+
+Genera banners profesionales para LinkedIn con logos de LLMs.
+
+### Uso
+
+```bash
+cd web
+node scripts/generate-linkedin-banner-2x.js
+```
+
+### Salida
+
+- `linkedin-banner-nicolas-2x.jpg` (3168x792 - alta resolucion)
+
+### Logos incluidos
+
+ChatGPT, Claude, Gemini, Perplexity, Grok, DeepSeek, Copilot, Meta AI
+
+Fuente de logos: https://svgl.app/directory/ai
 
 ---
 
