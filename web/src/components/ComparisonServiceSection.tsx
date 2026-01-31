@@ -143,7 +143,7 @@ const ComparisonServiceSection = () => {
                     transition={{ duration: 1, delay: 0.5 }}
                     className="mt-20 text-center"
                 >
-                    <a hred="/auditoria" className="btn-primary">
+                    <a href="/auditoria" className="btn-primary">
                         Calcula tu ahorro real
                     </a>
                 </motion.div>
