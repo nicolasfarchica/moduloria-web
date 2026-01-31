@@ -182,32 +182,40 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
           </nav>
 
           {/* Header */}
-          <header className="mb-12">
+          <header className="mb-20 text-center max-w-3xl mx-auto">
             {/* Category & Reading Time */}
-            <div className="flex items-center gap-3 mb-4">
-              <span className="bg-accent-copper/20 text-accent-copper px-4 py-1 rounded-full text-sm font-semibold">
+            <div className="flex items-center justify-center gap-4 mb-8">
+              <span className="bg-accent-copper/10 text-accent-copper border border-accent-copper/20 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest">
                 {post.category}
               </span>
-              <span className="text-slate-400 text-sm">
+              <span className="text-slate-500 text-sm font-medium flex items-center gap-2">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
                 {post.readingTime}
               </span>
             </div>
 
             {/* Title */}
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 font-heading leading-tight">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-10 font-heading leading-[1.1] tracking-tight">
               {post.title}
             </h1>
 
             {/* Meta */}
-            <div className="flex items-center gap-6 text-slate-400 text-sm">
-              <div className="flex items-center gap-2">
-                <span className="font-semibold">Por {post.author}</span>
+            <div className="flex items-center justify-center gap-8 text-slate-400 text-sm border-t border-white/5 pt-8">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-accent-copper to-accent-glow flex items-center justify-center text-white font-bold">
+                  {post.author.charAt(0)}
+                </div>
+                <div className="text-left">
+                  <div className="text-white font-semibold">{post.author}</div>
+                  <div className="text-xs text-slate-500">Expert en IA Modular</div>
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
-                </svg>
-                <time dateTime={post.date}>
+              <div className="h-8 w-px bg-white/10" />
+              <div className="flex flex-col items-start">
+                <div className="text-xs text-slate-500 uppercase tracking-wider mb-1">Publicado el</div>
+                <time dateTime={post.date} className="text-white font-medium">
                   {new Date(post.date).toLocaleDateString('es-ES', {
                     year: 'numeric',
                     month: 'long',
@@ -216,59 +224,26 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                 </time>
               </div>
             </div>
-
-            {/* Tags */}
-            {post.tags.length > 0 && (
-              <div className="flex flex-wrap gap-2 mt-4">
-                {post.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-sm text-slate-400 bg-slate-800/50 px-3 py-1 rounded-full"
-                  >
-                    #{tag}
-                  </span>
-                ))}
-              </div>
-            )}
           </header>
 
-          {/* Featured Image - Using Next.js Image for optimization */}
+          {/* Featured Image - Ultra Premium */}
           {post.image && (
-            <div className="relative h-96 mb-12 overflow-hidden rounded-2xl">
+            <div className="relative h-[300px] md:h-[500px] mb-24 overflow-hidden rounded-[2rem] group">
               <Image
                 src={post.image}
                 alt={`${post.title} - ModulorIA Blog`}
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
                 priority
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 896px"
+                sizes="(max-width: 1200px) 100vw, 1200px"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-background-start via-transparent to-transparent opacity-60" />
             </div>
           )}
 
-          {/* Content */}
+          {/* Content - The "Magazine" Experience */}
           <div
-            className="blog-content prose prose-invert prose-lg max-w-none
-              prose-headings:text-white prose-headings:font-heading
-              prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-6 prose-h2:pb-4
-              prose-h3:text-xl prose-h3:mt-10 prose-h3:mb-4
-              prose-h4:text-lg prose-h4:mt-8 prose-h4:mb-3
-              prose-p:text-slate-300 prose-p:leading-relaxed prose-p:mb-5
-              prose-a:text-accent-copper prose-a:no-underline hover:prose-a:underline
-              prose-strong:text-white prose-strong:font-semibold
-              prose-ul:text-slate-300 prose-ol:text-slate-300
-              prose-ul:my-6 prose-ol:my-6
-              prose-li:marker:text-accent-copper prose-li:my-2
-              prose-code:text-accent-copper prose-code:bg-slate-800/50 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm
-              prose-pre:bg-slate-900/80 prose-pre:border prose-pre:border-white/10 prose-pre:rounded-xl prose-pre:my-8
-              prose-blockquote:border-l-accent-copper prose-blockquote:text-slate-300 prose-blockquote:not-italic prose-blockquote:my-8
-              prose-img:rounded-xl prose-img:shadow-lg
-              prose-table:border-collapse prose-table:w-full
-              prose-thead:border-b-2 prose-thead:border-accent-copper/30
-              prose-th:text-white prose-th:text-left prose-th:p-3 prose-th:text-sm prose-th:font-semibold prose-th:bg-slate-800/30
-              prose-td:p-3 prose-td:text-sm prose-td:border-b prose-td:border-white/5
-              prose-tr:border-b prose-tr:border-white/5
-              prose-hr:border-white/10 prose-hr:my-12"
+            className="blog-content max-w-[800px] mx-auto"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
 

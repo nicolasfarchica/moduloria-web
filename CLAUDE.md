@@ -7,7 +7,7 @@
 | Repositorio | `nicolasfarchica/moduloria-web` |
 | Proyecto Vercel | `web` en `nicolasfarchicas-projects` |
 | Dominio | `moduloria.com` |
-| Directorio local | `/Users/nicolasfarchica/Desktop/ModulorIA/web/` |
+| Directorio local | `/Users/nicolasfarchica/Desktop/Proyectos/ModulorIA/web/` |
 
 ---
 
@@ -15,7 +15,7 @@
 
 ```bash
 # Directorio de trabajo
-cd /Users/nicolasfarchica/Desktop/ModulorIA/web
+cd /Users/nicolasfarchica/Desktop/Proyectos/ModulorIA/web
 
 # Desarrollo local
 npm run dev          # localhost:3000
@@ -24,7 +24,7 @@ npm run dev          # localhost:3000
 git add <archivos> && git commit -m "mensaje" && git push origin main
 
 # Deploy manual (DESDE LA RAIZ del repo, NO desde web/)
-cd /Users/nicolasfarchica/Desktop/ModulorIA && npx vercel --prod
+cd /Users/nicolasfarchica/Desktop/Proyectos/ModulorIA && npx vercel --prod
 
 # Si el dominio no apunta al deployment correcto:
 npx vercel ls                                          # Ver deployments
@@ -58,7 +58,7 @@ Ver documentacion completa: `docs/ESTRUCTURA-PROYECTO.md`
 | `src/app/layout.tsx` | Layout + Analytics |
 | `src/app/api/auditoria/route.ts` | API formulario |
 | `src/lib/notion.ts` | Integracion Notion |
-| `src/components/Hero.tsx` | Hero con video |
+| `src/components/HeroSection.tsx` | Hero con video |
 
 ---
 
@@ -71,13 +71,23 @@ Ver documentacion completa: `docs/ESTRUCTURA-PROYECTO.md`
 
 ---
 
+## Limites de Caracteres por Plataforma
+
+| Plataforma | Post/Caption | Notas |
+|------------|-------------|-------|
+| LinkedIn | 3,000 caracteres | Post de empresa |
+| Facebook | 63,206 caracteres | Post de pagina |
+| Instagram | 2,200 caracteres | Caption. Hashtags en primer comentario |
+
+---
+
 ## Reglas
 
 1. **UN repositorio**: `nicolasfarchica/moduloria-web`
 2. **UN proyecto Vercel**: `web` (Root Directory = `web`)
 3. **UN dominio**: `moduloria.com` + `www.moduloria.com`
 4. **NO modificar**: `.vercel/project.json`
-5. **SIEMPRE trabajar desde**: `ModulorIA/web/`
+5. **SIEMPRE trabajar desde**: `Proyectos/ModulorIA/web/`
 6. **Git root es ModulorIA/**, no web/ - el .git esta en la raiz
 7. **Deploy manual** requiere ejecutar desde `ModulorIA/` (raiz), NO desde `web/`
 

@@ -30,7 +30,7 @@ const BRAND = {
 };
 
 const SIZES = {
-  instagram: { width: 1080, height: 1080, name: 'instagram-1080x1080' },
+  instagram: { width: 1080, height: 1350, name: 'instagram-1080x1350' },
   facebook: { width: 1200, height: 1200, name: 'facebook-1200x1200' },
   linkedin: { width: 1200, height: 1200, name: 'linkedin-1200x1200' }
 };

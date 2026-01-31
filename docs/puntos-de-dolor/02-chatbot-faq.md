@@ -443,8 +443,122 @@ Top 3 preguntas:
 
 ---
 
-**Última actualización**: 2025-01-05
-**Categoría**: Comunicación y Administración
+---
+
+## ⚠️ RIESGOS REALES Y CONTRAS (LEER ANTES DE VENDER)
+
+> **Agregado**: 29 enero 2026
+> **Contexto**: Notas practicas para cuando un cliente pida implementar este servicio
+
+### Riesgos tecnicos
+
+1. **Alucinaciones de la IA**: El chatbot puede inventar informacion que no tiene. En construccion esto es peligroso - confirmar una entrega que no existe, dar un precio incorrecto, o indicar una direccion equivocada. **Mitigacion**: Limitar respuestas solo a datos cargados en la base de datos, nunca dejar que "improvise".
+
+2. **Verificacion de Meta**: WhatsApp Business API requiere verificacion de la empresa por parte de Meta. Puede tardar dias o semanas. No prometas "listo en 2 dias" al cliente sin advertir esto.
+
+3. **Costo por mensaje**: Los primeros 1,000 conversaciones/mes son gratuitas. Despues Meta cobra por conversacion (varia por pais, ~€0.03-0.08/conversacion). El cliente debe saberlo.
+
+4. **Dependencia de terceros**: Si Meta cambia sus politicas de API (lo ha hecho antes), el sistema puede requerir ajustes. Incluir clausula de mantenimiento.
+
+5. **Datos sensibles**: La base de datos del cliente (proyectos, montos, proveedores) debe estar protegida. Usar credenciales seguras, no compartir acceso innecesario.
+
+### Que puede salir mal
+
+- Bot responde algo incorrecto → cliente del cliente toma decision equivocada
+- Cliente espera que el bot entienda TODO → se frustra cuando no puede
+- WhatsApp baja el servicio temporalmente → el cliente piensa que "no funciona"
+- El cliente no actualiza las FAQs → respuestas desactualizadas por meses
+
+### Como protegerte al vender
+
+1. **Ser claro en la propuesta**: "El bot responde preguntas frecuentes con datos que cargamos juntos. Las consultas complejas las deriva a una persona de tu equipo."
+2. **No prometer IA magica**: Es un asistente, no un reemplazo del equipo
+3. **Incluir periodo de prueba**: 2 semanas con ajustes incluidos
+4. **Contrato con limites**: Definir cuantas FAQs se incluyen, que pasa si quieren agregar mas
+5. **Mantenimiento opcional**: Ofrecer retainer mensual para actualizaciones
+
+---
+
+## 📱 OPCIONES DE CONEXION WHATSAPP (INTERMEDIARIOS)
+
+### Opcion 1: WhatsApp Business API Oficial (via Meta)
+- **Pros**: La mas estable y profesional, soporte oficial
+- **Contras**: Verificacion lenta, requiere Business Manager, costo por mensaje
+- **Mejor para**: Clientes grandes, implementaciones permanentes
+- **Costo**: Variable por conversacion
+
+### Opcion 2: Twilio (Intermediario recomendado para produccion)
+- **Pros**: API robusta, sandbox gratuito para pruebas, documentacion excelente, se integra facil con N8N
+- **Contras**: Costo por mensaje (~$0.005-0.008/msg), requiere verificacion de cuenta
+- **Mejor para**: Produccion con clientes, demos profesionales
+- **Costo**: Pay-as-you-go + ~$15/mes numero WhatsApp
+- **Template N8N**: https://n8n.io/workflows/2845
+
+### Opcion 3: Wati.io (Intermediario simple)
+- **Pros**: Interfaz visual, facil de configurar, soporte en espanol
+- **Contras**: Mas caro que Twilio, menos flexible
+- **Mejor para**: Clientes que quieren gestionar el bot ellos mismos
+- **Costo**: Desde €39/mes
+
+### Opcion 4: Baileys / whatsapp-web.js (NO oficial - solo para pruebas)
+- **Pros**: Gratuito, no requiere verificacion, funciona con cualquier numero personal
+- **Contras**: NO es oficial, Meta puede banear el numero, inestable, NO usar en produccion
+- **Mejor para**: Probar internamente, demos rapidas, desarrollo personal
+- **Costo**: €0
+- **IMPORTANTE**: NUNCA usar esto para un cliente. Solo para que vos pruebes la logica del bot
+
+### Recomendacion para Nicolas
+
+1. **Para probar vos mismo**: Usar Twilio Sandbox (gratis) o Baileys (gratis pero no oficial)
+2. **Para demos a clientes**: Twilio con numero dedicado
+3. **Para produccion con cliente**: WhatsApp Business API via Twilio o Wati
+
+---
+
+## 🔧 IMPLEMENTACION CON N8N (WORKFLOW REAL)
+
+### Nodos necesarios (5 nodos principales)
+
+```
+1. WhatsApp Trigger → Recibe mensaje del cliente
+2. OpenAI         → Clasifica intencion + genera respuesta
+3. Airtable/Notion → Base de datos con info del proyecto
+4. Switch         → Simple (bot responde) vs Complejo (deriva a humano)
+5. WhatsApp Send  → Envia respuesta
+```
+
+### Templates probadas en N8N
+
+| Template | URL | Vistas | Descripcion |
+|----------|-----|--------|-------------|
+| RAG Chatbot WhatsApp + OpenAI | https://n8n.io/workflows/2845 | 35,000+ | Bot con base de conocimiento, el mas completo |
+| WhatsApp RAG + Supabase | https://n8n.io/workflows/6771 | 100+ | Con embeddings y busqueda semantica |
+| HR Chatbot + Audio | https://n8n.io/workflows/2752 | 35,000+ | Incluye transcripcion de audio (Whisper) |
+
+### Lo que ya tenemos configurado (ModulorIA)
+
+- N8N Cloud: nfarchica.app.n8n.cloud (activo)
+- OpenAI API key (activa, en web/.env.local)
+- Experiencia con workflows (RSS + Newsletter ya funcionales)
+- Falta: cuenta Twilio o Wati para WhatsApp
+
+---
+
+## ✅ CHECKLIST ANTES DE VENDER ESTE SERVICIO
+
+- [ ] Tener demo funcional propia (probada minimo 1 semana)
+- [ ] Definir exactamente que FAQs se incluyen (15-20 base)
+- [ ] Tener contrato/propuesta con limites claros
+- [ ] Definir que pasa cuando el bot no sabe responder (derivacion)
+- [ ] Tener claro el costo mensual para el cliente (APIs + mantenimiento)
+- [ ] Periodo de prueba de 2 semanas incluido en la propuesta
+- [ ] Base de datos de prueba con datos ficticios lista
+
+---
+
+**Ultima actualizacion**: 2026-01-29
+**Categoria**: Comunicacion y Administracion
 **Dificultad**: ⭐ (1/5)
 **ROI**: ⭐⭐⭐⭐⭐ (5/5)
-**Tiempo implementación real**: 1-2 días (8-16 horas)
+**Tiempo implementacion real**: 1-2 dias (8-16 horas)
+**Estado venta**: PENDIENTE - Falta demo funcional propia

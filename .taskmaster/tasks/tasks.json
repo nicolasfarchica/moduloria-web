@@ -98,9 +98,9 @@
         "testStrategy": "Verify company page appears in LinkedIn search for 'ModulorIA' and 'IA construcción modular'. Confirm all links work (website, contact). Test page appearance from incognito browser. Verify personal profile shows in search results. Check that Featured section displays correctly. Test content scheduling with Buffer/native scheduler.",
         "priority": "high",
         "dependencies": [],
-        "status": "in-progress",
+        "status": "done",
         "subtasks": [],
-        "updatedAt": "2026-01-22T13:14:03.748Z"
+        "updatedAt": "2026-01-29T09:57:04.591Z"
       },
       {
         "id": "7",
@@ -229,9 +229,9 @@
     ],
     "metadata": {
       "version": "1.0.0",
-      "lastModified": "2026-01-23T15:08:34.555Z",
+      "lastModified": "2026-01-29T09:57:04.591Z",
       "taskCount": 15,
-      "completedCount": 5,
+      "completedCount": 6,
       "tags": [
         "master"
       ]

@@ -36,8 +36,8 @@
 │   │   │   ├── layout.tsx            # Layout global + Analytics
 │   │   │   └── page.tsx              # Homepage
 │   │   ├── components/               # Componentes React
-│   │   │   ├── Hero.tsx              # Seccion hero con video
-│   │   │   ├── Header.tsx            # Navegacion
+│   │   │   ├── HeroSection.tsx       # Seccion hero con video
+│   │   │   ├── Navigation.tsx        # Navegacion
 │   │   │   └── ...
 │   │   └── lib/                      # Servicios y utilidades
 │   │       ├── notion.ts             # Integracion Notion API

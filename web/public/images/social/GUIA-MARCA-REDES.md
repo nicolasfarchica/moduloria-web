@@ -62,8 +62,8 @@
 
 | Tipo | Dimensiones | Ratio |
 |------|-------------|-------|
-| Feed post cuadrado | 1080x1080px | 1:1 |
-| Feed post vertical | 1080x1350px | 4:5 |
+| Feed post (USAR ESTE) | 1080x1350px | 4:5 |
+| Feed post cuadrado (evitar) | 1080x1080px | 1:1 |
 | Stories/Reels | 1080x1920px | 9:16 |
 | Carrusel | 1080x1350px | 4:5 |
 

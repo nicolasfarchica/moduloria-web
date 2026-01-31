@@ -94,69 +94,108 @@
   }
 }
 
-/* Blog Content Styles */
+/* Blog Content Styles - THE REFORMA */
+.blog-content {
+  color: #e2e8f0; /* slate-200 */
+  font-size: 1.15rem;
+  line-height: 2; /* Aire máximo */
+}
+
 .blog-content h2 {
-  border-left: 4px solid #B87333;
-  padding-left: 1rem;
-  position: relative;
+  font-size: 2.25rem !important;
+  color: #ffffff !important;
+  margin-top: 6rem !important;
+  margin-bottom: 2rem !important;
+  font-weight: 800 !important;
+  border-left: 6px solid #C67A52;
+  padding-left: 1.5rem;
+  line-height: 1.2;
 }
 
 .blog-content h3 {
-  color: #B87333;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding-bottom: 0.5rem;
+  font-size: 1.75rem !important;
+  color: #ffffff !important;
+  margin-top: 4rem !important;
+  margin-bottom: 1.5rem !important;
+  font-weight: 700 !important;
+}
+
+.blog-content p {
+  margin-bottom: 2.5rem !important;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+/* TABLAS REFORMADAS - FUERA AMONTONAMIENTO */
+.blog-content table {
+  width: 100% !important;
+  border-collapse: separate !important; /* Para que el radio funcione */
+  border-spacing: 0 !important;
+  margin: 4rem 0 !important;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.blog-content th {
+  background: rgba(198, 122, 82, 0.1) !important;
+  color: #C67A52 !important;
+  padding: 1.5rem !important; /* 24px de respiro */
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.blog-content td {
+  padding: 1.5rem !important; /* 24px de respiro - NUNCA MÁS PEGADO */
+  font-size: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  vertical-align: top;
+}
+
+.blog-content tr:last-child td {
+  border-bottom: none;
+}
+
+.blog-content tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.blog-content ul, .blog-content ol {
+  margin: 3rem 0 !important;
+  padding-left: 2rem !important;
+}
+
+.blog-content li {
+  margin-bottom: 1.5rem !important;
+  padding-left: 1rem;
+}
+
+.blog-content blockquote {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 1.5rem;
+  padding: 3rem !important;
+  margin: 5rem 0 !important;
+  border-left: 4px solid #C67A52;
+  font-style: italic;
+  font-size: 1.4rem;
+  color: #ffffff;
+}
+
+.blog-content strong {
+  color: #ffffff;
+  font-weight: 700;
 }
 
 .blog-content hr {
   border: none;
   height: 1px;
-  background: linear-gradient(to right, transparent, rgba(184, 115, 51, 0.4), transparent);
-  margin: 3rem 0;
-}
-
-.blog-content blockquote {
-  background: rgba(30, 41, 59, 0.5);
-  border-radius: 0.75rem;
-  padding: 1.25rem 1.5rem;
-  border-left-width: 4px;
-}
-
-.blog-content ul,
-.blog-content ol {
-  padding-left: 1.5rem;
-}
-
-.blog-content li {
-  padding-left: 0.5rem;
-  line-height: 1.8;
-}
-
-.blog-content table {
-  border-radius: 0.75rem;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.blog-content thead {
-  background: rgba(30, 41, 59, 0.6);
-}
-
-.blog-content tbody tr:nth-child(even) {
-  background: rgba(30, 41, 59, 0.2);
-}
-
-.blog-content tbody tr:hover {
-  background: rgba(30, 41, 59, 0.4);
-}
-
-.blog-content pre {
-  padding: 1.5rem;
-}
-
-.blog-content > p:first-of-type {
-  font-size: 1.2rem;
-  color: #cbd5e1;
-  line-height: 1.8;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 6rem 0 !important;
 }
 
 /* Utilidades */

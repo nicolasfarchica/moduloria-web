@@ -35,7 +35,7 @@ export default async function BlogPage() {
 
         {/* Posts Grid */}
         {posts.length === 0 ? (
-          <div className="text-center py-16">
+          <div className="text-center py-20">
             <p className="text-slate-400 text-lg">
               Próximamente publicaremos artículos sobre IA en construcción modular.
             </p>
@@ -47,67 +47,62 @@ export default async function BlogPage() {
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
             {posts.map((post) => (
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="group glass-card hover:border-accent-copper/50 transition-all duration-300"
+                className="group glass-card !p-0 border-white/5 hover:border-accent-copper/30 transition-all duration-500 overflow-hidden flex flex-col"
               >
                 {/* Image */}
                 {post.image && (
-                  <div className="relative h-48 mb-4 overflow-hidden rounded-lg">
+                  <div className="relative h-64 overflow-hidden">
                     <img
                       src={post.image}
                       alt={post.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background-start/80 to-transparent opacity-60" />
                   </div>
                 )}
 
-                {/* Category Badge */}
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="bg-accent-copper/20 text-accent-copper px-3 py-1 rounded-full text-xs font-semibold">
-                    {post.category}
-                  </span>
-                  <span className="text-slate-500 text-xs">
-                    {post.readingTime}
-                  </span>
-                </div>
-
-                {/* Title */}
-                <h2 className="text-xl font-bold text-white mb-3 group-hover:text-accent-copper transition-colors">
-                  {post.title}
-                </h2>
-
-                {/* Excerpt */}
-                <p className="text-slate-400 text-sm mb-4 line-clamp-3">
-                  {post.excerpt}
-                </p>
-
-                {/* Meta */}
-                <div className="flex items-center justify-between text-xs text-slate-500 pt-4 border-t border-white/5">
-                  <span>{post.author}</span>
-                  <span>{new Date(post.date).toLocaleDateString('es-ES', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                  })}</span>
-                </div>
-
-                {/* Tags */}
-                {post.tags.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mt-3">
-                    {post.tags.slice(0, 3).map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-xs text-slate-400 bg-slate-800/50 px-2 py-1 rounded"
-                      >
-                        #{tag}
-                      </span>
-                    ))}
+                <div className="p-8 flex-grow flex flex-col">
+                  {/* Category Badge */}
+                  <div className="flex items-center gap-3 mb-6">
+                    <span className="bg-accent-copper/10 text-accent-copper border border-accent-copper/20 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">
+                      {post.category}
+                    </span>
+                    <span className="text-slate-500 text-xs">
+                      {post.readingTime}
+                    </span>
                   </div>
-                )}
+
+                  {/* Title */}
+                  <h2 className="text-2xl font-bold text-white mb-4 group-hover:text-accent-copper transition-colors leading-tight font-heading">
+                    {post.title}
+                  </h2>
+
+                  {/* Excerpt */}
+                  <p className="text-slate-400 text-sm mb-6 line-clamp-3 font-light leading-relaxed">
+                    {post.excerpt}
+                  </p>
+
+                  <div className="mt-auto pt-6 border-t border-white/5 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <div className="w-6 h-6 rounded-full bg-accent-copper/20 flex items-center justify-center text-[10px] text-accent-copper font-bold uppercase">
+                        {post.author.charAt(0)}
+                      </div>
+                      <span className="text-xs text-slate-300 font-medium">{post.author}</span>
+                    </div>
+                    <time className="text-xs text-slate-500">
+                      {new Date(post.date).toLocaleDateString('es-ES', {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric'
+                      })}
+                    </time>
+                  </div>
+                </div>
               </Link>
             ))}
           </div>
