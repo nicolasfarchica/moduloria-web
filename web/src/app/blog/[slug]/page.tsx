@@ -241,10 +241,102 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
             </div>
           )}
 
-          {/* Content - The "Magazine" Experience */}
-          <style dangerouslySetInnerHTML={{ __html: ".blog-content { color: #f1f5f9 !important; font-size: 1.25rem !important; line-height: 2 !important; font-weight: 300 !important; } .blog-content h2 { font-size: 2.5rem !important; color: white !important; margin-top: 5rem !important; margin-bottom: 2rem !important; font-weight: 800 !important; letter-spacing: -0.02em !important; border-left: 5px solid #C67A52 !important; padding-left: 1.5rem !important; } .blog-content h3 { font-size: 1.8rem !important; color: white !important; margin-top: 3.5rem !important; margin-bottom: 1.5rem !important; font-weight: 700 !important; } .blog-content p { margin-bottom: 2.5rem !important; } .blog-content table { width: 100% !important; margin: 4rem 0 !important; border-collapse: separate !important; border-spacing: 0 !important; background: rgba(255,255,255,0.03) !important; border-radius: 1.5rem !important; overflow: hidden !important; border: 1px solid rgba(255,255,255,0.1) !important; } .blog-content th { background: rgba(198, 122, 82, 0.15) !important; color: #C67A52 !important; padding: 1.8rem !important; text-align: left !important; font-size: 0.8rem !important; font-weight: 900 !important; text-transform: uppercase !important; letter-spacing: 0.1em !important; } .blog-content td { padding: 1.8rem !important; border-bottom: 1px solid rgba(255,255,255,0.05) !important; vertical-align: top !important; font-size: 1.05rem !important; } .blog-content ul, .blog-content ol { margin: 3rem 0 !important; padding-left: 2rem !important; } .blog-content li { margin-bottom: 1.2rem !important; padding-left: 0.5rem !important; } .blog-content blockquote { background: rgba(255,255,255,0.05) !important; border-radius: 2rem !important; padding: 3.5rem !important; margin: 5rem 0 !important; border-left: 5px solid #C67A52 !important; font-size: 1.5rem !important; font-style: italic !important; color: white !important; } .blog-content strong { color: white !important; font-weight: 700 !important; }" }} />
+          {/* Content - THE PREMIUM EXPERIENCE */}
+          <style dangerouslySetInnerHTML={{
+            __html: `
+            #blog-premium-content {
+              color: #f1f5f9 !important;
+              font-size: 1.25rem !important;
+              line-height: 2.2 !important; /* Más aire aún */
+              font-weight: 300 !important;
+              letter-spacing: 0.01em !important;
+            }
+            #blog-premium-content h2 { 
+              font-size: 2.8rem !important; 
+              color: white !important; 
+              margin-top: 7rem !important; 
+              margin-bottom: 2.5rem !important;
+              font-weight: 800 !important;
+              line-height: 1.2 !important;
+              border-left: 6px solid #C67A52 !important;
+              padding-left: 2rem !important;
+            }
+            #blog-premium-content h3 { 
+              font-size: 2rem !important; 
+              color: white !important; 
+              margin-top: 4.5rem !important; 
+              margin-bottom: 2rem !important;
+              font-weight: 700 !important;
+            }
+            #blog-premium-content p { 
+              margin-bottom: 3rem !important; 
+              display: block !important;
+            }
+            #blog-premium-content table { 
+              width: 100% !important; 
+              margin: 5rem 0 !important; 
+              border-collapse: separate !important; 
+              border-spacing: 0 !important;
+              background: rgba(255,255,255,0.03) !important;
+              border-radius: 2rem !important;
+              overflow: hidden !important;
+              border: 1px solid rgba(255,255,255,0.1) !important;
+            }
+            #blog-premium-content th { 
+              background: rgba(198, 122, 82, 0.2) !important;
+              color: #FFB088 !important;
+              padding: 2rem !important; /* ESPACIO REAL */
+              text-align: left !important;
+              font-size: 0.85rem !important;
+              font-weight: 900 !important;
+              text-transform: uppercase !important;
+              letter-spacing: 0.2em !important;
+              border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+            }
+            #blog-premium-content td { 
+              padding: 2rem !important; /* ESPACIO REAL */
+              border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+              vertical-align: top !important;
+              font-size: 1.1rem !important;
+              color: #cbd5e1 !important;
+            }
+            #blog-premium-content ul, #blog-premium-content ol {
+              margin: 4rem 0 !important;
+              padding-left: 3rem !important;
+            }
+            #blog-premium-content li {
+              margin-bottom: 2rem !important;
+              padding-left: 1rem !important;
+              line-height: 1.8 !important;
+            }
+            #blog-premium-content blockquote {
+              background: rgba(198, 122, 82, 0.05) !important;
+              border-radius: 2.5rem !important;
+              padding: 4rem !important;
+              margin: 6rem 0 !important;
+              border-left: 8px solid #C67A52 !important;
+              font-size: 1.6rem !important;
+              font-style: italic !important;
+              color: white !important;
+              line-height: 1.6 !important;
+            }
+            #blog-premium-content strong {
+              color: white !important;
+              font-weight: 700 !important;
+              background: rgba(198, 122, 82, 0.1) !important;
+              padding: 0 4px !important;
+              border-radius: 4px !important;
+            }
+            #blog-premium-content hr {
+              border: none !important;
+              height: 1px !important;
+              background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent) !important;
+              margin: 8rem 0 !important;
+            }
+          ` }} />
           <div
-            className="blog-content max-w-[800px] mx-auto"
+            id="blog-premium-content"
+            className="blog-content max-w-[850px] mx-auto"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
 
