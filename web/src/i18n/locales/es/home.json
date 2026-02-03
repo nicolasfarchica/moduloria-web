@@ -102,36 +102,88 @@
     "ctaSubtext": "Sin compromiso | Implementación en días, no meses | Casos piloto con resultados reales"
   },
   "differentiators": {
-    "tagline": "DIFERENCIADORES",
-    "title": "¿Por Qué Elegirnos?",
-    "subtitle": "Lo que nos hace diferentes de una consultora tecnológica tradicional",
-    "item1Title": "Especialistas en Construcción",
-    "item1Desc": "No somos generalistas. Conocemos los procesos, terminología y desafíos específicos de tu industria.",
-    "item2Title": "Resultados Medibles",
-    "item2Desc": "Cada proyecto tiene KPIs claros. Si no generas ROI, no tiene sentido.",
-    "item3Title": "Implementación Rápida",
-    "item3Desc": "Quick Wins en 2-4 semanas. Nada de proyectos de 6 meses sin resultados.",
-    "item4Title": "Sin Dependencia Tecnológica",
-    "item4Desc": "Te enseñamos a usar las herramientas. Tu equipo mantiene el control.",
-    "item5Title": "Soporte Continuo",
-    "item5Desc": "No desaparecemos después de implementar. Estamos contigo en la optimización.",
-    "item6Title": "Precios Transparentes",
-    "item6Desc": "Sabes exactamente qué pagas y qué recibes. Sin sorpresas ni costes ocultos."
+    "title": "¿Por qué",
+    "titleHighlight": "ModulorIA",
+    "titleEnd": "vs. agencias genéricas?",
+    "subtitle": "No somos una consultora IA generalista. Somos especialistas en la industria de la construcción.",
+    "tableHeaders": {
+      "criteria": "Criterio",
+      "generic": "Agencias IA genéricas",
+      "moduloria": "ModulorIA"
+    },
+    "comparisons": {
+      "0": {
+        "feature": "Especialización",
+        "generic": "Soluciones genéricas para \"todas las industrias\"",
+        "moduloria": "100% enfocado en el sector construcción. Conocemos tus procesos."
+      },
+      "1": {
+        "feature": "Tiempo de implementación",
+        "generic": "6-12 meses de integración. Proyectos eternos.",
+        "moduloria": "3 días - 4 semanas según solución. ROI inmediato."
+      },
+      "2": {
+        "feature": "Modelo de precios",
+        "generic": "Contratos anuales costosos. Vendor lock-in.",
+        "moduloria": "Sin contratos eternos. Pagas por resultados."
+      },
+      "3": {
+        "feature": "Flexibilidad",
+        "generic": "Plataformas rígidas. \"Se hace como nosotros decimos\".",
+        "moduloria": "Automatizaciones personalizadas a tu flujo actual."
+      },
+      "4": {
+        "feature": "Transparencia ROI",
+        "generic": "Promesas vagas. \"Mejora de eficiencia del 30%\".",
+        "moduloria": "ROI calculado en euros. Dashboard con ahorro real vs. proyectado."
+      },
+      "5": {
+        "feature": "Soporte",
+        "generic": "Tickets por portal. Respuesta en 48-72h.",
+        "moduloria": "WhatsApp directo con nuestro equipo. Respuesta en < 2h hábiles."
+      },
+      "6": {
+        "feature": "Propiedad de datos",
+        "generic": "Tus datos quedan en su nube. Difícil migrar.",
+        "moduloria": "Tus datos, tu infraestructura. 100% exportables."
+      },
+      "7": {
+        "feature": "Metodología",
+        "generic": "Big Bang. Todo o nada. Alto riesgo.",
+        "moduloria": "Quick Wins primero. Validación continua. Escala gradual."
+      }
+    },
+    "mobileLabels": {
+      "generic": "Agencias genéricas",
+      "moduloria": "ModulorIA"
+    },
+    "trustBar": {
+      "title": "La diferencia:",
+      "titleHighlight": "Especialización + Agilidad + Transparencia",
+      "description": "No vendemos software estándar. Co-creamos automatizaciones específicas para empresas de construcción. Si no funciona, lo refinamos hasta que funcione. Sin letra pequeña.",
+      "tags": ["100% Sector Construcción", "ROI en 2-3 semanas", "Sin contratos eternos"]
+    },
+    "cta": "Ver cómo funciona en tu empresa"
   },
   "calculator": {
-    "tagline": "CALCULADORA ROI",
-    "title": "¿Cuánto Podrías Ahorrar?",
-    "subtitle": "Calcula tu potencial de ahorro con automatización IA",
-    "employeesLabel": "Número de empleados administrativos",
-    "hoursLabel": "Horas semanales en tareas repetitivas (por empleado)",
-    "salaryLabel": "Coste hora promedio (€)",
-    "calculate": "Calcular Ahorro",
+    "title": "Calcula tu",
+    "titleHighlight": "ROI estimado",
+    "subtitle": "Responde 3 preguntas y descubre cuánto puedes ahorrar con ModulorIA",
+    "invoicesLabel": "Facturas procesadas al mes",
+    "projectsLabel": "Proyectos activos simultáneos",
+    "adminHoursLabel": "Horas/semana en tareas administrativas",
     "results": {
-      "annual": "Ahorro Anual Estimado",
-      "monthly": "Ahorro Mensual",
-      "hours": "Horas Recuperadas/Año",
-      "roi": "ROI Estimado"
+      "title": "Ahorro anual estimado",
+      "monthly": "/mes",
+      "invoices": "Ahorro en facturas",
+      "projects": "Ahorro en gestión de proyectos",
+      "adminHours": "Ahorro en horas administrativas",
+      "roiLabel": "ROI estimado",
+      "month": "mes",
+      "months": "meses",
+      "perYear": "/año"
     },
-    "disclaimer": "* Estimación basada en automatización del 70% de tareas repetitivas"
+    "disclaimer": "* Cálculos estimados basados en promedios de la industria. Los resultados reales pueden variar. En el diagnóstico calculamos el ROI específico para tu empresa.",
+    "cta": "Obtener ROI Personalizado"
   }
 }

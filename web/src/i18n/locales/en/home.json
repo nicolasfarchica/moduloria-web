@@ -103,36 +103,88 @@
     "ctaSubtext": "No commitment | Implementation in days, not months | Pilot cases with real results"
   },
   "differentiators": {
-    "tagline": "DIFFERENTIATORS",
-    "title": "Why Choose Us?",
-    "subtitle": "What makes us different from a traditional tech consultancy",
-    "item1Title": "Construction Specialists",
-    "item1Desc": "We're not generalists. We know the processes, terminology, and specific challenges of your industry.",
-    "item2Title": "Measurable Results",
-    "item2Desc": "Every project has clear KPIs. If you don't generate ROI, it doesn't make sense.",
-    "item3Title": "Fast Implementation",
-    "item3Desc": "Quick Wins in 2-4 weeks. No 6-month projects without results.",
-    "item4Title": "No Tech Lock-in",
-    "item4Desc": "We teach you how to use the tools. Your team stays in control.",
-    "item5Title": "Ongoing Support",
-    "item5Desc": "We don't disappear after implementation. We're with you through optimization.",
-    "item6Title": "Transparent Pricing",
-    "item6Desc": "You know exactly what you're paying for and what you'll receive. No surprises or hidden costs."
+    "title": "Why",
+    "titleHighlight": "ModulorIA",
+    "titleEnd": "vs. generic agencies?",
+    "subtitle": "We're not a generalist AI consultancy. We're specialists in the construction industry.",
+    "tableHeaders": {
+      "criteria": "Criteria",
+      "generic": "Generic AI agencies",
+      "moduloria": "ModulorIA"
+    },
+    "comparisons": {
+      "0": {
+        "feature": "Specialization",
+        "generic": "Generic solutions for \"all industries\"",
+        "moduloria": "100% focused on construction. We know your processes."
+      },
+      "1": {
+        "feature": "Implementation time",
+        "generic": "6-12 months integration. Endless projects.",
+        "moduloria": "3 days - 4 weeks depending on solution. Immediate ROI."
+      },
+      "2": {
+        "feature": "Pricing model",
+        "generic": "Expensive annual contracts. Vendor lock-in.",
+        "moduloria": "No endless contracts. You pay for results."
+      },
+      "3": {
+        "feature": "Flexibility",
+        "generic": "Rigid platforms. \"It's done our way.\"",
+        "moduloria": "Automations customized to your current workflow."
+      },
+      "4": {
+        "feature": "ROI transparency",
+        "generic": "Vague promises. \"30% efficiency improvement.\"",
+        "moduloria": "ROI calculated in euros. Dashboard with real vs. projected savings."
+      },
+      "5": {
+        "feature": "Support",
+        "generic": "Portal tickets. 48-72h response time.",
+        "moduloria": "Direct WhatsApp with our team. Response in < 2 business hours."
+      },
+      "6": {
+        "feature": "Data ownership",
+        "generic": "Your data stays in their cloud. Hard to migrate.",
+        "moduloria": "Your data, your infrastructure. 100% exportable."
+      },
+      "7": {
+        "feature": "Methodology",
+        "generic": "Big Bang. All or nothing. High risk.",
+        "moduloria": "Quick Wins first. Continuous validation. Gradual scaling."
+      }
+    },
+    "mobileLabels": {
+      "generic": "Generic agencies",
+      "moduloria": "ModulorIA"
+    },
+    "trustBar": {
+      "title": "The difference:",
+      "titleHighlight": "Specialization + Agility + Transparency",
+      "description": "We don't sell standard software. We co-create specific automations for construction companies. If it doesn't work, we refine it until it does. No fine print.",
+      "tags": ["100% Construction Sector", "ROI in 2-3 weeks", "No endless contracts"]
+    },
+    "cta": "See how it works for your company"
   },
   "calculator": {
-    "tagline": "ROI CALCULATOR",
-    "title": "How Much Could You Save?",
-    "subtitle": "Calculate your potential savings with AI automation",
-    "employeesLabel": "Number of administrative employees",
-    "hoursLabel": "Weekly hours on repetitive tasks (per employee)",
-    "salaryLabel": "Average hourly cost (€)",
-    "calculate": "Calculate Savings",
+    "title": "Calculate your",
+    "titleHighlight": "estimated ROI",
+    "subtitle": "Answer 3 questions and discover how much you can save with ModulorIA",
+    "invoicesLabel": "Invoices processed per month",
+    "projectsLabel": "Active projects simultaneously",
+    "adminHoursLabel": "Hours/week on administrative tasks",
     "results": {
-      "annual": "Estimated Annual Savings",
-      "monthly": "Monthly Savings",
-      "hours": "Hours Recovered/Year",
-      "roi": "Estimated ROI"
+      "title": "Estimated annual savings",
+      "monthly": "/month",
+      "invoices": "Savings on invoices",
+      "projects": "Savings on project management",
+      "adminHours": "Savings on administrative hours",
+      "roiLabel": "Estimated ROI",
+      "month": "month",
+      "months": "months",
+      "perYear": "/year"
     },
-    "disclaimer": "* Estimate based on 70% automation of repetitive tasks"
+    "disclaimer": "* Calculations estimated based on industry averages. Actual results may vary. In the assessment we calculate the specific ROI for your company.",
+    "cta": "Get Personalized ROI"
   }
 }

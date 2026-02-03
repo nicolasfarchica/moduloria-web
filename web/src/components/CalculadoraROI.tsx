@@ -1,8 +1,11 @@
 'use client';
 
 import { useState } from 'react';
+import { Link } from '@/i18n/routing';
+import { useTranslations } from 'next-intl';
 
 export default function CalculadoraROI() {
+  const t = useTranslations('home.calculator');
   const [facturas, setFacturas] = useState(100);
   const [proyectos, setProyectos] = useState(5);
   const [horasAdmin, setHorasAdmin] = useState(20);
@@ -69,10 +72,10 @@ export default function CalculadoraROI() {
       <div className="container-custom relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 font-heading">
-            Calcula tu <span className="text-accent-copper">ROI estimado</span>
+            {t('title')} <span className="text-accent-copper">{t('titleHighlight')}</span>
           </h2>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto font-light">
-            Responde 3 preguntas y descubre cuánto puedes ahorrar con ModulorIA
+            {t('subtitle')}
           </p>
         </div>
 
@@ -82,7 +85,7 @@ export default function CalculadoraROI() {
             <div className="glass-card space-y-8">
               <div>
                 <label className="flex justify-between items-center mb-3">
-                  <span className="text-white font-semibold">Facturas procesadas al mes</span>
+                  <span className="text-white font-semibold">{t('invoicesLabel')}</span>
                   <span className="text-accent-copper text-2xl font-bold">{facturas}</span>
                 </label>
                 <input
@@ -105,7 +108,7 @@ export default function CalculadoraROI() {
 
               <div>
                 <label className="flex justify-between items-center mb-3">
-                  <span className="text-white font-semibold">Proyectos activos simultáneos</span>
+                  <span className="text-white font-semibold">{t('projectsLabel')}</span>
                   <span className="text-accent-copper text-2xl font-bold">{proyectos}</span>
                 </label>
                 <input
@@ -128,7 +131,7 @@ export default function CalculadoraROI() {
 
               <div>
                 <label className="flex justify-between items-center mb-3">
-                  <span className="text-white font-semibold">Horas/semana en tareas administrativas</span>
+                  <span className="text-white font-semibold">{t('adminHoursLabel')}</span>
                   <span className="text-accent-copper text-2xl font-bold">{horasAdmin}</span>
                 </label>
                 <input
@@ -153,33 +156,35 @@ export default function CalculadoraROI() {
             {/* Results */}
             <div className="glass-card bg-gradient-to-br from-white/5 to-accent-copper/5 border-accent-copper/20">
               <div className="text-center mb-8">
-                <div className="text-slate-400 text-sm uppercase tracking-wider mb-2">Ahorro anual estimado</div>
+                <div className="text-slate-400 text-sm uppercase tracking-wider mb-2">{t('results.title')}</div>
                 <div className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-accent-copper to-white mb-2 font-heading">
                   €{ahorroTotal.toLocaleString('es-ES')}
                 </div>
-                <div className="text-slate-300 text-sm">≈ €{Math.round(ahorroTotal / 12).toLocaleString('es-ES')}/mes</div>
+                <div className="text-slate-300 text-sm">≈ €{Math.round(ahorroTotal / 12).toLocaleString('es-ES')}{t('results.monthly')}</div>
               </div>
 
               <div className="space-y-4 mb-8">
                 <div className="flex justify-between items-center p-4 bg-white/5 rounded-lg">
-                  <span className="text-slate-300">💰 Ahorro en facturas</span>
-                  <span className="text-white font-bold">€{ahorroFacturas.toLocaleString('es-ES')}/año</span>
+                  <span className="text-slate-300">💰 {t('results.invoices')}</span>
+                  <span className="text-white font-bold">€{ahorroFacturas.toLocaleString('es-ES')}{t('results.perYear')}</span>
                 </div>
                 <div className="flex justify-between items-center p-4 bg-white/5 rounded-lg">
-                  <span className="text-slate-300">📊 Ahorro en gestión de proyectos</span>
-                  <span className="text-white font-bold">€{ahorroProyectos.toLocaleString('es-ES')}/año</span>
+                  <span className="text-slate-300">📊 {t('results.projects')}</span>
+                  <span className="text-white font-bold">€{ahorroProyectos.toLocaleString('es-ES')}{t('results.perYear')}</span>
                 </div>
                 <div className="flex justify-between items-center p-4 bg-white/5 rounded-lg">
-                  <span className="text-slate-300">⏱️ Ahorro en horas administrativas</span>
-                  <span className="text-white font-bold">€{ahorroHoras.toLocaleString('es-ES')}/año</span>
+                  <span className="text-slate-300">⏱️ {t('results.adminHours')}</span>
+                  <span className="text-white font-bold">€{ahorroHoras.toLocaleString('es-ES')}{t('results.perYear')}</span>
                 </div>
               </div>
 
               <div className="p-6 bg-accent-copper/10 border border-accent-copper/30 rounded-lg">
                 <div className="flex items-center justify-between">
                   <div>
-                    <div className="text-slate-300 text-sm mb-1">ROI estimado</div>
-                    <div className="text-3xl font-bold text-white font-heading">{roiMeses} {roiMeses === 1 ? 'mes' : 'meses'}</div>
+                    <div className="text-slate-300 text-sm mb-1">{t('results.roiLabel')}</div>
+                    <div className="text-3xl font-bold text-white font-heading">
+                      {roiMeses} {roiMeses === 1 ? t('results.month') : t('results.months')}
+                    </div>
                   </div>
                   <div className="text-5xl">🚀</div>
                 </div>
@@ -190,15 +195,14 @@ export default function CalculadoraROI() {
           {/* Disclaimer */}
           <div className="mt-8 text-center">
             <p className="text-slate-500 text-sm max-w-3xl mx-auto mb-6">
-              * Cálculos estimados basados en promedios de la industria. Los resultados reales pueden variar.
-              En el diagnóstico calculamos el ROI específico para tu empresa.
+              {t('disclaimer')}
             </p>
-            <a
+            <Link
               href="/auditoria"
               className="btn-primary inline-flex items-center gap-2 px-8 py-4 text-lg shadow-copper-glow hover:scale-105 transition-transform"
             >
-              📞 Obtener ROI Personalizado
-            </a>
+              📞 {t('cta')}
+            </Link>
           </div>
         </div>
       </div>
