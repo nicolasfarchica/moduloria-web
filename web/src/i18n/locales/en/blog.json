@@ -1,4 +1,11 @@
 {
+  "page": {
+    "title": "Blog by",
+    "titleHighlight": "ModulorIA",
+    "subtitle": "Articles, guides, and resources on AI and automation in modular construction.",
+    "emptyMessage": "We will soon publish articles about AI in modular construction.",
+    "backToHome": "Back to Home"
+  },
   "section": {
     "title": "Blog",
     "subtitle": "Articles, guides, and success stories about automation and AI in modular construction"
@@ -25,8 +32,16 @@
     "guides": "Guides"
   },
   "cta": {
-    "title": "Ready to automate?",
-    "description": "Discover how AI can transform your construction company.",
-    "button": "Request Assessment"
+    "title": "Want to implement AI in your construction company?",
+    "description": "Schedule a strategic assessment and discover how to save time and money.",
+    "button": "Schedule Strategic Assessment"
+  },
+  "post": {
+    "breadcrumbHome": "Home",
+    "authorRole": "Modular AI Expert",
+    "publishedOn": "Published on",
+    "ctaTitle": "Want to implement this in your company?",
+    "ctaDescription": "Schedule a strategic assessment and we'll show you how to automate your processes with AI.",
+    "ctaButton": "Schedule Strategic Assessment"
   }
 }

@@ -1,4 +1,11 @@
 {
+  "page": {
+    "title": "Blog de",
+    "titleHighlight": "ModulorIA",
+    "subtitle": "Artículos, guías y recursos sobre IA y automatización en construcción modular.",
+    "emptyMessage": "Próximamente publicaremos artículos sobre IA en construcción modular.",
+    "backToHome": "Volver al Inicio"
+  },
   "section": {
     "title": "Blog",
     "subtitle": "Artículos, guías y casos de éxito sobre automatización e IA en construcción modular"
@@ -25,8 +32,16 @@
     "guides": "Guías"
   },
   "cta": {
-    "title": "¿Listo para automatizar?",
-    "description": "Descubre cómo la IA puede transformar tu empresa de construcción.",
-    "button": "Solicitar Diagnóstico"
+    "title": "¿Quieres implementar IA en tu constructora?",
+    "description": "Agenda un diagnóstico estratégico y descubre cómo ahorrar tiempo y dinero.",
+    "button": "Agendar Diagnóstico Estratégico"
+  },
+  "post": {
+    "breadcrumbHome": "Inicio",
+    "authorRole": "Experto en IA Modular",
+    "publishedOn": "Publicado el",
+    "ctaTitle": "¿Quieres implementar esto en tu empresa?",
+    "ctaDescription": "Agenda un diagnóstico estratégico y te mostramos cómo automatizar tus procesos con IA.",
+    "ctaButton": "Agendar Diagnóstico Estratégico"
   }
 }

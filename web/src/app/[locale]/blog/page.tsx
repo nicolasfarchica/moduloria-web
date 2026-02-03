@@ -1,4 +1,4 @@
-import { setRequestLocale } from 'next-intl/server';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import { Link } from '@/i18n/routing';
 import { getAllPosts } from '@/lib/blog';
@@ -50,7 +50,7 @@ export default async function BlogPage({ params }: Props) {
   setRequestLocale(locale);
 
   const posts = await getAllPosts();
-  const isSpanish = locale === 'es';
+  const t = await getTranslations('blog');
 
   return (
     <main className="min-h-screen bg-background-start">
@@ -58,12 +58,10 @@ export default async function BlogPage({ params }: Props) {
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 font-heading">
-            {isSpanish ? 'Blog de' : 'Blog by'} <span className="text-accent-copper">ModulorIA</span>
+            {t('page.title')} <span className="text-accent-copper">{t('page.titleHighlight')}</span>
           </h1>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-            {isSpanish
-              ? 'Artículos, guías y recursos sobre IA y automatización en construcción modular.'
-              : 'Articles, guides, and resources on AI and automation in modular construction.'}
+            {t('page.subtitle')}
           </p>
         </div>
 
@@ -71,15 +69,13 @@ export default async function BlogPage({ params }: Props) {
         {posts.length === 0 ? (
           <div className="text-center py-20">
             <p className="text-slate-400 text-lg">
-              {isSpanish
-                ? 'Próximamente publicaremos artículos sobre IA en construcción modular.'
-                : 'We will soon publish articles about AI in modular construction.'}
+              {t('page.emptyMessage')}
             </p>
             <Link
               href="/"
               className="btn-primary mt-8 inline-block"
             >
-              {isSpanish ? 'Volver al Inicio' : 'Back to Home'}
+              {t('page.backToHome')}
             </Link>
           </div>
         ) : (
@@ -131,7 +127,7 @@ export default async function BlogPage({ params }: Props) {
                       <span className="text-xs text-slate-300 font-medium">{post.author}</span>
                     </div>
                     <time className="text-xs text-slate-500">
-                      {new Date(post.date).toLocaleDateString(isSpanish ? 'es-ES' : 'en-US', {
+                      {new Date(post.date).toLocaleDateString(locale === 'es' ? 'es-ES' : 'en-US', {
                         year: 'numeric',
                         month: 'short',
                         day: 'numeric'
@@ -147,20 +143,16 @@ export default async function BlogPage({ params }: Props) {
         {/* CTA */}
         <div className="text-center mt-16 pt-16 border-t border-white/10">
           <h3 className="text-2xl font-bold text-white mb-4">
-            {isSpanish
-              ? '¿Quieres implementar IA en tu constructora?'
-              : 'Want to implement AI in your construction company?'}
+            {t('cta.title')}
           </h3>
           <p className="text-slate-300 mb-6">
-            {isSpanish
-              ? 'Agenda un diagnóstico estratégico y descubre cómo ahorrar tiempo y dinero.'
-              : 'Schedule a strategic assessment and discover how to save time and money.'}
+            {t('cta.description')}
           </p>
           <Link
             href="/auditoria"
             className="btn-primary px-8 py-4 inline-block"
           >
-            {isSpanish ? 'Agendar Diagnóstico Estratégico' : 'Schedule Strategic Assessment'}
+            {t('cta.button')}
           </Link>
         </div>
       </div>

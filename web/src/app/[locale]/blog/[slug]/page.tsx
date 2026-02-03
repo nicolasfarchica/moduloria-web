@@ -1,4 +1,4 @@
-import { setRequestLocale } from 'next-intl/server';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
@@ -77,7 +77,7 @@ export default async function BlogPostPage({ params }: Props) {
   setRequestLocale(locale);
 
   const post = await getPostBySlug(slug);
-  const isSpanish = locale === 'es';
+  const t = await getTranslations('blog.post');
 
   if (!post) {
     notFound();
@@ -125,7 +125,7 @@ export default async function BlogPostPage({ params }: Props) {
       {
         '@type': 'ListItem',
         position: 1,
-        name: isSpanish ? 'Inicio' : 'Home',
+        name: t('breadcrumbHome'),
         item: `${baseUrl}/${locale}`,
       },
       {
@@ -182,7 +182,7 @@ export default async function BlogPostPage({ params }: Props) {
             <ol className="flex items-center gap-2 text-sm text-slate-400">
               <li>
                 <Link href="/" className="hover:text-accent-copper transition-colors">
-                  {isSpanish ? 'Inicio' : 'Home'}
+                  {t('breadcrumbHome')}
                 </Link>
               </li>
               <li className="flex items-center gap-2">
@@ -233,17 +233,17 @@ export default async function BlogPostPage({ params }: Props) {
                 <div className="text-left">
                   <div className="text-white font-semibold">{post.author}</div>
                   <div className="text-xs text-slate-500">
-                    {isSpanish ? 'Experto en IA Modular' : 'Modular AI Expert'}
+                    {t('authorRole')}
                   </div>
                 </div>
               </div>
               <div className="h-8 w-px bg-white/10" />
               <div className="flex flex-col items-start">
                 <div className="text-xs text-slate-500 uppercase tracking-wider mb-1">
-                  {isSpanish ? 'Publicado el' : 'Published on'}
+                  {t('publishedOn')}
                 </div>
                 <time dateTime={post.date} className="text-white font-medium">
-                  {new Date(post.date).toLocaleDateString(isSpanish ? 'es-ES' : 'en-US', {
+                  {new Date(post.date).toLocaleDateString(locale === 'es' ? 'es-ES' : 'en-US', {
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric'
@@ -370,20 +370,16 @@ export default async function BlogPostPage({ params }: Props) {
           {/* CTA */}
           <div className="mt-16 p-8 bg-gradient-to-r from-slate-900/80 to-primary-dark/50 border border-white/10 rounded-2xl text-center">
             <h3 className="text-2xl font-bold text-white mb-4">
-              {isSpanish
-                ? '¿Quieres implementar esto en tu empresa?'
-                : 'Want to implement this in your company?'}
+              {t('ctaTitle')}
             </h3>
             <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
-              {isSpanish
-                ? 'Agenda un diagnóstico estratégico y te mostramos cómo automatizar tus procesos con IA.'
-                : 'Schedule a strategic assessment and we\'ll show you how to automate your processes with AI.'}
+              {t('ctaDescription')}
             </p>
             <Link
               href="/auditoria"
               className="btn-primary px-8 py-4 inline-block shadow-copper-glow"
             >
-              {isSpanish ? 'Agendar Diagnóstico Estratégico' : 'Schedule Strategic Assessment'}
+              {t('ctaButton')}
             </Link>
           </div>
         </article>
