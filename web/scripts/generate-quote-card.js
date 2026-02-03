@@ -170,6 +170,29 @@ async function drawLogo(ctx, width, height, logoPath) {
 }
 
 /**
+ * Dibuja una foto circular con borde dorado
+ */
+async function drawCircularPhoto(ctx, photoPath, x, y, size) {
+  try {
+    const photo = await loadImage(photoPath);
+    ctx.save();
+    // Borde dorado
+    ctx.beginPath();
+    ctx.arc(x + size / 2, y + size / 2, size / 2 + 3, 0, Math.PI * 2);
+    ctx.fillStyle = BRAND.colors.accent;
+    ctx.fill();
+    // Recorte circular
+    ctx.beginPath();
+    ctx.arc(x + size / 2, y + size / 2, size / 2, 0, Math.PI * 2);
+    ctx.clip();
+    ctx.drawImage(photo, x, y, size, size);
+    ctx.restore();
+  } catch (err) {
+    console.log('Foto no encontrada, continuando sin foto');
+  }
+}
+
+/**
  * Genera una quote card
  */
 async function generateQuoteCard(text, size, outputPath, options = {}) {
@@ -182,8 +205,12 @@ async function generateQuoteCard(text, size, outputPath, options = {}) {
     try {
       const bg = await loadImage(options.backgroundImage);
       ctx.drawImage(bg, 0, 0, width, height);
-      // Overlay oscuro para legibilidad
-      ctx.fillStyle = 'rgba(26, 31, 54, 0.7)';
+      // Overlay gradiente oscuro (mas fuerte abajo para el texto)
+      const overlay = ctx.createLinearGradient(0, 0, 0, height);
+      overlay.addColorStop(0, 'rgba(26, 31, 54, 0.4)');
+      overlay.addColorStop(0.4, 'rgba(26, 31, 54, 0.6)');
+      overlay.addColorStop(1, 'rgba(26, 31, 54, 0.85)');
+      ctx.fillStyle = overlay;
       ctx.fillRect(0, 0, width, height);
     } catch (err) {
       drawGradientBackground(ctx, width, height);
@@ -192,19 +219,100 @@ async function generateQuoteCard(text, size, outputPath, options = {}) {
     drawGradientBackground(ctx, width, height);
   }
 
-  // Texto
-  const fontSize = Math.floor(width * 0.045);
-  drawCenteredText(ctx, text, width, height, fontSize);
+  // Separar texto en titulo y subtitulo si contiene doble salto o punto seguido de mayuscula
+  const textParts = text.split(/(?<=correctas\.)\s+/);
+  const titleText = textParts[0] || text;
+  const subtitleText = textParts[1] || '';
 
-  // Logo
-  const logoPath = path.join(__dirname, '..', 'public', 'images', 'moduloria-logo-circular.png');
-  await drawLogo(ctx, width, height, logoPath);
+  const marginLeft = width * 0.08;
+  const maxWidth = width * 0.8;
 
-  // Firma
+  // Titulo principal - grande y bold
+  const titleFontSize = Math.floor(width * 0.058);
+  ctx.fillStyle = BRAND.colors.text;
+  ctx.font = `bold ${titleFontSize}px Inter`;
+  ctx.textAlign = 'left';
+
+  const titleLineHeight = titleFontSize * 1.3;
+  const titleWords = titleText.split(' ');
+  const titleLines = [];
+  let currentLine = '';
+
+  for (const word of titleWords) {
+    const testLine = currentLine ? `${currentLine} ${word}` : word;
+    const metrics = ctx.measureText(testLine);
+    if (metrics.width > maxWidth && currentLine) {
+      titleLines.push(currentLine);
+      currentLine = word;
+    } else {
+      currentLine = testLine;
+    }
+  }
+  if (currentLine) titleLines.push(currentLine);
+
+  const textStartY = height * 0.45;
+  for (let i = 0; i < titleLines.length; i++) {
+    ctx.fillText(titleLines[i], marginLeft, textStartY + i * titleLineHeight);
+  }
+
+  // Subtitulo - mas pequeno, en dorado, elegante
+  if (subtitleText) {
+    const subFontSize = Math.floor(width * 0.035);
+    const subLineHeight = subFontSize * 1.4;
+    ctx.fillStyle = BRAND.colors.accent;
+    ctx.font = `normal ${subFontSize}px Inter`;
+
+    const subWords = subtitleText.split(' ');
+    const subLines = [];
+    let subLine = '';
+    for (const word of subWords) {
+      const testLine = subLine ? `${subLine} ${word}` : word;
+      const metrics = ctx.measureText(testLine);
+      if (metrics.width > maxWidth && subLine) {
+        subLines.push(subLine);
+        subLine = word;
+      } else {
+        subLine = testLine;
+      }
+    }
+    if (subLine) subLines.push(subLine);
+
+    const subStartY = textStartY + titleLines.length * titleLineHeight + 40;
+    for (let i = 0; i < subLines.length; i++) {
+      ctx.fillText(subLines[i], marginLeft, subStartY + i * subLineHeight);
+    }
+  }
+
+  // Seccion inferior: foto + nombre + logo
+  const bottomY = height * 0.82;
+
+  // Foto circular del CEO
+  const photoPath = path.join(__dirname, '..', 'public', 'images', 'nicolas-farchica-ceo.jpg');
+  const photoSize = Math.floor(width * 0.1);
+  if (options.showPhoto !== false) {
+    await drawCircularPhoto(ctx, photoPath, width * 0.08, bottomY, photoSize);
+  }
+
+  // Nombre y titulo al lado de la foto
+  const nameX = width * 0.08 + photoSize + 15;
+  ctx.fillStyle = BRAND.colors.text;
+  const nameFontSize = Math.floor(width * 0.02);
+  ctx.font = `bold ${nameFontSize}px Inter`;
+  ctx.textAlign = 'left';
+  ctx.fillText('Nicolas Farchica', nameX, bottomY + photoSize * 0.4);
   ctx.fillStyle = BRAND.colors.accent;
-  ctx.font = `normal ${Math.floor(fontSize * 0.5)}px Inter`;
-  ctx.textAlign = 'center';
-  ctx.fillText('— ModulorIA', width / 2, height * 0.78);
+  ctx.font = `normal ${Math.floor(nameFontSize * 0.8)}px Inter`;
+  ctx.fillText('CEO & Founder - ModulorIA', nameX, bottomY + photoSize * 0.7);
+
+  // Logo transparente (esquina inferior derecha, sin fondo azul)
+  const logoPath = path.join(__dirname, '..', 'public', 'images', 'moduloria-logo-transparent.png');
+  try {
+    const logo = await loadImage(logoPath);
+    const logoSize = Math.min(width, height) * 0.1;
+    ctx.drawImage(logo, width - logoSize - 40, bottomY, logoSize, logoSize);
+  } catch (err) {
+    console.log('Logo no encontrado, continuando sin logo');
+  }
 
   // Guardar
   const fileName = `${name}.jpg`;
