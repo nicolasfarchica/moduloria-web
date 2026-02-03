@@ -2,9 +2,11 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
+import { useTranslations } from 'next-intl';
 
 export default function RecursosSection() {
+  const t = useTranslations('home.recursos');
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -52,16 +54,16 @@ export default function RecursosSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 font-heading">
-            Recursos sobre{' '}
+            {t('title')}{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-copper to-primary-light">
-              IA en Construccion Modular
+              {t('titleHighlight')}
             </span>
           </h2>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto font-light leading-relaxed">
-            Articulos, guias y casos de exito para implementar{' '}
-            <span className="text-white font-medium">automatizacion con IA en tu constructora</span>.
+            {t('subtitle')}{' '}
+            <span className="text-white font-medium">{t('subtitleHighlight')}</span>.
             <br />
-            <span className="text-primary-light text-lg">Datos reales, ROI medible, sin teoria abstracta.</span>
+            <span className="text-primary-light text-lg">{t('subtitleEnd')}</span>
           </p>
         </motion.div>
 
@@ -75,8 +77,8 @@ export default function RecursosSection() {
             className="text-center p-6"
           >
             <div className="text-4xl mb-3">📊</div>
-            <h3 className="text-lg font-bold text-white mb-2">Casos Reales</h3>
-            <p className="text-slate-400 text-sm">ROI verificado en PYMEs de construccion modular con 10-100 empleados</p>
+            <h3 className="text-lg font-bold text-white mb-2">{t('card1Title')}</h3>
+            <p className="text-slate-400 text-sm">{t('card1Desc')}</p>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -86,8 +88,8 @@ export default function RecursosSection() {
             className="text-center p-6"
           >
             <div className="text-4xl mb-3">🔧</div>
-            <h3 className="text-lg font-bold text-white mb-2">Guias Paso a Paso</h3>
-            <p className="text-slate-400 text-sm">Implementacion practica con herramientas, costes y timelines reales</p>
+            <h3 className="text-lg font-bold text-white mb-2">{t('card2Title')}</h3>
+            <p className="text-slate-400 text-sm">{t('card2Desc')}</p>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -97,8 +99,8 @@ export default function RecursosSection() {
             className="text-center p-6"
           >
             <div className="text-4xl mb-3">💰</div>
-            <h3 className="text-lg font-bold text-white mb-2">ROI Calculado</h3>
-            <p className="text-slate-400 text-sm">Cada articulo incluye calculo de ahorro en euros y horas para tu empresa</p>
+            <h3 className="text-lg font-bold text-white mb-2">{t('card3Title')}</h3>
+            <p className="text-slate-400 text-sm">{t('card3Desc')}</p>
           </motion.div>
         </div>
 
@@ -114,16 +116,15 @@ export default function RecursosSection() {
             <div>
               <h3 className="text-2xl font-bold text-white mb-4 font-heading flex items-center gap-3">
                 <span>📬</span>
-                <span>Newsletter Semanal</span>
+                <span>{t('newsletterTitle')}</span>
               </h3>
               <p className="text-slate-300 mb-4 leading-relaxed">
-                Recibe cada semana <strong className="text-white">1 automatizacion practica</strong> para tu constructora.
-                Explicado simple, con ROI estimado y sin spam.
+                {t('newsletterDesc')} <strong className="text-white">{t('newsletterDescBold')}</strong> {t('newsletterDescEnd')}
               </p>
 
               {isSuccess ? (
                 <div className="bg-green-500/20 border border-green-500/50 rounded-lg p-4 text-center">
-                  <p className="text-green-400 font-medium">Suscrito correctamente. Revisa tu email.</p>
+                  <p className="text-green-400 font-medium">{t('newsletterSuccess')}</p>
                 </div>
               ) : (
                 <form onSubmit={handleNewsletterSubmit}>
@@ -132,7 +133,7 @@ export default function RecursosSection() {
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="tu@email.com"
+                      placeholder={t('newsletterPlaceholder')}
                       required
                       disabled={isSubmitting}
                       className="flex-1 px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:border-accent-copper transition-colors disabled:opacity-50"
@@ -142,7 +143,7 @@ export default function RecursosSection() {
                       disabled={isSubmitting}
                       className="px-6 py-2 bg-accent-copper text-white rounded-lg font-medium hover:shadow-copper-glow transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      {isSubmitting ? '...' : 'Suscribir'}
+                      {isSubmitting ? '...' : t('newsletterButton')}
                     </button>
                   </div>
                   {error && (
@@ -152,7 +153,7 @@ export default function RecursosSection() {
               )}
 
               <p className="text-xs text-slate-400 mt-2">
-                Cancelar cuando quieras. Sin vender tu email.
+                {t('newsletterDisclaimer')}
               </p>
             </div>
 
@@ -160,19 +161,19 @@ export default function RecursosSection() {
             <div>
               <h3 className="text-2xl font-bold text-white mb-4 font-heading flex items-center gap-3">
                 <span>📞</span>
-                <span>Diagnostico Estrategico</span>
+                <span>{t('diagnosticoTitle')}</span>
               </h3>
               <p className="text-slate-300 mb-4 leading-relaxed">
-                Analisis personalizado de <strong className="text-white">tu empresa</strong>: procesos automatizables, ROI estimado y plan de implementacion.
+                {t('diagnosticoDesc')} <strong className="text-white">{t('diagnosticoDescBold')}</strong>{t('diagnosticoDescEnd')}
               </p>
               <Link
                 href="/auditoria"
                 className="inline-block px-6 py-3 bg-accent-copper text-white rounded-lg font-medium hover:shadow-copper-glow hover:scale-105 transition-all duration-300"
               >
-                Agendar Diagnostico (30 min)
+                {t('diagnosticoButton')}
               </Link>
               <p className="text-xs text-slate-400 mt-2">
-                Sin compromiso. Incluye roadmap personalizado.
+                {t('diagnosticoDisclaimer')}
               </p>
             </div>
           </div>
