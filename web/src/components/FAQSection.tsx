@@ -42,14 +42,11 @@ export default function FAQSection() {
         {/* FAQ List */}
         <div className="max-w-4xl mx-auto space-y-4">
           {Array.from({ length: faqCount }).map((_, index) => {
-            let question: string, answer: string;
-            try {
-              question = t(`items.${index}.question`);
-              answer = t(`items.${index}.answer`);
-              if (question.includes('items.')) return null;
-            } catch {
-              return null;
-            }
+            const questionKey = `items.${index}.question` as const;
+            const answerKey = `items.${index}.answer` as const;
+            if (!t.has(questionKey) || !t.has(answerKey)) return null;
+            const question = t(questionKey);
+            const answer = t(answerKey);
 
             return (
               <motion.div

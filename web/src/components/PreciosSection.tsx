@@ -102,22 +102,16 @@ export default function PreciosSection() {
                   <p className="text-sm font-semibold text-white mb-3">📦 {t('labels.includes')}</p>
                   <ul className="space-y-2">
                     {[0, 1, 2, 3, 4, 5].map((idx) => {
-                      try {
-                        const feature = t(`tiers.${tierId}.features.${idx}`);
-                        if (feature && !feature.includes('tiers.')) {
-                          return (
-                            <li key={idx} className="flex items-start gap-2 text-sm text-gray-300">
-                              <svg className="w-5 h-5 text-accent-copper flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                              </svg>
-                              <span>{feature}</span>
-                            </li>
-                          );
-                        }
-                        return null;
-                      } catch {
-                        return null;
-                      }
+                      const featureKey = `tiers.${tierId}.features.${idx}` as const;
+                      if (!t.has(featureKey)) return null;
+                      return (
+                        <li key={idx} className="flex items-start gap-2 text-sm text-gray-300">
+                          <svg className="w-5 h-5 text-accent-copper flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                          <span>{t(featureKey)}</span>
+                        </li>
+                      );
                     })}
                   </ul>
                 </div>
@@ -127,17 +121,11 @@ export default function PreciosSection() {
                   <p className="text-sm font-semibold text-white mb-2">💡 {t('labels.examples')}</p>
                   <div className="space-y-1">
                     {[0, 1, 2].map((idx) => {
-                      try {
-                        const example = t(`tiers.${tierId}.examples.${idx}`);
-                        if (example && !example.includes('tiers.')) {
-                          return (
-                            <p key={idx} className="text-sm text-gray-400">• {example}</p>
-                          );
-                        }
-                        return null;
-                      } catch {
-                        return null;
-                      }
+                      const exampleKey = `tiers.${tierId}.examples.${idx}` as const;
+                      if (!t.has(exampleKey)) return null;
+                      return (
+                        <p key={idx} className="text-sm text-gray-400">• {t(exampleKey)}</p>
+                      );
                     })}
                   </div>
                 </div>
@@ -165,15 +153,12 @@ export default function PreciosSection() {
 
           <div className="space-y-4">
             {[0, 1, 2, 3, 4, 5].map((index) => {
+              const questionKey = `faqs.${index}.q` as const;
+              const answerKey = `faqs.${index}.a` as const;
+              if (!t.has(questionKey) || !t.has(answerKey)) return null;
               const isOpen = openFaqIndex === index;
-              let question: string, answer: string;
-              try {
-                question = t(`faqs.${index}.q`);
-                answer = t(`faqs.${index}.a`);
-                if (question.includes('faqs.')) return null;
-              } catch {
-                return null;
-              }
+              const question = t(questionKey);
+              const answer = t(answerKey);
 
               return (
                 <motion.div
