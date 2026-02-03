@@ -1,0 +1,94 @@
+{
+  "page": {
+    "title": "Diagnóstico Estratégico",
+    "subtitle": "Descubre cómo la IA puede transformar tu empresa de construcción modular"
+  },
+  "form": {
+    "title": "Solicita tu Diagnóstico Estratégico",
+    "subtitle": "Completa el formulario y nos pondremos en contacto contigo en menos de 24 horas.",
+    "fields": {
+      "name": {
+        "label": "Nombre completo",
+        "placeholder": "Tu nombre"
+      },
+      "email": {
+        "label": "Email corporativo",
+        "placeholder": "tu@empresa.com"
+      },
+      "phone": {
+        "label": "Teléfono",
+        "placeholder": "+34 600 000 000"
+      },
+      "company": {
+        "label": "Empresa",
+        "placeholder": "Nombre de tu empresa"
+      },
+      "employees": {
+        "label": "Número de empleados",
+        "placeholder": "Selecciona un rango",
+        "options": {
+          "1-10": "1-10 empleados",
+          "11-50": "11-50 empleados",
+          "51-200": "51-200 empleados",
+          "200+": "Más de 200 empleados"
+        }
+      },
+      "role": {
+        "label": "Tu cargo",
+        "placeholder": "Director, CEO, Gerente de Operaciones..."
+      },
+      "challenge": {
+        "label": "¿Cuál es tu mayor desafío operativo?",
+        "placeholder": "Cuéntanos qué procesos te gustaría automatizar o mejorar..."
+      },
+      "plan": {
+        "label": "Plan de interés",
+        "options": {
+          "diagnostico": "Diagnóstico Estratégico",
+          "quick-win": "Quick Win",
+          "high-impact": "High Impact",
+          "not-sure": "No estoy seguro todavía"
+        }
+      }
+    },
+    "submit": "Solicitar Diagnóstico",
+    "submitting": "Enviando...",
+    "consent": "Al enviar, aceptas nuestra",
+    "privacyPolicy": "Política de Privacidad"
+  },
+  "success": {
+    "title": "¡Solicitud Recibida!",
+    "message": "Gracias por tu interés. Nos pondremos en contacto contigo en menos de 24 horas para agendar tu Diagnóstico Estratégico.",
+    "backHome": "Volver al inicio"
+  },
+  "error": {
+    "title": "Error al enviar",
+    "message": "Ha ocurrido un error. Por favor, inténtalo de nuevo o contáctanos directamente.",
+    "retry": "Intentar de nuevo"
+  },
+  "benefits": {
+    "title": "¿Qué incluye el Diagnóstico?",
+    "items": [
+      {
+        "icon": "📊",
+        "title": "Análisis de Procesos",
+        "description": "Evaluamos tus flujos de trabajo actuales e identificamos cuellos de botella."
+      },
+      {
+        "icon": "💰",
+        "title": "Cálculo de ROI",
+        "description": "Te mostramos exactamente cuánto puedes ahorrar con automatización."
+      },
+      {
+        "icon": "🗺️",
+        "title": "Roadmap Personalizado",
+        "description": "Plan de implementación paso a paso adaptado a tu empresa."
+      },
+      {
+        "icon": "✅",
+        "title": "100% Reembolsable",
+        "description": "Si contratas cualquier solución, descontamos el costo del diagnóstico."
+      }
+    ]
+  }
+}

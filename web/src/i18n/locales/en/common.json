@@ -1,0 +1,48 @@
+{
+  "nav": {
+    "services": "Services",
+    "pricing": "Pricing",
+    "resources": "Resources",
+    "about": "About",
+    "cta": "Strategic Assessment",
+    "skipToContent": "Skip to main content",
+    "toggleMenu": "Toggle menu"
+  },
+  "footer": {
+    "tagline": "AI-powered automation for modular construction. Save time, reduce errors, scale without hiring.",
+    "solutions": "Solutions",
+    "aiServices": "AI Services",
+    "roiCalculator": "ROI Calculator",
+    "differentiators": "Our Differentiators",
+    "howItWorks": "How It Works",
+    "strategicAssessment": "Strategic Assessment",
+    "company": "Company",
+    "aboutUs": "About Us",
+    "services": "Services",
+    "pricing": "Pricing",
+    "resources": "Resources",
+    "newsletter": "Newsletter",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "whatsapp": "WhatsApp",
+    "scheduleAssessment": "Schedule Assessment",
+    "copyright": "© {year} ModulorIA. All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfUse": "Terms of Use"
+  },
+  "cta": {
+    "primary": "Strategic Assessment",
+    "secondary": "View Pricing",
+    "contact": "Contact Us",
+    "learnMore": "Learn More",
+    "getStarted": "Get Started",
+    "scheduleCall": "Schedule a Call",
+    "downloadGuide": "Download Guide",
+    "watchVideo": "Watch Video"
+  },
+  "language": {
+    "select": "Language",
+    "es": "Español",
+    "en": "English"
+  }
+}

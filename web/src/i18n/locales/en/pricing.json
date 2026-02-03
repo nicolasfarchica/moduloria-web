@@ -1,0 +1,109 @@
+{
+  "section": {
+    "title": "<highlight>AI in Modular Construction</highlight> Pricing",
+    "subtitle": "We implement <strong>automation in modular construction</strong> with transparent pricing.",
+    "subtitleLine2": "No fine print. No eternal contracts. You pay for results, not hours.",
+    "flow": "Start with Assessment → Validate with Quick Win → Scale with High Impact"
+  },
+  "tiers": {
+    "diagnostico": {
+      "name": "Strategic Assessment",
+      "tagline": "Your digital roadmap",
+      "price": "Contact Us",
+      "duration": "Analysis + Executive Report",
+      "roi": "Immediate",
+      "bestFor": "Companies that need clarity on where to start and how much they can save",
+      "features": [
+        "Deep analysis of current processes",
+        "Detailed implementation roadmap",
+        "Guaranteed exact ROI calculation",
+        "100% refundable when you hire"
+      ],
+      "examples": ["Recommended first step"],
+      "cta": "Schedule Assessment"
+    },
+    "quickWin": {
+      "name": "Quick Win",
+      "tagline": "ROI in 1-3 weeks",
+      "price": "Accessible Investment",
+      "duration": "Single project",
+      "roi": "1-3 weeks",
+      "bestFor": "Modular construction companies that want to validate AI automation with low risk before committing",
+      "features": [
+        "Implementation in 3-7 days",
+        "1 specific automation",
+        "Complete technical setup",
+        "Team training",
+        "1 month support included"
+      ],
+      "examples": ["Invoice OCR", "Email Classification", "Delay Alerts"],
+      "cta": "Request Quick Win"
+    },
+    "highImpact": {
+      "name": "High Impact",
+      "tagline": "Operational transformation",
+      "price": "Complete Investment",
+      "duration": "2-4 week implementation",
+      "roi": "4-8 weeks",
+      "bestFor": "Companies with multiple active projects that need visibility and advanced automation",
+      "features": [
+        "Implementation in 2-4 weeks",
+        "3-5 integrated automations",
+        "Custom real-time dashboard",
+        "Complete team training",
+        "3 months support included",
+        "2 monthly optimization sessions"
+      ],
+      "examples": ["Multi-module Dashboard", "Automatic Reports", "Supplier Management"],
+      "cta": "Request High Impact",
+      "popular": "Most popular"
+    }
+  },
+  "labels": {
+    "idealFor": "Ideal for:",
+    "includes": "Includes:",
+    "examples": "Examples:",
+    "roiLabel": "ROI:"
+  },
+  "faqTitle": "Frequently asked questions about pricing",
+  "faqs": [
+    {
+      "q": "Why don't you show fixed prices on the website?",
+      "a": "Every company is different. Processing 20 invoices/week is not the same as 200. Prices depend on the complexity of your specific case. In the Strategic Assessment, we give you an exact and transparent price based on your real needs."
+    },
+    {
+      "q": "Are there hidden or mandatory recurring costs?",
+      "a": "No. The price includes everything (implementation + training + initial support). After the included support period, you can contract optional maintenance or manage the automations yourself (we deliver everything documented)."
+    },
+    {
+      "q": "What if it doesn't work as expected after I pay?",
+      "a": "ROI Guarantee: If after 3 months you don't save at least double your investment, we do 2 free optimization sessions until it works. If the problem is technical on our end (bug, implementation error), we fix it at no additional cost. If it simply doesn't work for your case, we discuss it honestly and look for a solution or partial refund as appropriate."
+    },
+    {
+      "q": "Can I start with Quick Win and then scale to High Impact?",
+      "a": "Absolutely. It's the recommended path for implementing AI in modular construction. You validate with low risk (Quick Win), see real results in your company, then decide if you scale. Bonus: If you hire High Impact after a successful Quick Win, we discount 100% of the Quick Win from the final price."
+    },
+    {
+      "q": "Do you offer volume discounts or annual contracts?",
+      "a": "We don't do annual contracts (it goes against our flexibility philosophy). But we do offer discounts in these cases: 1) Multiple projects: If you hire 2+ simultaneous Quick Wins, discount applied. 2) Scaling: 100% Quick Win discount when moving to High Impact."
+    },
+    {
+      "q": "What does the Strategic Assessment include?",
+      "a": "The Strategic Assessment includes a complete analysis of your current processes, identification of automation opportunities, estimated ROI calculation, and a detailed implementation roadmap. If you decide to hire any solution (Quick Win or High Impact) within the following 30 days, we discount 100% of the assessment cost from the final price."
+    }
+  ],
+  "trustBar": {
+    "title": "Smart Investment: <highlight>Measurable ROI</highlight>",
+    "stat1Value": "One-time investment",
+    "stat1Label": "No mandatory recurring costs",
+    "stat2Value": "High savings",
+    "stat2Label": "Significant annual savings",
+    "stat3Value": "2-8 weeks",
+    "stat3Label": "Typical ROI",
+    "disclaimer": "⭐ Data based on real pilot companies | ✅ No annual contracts | 🔒 No vendor lock-in"
+  },
+  "finalCta": {
+    "button": "Schedule Strategic Assessment",
+    "subtitle": "Includes Roadmap + Calculated ROI | 100% Refundable when you hire"
+  }
+}

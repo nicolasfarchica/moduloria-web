@@ -1,0 +1,48 @@
+{
+  "nav": {
+    "services": "Servicios",
+    "pricing": "Precios",
+    "resources": "Recursos",
+    "about": "Nosotros",
+    "cta": "Diagnóstico Estratégico",
+    "skipToContent": "Saltar al contenido principal",
+    "toggleMenu": "Abrir menú"
+  },
+  "footer": {
+    "tagline": "Automatización con IA especializada en construcción modular. Ahorra tiempo, reduce errores, escala sin contratar.",
+    "solutions": "Soluciones",
+    "aiServices": "Servicios de IA",
+    "roiCalculator": "Calculadora de ROI",
+    "differentiators": "Nuestros Diferenciadores",
+    "howItWorks": "Cómo Funciona",
+    "strategicAssessment": "Diagnóstico Estratégico",
+    "company": "Empresa",
+    "aboutUs": "Sobre Nosotros",
+    "services": "Servicios",
+    "pricing": "Precios",
+    "resources": "Recursos",
+    "newsletter": "Newsletter",
+    "faq": "FAQ",
+    "contact": "Contacto",
+    "whatsapp": "WhatsApp",
+    "scheduleAssessment": "Agendar Diagnóstico",
+    "copyright": "© {year} ModulorIA. Todos los derechos reservados.",
+    "privacyPolicy": "Política de Privacidad",
+    "termsOfUse": "Términos de Uso"
+  },
+  "cta": {
+    "primary": "Diagnóstico Estratégico",
+    "secondary": "Ver Precios",
+    "contact": "Contactar",
+    "learnMore": "Saber Más",
+    "getStarted": "Empezar",
+    "scheduleCall": "Agendar Llamada",
+    "downloadGuide": "Descargar Guía",
+    "watchVideo": "Ver Video"
+  },
+  "language": {
+    "select": "Idioma",
+    "es": "Español",
+    "en": "English"
+  }
+}

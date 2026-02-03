@@ -1,11 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing';
 import { motion, AnimatePresence } from 'framer-motion';
+import LanguageSwitcher from './LanguageSwitcher';
 
 export default function Navigation() {
+  const t = useTranslations('nav');
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -43,60 +46,66 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-6">
             <Link
               href="/servicios"
               className="text-white hover:text-accent-copper transition-colors duration-300 font-medium"
             >
-              Servicios
+              {t('services')}
             </Link>
 
             <Link
               href="/precios"
               className="text-white hover:text-accent-copper transition-colors duration-300 font-medium"
             >
-              Precios
+              {t('pricing')}
             </Link>
 
             <Link
               href="/recursos"
               className="text-white hover:text-accent-copper transition-colors duration-300 font-medium"
             >
-              Recursos
+              {t('resources')}
             </Link>
 
             <Link
               href="/sobre-moduloria"
               className="text-white hover:text-accent-copper transition-colors duration-300 font-medium"
             >
-              Nosotros
+              {t('about')}
             </Link>
+
+            {/* Language Switcher */}
+            <LanguageSwitcher />
 
             {/* CTA Button */}
             <Link
               href="/auditoria"
               className="btn-primary text-sm px-6 py-3"
             >
-              🎯 Diagnóstico Estratégico
+              {t('cta')}
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden text-white p-2 focus:outline-none focus:ring-2 focus:ring-accent-copper rounded"
-            aria-label="Toggle mobile menu"
-          >
-            {isMobileMenuOpen ? (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            ) : (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            )}
-          </button>
+          <div className="lg:hidden flex items-center gap-2">
+            <LanguageSwitcher />
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="text-white p-2 focus:outline-none focus:ring-2 focus:ring-accent-copper rounded"
+              aria-label={t('toggleMenu')}
+            >
+              {isMobileMenuOpen ? (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
@@ -121,35 +130,35 @@ export default function Navigation() {
                   className="block text-white hover:text-accent-copper transition-colors duration-300 py-2 px-4"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Servicios
+                  {t('services')}
                 </Link>
                 <Link
                   href="/precios"
                   className="block text-white hover:text-accent-copper transition-colors duration-300 py-2 px-4"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Precios
+                  {t('pricing')}
                 </Link>
                 <Link
                   href="/recursos"
                   className="block text-white hover:text-accent-copper transition-colors duration-300 py-2 px-4"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Recursos
+                  {t('resources')}
                 </Link>
                 <Link
                   href="/sobre-moduloria"
                   className="block text-white hover:text-accent-copper transition-colors duration-300 py-2 px-4"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Nosotros
+                  {t('about')}
                 </Link>
                 <Link
                   href="/auditoria"
                   className="block btn-primary text-center mt-4 mx-4"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  🎯 Diagnóstico Estratégico
+                  {t('cta')}
                 </Link>
               </motion.div>
             </motion.div>

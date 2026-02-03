@@ -1,0 +1,146 @@
+{
+  "section": {
+    "tagline": "CONCRETE SOLUTIONS",
+    "title": "What can <highlight>AI</highlight> do for your company?",
+    "subtitle": "Automations with measurable results implemented in modular construction companies."
+  },
+  "services": {
+    "presupuestos": {
+      "icon": "📊",
+      "title": "Automatic Budget Generation",
+      "subtitle": "From 3 days to 2 hours",
+      "description": "AI that analyzes plans, specifications, and cost databases to automatically generate detailed budgets.",
+      "benefits": [
+        "Automatic measurement extraction from PDF/DWG plans",
+        "Integration with your pricing database",
+        "Customized format per client",
+        "Automatic history and versioning"
+      ],
+      "useCase": "Prefab module company reduced budgeting time from 3 days to 2 hours.",
+      "timeline": "2-3 weeks"
+    },
+    "planificacion": {
+      "icon": "🗓️",
+      "title": "Intelligent Production Planning",
+      "subtitle": "Factory optimization",
+      "description": "Algorithms that optimize production sequence, resource allocation, and delivery logistics.",
+      "benefits": [
+        "Optimal module sequencing in factory",
+        "Workload balancing by station",
+        "Predictive bottleneck alerts",
+        "Integration with existing ERP"
+      ],
+      "useCase": "CLT panel plant increased throughput by 23% with no additional investment.",
+      "timeline": "3-4 weeks"
+    },
+    "documentacion": {
+      "icon": "📄",
+      "title": "Documentation Automation",
+      "subtitle": "Goodbye to manual paperwork",
+      "description": "Automatic generation of technical sheets, certifications, quality reports, and project documentation.",
+      "benefits": [
+        "Dynamic templates that fill themselves",
+        "Automatic regulatory compliance (building codes)",
+        "Multi-format export (PDF, Excel, BIM)",
+        "Complete change traceability"
+      ],
+      "useCase": "Construction company eliminated 15h/week of administrative work.",
+      "timeline": "1-2 weeks"
+    },
+    "chatbot": {
+      "icon": "💬",
+      "title": "AI Assistant for Teams",
+      "subtitle": "24/7 technical support",
+      "description": "Internal chatbot trained on your technical documentation, procedures, and regulations.",
+      "benefits": [
+        "Instant answers about specifications",
+        "Access manuals and regulations from WhatsApp",
+        "Accelerated onboarding for new employees",
+        "Multilingual for international teams"
+      ],
+      "useCase": "Site team resolves technical questions in seconds instead of calling the office.",
+      "timeline": "3-5 days"
+    },
+    "calidad": {
+      "icon": "✅",
+      "title": "Visual Quality Control with AI",
+      "subtitle": "Automatic defect detection",
+      "description": "Computer vision that analyzes production photos to detect defects, deviations, and non-conformities.",
+      "benefits": [
+        "Photo analysis from mobile",
+        "Detection of cracks, misalignments, finishes",
+        "Automatic reports with defect location",
+        "History for trend analysis"
+      ],
+      "useCase": "3D module factory reduced post-delivery claims by 40%.",
+      "timeline": "2-3 weeks"
+    },
+    "comercial": {
+      "icon": "🎯",
+      "title": "Sales Automation",
+      "subtitle": "More sales, less admin",
+      "description": "Automatic lead follow-up flows, personalized proposals, and client nurturing.",
+      "benefits": [
+        "Automated CRM with intelligent tracking",
+        "Proposals generated in minutes",
+        "Personalized email sequences",
+        "Real-time pipeline dashboard"
+      ],
+      "useCase": "Sales rep went from managing 20 to 60 leads/month without hiring.",
+      "timeline": "1-2 weeks"
+    }
+  },
+  "labels": {
+    "implementation": "Implementation"
+  },
+  "custom": {
+    "title": "Don't see your case? <highlight>We create custom solutions.</highlight>",
+    "description": "Every modular construction company has unique processes. If you have a specific bottleneck, we analyze your situation and design a personalized automation.",
+    "features": [
+      "Integration with any software (ERP, CAD, BIM, Excel...)",
+      "Multi-department automations",
+      "Scalable with growth"
+    ],
+    "results": "Proven results",
+    "roi": "Guaranteed ROI",
+    "roiSubtitle": "Measurable savings in weeks",
+    "cta": "Tell us your case",
+    "ctaSubtitle": "Strategic Assessment"
+  },
+  "problems": {
+    "title": "Do any of these problems sound familiar?",
+    "subtitle": "These are the same challenges faced by 90% of modular construction companies",
+    "items": [
+      {
+        "icon": "⏰",
+        "title": "Hours lost on repetitive tasks",
+        "description": "Budgets, reports, project tracking... all manual."
+      },
+      {
+        "icon": "📊",
+        "title": "Lack of real-time visibility",
+        "description": "You don't know the real production status until it's too late."
+      },
+      {
+        "icon": "📧",
+        "title": "Fragmented communication",
+        "description": "Emails, WhatsApps, calls... scattered information."
+      },
+      {
+        "icon": "🔄",
+        "title": "Inconsistent processes",
+        "description": "Everyone does things their own way."
+      },
+      {
+        "icon": "💸",
+        "title": "Tight margins",
+        "description": "Competition is tough and costs keep rising."
+      },
+      {
+        "icon": "👥",
+        "title": "Dependence on key people",
+        "description": "Knowledge is in the heads of a few."
+      }
+    ]
+  }
+}

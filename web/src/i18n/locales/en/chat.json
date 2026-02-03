@@ -1,0 +1,27 @@
+{
+  "widget": {
+    "title": "ModulorIA Assistant",
+    "subtitle": "We're here to help",
+    "placeholder": "Type your message...",
+    "send": "Send",
+    "typing": "Typing...",
+    "online": "Online",
+    "offline": "Offline"
+  },
+  "messages": {
+    "welcome": "Hi! I'm the ModulorIA assistant. How can I help you today?",
+    "quickReplies": [
+      "What services do you offer?",
+      "How much does it cost?",
+      "How does implementation work?",
+      "I want to schedule a call"
+    ],
+    "errorGeneric": "Sorry, an error occurred. Please try again.",
+    "contactHuman": "If you prefer to talk to a person, you can schedule a call or email us at contacto@moduloria.com"
+  },
+  "buttons": {
+    "open": "Open chat",
+    "close": "Close chat",
+    "minimize": "Minimize"
+  }
+}

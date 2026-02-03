@@ -1,0 +1,39 @@
+{
+  "home": {
+    "title": "ModulorIA | IA y Automatización para la Industria de la Construcción",
+    "description": "Transformamos empresas de construcción con Inteligencia Artificial. Ahorra €67K-€156K/año automatizando procesos operativos.",
+    "keywords": "industria de la construcción, inteligencia artificial construcción, automatización obras, software construcción"
+  },
+  "services": {
+    "title": "Servicios de IA para Construcción | ModulorIA",
+    "description": "Soluciones de automatización con IA para empresas de construcción modular. Chatbots, OCR de facturas, reportes automáticos y más."
+  },
+  "pricing": {
+    "title": "Precios y Planes | ModulorIA",
+    "description": "Planes flexibles de automatización con IA para construcción. Desde proyectos Quick Win hasta transformación digital completa."
+  },
+  "audit": {
+    "title": "Diagnóstico Estratégico Gratuito | ModulorIA",
+    "description": "Solicita tu diagnóstico estratégico gratuito y descubre cómo la IA puede transformar tu empresa de construcción."
+  },
+  "about": {
+    "title": "Sobre ModulorIA | IA para Construcción Modular",
+    "description": "Conoce a ModulorIA: expertos en automatización con IA para la industria de la construcción modular."
+  },
+  "blog": {
+    "title": "Blog | Automatización e IA en Construcción | ModulorIA",
+    "description": "Artículos, guías y casos de éxito sobre automatización e inteligencia artificial en la industria de la construcción."
+  },
+  "resources": {
+    "title": "Recursos | Guías y Herramientas | ModulorIA",
+    "description": "Recursos gratuitos, guías y herramientas para automatizar tu empresa de construcción con IA."
+  },
+  "privacy": {
+    "title": "Política de Privacidad | ModulorIA",
+    "description": "Política de privacidad y protección de datos de ModulorIA."
+  },
+  "terms": {
+    "title": "Términos de Uso | ModulorIA",
+    "description": "Términos y condiciones de uso de los servicios de ModulorIA."
+  }
+}

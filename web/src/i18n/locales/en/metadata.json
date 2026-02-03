@@ -1,0 +1,39 @@
+{
+  "home": {
+    "title": "ModulorIA | AI & Automation for the Construction Industry",
+    "description": "We transform construction companies with Artificial Intelligence. Save €67K-€156K/year by automating operational processes.",
+    "keywords": "construction industry, construction artificial intelligence, construction site automation, construction software"
+  },
+  "services": {
+    "title": "AI Services for Construction | ModulorIA",
+    "description": "AI automation solutions for modular construction companies. Chatbots, invoice OCR, automated reports, and more."
+  },
+  "pricing": {
+    "title": "Pricing & Plans | ModulorIA",
+    "description": "Flexible AI automation plans for construction. From Quick Win projects to complete digital transformation."
+  },
+  "audit": {
+    "title": "Free Strategic Assessment | ModulorIA",
+    "description": "Request your free strategic assessment and discover how AI can transform your construction company."
+  },
+  "about": {
+    "title": "About ModulorIA | AI for Modular Construction",
+    "description": "Meet ModulorIA: experts in AI automation for the modular construction industry."
+  },
+  "blog": {
+    "title": "Blog | Automation & AI in Construction | ModulorIA",
+    "description": "Articles, guides, and success stories about automation and artificial intelligence in the construction industry."
+  },
+  "resources": {
+    "title": "Resources | Guides & Tools | ModulorIA",
+    "description": "Free resources, guides, and tools to automate your construction company with AI."
+  },
+  "privacy": {
+    "title": "Privacy Policy | ModulorIA",
+    "description": "ModulorIA's privacy and data protection policy."
+  },
+  "terms": {
+    "title": "Terms of Use | ModulorIA",
+    "description": "Terms and conditions for using ModulorIA services."
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "hero": {
+    "tagline": "IA + Automatización para Construcción Modular",
+    "title": "Automatiza tu Empresa de Construcción con IA",
+    "subtitle": "Ahorra €67K-€156K/año eliminando tareas repetitivas. Sin código, sin complicaciones.",
+    "cta": "Diagnóstico Estratégico Gratis",
+    "ctaSecondary": "Ver Precios",
+    "trusted": "Confiado por empresas de construcción en Europa"
+  },
+  "problems": {
+    "title": "¿Te identificas con alguno de estos problemas?",
+    "subtitle": "Son los mismos desafíos que enfrentan el 90% de las empresas de construcción modular"
+  },
+  "nosotros": {
+    "tagline": "SOBRE NOSOTROS",
+    "title": "¿Por qué ModulorIA?",
+    "subtitle": "Porque conocemos tu industria desde dentro",
+    "description1": "No somos una consultora tecnológica genérica. Nacimos de la frustración de ver cómo empresas de construcción modular perdían horas en tareas que la IA puede resolver en segundos.",
+    "description2": "Nuestro enfoque: soluciones específicas para tu sector, implementadas en semanas, no meses. Sin jerga técnica, sin proyectos interminables.",
+    "stat1Value": "€67K-€156K",
+    "stat1Label": "Ahorro anual por empresa",
+    "stat2Value": "2-4 sem",
+    "stat2Label": "Tiempo de implementación",
+    "stat3Value": "300%",
+    "stat3Label": "ROI promedio primer año"
+  },
+  "howItWorks": {
+    "tagline": "CÓMO FUNCIONA",
+    "title": "De la Idea a la Automatización en 4 Pasos",
+    "subtitle": "Un proceso probado diseñado para minimizar riesgos y maximizar resultados",
+    "step1Title": "Diagnóstico Estratégico",
+    "step1Desc": "Analizamos tus procesos actuales e identificamos las oportunidades de automatización con mayor ROI.",
+    "step1Duration": "Semana 1",
+    "step2Title": "Diseño de Solución",
+    "step2Desc": "Creamos un plan personalizado con los Quick Wins que generarán impacto inmediato.",
+    "step2Duration": "Semana 2",
+    "step3Title": "Implementación Ágil",
+    "step3Desc": "Desarrollamos e integramos las automatizaciones con tu equipo, sin interrumpir operaciones.",
+    "step3Duration": "Semanas 3-4",
+    "step4Title": "Optimización Continua",
+    "step4Desc": "Medimos resultados, ajustamos y escalamos las soluciones según tus necesidades.",
+    "step4Duration": "Ongoing"
+  },
+  "differentiators": {
+    "tagline": "DIFERENCIADORES",
+    "title": "¿Por Qué Elegirnos?",
+    "subtitle": "Lo que nos hace diferentes de una consultora tecnológica tradicional",
+    "item1Title": "Especialistas en Construcción",
+    "item1Desc": "No somos generalistas. Conocemos los procesos, terminología y desafíos específicos de tu industria.",
+    "item2Title": "Resultados Medibles",
+    "item2Desc": "Cada proyecto tiene KPIs claros. Si no generas ROI, no tiene sentido.",
+    "item3Title": "Implementación Rápida",
+    "item3Desc": "Quick Wins en 2-4 semanas. Nada de proyectos de 6 meses sin resultados.",
+    "item4Title": "Sin Dependencia Tecnológica",
+    "item4Desc": "Te enseñamos a usar las herramientas. Tu equipo mantiene el control.",
+    "item5Title": "Soporte Continuo",
+    "item5Desc": "No desaparecemos después de implementar. Estamos contigo en la optimización.",
+    "item6Title": "Precios Transparentes",
+    "item6Desc": "Sabes exactamente qué pagas y qué recibes. Sin sorpresas ni costes ocultos."
+  },
+  "calculator": {
+    "tagline": "CALCULADORA ROI",
+    "title": "¿Cuánto Podrías Ahorrar?",
+    "subtitle": "Calcula tu potencial de ahorro con automatización IA",
+    "employeesLabel": "Número de empleados administrativos",
+    "hoursLabel": "Horas semanales en tareas repetitivas (por empleado)",
+    "salaryLabel": "Coste hora promedio (€)",
+    "calculate": "Calcular Ahorro",
+    "results": {
+      "annual": "Ahorro Anual Estimado",
+      "monthly": "Ahorro Mensual",
+      "hours": "Horas Recuperadas/Año",
+      "roi": "ROI Estimado"
+    },
+    "disclaimer": "* Estimación basada en automatización del 70% de tareas repetitivas"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "section": {
+    "title": "Blog",
+    "subtitle": "Articles, guides, and success stories about automation and AI in modular construction"
+  },
+  "labels": {
+    "readMore": "Read more",
+    "readTime": "min read",
+    "publishedOn": "Published on",
+    "author": "By",
+    "category": "Category",
+    "tags": "Tags",
+    "relatedPosts": "Related articles",
+    "allPosts": "View all articles",
+    "searchPlaceholder": "Search articles...",
+    "noResults": "No articles found",
+    "loadMore": "Load more"
+  },
+  "categories": {
+    "all": "All",
+    "automation": "Automation",
+    "ai": "Artificial Intelligence",
+    "construction": "Modular Construction",
+    "casestudy": "Case Studies",
+    "guides": "Guides"
+  },
+  "cta": {
+    "title": "Ready to automate?",
+    "description": "Discover how AI can transform your construction company.",
+    "button": "Request Assessment"
+  }
+}

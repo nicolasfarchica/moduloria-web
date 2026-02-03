@@ -1,0 +1,27 @@
+{
+  "widget": {
+    "title": "ModulorIA Asistente",
+    "subtitle": "Estamos aquí para ayudarte",
+    "placeholder": "Escribe tu mensaje...",
+    "send": "Enviar",
+    "typing": "Escribiendo...",
+    "online": "En línea",
+    "offline": "Fuera de línea"
+  },
+  "messages": {
+    "welcome": "¡Hola! Soy el asistente de ModulorIA. ¿En qué puedo ayudarte hoy?",
+    "quickReplies": [
+      "¿Qué servicios ofrecen?",
+      "¿Cuánto cuesta?",
+      "¿Cómo funciona la implementación?",
+      "Quiero agendar una llamada"
+    ],
+    "errorGeneric": "Lo siento, ha ocurrido un error. Por favor, inténtalo de nuevo.",
+    "contactHuman": "Si prefieres hablar con una persona, puedes agendar una llamada o escribirnos a contacto@moduloria.com"
+  },
+  "buttons": {
+    "open": "Abrir chat",
+    "close": "Cerrar chat",
+    "minimize": "Minimizar"
+  }
+}

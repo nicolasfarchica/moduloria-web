@@ -1,0 +1,77 @@
+{
+  "hero": {
+    "tagline": "AI + Automation for Modular Construction",
+    "title": "Automate Your Construction Company with AI",
+    "subtitle": "Save €67K-€156K/year by eliminating repetitive tasks. No code, no hassle.",
+    "cta": "Free Strategic Assessment",
+    "ctaSecondary": "View Pricing",
+    "trusted": "Trusted by construction companies across Europe"
+  },
+  "problems": {
+    "title": "Do any of these problems sound familiar?",
+    "subtitle": "These are the same challenges faced by 90% of modular construction companies"
+  },
+  "nosotros": {
+    "tagline": "ABOUT US",
+    "title": "Why ModulorIA?",
+    "subtitle": "Because we know your industry from the inside",
+    "description1": "We're not a generic tech consultancy. We were born from the frustration of seeing modular construction companies waste hours on tasks that AI can solve in seconds.",
+    "description2": "Our approach: industry-specific solutions, implemented in weeks, not months. No tech jargon, no endless projects.",
+    "stat1Value": "€67K-€156K",
+    "stat1Label": "Annual savings per company",
+    "stat2Value": "2-4 weeks",
+    "stat2Label": "Implementation time",
+    "stat3Value": "300%",
+    "stat3Label": "Average ROI first year"
+  },
+  "howItWorks": {
+    "tagline": "HOW IT WORKS",
+    "title": "From Idea to Automation in 4 Steps",
+    "subtitle": "A proven process designed to minimize risks and maximize results",
+    "step1Title": "Strategic Assessment",
+    "step1Desc": "We analyze your current processes and identify automation opportunities with the highest ROI.",
+    "step1Duration": "Week 1",
+    "step2Title": "Solution Design",
+    "step2Desc": "We create a personalized plan with Quick Wins that will generate immediate impact.",
+    "step2Duration": "Week 2",
+    "step3Title": "Agile Implementation",
+    "step3Desc": "We develop and integrate automations with your team, without disrupting operations.",
+    "step3Duration": "Weeks 3-4",
+    "step4Title": "Continuous Optimization",
+    "step4Desc": "We measure results, adjust, and scale solutions according to your needs.",
+    "step4Duration": "Ongoing"
+  },
+  "differentiators": {
+    "tagline": "DIFFERENTIATORS",
+    "title": "Why Choose Us?",
+    "subtitle": "What makes us different from a traditional tech consultancy",
+    "item1Title": "Construction Specialists",
+    "item1Desc": "We're not generalists. We know the processes, terminology, and specific challenges of your industry.",
+    "item2Title": "Measurable Results",
+    "item2Desc": "Every project has clear KPIs. If you don't generate ROI, it doesn't make sense.",
+    "item3Title": "Fast Implementation",
+    "item3Desc": "Quick Wins in 2-4 weeks. No 6-month projects without results.",
+    "item4Title": "No Tech Lock-in",
+    "item4Desc": "We teach you how to use the tools. Your team stays in control.",
+    "item5Title": "Ongoing Support",
+    "item5Desc": "We don't disappear after implementation. We're with you through optimization.",
+    "item6Title": "Transparent Pricing",
+    "item6Desc": "You know exactly what you're paying for and what you'll receive. No surprises or hidden costs."
+  },
+  "calculator": {
+    "tagline": "ROI CALCULATOR",
+    "title": "How Much Could You Save?",
+    "subtitle": "Calculate your potential savings with AI automation",
+    "employeesLabel": "Number of administrative employees",
+    "hoursLabel": "Weekly hours on repetitive tasks (per employee)",
+    "salaryLabel": "Average hourly cost (€)",
+    "calculate": "Calculate Savings",
+    "results": {
+      "annual": "Estimated Annual Savings",
+      "monthly": "Monthly Savings",
+      "hours": "Hours Recovered/Year",
+      "roi": "Estimated ROI"
+    },
+    "disclaimer": "* Estimate based on 70% automation of repetitive tasks"
+  }
+}

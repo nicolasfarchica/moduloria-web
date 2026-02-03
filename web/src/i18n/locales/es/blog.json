@@ -1,0 +1,32 @@
+{
+  "section": {
+    "title": "Blog",
+    "subtitle": "Artículos, guías y casos de éxito sobre automatización e IA en construcción modular"
+  },
+  "labels": {
+    "readMore": "Leer más",
+    "readTime": "min de lectura",
+    "publishedOn": "Publicado el",
+    "author": "Por",
+    "category": "Categoría",
+    "tags": "Etiquetas",
+    "relatedPosts": "Artículos relacionados",
+    "allPosts": "Ver todos los artículos",
+    "searchPlaceholder": "Buscar artículos...",
+    "noResults": "No se encontraron artículos",
+    "loadMore": "Cargar más"
+  },
+  "categories": {
+    "all": "Todos",
+    "automation": "Automatización",
+    "ai": "Inteligencia Artificial",
+    "construction": "Construcción Modular",
+    "casestudy": "Casos de Éxito",
+    "guides": "Guías"
+  },
+  "cta": {
+    "title": "¿Listo para automatizar?",
+    "description": "Descubre cómo la IA puede transformar tu empresa de construcción.",
+    "button": "Solicitar Diagnóstico"
+  }
+}

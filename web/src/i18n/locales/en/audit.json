@@ -1,0 +1,94 @@
+{
+  "page": {
+    "title": "Strategic Assessment",
+    "subtitle": "Discover how AI can transform your modular construction company"
+  },
+  "form": {
+    "title": "Request Your Strategic Assessment",
+    "subtitle": "Complete the form and we'll contact you within 24 hours.",
+    "fields": {
+      "name": {
+        "label": "Full name",
+        "placeholder": "Your name"
+      },
+      "email": {
+        "label": "Corporate email",
+        "placeholder": "you@company.com"
+      },
+      "phone": {
+        "label": "Phone",
+        "placeholder": "+1 555 000 0000"
+      },
+      "company": {
+        "label": "Company",
+        "placeholder": "Your company name"
+      },
+      "employees": {
+        "label": "Number of employees",
+        "placeholder": "Select a range",
+        "options": {
+          "1-10": "1-10 employees",
+          "11-50": "11-50 employees",
+          "51-200": "51-200 employees",
+          "200+": "More than 200 employees"
+        }
+      },
+      "role": {
+        "label": "Your role",
+        "placeholder": "Director, CEO, Operations Manager..."
+      },
+      "challenge": {
+        "label": "What's your biggest operational challenge?",
+        "placeholder": "Tell us which processes you'd like to automate or improve..."
+      },
+      "plan": {
+        "label": "Plan of interest",
+        "options": {
+          "diagnostico": "Strategic Assessment",
+          "quick-win": "Quick Win",
+          "high-impact": "High Impact",
+          "not-sure": "Not sure yet"
+        }
+      }
+    },
+    "submit": "Request Assessment",
+    "submitting": "Sending...",
+    "consent": "By submitting, you agree to our",
+    "privacyPolicy": "Privacy Policy"
+  },
+  "success": {
+    "title": "Request Received!",
+    "message": "Thank you for your interest. We'll contact you within 24 hours to schedule your Strategic Assessment.",
+    "backHome": "Back to home"
+  },
+  "error": {
+    "title": "Submission Error",
+    "message": "An error occurred. Please try again or contact us directly.",
+    "retry": "Try again"
+  },
+  "benefits": {
+    "title": "What's Included in the Assessment?",
+    "items": [
+      {
+        "icon": "📊",
+        "title": "Process Analysis",
+        "description": "We evaluate your current workflows and identify bottlenecks."
+      },
+      {
+        "icon": "💰",
+        "title": "ROI Calculation",
+        "description": "We show you exactly how much you can save with automation."
+      },
+      {
+        "icon": "🗺️",
+        "title": "Custom Roadmap",
+        "description": "Step-by-step implementation plan tailored to your company."
+      },
+      {
+        "icon": "✅",
+        "title": "100% Refundable",
+        "description": "If you hire any solution, we discount the assessment cost."
+      }
+    ]
+  }
+}

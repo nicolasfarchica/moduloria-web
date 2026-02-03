@@ -1,0 +1,146 @@
+{
+  "section": {
+    "tagline": "SOLUCIONES CONCRETAS",
+    "title": "¿Qué puede hacer la <highlight>IA</highlight> por tu empresa?",
+    "subtitle": "Automatizaciones con resultados medibles implementadas en empresas de construcción modular."
+  },
+  "services": {
+    "presupuestos": {
+      "icon": "📊",
+      "title": "Generación Automática de Presupuestos",
+      "subtitle": "De 3 días a 2 horas",
+      "description": "IA que analiza planos, especificaciones y bases de datos de costes para generar presupuestos detallados automáticamente.",
+      "benefits": [
+        "Extracción automática de mediciones desde planos PDF/DWG",
+        "Integración con tu base de datos de precios",
+        "Formato personalizado según cliente",
+        "Historial y versionado automático"
+      ],
+      "useCase": "Empresa de módulos prefabricados redujo tiempo de presupuesto de 3 días a 2 horas.",
+      "timeline": "2-3 semanas"
+    },
+    "planificacion": {
+      "icon": "🗓️",
+      "title": "Planificación Inteligente de Producción",
+      "subtitle": "Optimización de fábrica",
+      "description": "Algoritmos que optimizan la secuencia de producción, asignación de recursos y logística de entrega.",
+      "benefits": [
+        "Secuenciación óptima de módulos en fábrica",
+        "Balanceo de carga de trabajo por estación",
+        "Alertas predictivas de cuellos de botella",
+        "Integración con ERP existente"
+      ],
+      "useCase": "Planta de paneles CLT aumentó throughput un 23% sin inversión adicional.",
+      "timeline": "3-4 semanas"
+    },
+    "documentacion": {
+      "icon": "📄",
+      "title": "Automatización de Documentación",
+      "subtitle": "Adiós al papeleo manual",
+      "description": "Generación automática de fichas técnicas, certificaciones, informes de calidad y documentación de proyecto.",
+      "benefits": [
+        "Plantillas dinámicas que se rellenan solas",
+        "Cumplimiento normativo automático (CTE, Eurocódigos)",
+        "Exportación multi-formato (PDF, Excel, BIM)",
+        "Trazabilidad completa de cambios"
+      ],
+      "useCase": "Constructora eliminó 15h/semana de trabajo administrativo.",
+      "timeline": "1-2 semanas"
+    },
+    "chatbot": {
+      "icon": "💬",
+      "title": "Asistente IA para Equipos",
+      "subtitle": "Soporte técnico 24/7",
+      "description": "Chatbot interno entrenado con tu documentación técnica, procedimientos y normativas.",
+      "benefits": [
+        "Respuestas instantáneas sobre especificaciones",
+        "Acceso a manuales y normativas desde WhatsApp",
+        "Onboarding acelerado de nuevos empleados",
+        "Multilingüe para equipos internacionales"
+      ],
+      "useCase": "Equipo de obra resuelve dudas técnicas en segundos en vez de llamar a oficina.",
+      "timeline": "3-5 días"
+    },
+    "calidad": {
+      "icon": "✅",
+      "title": "Control de Calidad Visual con IA",
+      "subtitle": "Detección automática de defectos",
+      "description": "Visión artificial que analiza fotos de producción para detectar defectos, desviaciones y no conformidades.",
+      "benefits": [
+        "Análisis de fotos desde móvil",
+        "Detección de grietas, desalineaciones, acabados",
+        "Reportes automáticos con ubicación del defecto",
+        "Histórico para análisis de tendencias"
+      ],
+      "useCase": "Fábrica de módulos 3D redujo reclamaciones post-entrega un 40%.",
+      "timeline": "2-3 semanas"
+    },
+    "comercial": {
+      "icon": "🎯",
+      "title": "Automatización Comercial",
+      "subtitle": "Más ventas, menos admin",
+      "description": "Flujos automáticos de seguimiento de leads, propuestas personalizadas y nurturing de clientes.",
+      "benefits": [
+        "CRM automatizado con seguimiento inteligente",
+        "Propuestas generadas en minutos",
+        "Secuencias de email personalizadas",
+        "Dashboard de pipeline en tiempo real"
+      ],
+      "useCase": "Comercial pasó de gestionar 20 a 60 leads/mes sin contratar.",
+      "timeline": "1-2 semanas"
+    }
+  },
+  "labels": {
+    "implementation": "Implementación"
+  },
+  "custom": {
+    "title": "¿No ves tu caso? <highlight>Creamos soluciones a medida.</highlight>",
+    "description": "Cada empresa de construcción modular tiene procesos únicos. Si tienes un cuello de botella específico, analizamos tu situación y diseñamos una automatización personalizada.",
+    "features": [
+      "Integración con cualquier software (ERP, CAD, BIM, Excel…)",
+      "Automatizaciones multi-departamento",
+      "Escalable según crecimiento"
+    ],
+    "results": "Resultados comprobados",
+    "roi": "ROI Garantizado",
+    "roiSubtitle": "Ahorro medible en semanas",
+    "cta": "Cuéntanos tu caso",
+    "ctaSubtitle": "Diagnóstico Estratégico"
+  },
+  "problems": {
+    "title": "¿Te identificas con alguno de estos problemas?",
+    "subtitle": "Son los mismos desafíos que enfrentan el 90% de las empresas de construcción modular",
+    "items": [
+      {
+        "icon": "⏰",
+        "title": "Horas perdidas en tareas repetitivas",
+        "description": "Presupuestos, reportes, seguimiento de proyectos... todo manual."
+      },
+      {
+        "icon": "📊",
+        "title": "Falta de visibilidad en tiempo real",
+        "description": "No sabes el estado real de producción hasta que es tarde."
+      },
+      {
+        "icon": "📧",
+        "title": "Comunicación fragmentada",
+        "description": "Emails, WhatsApps, llamadas... información dispersa."
+      },
+      {
+        "icon": "🔄",
+        "title": "Procesos inconsistentes",
+        "description": "Cada persona hace las cosas a su manera."
+      },
+      {
+        "icon": "💸",
+        "title": "Márgenes ajustados",
+        "description": "La competencia aprieta y los costes suben."
+      },
+      {
+        "icon": "👥",
+        "title": "Dependencia de personas clave",
+        "description": "El conocimiento está en la cabeza de pocos."
+      }
+    ]
+  }
+}
