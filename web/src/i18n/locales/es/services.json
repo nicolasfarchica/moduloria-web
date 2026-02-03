@@ -1,7 +1,9 @@
 {
   "section": {
     "tagline": "SOLUCIONES CONCRETAS",
-    "title": "¿Qué puede hacer la <highlight>IA</highlight> por tu empresa?",
+    "title": "¿Qué puede hacer la",
+    "titleHighlight": "IA",
+    "titleEnd": "por tu empresa?",
     "subtitle": "Automatizaciones con resultados medibles implementadas en empresas de construcción modular."
   },
   "services": {
@@ -94,7 +96,8 @@
     "implementation": "Implementación"
   },
   "custom": {
-    "title": "¿No ves tu caso? <highlight>Creamos soluciones a medida.</highlight>",
+    "title": "¿No ves tu caso?",
+    "titleHighlight": "Creamos soluciones a medida.",
     "description": "Cada empresa de construcción modular tiene procesos únicos. Si tienes un cuello de botella específico, analizamos tu situación y diseñamos una automatización personalizada.",
     "features": [
       "Integración con cualquier software (ERP, CAD, BIM, Excel…)",
@@ -108,39 +111,63 @@
     "ctaSubtitle": "Diagnóstico Estratégico"
   },
   "problems": {
-    "title": "¿Te identificas con alguno de estos problemas?",
-    "subtitle": "Son los mismos desafíos que enfrentan el 90% de las empresas de construcción modular",
-    "items": [
-      {
-        "icon": "⏰",
-        "title": "Horas perdidas en tareas repetitivas",
-        "description": "Presupuestos, reportes, seguimiento de proyectos... todo manual."
+    "badge": "Casos de Uso Reales",
+    "title": "Automatiza los Procesos Críticos de tu",
+    "titleHighlight": "Constructora Modular con IA",
+    "subtitle": "Desde quick wins de 3 días hasta transformación digital completa. Elige tu punto de entrada.",
+    "tiers": {
+      "quickWins": {
+        "label": "Quick Wins",
+        "description": "ROI en 1-3 semanas"
       },
-      {
-        "icon": "📊",
-        "title": "Falta de visibilidad en tiempo real",
-        "description": "No sabes el estado real de producción hasta que es tarde."
-      },
-      {
-        "icon": "📧",
-        "title": "Comunicación fragmentada",
-        "description": "Emails, WhatsApps, llamadas... información dispersa."
-      },
-      {
-        "icon": "🔄",
-        "title": "Procesos inconsistentes",
-        "description": "Cada persona hace las cosas a su manera."
-      },
-      {
-        "icon": "💸",
-        "title": "Márgenes ajustados",
-        "description": "La competencia aprieta y los costes suben."
-      },
-      {
-        "icon": "👥",
-        "title": "Dependencia de personas clave",
-        "description": "El conocimiento está en la cabeza de pocos."
+      "highImpact": {
+        "label": "High Impact",
+        "description": "ROI en 4-8 semanas"
       }
-    ]
+    },
+    "roiLabel": "ROI estimado",
+    "items": {
+      "ocr": {
+        "title": "OCR Facturas Automatizado",
+        "description": "Elimina la entrada manual de facturas PDF. De 15 minutos a 30 segundos por factura.",
+        "roi": "2 semanas",
+        "timeToValue": "3-5 días"
+      },
+      "emails": {
+        "title": "Clasificación Emails Inteligente",
+        "description": "Organiza automáticamente emails urgentes vs. informativos. Priorización sin esfuerzo.",
+        "roi": "1 semana",
+        "timeToValue": "2-3 días"
+      },
+      "alertas": {
+        "title": "Alertas Proactivas de Retrasos",
+        "description": "Detecta desviaciones antes de que sean críticas. Notificaciones automáticas a stakeholders.",
+        "roi": "3 semanas",
+        "timeToValue": "1 semana"
+      },
+      "dashboard": {
+        "title": "Dashboard Multimódulo Tiempo Real",
+        "description": "Visibilidad 360° de todos los proyectos activos. KPIs actualizados sin reuniones.",
+        "roi": "4-6 semanas",
+        "timeToValue": "2-3 semanas"
+      },
+      "reportes": {
+        "title": "Reportes Automáticos de Proyecto",
+        "description": "Generación automática de reportes de avance. De 2 horas a 15 minutos.",
+        "roi": "3-4 semanas",
+        "timeToValue": "1-2 semanas"
+      },
+      "proveedores": {
+        "title": "Gestión Inteligente de Proveedores",
+        "description": "Evaluación automática de proveedores. Negociación basada en datos históricos.",
+        "roi": "6-8 semanas",
+        "timeToValue": "3-4 semanas"
+      }
+    },
+    "cta": {
+      "text": "¿Tu problema no está en la lista?",
+      "highlight": "Analizamos tu caso específico.",
+      "button": "Solicitar Diagnóstico de Problemas"
+    }
   }
 }

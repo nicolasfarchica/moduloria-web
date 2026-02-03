@@ -1,7 +1,9 @@
 {
   "section": {
     "tagline": "CONCRETE SOLUTIONS",
-    "title": "What can <highlight>AI</highlight> do for your company?",
+    "title": "What can",
+    "titleHighlight": "AI",
+    "titleEnd": "do for your company?",
     "subtitle": "Automations with measurable results implemented in modular construction companies."
   },
   "services": {
@@ -94,7 +96,8 @@
     "implementation": "Implementation"
   },
   "custom": {
-    "title": "Don't see your case? <highlight>We create custom solutions.</highlight>",
+    "title": "Don't see your case?",
+    "titleHighlight": "We create custom solutions.",
     "description": "Every modular construction company has unique processes. If you have a specific bottleneck, we analyze your situation and design a personalized automation.",
     "features": [
       "Integration with any software (ERP, CAD, BIM, Excel...)",
@@ -108,39 +111,63 @@
     "ctaSubtitle": "Strategic Assessment"
   },
   "problems": {
-    "title": "Do any of these problems sound familiar?",
-    "subtitle": "These are the same challenges faced by 90% of modular construction companies",
-    "items": [
-      {
-        "icon": "⏰",
-        "title": "Hours lost on repetitive tasks",
-        "description": "Budgets, reports, project tracking... all manual."
+    "badge": "Real Use Cases",
+    "title": "Automate the Critical Processes of your",
+    "titleHighlight": "Modular Construction Company with AI",
+    "subtitle": "From 3-day quick wins to complete digital transformation. Choose your entry point.",
+    "tiers": {
+      "quickWins": {
+        "label": "Quick Wins",
+        "description": "ROI in 1-3 weeks"
       },
-      {
-        "icon": "📊",
-        "title": "Lack of real-time visibility",
-        "description": "You don't know the real production status until it's too late."
-      },
-      {
-        "icon": "📧",
-        "title": "Fragmented communication",
-        "description": "Emails, WhatsApps, calls... scattered information."
-      },
-      {
-        "icon": "🔄",
-        "title": "Inconsistent processes",
-        "description": "Everyone does things their own way."
-      },
-      {
-        "icon": "💸",
-        "title": "Tight margins",
-        "description": "Competition is tough and costs keep rising."
-      },
-      {
-        "icon": "👥",
-        "title": "Dependence on key people",
-        "description": "Knowledge is in the heads of a few."
+      "highImpact": {
+        "label": "High Impact",
+        "description": "ROI in 4-8 weeks"
       }
-    ]
+    },
+    "roiLabel": "Estimated ROI",
+    "items": {
+      "ocr": {
+        "title": "Automated Invoice OCR",
+        "description": "Eliminate manual PDF invoice entry. From 15 minutes to 30 seconds per invoice.",
+        "roi": "2 weeks",
+        "timeToValue": "3-5 days"
+      },
+      "emails": {
+        "title": "Intelligent Email Classification",
+        "description": "Automatically organize urgent vs. informational emails. Effortless prioritization.",
+        "roi": "1 week",
+        "timeToValue": "2-3 days"
+      },
+      "alertas": {
+        "title": "Proactive Delay Alerts",
+        "description": "Detect deviations before they become critical. Automatic notifications to stakeholders.",
+        "roi": "3 weeks",
+        "timeToValue": "1 week"
+      },
+      "dashboard": {
+        "title": "Real-Time Multi-Module Dashboard",
+        "description": "360° visibility of all active projects. Updated KPIs without meetings.",
+        "roi": "4-6 weeks",
+        "timeToValue": "2-3 weeks"
+      },
+      "reportes": {
+        "title": "Automatic Project Reports",
+        "description": "Automatic generation of progress reports. From 2 hours to 15 minutes.",
+        "roi": "3-4 weeks",
+        "timeToValue": "1-2 weeks"
+      },
+      "proveedores": {
+        "title": "Intelligent Supplier Management",
+        "description": "Automatic supplier evaluation. Negotiation based on historical data.",
+        "roi": "6-8 weeks",
+        "timeToValue": "3-4 weeks"
+      }
+    },
+    "cta": {
+      "text": "Your problem not on the list?",
+      "highlight": "We analyze your specific case.",
+      "button": "Request Problem Diagnosis"
+    }
   }
 }

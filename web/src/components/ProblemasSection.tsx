@@ -1,109 +1,40 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
 type ProblemTier = 'quick-wins' | 'high-impact';
 
-interface Problem {
+interface ProblemData {
   id: string;
   tier: ProblemTier;
-  title: string;
-  description: string;
-  roi: string;
-  timeToValue: string;
-  slug: string;
+  key: string;
   icon: string;
   image: string;
 }
 
-const PROBLEMS: Problem[] = [
+const PROBLEMS_DATA: ProblemData[] = [
   // QUICK WINS
-  {
-    id: '1',
-    tier: 'quick-wins',
-    title: 'OCR Facturas Automatizado',
-    description: 'Elimina la entrada manual de facturas PDF. De 15 minutos a 30 segundos por factura.',
-    roi: '2 semanas',
-    timeToValue: '3-5 días',
-    slug: 'ocr-facturas',
-    icon: '📄',
-    image: '/images/ocr-pain.png',
-  },
-  {
-    id: '2',
-    tier: 'quick-wins',
-    title: 'Clasificación Emails Inteligente',
-    description: 'Organiza automáticamente emails urgentes vs. informativos. Priorización sin esfuerzo.',
-    roi: '1 semana',
-    timeToValue: '2-3 días',
-    slug: 'clasificacion-emails',
-    icon: '📧',
-    image: '/images/email-pain.png',
-  },
-  {
-    id: '3',
-    tier: 'quick-wins',
-    title: 'Alertas Proactivas de Retrasos',
-    description: 'Detecta desviaciones antes de que sean críticas. Notificaciones automáticas a stakeholders.',
-    roi: '3 semanas',
-    timeToValue: '1 semana',
-    slug: 'alertas-retrasos',
-    icon: '⚠️',
-    image: '/images/delay-pain.png',
-  },
-
+  { id: '1', tier: 'quick-wins', key: 'ocr', icon: '📄', image: '/images/ocr-pain.png' },
+  { id: '2', tier: 'quick-wins', key: 'emails', icon: '📧', image: '/images/email-pain.png' },
+  { id: '3', tier: 'quick-wins', key: 'alertas', icon: '⚠️', image: '/images/delay-pain.png' },
   // HIGH IMPACT
-  {
-    id: '4',
-    tier: 'high-impact',
-    title: 'Dashboard Multimódulo Tiempo Real',
-    description: 'Visibilidad 360° de todos los proyectos activos. KPIs actualizados sin reuniones.',
-    roi: '4-6 semanas',
-    timeToValue: '2-3 semanas',
-    slug: 'dashboard-multimodulo',
-    icon: '📊',
-    image: '/images/dashboard-pain.png',
-  },
-  {
-    id: '5',
-    tier: 'high-impact',
-    title: 'Reportes Automáticos de Proyecto',
-    description: 'Generación automática de reportes de avance. De 2 horas a 15 minutos.',
-    roi: '3-4 semanas',
-    timeToValue: '1-2 semanas',
-    slug: 'reportes-automaticos',
-    icon: '📑',
-    image: '/images/report-pain.png',
-  },
-  {
-    id: '6',
-    tier: 'high-impact',
-    title: 'Gestión Inteligente de Proveedores',
-    description: 'Evaluación automática de proveedores. Negociación basada en datos históricos.',
-    roi: '6-8 semanas',
-    timeToValue: '3-4 semanas',
-    slug: 'gestion-proveedores',
-    icon: '🤝',
-    image: '/images/vendor-pain.png',
-  },
-
+  { id: '4', tier: 'high-impact', key: 'dashboard', icon: '📊', image: '/images/dashboard-pain.png' },
+  { id: '5', tier: 'high-impact', key: 'reportes', icon: '📑', image: '/images/report-pain.png' },
+  { id: '6', tier: 'high-impact', key: 'proveedores', icon: '🤝', image: '/images/vendor-pain.png' },
 ];
 
 const TIER_CONFIG = {
   'quick-wins': {
-    label: 'Quick Wins',
-    description: 'ROI en 1-3 semanas | Implementación < 1 semana',
     color: 'text-accent-copper',
     bgColor: 'bg-accent-copper/10',
     borderColor: 'border-accent-copper',
     dotColor: 'bg-accent-copper',
   },
   'high-impact': {
-    label: 'High Impact',
-    description: 'ROI en 4-8 semanas | Implementación 2-4 semanas',
     color: 'text-primary-light',
     bgColor: 'bg-primary-light/10',
     borderColor: 'border-primary-light',
@@ -112,9 +43,15 @@ const TIER_CONFIG = {
 };
 
 export default function ProblemasSection() {
+  const t = useTranslations('services.problems');
   const [activeTier, setActiveTier] = useState<ProblemTier>('quick-wins');
 
-  const filteredProblems = PROBLEMS.filter((problem) => problem.tier === activeTier);
+  const filteredProblems = PROBLEMS_DATA.filter((problem) => problem.tier === activeTier);
+
+  const tiers: { key: ProblemTier; label: string; description: string }[] = [
+    { key: 'quick-wins', label: t('tiers.quickWins.label'), description: t('tiers.quickWins.description') },
+    { key: 'high-impact', label: t('tiers.highImpact.label'), description: t('tiers.highImpact.description') },
+  ];
 
   return (
     <section id="problemas" className="section-padding bg-background-dark relative overflow-hidden">
@@ -137,27 +74,27 @@ export default function ProblemasSection() {
         >
           <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 mb-6">
             <span className="w-2 h-2 rounded-full bg-accent-copper animate-pulse" />
-            <span className="text-secondary-beige text-xs font-medium uppercase tracking-widest font-heading">🏗️ Casos de Uso Reales</span>
+            <span className="text-secondary-beige text-xs font-medium uppercase tracking-widest font-heading">🏗️ {t('badge')}</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 font-heading tracking-tight">
-            Automatiza los Procesos Críticos de tu <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-copper to-primary-light">Constructora Modular con IA</span>
+            {t('title')} <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-copper to-primary-light">{t('titleHighlight')}</span>
           </h2>
           <p className="text-xl text-primary-steel max-w-3xl mx-auto font-light leading-relaxed">
-            Desde quick wins de 3 días hasta transformación digital completa. Elige tu punto de entrada.
+            {t('subtitle')}
           </p>
         </motion.div>
 
         {/* Tier Tabs */}
         <div className="flex flex-col sm:flex-row justify-center gap-4 mb-16">
-          {(Object.keys(TIER_CONFIG) as ProblemTier[]).map((tier) => {
-            const config = TIER_CONFIG[tier];
-            const isActive = activeTier === tier;
+          {tiers.map((tier) => {
+            const config = TIER_CONFIG[tier.key];
+            const isActive = activeTier === tier.key;
 
             return (
               <button
-                key={tier}
-                onClick={() => setActiveTier(tier)}
+                key={tier.key}
+                onClick={() => setActiveTier(tier.key)}
                 className={`px-8 py-4 rounded-xl font-heading font-semibold text-lg transition-all duration-300 relative overflow-hidden group ${isActive
                   ? `text-white border border-${config.borderColor.split('-')[1]} shadow-lg ring-1 ring-${config.borderColor.split('-')[1]} bg-white/5 backdrop-blur-sm`
                   : 'bg-transparent text-primary-steel border border-white/5 hover:border-white/10 hover:bg-white/5'
@@ -170,9 +107,9 @@ export default function ProblemasSection() {
                 <div className="text-center relative z-10">
                   <div className="flex items-center justify-center gap-2 mb-1">
                     {isActive && <span className={`w-2 h-2 rounded-full ${config.dotColor}`} />}
-                    {config.label}
+                    {tier.label}
                   </div>
-                  <div className={`text-xs ${isActive ? 'text-white/80' : 'opacity-60'} font-sans font-normal`}>{config.description.split('|')[0].trim()}</div>
+                  <div className={`text-xs ${isActive ? 'text-white/80' : 'opacity-60'} font-sans font-normal`}>{tier.description}</div>
                 </div>
               </button>
             );
@@ -187,6 +124,7 @@ export default function ProblemasSection() {
           <AnimatePresence mode="popLayout">
             {filteredProblems.map((problem) => {
               const config = TIER_CONFIG[problem.tier];
+              const tierLabel = problem.tier === 'quick-wins' ? t('tiers.quickWins.label') : t('tiers.highImpact.label');
 
               return (
                 <motion.div
@@ -203,14 +141,14 @@ export default function ProblemasSection() {
                     <div className="absolute inset-0 bg-gradient-to-t from-background-dark to-transparent z-10 opacity-60" />
                     <Image
                       src={problem.image}
-                      alt={problem.title}
+                      alt={t(`items.${problem.key}.title`)}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover transform group-hover:scale-110 transition-transform duration-700"
                     />
                     <div className="absolute top-4 right-4 z-20">
                       <span className={`inline-block px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${config.bgColor} ${config.color} border border-white/5 backdrop-blur-md`}>
-                        {config.label}
+                        {tierLabel}
                       </span>
                     </div>
                   </div>
@@ -221,24 +159,22 @@ export default function ProblemasSection() {
                       {problem.icon}
                     </div>
                     <h3 className="text-xl font-bold text-white group-hover:text-accent-copper transition-colors font-heading leading-tight">
-                      {problem.title}
+                      {t(`items.${problem.key}.title`)}
                     </h3>
                   </div>
 
                   {/* Description */}
                   <p className="text-gray-400 mb-8 leading-relaxed text-sm h-12">
-                    {problem.description}
+                    {t(`items.${problem.key}.description`)}
                   </p>
 
                   {/* Metrics */}
                   <div className="space-y-4 mb-8 bg-background-dark/30 p-5 rounded-xl border border-white/5 group-hover:border-white/10 transition-colors">
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-primary-steel font-medium">⏱️ ROI estimado</span>
-                      <span className="font-semibold text-white">{problem.roi}</span>
+                      <span className="text-primary-steel font-medium">⏱️ {t('roiLabel')}</span>
+                      <span className="font-semibold text-white">{t(`items.${problem.key}.roi`)}</span>
                     </div>
                   </div>
-
-
                 </motion.div>
               );
             })}
@@ -248,13 +184,13 @@ export default function ProblemasSection() {
         {/* View All CTA */}
         <div className="text-center">
           <p className="text-primary-steel mb-8 font-light text-lg">
-            ¿Tu problema no está en la lista? <span className="text-white font-medium">Analizamos tu caso específico.</span>
+            {t('cta.text')} <span className="text-white font-medium">{t('cta.highlight')}</span>
           </p>
           <Link
             href="/auditoria"
             className="btn-primary px-8 py-4 text-lg inline-flex items-center shadow-copper-glow hover:scale-105 transition-transform"
           >
-            🔍 Solicitar Diagnóstico de Problemas
+            🔍 {t('cta.button')}
           </Link>
         </div>
       </div>
