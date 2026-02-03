@@ -1,0 +1,101 @@
+{
+  "privacy": {
+    "title": "Política de Privacidad",
+    "lastUpdated": "Última actualización: Diciembre 2024",
+    "sections": {
+      "0": {
+        "title": "1. Información que Recopilamos",
+        "text": "En ModulorIA recopilamos información que nos proporcionas directamente cuando:",
+        "items": [
+          "Solicitas un diagnóstico estratégico",
+          "Te pones en contacto con nosotros",
+          "Te suscribes a nuestro boletín",
+          "Utilizas nuestros servicios"
+        ]
+      },
+      "1": {
+        "title": "2. Uso de la Información",
+        "text": "Utilizamos la información recopilada para:",
+        "items": [
+          "Proporcionar y mejorar nuestros servicios",
+          "Responder a tus consultas y solicitudes",
+          "Enviarte información relevante sobre nuestros servicios",
+          "Cumplir con obligaciones legales"
+        ]
+      },
+      "2": {
+        "title": "3. Protección de Datos",
+        "text": "Implementamos medidas de seguridad apropiadas para proteger tu información personal contra acceso no autorizado, alteración, divulgación o destrucción. Cumplimos con el Reglamento General de Protección de Datos (GDPR) de la Unión Europea."
+      },
+      "3": {
+        "title": "4. Tus Derechos",
+        "text": "Tienes derecho a:",
+        "items": [
+          "Acceder a tus datos personales",
+          "Rectificar datos inexactos",
+          "Solicitar la eliminación de tus datos",
+          "Oponerte al procesamiento de tus datos",
+          "Solicitar la portabilidad de tus datos"
+        ]
+      },
+      "4": {
+        "title": "5. Cookies",
+        "text": "Utilizamos cookies para mejorar tu experiencia en nuestro sitio web. Puedes configurar tu navegador para rechazar cookies, aunque esto puede afectar la funcionalidad del sitio."
+      },
+      "5": {
+        "title": "6. Contacto",
+        "text": "Si tienes preguntas sobre esta política de privacidad, contáctanos en:"
+      }
+    }
+  },
+  "terms": {
+    "title": "Términos de Uso",
+    "lastUpdated": "Última actualización: Diciembre 2024",
+    "sections": {
+      "0": {
+        "title": "1. Aceptación de Términos",
+        "text": "Al acceder y utilizar los servicios de ModulorIA, aceptas estar sujeto a estos términos de uso. Si no estás de acuerdo con alguno de estos términos, no debes utilizar nuestros servicios."
+      },
+      "1": {
+        "title": "2. Servicios Ofrecidos",
+        "text": "ModulorIA proporciona servicios de automatización con inteligencia artificial para la industria de la construcción modular, incluyendo:",
+        "items": [
+          "Diagnóstico estratégico de procesos",
+          "Implementación de automatizaciones con IA",
+          "Capacitación y soporte técnico",
+          "Consultoría en transformación digital"
+        ]
+      },
+      "2": {
+        "title": "3. Uso Apropiado",
+        "text": "Te comprometes a:",
+        "items": [
+          "Utilizar nuestros servicios de manera legal y apropiada",
+          "No interferir con el funcionamiento de nuestros servicios",
+          "Proporcionar información veraz y actualizada",
+          "Mantener la confidencialidad de tus credenciales de acceso"
+        ]
+      },
+      "3": {
+        "title": "4. Propiedad Intelectual",
+        "text": "Todo el contenido, software, y materiales proporcionados por ModulorIA son propiedad de ModulorIA o sus licenciantes. Las automatizaciones desarrolladas específicamente para tu empresa son de tu propiedad una vez completado el pago."
+      },
+      "4": {
+        "title": "5. Limitación de Responsabilidad",
+        "text": "ModulorIA no será responsable de daños indirectos, incidentales o consecuentes que surjan del uso de nuestros servicios. Nuestra responsabilidad máxima se limita al monto pagado por los servicios."
+      },
+      "5": {
+        "title": "6. Garantía de ROI",
+        "text": "Ofrecemos una garantía de ROI como se describe en nuestros paquetes de servicio. Si no alcanzas el ROI proyectado en 3 meses, realizaremos sesiones de optimización adicionales sin costo, sujeto a los términos específicos del servicio contratado."
+      },
+      "6": {
+        "title": "7. Modificaciones",
+        "text": "Nos reservamos el derecho de modificar estos términos en cualquier momento. Las modificaciones entrarán en vigor inmediatamente después de su publicación en nuestro sitio web."
+      },
+      "7": {
+        "title": "8. Contacto",
+        "text": "Para preguntas sobre estos términos, contáctanos en:"
+      }
+    }
+  }
+}

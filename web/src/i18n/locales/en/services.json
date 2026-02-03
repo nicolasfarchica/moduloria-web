@@ -1,4 +1,19 @@
 {
+  "page": {
+    "badge": "Complete Catalog",
+    "title": "AI Services for",
+    "titleHighlight": "Modular Construction",
+    "subtitle": "Real industry problems + Concrete automation solutions.",
+    "subtitleStrong": "All with calculated and guaranteed ROI.",
+    "stats": {
+      "savings": "High Savings",
+      "savingsSubtitle": "Measurable & Guaranteed",
+      "solutions": "6+",
+      "solutionsSubtitle": "Concrete Solutions",
+      "roi": "2-3 wks",
+      "roiSubtitle": "Average ROI"
+    }
+  },
   "section": {
     "tagline": "CONCRETE SOLUTIONS",
     "title": "What can",

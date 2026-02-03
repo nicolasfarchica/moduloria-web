@@ -1,0 +1,101 @@
+{
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: December 2024",
+    "sections": {
+      "0": {
+        "title": "1. Information We Collect",
+        "text": "At ModulorIA, we collect information you provide directly when you:",
+        "items": [
+          "Request a strategic assessment",
+          "Contact us",
+          "Subscribe to our newsletter",
+          "Use our services"
+        ]
+      },
+      "1": {
+        "title": "2. Use of Information",
+        "text": "We use the collected information to:",
+        "items": [
+          "Provide and improve our services",
+          "Respond to your inquiries and requests",
+          "Send you relevant information about our services",
+          "Comply with legal obligations"
+        ]
+      },
+      "2": {
+        "title": "3. Data Protection",
+        "text": "We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. We comply with the European Union's General Data Protection Regulation (GDPR)."
+      },
+      "3": {
+        "title": "4. Your Rights",
+        "text": "You have the right to:",
+        "items": [
+          "Access your personal data",
+          "Rectify inaccurate data",
+          "Request deletion of your data",
+          "Object to the processing of your data",
+          "Request data portability"
+        ]
+      },
+      "4": {
+        "title": "5. Cookies",
+        "text": "We use cookies to improve your experience on our website. You can configure your browser to reject cookies, although this may affect site functionality."
+      },
+      "5": {
+        "title": "6. Contact",
+        "text": "If you have questions about this privacy policy, contact us at:"
+      }
+    }
+  },
+  "terms": {
+    "title": "Terms of Use",
+    "lastUpdated": "Last updated: December 2024",
+    "sections": {
+      "0": {
+        "title": "1. Acceptance of Terms",
+        "text": "By accessing and using ModulorIA services, you agree to be bound by these terms of use. If you do not agree with any of these terms, you should not use our services."
+      },
+      "1": {
+        "title": "2. Services Offered",
+        "text": "ModulorIA provides artificial intelligence automation services for the modular construction industry, including:",
+        "items": [
+          "Strategic process assessment",
+          "Implementation of AI automations",
+          "Training and technical support",
+          "Digital transformation consulting"
+        ]
+      },
+      "2": {
+        "title": "3. Appropriate Use",
+        "text": "You agree to:",
+        "items": [
+          "Use our services legally and appropriately",
+          "Not interfere with the operation of our services",
+          "Provide truthful and updated information",
+          "Maintain the confidentiality of your access credentials"
+        ]
+      },
+      "3": {
+        "title": "4. Intellectual Property",
+        "text": "All content, software, and materials provided by ModulorIA are the property of ModulorIA or its licensors. Automations developed specifically for your company become your property once payment is completed."
+      },
+      "4": {
+        "title": "5. Limitation of Liability",
+        "text": "ModulorIA shall not be liable for indirect, incidental, or consequential damages arising from the use of our services. Our maximum liability is limited to the amount paid for the services."
+      },
+      "5": {
+        "title": "6. ROI Guarantee",
+        "text": "We offer an ROI guarantee as described in our service packages. If you do not achieve the projected ROI within 3 months, we will provide additional optimization sessions at no cost, subject to the specific terms of the contracted service."
+      },
+      "6": {
+        "title": "7. Modifications",
+        "text": "We reserve the right to modify these terms at any time. Modifications will take effect immediately upon publication on our website."
+      },
+      "7": {
+        "title": "8. Contact",
+        "text": "For questions about these terms, contact us at:"
+      }
+    }
+  }
+}

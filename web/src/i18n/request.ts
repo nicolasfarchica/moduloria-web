@@ -20,6 +20,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
   const blog = (await import(`./locales/${locale}/blog.json`)).default;
   const chat = (await import(`./locales/${locale}/chat.json`)).default;
   const metadata = (await import(`./locales/${locale}/metadata.json`)).default;
+  const legal = (await import(`./locales/${locale}/legal.json`)).default;
 
   return {
     locale,
@@ -35,6 +36,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
       blog,
       chat,
       metadata,
+      legal,
     },
   };
 });

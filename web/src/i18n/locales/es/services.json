@@ -1,4 +1,19 @@
 {
+  "page": {
+    "badge": "Catálogo Completo",
+    "title": "Servicios de",
+    "titleHighlight": "IA en Construcción Modular",
+    "subtitle": "Problemas reales de la industria + Soluciones concretas de automatización.",
+    "subtitleStrong": "Todo con ROI calculado y garantizado.",
+    "stats": {
+      "savings": "Alto Ahorro",
+      "savingsSubtitle": "Medible y Garantizado",
+      "solutions": "6+",
+      "solutionsSubtitle": "Soluciones Concretas",
+      "roi": "2-3 sem",
+      "roiSubtitle": "ROI Promedio"
+    }
+  },
   "section": {
     "tagline": "SOLUCIONES CONCRETAS",
     "title": "¿Qué puede hacer la",

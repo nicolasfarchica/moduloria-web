@@ -1,4 +1,4 @@
-import { setRequestLocale } from 'next-intl/server';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import ProblemasSection from '@/components/ProblemasSection';
 import ServiciosSection from '@/components/ServiciosSection';
@@ -62,7 +62,7 @@ export default async function ServiciosPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const isSpanish = locale === 'es';
+  const t = await getTranslations('services.page');
 
   return (
     <main className="min-h-screen bg-background-start overflow-hidden">
@@ -79,53 +79,39 @@ export default async function ServiciosPage({ params }: Props) {
             <div className="inline-flex items-center space-x-2 bg-white/5 border border-white/10 rounded-full px-6 py-2 mb-8">
               <span className="w-2 h-2 rounded-full bg-accent-copper animate-pulse" />
               <span className="text-secondary-beige text-sm font-medium uppercase tracking-widest">
-                {isSpanish ? 'Catálogo Completo' : 'Complete Catalog'}
+                {t('badge')}
               </span>
             </div>
 
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 font-heading">
-              {isSpanish ? (
-                <>Servicios de <span className="text-accent-copper">IA en Construcción Modular</span></>
-              ) : (
-                <>AI Services for <span className="text-accent-copper">Modular Construction</span></>
-              )}
+              {t('title')} <span className="text-accent-copper">{t('titleHighlight')}</span>
             </h1>
 
             <p className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto mb-8 font-light leading-relaxed">
-              {isSpanish ? (
-                <>
-                  Problemas reales de la industria + Soluciones concretas de automatización.
-                  <br />
-                  <strong className="text-white">Todo con ROI calculado y garantizado.</strong>
-                </>
-              ) : (
-                <>
-                  Real industry problems + Concrete automation solutions.
-                  <br />
-                  <strong className="text-white">All with calculated and guaranteed ROI.</strong>
-                </>
-              )}
+              {t('subtitle')}
+              <br />
+              <strong className="text-white">{t('subtitleStrong')}</strong>
             </p>
 
             <div className="flex flex-wrap justify-center gap-6 max-w-3xl mx-auto">
               <div className="bg-white/5 border border-white/10 rounded-xl px-6 py-4">
                 <div className="text-3xl font-bold text-accent-copper mb-1">
-                  {isSpanish ? 'Alto Ahorro' : 'High Savings'}
+                  {t('stats.savings')}
                 </div>
                 <div className="text-sm text-slate-400">
-                  {isSpanish ? 'Medible y Garantizado' : 'Measurable & Guaranteed'}
-                </div>
-              </div>
-              <div className="bg-white/5 border border-white/10 rounded-xl px-6 py-4">
-                <div className="text-3xl font-bold text-accent-copper mb-1">6+</div>
-                <div className="text-sm text-slate-400">
-                  {isSpanish ? 'Soluciones Concretas' : 'Concrete Solutions'}
+                  {t('stats.savingsSubtitle')}
                 </div>
               </div>
               <div className="bg-white/5 border border-white/10 rounded-xl px-6 py-4">
-                <div className="text-3xl font-bold text-accent-copper mb-1">2-3 {isSpanish ? 'sem' : 'wks'}</div>
+                <div className="text-3xl font-bold text-accent-copper mb-1">{t('stats.solutions')}</div>
                 <div className="text-sm text-slate-400">
-                  {isSpanish ? 'ROI Promedio' : 'Average ROI'}
+                  {t('stats.solutionsSubtitle')}
+                </div>
+              </div>
+              <div className="bg-white/5 border border-white/10 rounded-xl px-6 py-4">
+                <div className="text-3xl font-bold text-accent-copper mb-1">{t('stats.roi')}</div>
+                <div className="text-sm text-slate-400">
+                  {t('stats.roiSubtitle')}
                 </div>
               </div>
             </div>
