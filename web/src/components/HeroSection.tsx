@@ -6,10 +6,11 @@ import { useTranslations } from 'next-intl';
 
 export default function HeroSection() {
   const t = useTranslations('home.hero');
+  const tAria = useTranslations('aria');
 
   return (
     <section
-      aria-label="Hero principal"
+      aria-label={tAria('heroSection')}
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Video Background */}
@@ -122,7 +123,7 @@ export default function HeroSection() {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto"
             role="region"
-            aria-label="Indicadores de confianza"
+            aria-label={tAria('trustIndicators')}
           >
             <div className="glass-card text-center p-6">
               <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-accent-copper to-white mb-2 font-heading">

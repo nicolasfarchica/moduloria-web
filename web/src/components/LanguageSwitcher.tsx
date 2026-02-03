@@ -1,6 +1,6 @@
 'use client';
 
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { usePathname, useRouter } from '@/i18n/routing';
 import { locales, localeLabels, localeFlags, type Locale } from '@/i18n/config';
 import { useState, useRef, useEffect } from 'react';
@@ -9,6 +9,7 @@ export default function LanguageSwitcher() {
   const locale = useLocale() as Locale;
   const router = useRouter();
   const pathname = usePathname();
+  const tAria = useTranslations('aria');
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -34,7 +35,7 @@ export default function LanguageSwitcher() {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-2 px-3 py-2 text-white hover:text-accent-copper transition-colors duration-300 rounded-lg hover:bg-white/5"
-        aria-label="Select language"
+        aria-label={tAria('selectLanguage')}
         aria-expanded={isOpen}
         aria-haspopup="listbox"
       >
@@ -54,7 +55,7 @@ export default function LanguageSwitcher() {
         <div
           className="absolute right-0 mt-2 py-2 w-40 bg-slate-900/95 backdrop-blur-lg border border-white/10 rounded-xl shadow-xl z-50"
           role="listbox"
-          aria-label="Available languages"
+          aria-label={tAria('availableLanguages')}
         >
           {locales.map((loc) => (
             <button

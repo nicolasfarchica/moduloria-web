@@ -44,5 +44,14 @@
     "select": "Idioma",
     "es": "Español",
     "en": "English"
+  },
+  "aria": {
+    "mainNavigation": "Navegación principal",
+    "heroSection": "Sección principal",
+    "trustIndicators": "Indicadores de confianza",
+    "scrollToTop": "Volver arriba",
+    "selectLanguage": "Seleccionar idioma",
+    "availableLanguages": "Idiomas disponibles",
+    "closeMenu": "Cerrar menú"
   }
 }

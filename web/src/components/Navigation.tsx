@@ -9,6 +9,7 @@ import LanguageSwitcher from './LanguageSwitcher';
 
 export default function Navigation() {
   const t = useTranslations('nav');
+  const tAria = useTranslations('aria');
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -28,7 +29,7 @@ export default function Navigation() {
         : 'bg-transparent'
         }`}
     >
-      <nav className="container-custom" aria-label="Navegación principal">
+      <nav className="container-custom" aria-label={tAria('mainNavigation')}>
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 group">

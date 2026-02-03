@@ -2,8 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
 export default function ScrollToTop() {
+  const t = useTranslations('aria');
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -39,7 +41,7 @@ export default function ScrollToTop() {
           transition={{ duration: 0.2 }}
           onClick={scrollToTop}
           className="fixed bottom-8 left-8 z-40 bg-accent-copper hover:bg-accent-copper/90 text-white p-3 rounded-full shadow-copper-glow hover:shadow-lg transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-accent-copper focus:ring-offset-2"
-          aria-label="Volver arriba"
+          aria-label={t('scrollToTop')}
         >
           <svg
             className="w-6 h-6"

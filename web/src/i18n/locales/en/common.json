@@ -44,5 +44,14 @@
     "select": "Language",
     "es": "Español",
     "en": "English"
+  },
+  "aria": {
+    "mainNavigation": "Main navigation",
+    "heroSection": "Hero section",
+    "trustIndicators": "Trust indicators",
+    "scrollToTop": "Scroll to top",
+    "selectLanguage": "Select language",
+    "availableLanguages": "Available languages",
+    "closeMenu": "Close menu"
   }
 }
