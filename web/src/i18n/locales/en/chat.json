@@ -1,15 +1,15 @@
 {
   "widget": {
-    "title": "ModulorIA Assistant",
+    "title": "ModulorIA",
     "subtitle": "We're here to help",
-    "placeholder": "Type your message...",
+    "placeholder": "Type your question...",
     "send": "Send",
     "typing": "Typing...",
     "online": "Online",
     "offline": "Offline"
   },
   "messages": {
-    "welcome": "Hi! I'm the ModulorIA assistant. How can I help you today?",
+    "welcome": "Hi! I'm the ModulorIA assistant. I can help you with:\n\n- Our AI services for modular construction\n- Pricing and implementation timelines\n- How the free Diagnostic Audit works\n\nHow can I help you?",
     "quickReplies": [
       "What services do you offer?",
       "How much does it cost?",
@@ -19,9 +19,10 @@
     "errorGeneric": "Sorry, an error occurred. Please try again.",
     "contactHuman": "If you prefer to talk to a person, you can schedule a call or email us at contacto@moduloria.com"
   },
-  "buttons": {
-    "open": "Open chat",
-    "close": "Close chat",
-    "minimize": "Minimize"
+  "aria": {
+    "openChat": "Open help chat",
+    "closeChat": "Close chat",
+    "sendMessage": "Send message",
+    "chatDialog": "ModulorIA help chat"
   }
 }

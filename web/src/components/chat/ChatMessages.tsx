@@ -1,15 +1,15 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { useTranslations } from 'next-intl';
 import type { UIMessage } from 'ai';
 
 interface ChatMessagesProps {
   messages: UIMessage[];
 }
 
-const WELCOME_MESSAGE = `Hola! Soy el asistente de ModulorIA. Puedo ayudarte con:\n\n- Nuestros servicios de IA para construccion modular\n- Precios y plazos de implementacion\n- Como funciona la Auditoria Diagnostica gratuita\n\nEn que puedo ayudarte?`;
-
 export default function ChatMessages({ messages }: ChatMessagesProps) {
+  const t = useTranslations('chat.messages');
   const endRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export default function ChatMessages({ messages }: ChatMessagesProps) {
       {/* Welcome message */}
       <div className="flex justify-start">
         <div className="max-w-[85%] px-4 py-3 rounded-2xl bg-white/5 text-white/90 text-sm whitespace-pre-line">
-          {WELCOME_MESSAGE}
+          {t('welcome')}
         </div>
       </div>
 
