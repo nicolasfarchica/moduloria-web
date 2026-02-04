@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newsletter ModulorIA</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f5f5f5;">
+
+  <!-- Container Principal -->
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f5f5f5; padding: 32px 16px;">
+    <tr>
+      <td align="center">
+        <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.08);">
+
+          <!-- HEADER CON LOGO -->
+          <tr>
+            <td style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 32px 40px; text-align: center;">
+              <img src="https://moduloria.com/images/moduloria-logo-hd.png" alt="ModulorIA" width="48" height="48" style="display: inline-block; vertical-align: middle; border-radius: 8px;" />
+              <span style="display: inline-block; vertical-align: middle; margin-left: 14px; color: #ffffff; font-size: 26px; font-weight: 700; letter-spacing: -0.5px;">
+                Modulor<span style="color: #c9a56c;">IA</span>
+              </span>
+              <p style="margin: 16px 0 0; color: #8892b0; font-size: 14px; letter-spacing: 0.5px;">
+                Newsletter Semanal | IA + Construccion Modular
+              </p>
+            </td>
+          </tr>
+
+          <!-- CONTENIDO PRINCIPAL -->
+          <tr>
+            <td style="padding: 40px;">
+
+              <!-- Saludo -->
+              <h1 style="margin: 0 0 20px; color: #1a1a2e; font-size: 24px; font-weight: 700;">
+                {{ $json.saludo || 'Hola, equipo ModulorIA' }}
+              </h1>
+
+              <!-- Intro generado por IA -->
+              <p style="margin: 0 0 28px; color: #4a5568; font-size: 16px; line-height: 1.7;">
+                {{ $json.intro }}
+              </p>
+
+              <!-- RESUMEN SEMANAL -->
+              <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 32px;">
+                <tr>
+                  <td style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-left: 4px solid #c9a56c; padding: 20px 24px; border-radius: 0 8px 8px 0;">
+                    <h2 style="margin: 0 0 12px; color: #1a1a2e; font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
+                      Esta semana en IA + Construccion
+                    </h2>
+                    <p style="margin: 0; color: #4a5568; font-size: 15px; line-height: 1.6;">
+                      {{ $json.resumen }}
+                    </p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- ARTICULOS DESTACADOS -->
+              <h2 style="margin: 0 0 20px; color: #1a1a2e; font-size: 18px; font-weight: 700;">
+                Articulos destacados
+              </h2>
+
+              <!-- Articulos dinamicos -->
+              {{ $json.articulos_html }}
+
+              <!-- TIP DE LA SEMANA -->
+              <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 32px;">
+                <tr>
+                  <td style="background: #fffbeb; border: 1px solid #fcd34d; padding: 20px 24px; border-radius: 8px;">
+                    <h3 style="margin: 0 0 12px; color: #92400e; font-size: 16px; font-weight: 700;">
+                      <span style="margin-right: 8px;">⚡</span>Tip rapido de automatizacion
+                    </h3>
+                    <p style="margin: 0; color: #78350f; font-size: 14px; line-height: 1.6;">
+                      {{ $json.tip }}
+                    </p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- CTA PRINCIPAL -->
+              <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 32px;">
+                <tr>
+                  <td style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 28px; border-radius: 12px; text-align: center;">
+                    <h3 style="margin: 0 0 12px; color: #ffffff; font-size: 18px; font-weight: 700;">
+                      <span style="margin-right: 8px;">🚀</span>¿Listo para automatizar mas?
+                    </h3>
+                    <p style="margin: 0 0 20px; color: #ccd6f6; font-size: 14px; line-height: 1.6;">
+                      Agenda un diagnostico gratuito con nuestro equipo y descubre oportunidades concretas para aplicar IA en tus procesos.
+                    </p>
+                    <a href="https://moduloria.com/es/auditoria" style="display: inline-block; background: linear-gradient(135deg, #c9a56c 0%, #a08050 100%); color: #ffffff; text-decoration: none; padding: 14px 32px; border-radius: 8px; font-weight: 600; font-size: 15px;">
+                      Agendar Diagnostico Gratuito
+                    </a>
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+
+          <!-- FOOTER -->
+          <tr>
+            <td style="background: #f8f9fa; padding: 28px 40px; text-align: center; border-top: 1px solid #e9ecef;">
+              <p style="margin: 0 0 8px; color: #4a5568; font-size: 14px; font-weight: 600;">
+                ModulorIA - Automatizacion con IA para Construccion Modular
+              </p>
+              <p style="margin: 0 0 16px; color: #718096; font-size: 13px;">
+                Recibes este email porque te suscribiste en
+                <a href="https://moduloria.com" style="color: #c9a56c; text-decoration: none;">moduloria.com</a>
+              </p>
+              <p style="margin: 0 0 16px;">
+                <a href="https://moduloria.com" style="color: #c9a56c; text-decoration: none; font-size: 13px; margin: 0 8px;">Web</a>
+                <span style="color: #cbd5e0;">|</span>
+                <a href="https://www.linkedin.com/company/moduloria" style="color: #c9a56c; text-decoration: none; font-size: 13px; margin: 0 8px;">LinkedIn</a>
+                <span style="color: #cbd5e0;">|</span>
+                <a href="mailto:hola@moduloria.com" style="color: #c9a56c; text-decoration: none; font-size: 13px; margin: 0 8px;">Contacto</a>
+              </p>
+              <p style="margin: 0; color: #a0aec0; font-size: 11px;">
+                ¿Ya no quieres recibir estos emails? <a href="{{ $json.unsubscribe_url }}" style="color: #718096; text-decoration: underline;">Darte de baja</a>
+              </p>
+            </td>
+          </tr>
+
+        </table>
+
+        <!-- Copyright -->
+        <table width="600" cellpadding="0" cellspacing="0">
+          <tr>
+            <td style="padding: 20px; text-align: center;">
+              <p style="margin: 0; color: #a0aec0; font-size: 11px;">
+                © 2026 ModulorIA. Todos los derechos reservados.
+              </p>
+            </td>
+          </tr>
+        </table>
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>
