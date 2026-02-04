@@ -64,6 +64,13 @@ $RECYCLE.BIN/
 .claude-cache/
 .mcp-cache/
 .playwright-mcp/
+.agents/skills/
+.claude/skills/
+.agent/
+.codex/
+.cursor/
+.gemini/
+.opencode/
 
 # Task Master (keep config, ignore cache)
 .taskmaster/*.cache
