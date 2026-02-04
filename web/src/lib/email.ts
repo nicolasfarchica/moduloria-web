@@ -62,7 +62,7 @@ export async function sendConfirmacionAuditoria(data: AuditoriaEmailData) {
           <!-- Header with Logo -->
           <tr>
             <td style="padding: 40px 40px 30px; text-align: center;">
-              <img src="https://moduloria.com/images/moduloria-logo-v2.png" alt="ModulorIA" width="50" height="50" style="display: inline-block; vertical-align: middle;" />
+              <img src="https://moduloria.com/images/moduloria-logo-hd.png" alt="ModulorIA" width="50" height="50" style="display: inline-block; vertical-align: middle; border-radius: 8px;" />
               <span style="display: inline-block; vertical-align: middle; margin-left: 12px; color: #ffffff; font-size: 28px; font-weight: 700;">
                 Modulor<span style="color: #c9a56c;">IA</span>
               </span>
@@ -334,7 +334,7 @@ export async function sendNewsletterWelcome(email: string, nombre?: string) {
           <!-- Header with Logo -->
           <tr>
             <td style="padding: 40px 40px 30px; text-align: center;">
-              <img src="https://moduloria.com/images/moduloria-logo-v2.png" alt="ModulorIA" width="50" height="50" style="display: inline-block; vertical-align: middle;" />
+              <img src="https://moduloria.com/images/moduloria-logo-hd.png" alt="ModulorIA" width="50" height="50" style="display: inline-block; vertical-align: middle; border-radius: 8px;" />
               <span style="display: inline-block; vertical-align: middle; margin-left: 12px; color: #ffffff; font-size: 28px; font-weight: 700;">
                 Modulor<span style="color: #c9a56c;">IA</span>
               </span>
