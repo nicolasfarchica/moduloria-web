@@ -228,33 +228,33 @@ const nextConfig = {
 
 ## Pasos de Accion
 
-### Inmediato (Prioridad Alta)
+### Completado (4 Feb 2026)
 
-1. [ ] Implementar redirecciones 301 en `next.config.js`
-2. [ ] Verificar que www.moduloria.com redirige 301 a moduloria.com
-3. [ ] Re-deployar a produccion
-4. [ ] Verificar redirecciones con `curl -I`
+1. [x] Implementar redirecciones 308 (permanentes) en `next.config.js`
+2. [x] Re-deployar a produccion
+3. [x] Verificar redirecciones con `curl -I` - todas 308 excepto raiz
 
-### Corto Plazo (1-2 dias)
+### Pendiente - Corto Plazo (1-2 dias)
 
-5. [ ] Re-enviar sitemap en Google Search Console
-6. [ ] Solicitar indexacion de nuevas URLs en ingles:
+4. [ ] Re-enviar sitemap en Google Search Console
+5. [ ] Solicitar indexacion de nuevas URLs en ingles:
    - `/en/services`
    - `/en/pricing`
    - `/en/audit`
    - `/en/resources`
-7. [ ] Solicitar indexacion de URLs espanol con prefijo:
+6. [ ] Solicitar indexacion de URLs espanol con prefijo:
    - `/es` (homepage)
    - `/es/servicios`
    - `/es/precios`
    - `/es/auditoria`
    - `/es/recursos`
 
-### Mediano Plazo (1-2 semanas)
+### Pendiente - Mediano Plazo (1-2 semanas)
 
-8. [ ] Monitorear en GSC que Google reindexe las nuevas URLs
-9. [ ] Verificar que las URLs antiguas se marquen como "Redireccionada"
-10. [ ] Revisar metricas de indexacion
+7. [ ] Monitorear en GSC que Google reindexe las nuevas URLs
+8. [ ] Verificar que las URLs antiguas se marquen como "Redireccionada"
+9. [ ] Revisar metricas de indexacion
+10. [ ] Considerar configurar www -> non-www redirect a nivel DNS/Vercel
 
 ---
 
@@ -281,13 +281,32 @@ curl -s https://moduloria.com/sitemap.xml | head -50
 
 ---
 
+## Estado Actual de Redirecciones (Post-Fix)
+
+Verificado el 4 Feb 2026 despues del deploy:
+
+| URL Antigua | Redirect | Destino |
+|-------------|----------|---------|
+| `/servicios` | **308** | `/es/servicios` |
+| `/precios` | **308** | `/es/precios` |
+| `/auditoria` | **308** | `/es/auditoria` |
+| `/recursos` | **308** | `/es/recursos` |
+| `/sobre-moduloria` | **308** | `/es/sobre-moduloria` |
+| `/blog` | **308** | `/es/blog` |
+| `/blog/:slug` | **308** | `/es/blog/:slug` |
+| `/` (raiz) | 307 | `/es` (middleware) |
+
+**Nota:** El redirect de `/` a `/es` sigue siendo 307 porque es manejado por el middleware de next-intl para permitir deteccion automatica de idioma. Esto es aceptable.
+
+---
+
 ## Historial de Cambios
 
 | Fecha | Cambio | Resultado |
 |-------|--------|-----------|
 | Ene 2026 | Implementacion de i18n con next-intl | Nuevas URLs con /es/ y /en/ |
 | 4 Feb 2026 | Diagnostico de indexacion | Identificados problemas de 307 |
-| Pendiente | Implementar 301 redirects | - |
+| 4 Feb 2026 | Implementar 308 redirects | Redirects permanentes activos |
 
 ---
 
