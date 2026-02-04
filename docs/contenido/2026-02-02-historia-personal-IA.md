@@ -4,7 +4,7 @@
 **Tema**: Lo que construi trabajando con IA aplicada a construccion modular
 **Tipo**: Historia personal / Thought leadership
 **CTA**: Pregunta abierta de engagement
-**Estado**: Aprobado para publicacion
+**Estado**: PUBLICADO
 
 ---
 

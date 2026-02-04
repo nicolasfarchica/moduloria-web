@@ -1,7 +1,7 @@
 # ModulorIA - Estado de Sistemas
 
 > Resumen ejecutivo de todos los sistemas implementados y pendientes
-> Ultima actualizacion: 2026-01-25 (MCP n8n-server para conexion directa N8N Cloud)
+> Ultima actualizacion: 2026-02-04 (Sistema Redes Sociales ACTIVO)
 
 ---
 
@@ -15,10 +15,10 @@
 | Automatizaciones N8N | 2 | 1 | 3 |
 | Blog SEO | 10 | 0 | 10 |
 | MVPs/Productos | 0 | 2 | 2 |
-| Redes Sociales | 0 | 1 | 1 |
+| Redes Sociales | 1 | 0 | 1 |
 | Claude MCPs | 13 | 0 | 13 |
 | Claude Skills | 7 | 0 | 7 |
-| **TOTAL** | **44** | **4** | **48** |
+| **TOTAL** | **45** | **3** | **48** |
 
 > **CHATBOT IA** - Operativo en produccion (GPT-4o-mini, streaming, edge runtime)
 > **BLOG SEO** - 10/10 articulos publicados con imagenes optimizadas
@@ -26,8 +26,7 @@
 > **BASE DE DATOS PROSPECTOS** - 100+ empresas en Espana segmentadas por ciudad
 > **MVP SELECCIONADO** - #08 Tool Tracking QR (ROI 650%, especificacion tecnica completa)
 > **EMAIL CLASSIFIER** - Especificacion completa, pendiente implementacion en N8N
-> **SISTEMA REDES SOCIALES** - Documentado, pendiente implementacion
-> **SAAS AUDITORIA** - Llega 26 enero (herramienta del profesor)
+> **REDES SOCIALES ACTIVAS** - LinkedIn, Facebook, Instagram con carruseles Gamma API
 > **MCPs N8N** - n8n-mcp + 7 skills instalados (czlonkowski) para disenar workflows
 
 ---
@@ -155,34 +154,43 @@
 
 ### Sistema de Redes Sociales
 
-**Estado:** Documentado - Pendiente implementacion
+**Estado:** ACTIVO - Publicando en 3 plataformas
 
-| Componente | Estado | Fecha Estimada |
-|------------|--------|----------------|
-| Pago Metricool Plan Start | Pendiente | 23 enero 2026 |
-| Configurar cuenta Metricool | Pendiente | 24-26 enero |
-| Conectar LinkedIn personal | Pendiente | 24-26 enero |
-| Crear templates Gamma | Pendiente | Semana siguiente |
-| Primera sesion batching | Pendiente | Semana siguiente |
+| Plataforma | Estado | Perfil |
+|------------|--------|--------|
+| LinkedIn | ✅ ACTIVO | ModulorIA + Nicolas personal |
+| Facebook | ✅ ACTIVO | Pagina ModulorIA |
+| Instagram | ✅ ACTIVO | @moduloria |
+
+**Formatos por plataforma (IMPORTANTE):**
+
+| Plataforma | Formato | Dimensiones | Parametro Gamma |
+|------------|---------|-------------|-----------------|
+| LinkedIn | 4:5 vertical | 1080x1350 | `"dimensions": "4x5"` |
+| Facebook | 4:5 vertical | 1080x1350 | `"dimensions": "4x5"` |
+| Instagram | 1:1 cuadrado | 1080x1080 | `"dimensions": "1x1"` |
+
+> **LinkedIn y Facebook comparten el mismo archivo.**
+> **Instagram SIEMPRE necesita version cuadrada separada.**
+
+**Publicaciones realizadas:**
+- 4 feb 2026: Investigar sector con IA (carrusel 8 slides)
+- 3 feb 2026: Dato edificacion industrializada 2%
+- 2 feb 2026: Historia personal IA (2 anos, 1 portatil)
+- Posts anteriores: OCR Facturas, 11 de la noche, IA no reemplaza equipo
 
 **Documentacion disponible:**
-- `docs/estrategia/SISTEMA-REDES-SOCIALES.md` - Plan completo
+- `docs/contenido/2026-02-04-investigar-sector-con-ia.md` - Ultimo post
 - `docs/estrategia/pilares-contenido.md` - Pilares de contenido
 - `docs/templates/carrusel-*.md` - 4 templates de carrusel
 - `docs/workflows/sesion-batching-contenido.md` - Checklist batching
-- `docs/contenido-linkedin/calendario-tipo.md` - Calendario tipo
 
 **Stack completo:**
-- Metricool Plan Start (~13 EUR/mes) - Programacion y analytics
-- Gamma (carruseles y presentaciones)
-- Canva (diseno visual, PDFs, infografias)
-- FreePik (imagenes y recursos)
-- Flow (contenido visual, cupos disponibles)
+- Gamma API (carruseles automatizados) - Tema ModulorIA ID: `s33hkd4f2v6eeow`
+- FreePik API (imagenes IA)
 - Claude (estrategia, redaccion, analisis)
-- ChatGPT (borradores, brainstorming)
-- Gemini (investigacion, analisis alternativo)
 
-**Filosofia:** "Crear 1 vez, distribuir 4 veces" - 4 horas cada 2 semanas
+**Filosofia:** "Crear 1 vez, distribuir en 3 plataformas" - Gamma genera ambos formatos
 
 ---
 
