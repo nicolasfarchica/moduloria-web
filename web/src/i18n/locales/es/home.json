@@ -212,7 +212,14 @@
     "diagnosticoDescBold": "tu empresa",
     "diagnosticoDescEnd": ": procesos automatizables, ROI estimado y plan de implementación.",
     "diagnosticoButton": "Agendar Diagnóstico (30 min)",
-    "diagnosticoDisclaimer": "Sin compromiso. Incluye roadmap personalizado."
+    "diagnosticoDisclaimer": "Sin compromiso. Incluye roadmap personalizado.",
+    "blogTitle": "Blog:",
+    "blogTitleHighlight": "Artículos y Guías",
+    "blogSubtitle": "Guías prácticas y casos de éxito sobre automatización con IA en construcción modular",
+    "blogEmpty": "Próximamente publicaremos artículos sobre IA en construcción modular.",
+    "blogBottomText": "Publicamos semanalmente. Cada artículo incluye datos reales y ROI calculado.",
+    "blogCta": "Agendar Diagnóstico Estratégico",
+    "blogCtaSubtext": "Incluye roadmap personalizado + ROI calculado para tu empresa"
   },
   "ctaFinal": {
     "badge": "Comienza a ahorrar en 2-3 semanas",

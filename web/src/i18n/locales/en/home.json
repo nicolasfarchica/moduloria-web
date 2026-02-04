@@ -212,7 +212,14 @@
     "diagnosticoDescBold": "your company",
     "diagnosticoDescEnd": ": automatable processes, estimated ROI, and implementation plan.",
     "diagnosticoButton": "Schedule Assessment (30 min)",
-    "diagnosticoDisclaimer": "No commitment. Includes personalized roadmap."
+    "diagnosticoDisclaimer": "No commitment. Includes personalized roadmap.",
+    "blogTitle": "Blog:",
+    "blogTitleHighlight": "Articles and Guides",
+    "blogSubtitle": "Practical guides and success stories on AI automation in modular construction",
+    "blogEmpty": "We will soon publish articles about AI in modular construction.",
+    "blogBottomText": "We publish weekly. Each article includes real data and calculated ROI.",
+    "blogCta": "Schedule Strategic Assessment",
+    "blogCtaSubtext": "Includes personalized roadmap + calculated ROI for your company"
   },
   "ctaFinal": {
     "badge": "Start saving in 2-3 weeks",

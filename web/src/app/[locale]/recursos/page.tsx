@@ -1,4 +1,4 @@
-import { setRequestLocale } from 'next-intl/server';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import { Link } from '@/i18n/routing';
 import RecursosSection from '@/components/RecursosSection';
@@ -56,7 +56,7 @@ export default async function RecursosPage({ params }: Props) {
   setRequestLocale(locale);
 
   const posts = await getAllPosts();
-  const isSpanish = locale === 'es';
+  const t = await getTranslations('home.recursos');
 
   return (
     <main className="min-h-screen bg-background-start overflow-hidden">
@@ -71,23 +71,19 @@ export default async function RecursosPage({ params }: Props) {
         <section className="container-custom section-padding">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-heading">
-              Blog: <span className="text-accent-copper">
-                {isSpanish ? 'Artículos y Guías' : 'Articles and Guides'}
+              {t('blogTitle')} <span className="text-accent-copper">
+                {t('blogTitleHighlight')}
               </span>
             </h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              {isSpanish
-                ? 'Guías prácticas y casos de éxito sobre automatización con IA en construcción modular'
-                : 'Practical guides and success stories on AI automation in modular construction'}
+              {t('blogSubtitle')}
             </p>
           </div>
 
           {posts.length === 0 ? (
             <div className="text-center py-8">
               <p className="text-slate-400">
-                {isSpanish
-                  ? 'Próximamente publicaremos artículos sobre IA en construcción modular.'
-                  : 'We will soon publish articles about AI in modular construction.'}
+                {t('blogEmpty')}
               </p>
             </div>
           ) : (
@@ -121,7 +117,7 @@ export default async function RecursosPage({ params }: Props) {
                   {/* Meta */}
                   <div className="flex items-center justify-between text-xs text-slate-500 pt-4 border-t border-white/5">
                     <span>{post.author}</span>
-                    <span>{new Date(post.date).toLocaleDateString(isSpanish ? 'es-ES' : 'en-US', {
+                    <span>{new Date(post.date).toLocaleDateString(locale === 'es' ? 'es-ES' : 'en-US', {
                       year: 'numeric',
                       month: 'long',
                       day: 'numeric'
@@ -149,20 +145,16 @@ export default async function RecursosPage({ params }: Props) {
           {/* Bottom CTA */}
           <div className="text-center mt-16">
             <p className="text-slate-300 mb-6 text-lg">
-              {isSpanish
-                ? 'Publicamos semanalmente. Cada artículo incluye datos reales y ROI calculado.'
-                : 'We publish weekly. Each article includes real data and calculated ROI.'}
+              {t('blogBottomText')}
             </p>
             <Link
               href="/auditoria"
               className="btn-primary text-lg px-10 py-4 inline-block shadow-glow hover:shadow-copper-lg"
             >
-              {isSpanish ? 'Agendar Diagnóstico Estratégico' : 'Schedule Strategic Assessment'}
+              {t('blogCta')}
             </Link>
             <p className="text-slate-400 text-sm mt-4">
-              {isSpanish
-                ? 'Incluye roadmap personalizado + ROI calculado para tu empresa'
-                : 'Includes personalized roadmap + calculated ROI for your company'}
+              {t('blogCtaSubtext')}
             </p>
           </div>
         </section>
