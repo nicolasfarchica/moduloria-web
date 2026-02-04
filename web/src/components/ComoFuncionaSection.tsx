@@ -78,7 +78,7 @@ export default function ComoFuncionaSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            {t('title')} <span className="text-accent-copper">{t('titleHighlight')}</span>?
+            {t('title')} <span className="text-accent-copper">{t('titleHighlight')}</span> {t('titleEnd')}
           </h2>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto font-light">
             {t('subtitle')}
