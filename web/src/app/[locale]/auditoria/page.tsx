@@ -8,7 +8,6 @@ import { motion } from 'framer-motion';
 export default function AuditoriaPage() {
   const t = useTranslations('audit');
   const locale = useLocale();
-  const isSpanish = locale === 'es';
 
   const [formData, setFormData] = useState({
     nombre: '',
@@ -46,9 +45,7 @@ export default function AuditoriaPage() {
       setSubmitted(true);
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert(isSpanish
-        ? 'Hubo un error al enviar tu solicitud. Por favor, intenta de nuevo o contacta por WhatsApp.'
-        : 'There was an error submitting your request. Please try again or contact us via WhatsApp.');
+      alert(t('error.submitError'));
     } finally {
       setIsSubmitting(false);
     }
@@ -86,9 +83,7 @@ export default function AuditoriaPage() {
             transition={{ delay: 0.1 }}
             className="text-xl text-primary-steel mb-8 font-light"
           >
-            {isSpanish
-              ? `Gracias ${formData.nombre}. Te contactaremos en las próximas 24 horas para agendar tu auditoría gratis.`
-              : `Thank you ${formData.nombre}. We'll contact you within 24 hours to schedule your free assessment.`}
+            {t('success.thankYou', { name: formData.nombre })}
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -97,12 +92,10 @@ export default function AuditoriaPage() {
             className="glass-card p-6 rounded-xl mb-8 border border-white/10 bg-white/5"
           >
             <p className="text-lg text-gray-300 mb-4">
-              {isSpanish ? '📧 Revisa tu email:' : '📧 Check your email:'} <strong className="text-white">{formData.email}</strong>
+              {t('success.checkEmail')} <strong className="text-white">{formData.email}</strong>
             </p>
             <p className="text-sm text-gray-400">
-              {isSpanish
-                ? 'Te enviamos un email de confirmación con los próximos pasos. Si no lo ves, revisa tu carpeta de spam.'
-                : "We've sent you a confirmation email with the next steps. If you don't see it, check your spam folder."}
+              {t('success.spamNotice')}
             </p>
           </motion.div>
           <motion.div
@@ -123,7 +116,7 @@ export default function AuditoriaPage() {
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
               </svg>
-              {isSpanish ? 'Chat ahora' : 'Chat now'}
+              {t('success.chatNow')}
             </a>
           </motion.div>
         </div>
@@ -148,13 +141,8 @@ export default function AuditoriaPage() {
             animate={{ opacity: 1, y: 0 }}
             className="text-5xl md:text-7xl font-bold mb-6 font-heading leading-tight"
           >
-            {isSpanish ? (
-              <>Auditoría <span className="text-accent-copper bg-accent-copper/10 px-3 rounded-xl ml-2">Gratis</span> <br />
-              <span className="text-3xl md:text-5xl text-white/50 block mt-4">30 Minutos de Valor Puro</span></>
-            ) : (
-              <>Free <span className="text-accent-copper bg-accent-copper/10 px-3 rounded-xl ml-2">Assessment</span> <br />
-              <span className="text-3xl md:text-5xl text-white/50 block mt-4">30 Minutes of Pure Value</span></>
-            )}
+            {t('hero.title')} <span className="text-accent-copper bg-accent-copper/10 px-3 rounded-xl ml-2">{t('hero.titleHighlight')}</span> <br />
+            <span className="text-3xl md:text-5xl text-white/50 block mt-4">{t('hero.subtitle')}</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -162,13 +150,8 @@ export default function AuditoriaPage() {
             transition={{ delay: 0.1 }}
             className="text-xl md:text-2xl text-primary-steel mb-4 font-light max-w-2xl mx-auto"
           >
-            {isSpanish ? (
-              <>Descubre exactamente cuánto puedes ahorrar automatizando tus procesos.<br />
-              <span className="text-white font-medium">Sin compromiso. Con números reales de tu empresa.</span></>
-            ) : (
-              <>Discover exactly how much you can save by automating your processes.<br />
-              <span className="text-white font-medium">No commitment. With real numbers from your company.</span></>
-            )}
+            {t('hero.description')}<br />
+            <span className="text-white font-medium">{t('hero.descriptionHighlight')}</span>
           </motion.p>
         </div>
       </section>
@@ -184,31 +167,21 @@ export default function AuditoriaPage() {
               transition={{ delay: 0.2 }}
             >
               <h2 className="text-3xl font-bold text-white mb-10 font-heading">
-                {isSpanish ? '¿Qué recibes en la auditoría?' : 'What do you get in the assessment?'}
+                {t('benefits.title')}
               </h2>
 
               <div className="space-y-8">
-                {(isSpanish ? [
-                  { icon: '🎯', title: 'Diagnóstico de 3-5 oportunidades concretas', text: 'Identificamos los procesos más ineficientes de TU empresa específicamente. No genéricos.' },
-                  { icon: '💰', title: 'ROI calculado con tus números reales', text: 'No usamos promedios. Calculamos el ahorro anual exacto basado en tu volumen de facturas, proyectos y personal.' },
-                  { icon: '🚀', title: 'Propuesta de Quick Win implementable', text: 'Te sugerimos un proyecto piloto de bajo riesgo (implementable en < 1 semana) para validar resultados.' },
-                  { icon: '📄', title: 'Informe PDF con análisis detallado', text: 'Después de la llamada, recibes un documento con todas las oportunidades identificadas y plan de acción sugerido.' }
-                ] : [
-                  { icon: '🎯', title: 'Diagnosis of 3-5 concrete opportunities', text: 'We identify the most inefficient processes in YOUR specific company. Not generic ones.' },
-                  { icon: '💰', title: 'ROI calculated with your real numbers', text: 'We don\'t use averages. We calculate the exact annual savings based on your volume of invoices, projects, and staff.' },
-                  { icon: '🚀', title: 'Implementable Quick Win proposal', text: 'We suggest a low-risk pilot project (implementable in < 1 week) to validate results.' },
-                  { icon: '📄', title: 'PDF report with detailed analysis', text: 'After the call, you receive a document with all identified opportunities and a suggested action plan.' }
-                ]).map((item, index) => (
+                {[0, 1, 2, 3].map((index) => (
                   <div key={index} className="flex items-start gap-5 glass-card p-6 border-white/5 hover:border-white/10 transition-colors">
                     <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-background-dark border border-white/10 flex items-center justify-center text-2xl shadow-lg">
-                      {item.icon}
+                      {t(`benefits.items.${index}.icon`)}
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-white mb-2 font-heading">
-                        {item.title}
+                        {t(`benefits.items.${index}.title`)}
                       </h3>
                       <p className="text-gray-400 leading-relaxed font-light text-sm">
-                        {item.text}
+                        {t(`benefits.items.${index}.description`)}
                       </p>
                     </div>
                   </div>
@@ -218,23 +191,13 @@ export default function AuditoriaPage() {
               {/* Trust Indicators */}
               <div className="mt-12 glass-panel p-8 rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent">
                 <h3 className="font-bold text-white mb-6 font-heading flex items-center gap-2">
-                  {isSpanish ? '✅ Garantías ModulorIA' : '✅ ModulorIA Guarantees'}
+                  ✅ {t('guarantees.title')}
                 </h3>
                 <ul className="space-y-4 text-sm text-gray-300">
-                  {(isSpanish ? [
-                    '100% gratis, sin compromiso de compra',
-                    'No hay ventas agresivas ni presión',
-                    'Si tu caso no es para automatización, te lo diremos honestamente',
-                    'Firmamos NDA si es necesario'
-                  ] : [
-                    '100% free, no purchase commitment',
-                    'No aggressive sales or pressure',
-                    'If your case isn\'t suitable for automation, we\'ll tell you honestly',
-                    'We sign NDA if needed'
-                  ]).map((text, index) => (
+                  {[0, 1, 2, 3].map((index) => (
                     <li key={index} className="flex items-center gap-3">
                       <span className="w-5 h-5 rounded-full bg-accent-copper/20 flex items-center justify-center text-accent-copper text-xs font-bold">✓</span>
-                      <span>{text}</span>
+                      <span>{t(`guarantees.items.${index}`)}</span>
                     </li>
                   ))}
                 </ul>
@@ -249,7 +212,7 @@ export default function AuditoriaPage() {
               className="glass-panel p-8 md:p-10 rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent shadow-xl"
             >
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 font-heading">
-                {isSpanish ? 'Agendar Auditoría Gratis' : 'Schedule Free Assessment'}
+                {t('form.title')}
               </h2>
 
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -345,7 +308,7 @@ export default function AuditoriaPage() {
                 {/* Proyectos Activos */}
                 <div>
                   <label htmlFor="proyectosActivos" className="block text-sm font-medium text-gray-300 mb-2">
-                    {isSpanish ? 'Proyectos activos simultáneos' : 'Simultaneous active projects'} <span className="text-gray-500">({isSpanish ? 'opcional' : 'optional'})</span>
+                    {t('form.fields.projects.label')} <span className="text-gray-500">({t('form.fields.projects.optional')})</span>
                   </label>
                   <input
                     type="number"
@@ -355,14 +318,14 @@ export default function AuditoriaPage() {
                     onChange={handleChange}
                     min="0"
                     className="w-full px-4 py-3 bg-background-dark border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-copper focus:border-transparent transition-all"
-                    placeholder={isSpanish ? 'Ej: 5' : 'E.g.: 5'}
+                    placeholder={t('form.fields.projects.placeholder')}
                   />
                 </div>
 
                 {/* Mayor Problema */}
                 <div>
                   <label htmlFor="mayorProblema" className="block text-sm font-medium text-gray-300 mb-2">
-                    {t('form.fields.challenge.label')} <span className="text-gray-500">({isSpanish ? 'opcional' : 'optional'})</span>
+                    {t('form.fields.challenge.label')} <span className="text-gray-500">({t('form.fields.challenge.optional')})</span>
                   </label>
                   <textarea
                     id="mayorProblema"

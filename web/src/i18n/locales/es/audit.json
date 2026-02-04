@@ -1,11 +1,47 @@
 {
-  "page": {
-    "title": "Diagnóstico Estratégico",
-    "subtitle": "Descubre cómo la IA puede transformar tu empresa de construcción modular"
+  "hero": {
+    "title": "Auditoría",
+    "titleHighlight": "Gratis",
+    "subtitle": "30 Minutos de Valor Puro",
+    "description": "Descubre exactamente cuánto puedes ahorrar automatizando tus procesos.",
+    "descriptionHighlight": "Sin compromiso. Con números reales de tu empresa."
+  },
+  "benefits": {
+    "title": "¿Qué recibes en la auditoría?",
+    "items": [
+      {
+        "icon": "🎯",
+        "title": "Diagnóstico de 3-5 oportunidades concretas",
+        "description": "Identificamos los procesos más ineficientes de TU empresa específicamente. No genéricos."
+      },
+      {
+        "icon": "💰",
+        "title": "ROI calculado con tus números reales",
+        "description": "No usamos promedios. Calculamos el ahorro anual exacto basado en tu volumen de facturas, proyectos y personal."
+      },
+      {
+        "icon": "🚀",
+        "title": "Propuesta de Quick Win implementable",
+        "description": "Te sugerimos un proyecto piloto de bajo riesgo (implementable en < 1 semana) para validar resultados."
+      },
+      {
+        "icon": "📄",
+        "title": "Informe PDF con análisis detallado",
+        "description": "Después de la llamada, recibes un documento con todas las oportunidades identificadas y plan de acción sugerido."
+      }
+    ]
+  },
+  "guarantees": {
+    "title": "Garantías ModulorIA",
+    "items": [
+      "100% gratis, sin compromiso de compra",
+      "No hay ventas agresivas ni presión",
+      "Si tu caso no es para automatización, te lo diremos honestamente",
+      "Firmamos NDA si es necesario"
+    ]
   },
   "form": {
-    "title": "Solicita tu Diagnóstico Estratégico",
-    "subtitle": "Completa el formulario y nos pondremos en contacto contigo en menos de 24 horas.",
+    "title": "Agendar Auditoría Gratis",
     "fields": {
       "name": {
         "label": "Nombre completo",
@@ -33,62 +69,31 @@
           "200+": "Más de 200 empleados"
         }
       },
-      "role": {
-        "label": "Tu cargo",
-        "placeholder": "Director, CEO, Gerente de Operaciones..."
+      "projects": {
+        "label": "Proyectos activos simultáneos",
+        "placeholder": "Ej: 5",
+        "optional": "opcional"
       },
       "challenge": {
         "label": "¿Cuál es tu mayor desafío operativo?",
-        "placeholder": "Cuéntanos qué procesos te gustaría automatizar o mejorar..."
-      },
-      "plan": {
-        "label": "Plan de interés",
-        "options": {
-          "diagnostico": "Diagnóstico Estratégico",
-          "quick-win": "Quick Win",
-          "high-impact": "High Impact",
-          "not-sure": "No estoy seguro todavía"
-        }
+        "placeholder": "Cuéntanos qué procesos te gustaría automatizar o mejorar...",
+        "optional": "opcional"
       }
     },
-    "submit": "Solicitar Diagnóstico",
+    "submit": "Solicitar Auditoría Gratis",
     "submitting": "Enviando...",
     "consent": "Al enviar, aceptas nuestra",
     "privacyPolicy": "Política de Privacidad"
   },
   "success": {
     "title": "¡Solicitud Recibida!",
-    "message": "Gracias por tu interés. Nos pondremos en contacto contigo en menos de 24 horas para agendar tu Diagnóstico Estratégico.",
-    "backHome": "Volver al inicio"
+    "thankYou": "Gracias {name}. Te contactaremos en las próximas 24 horas para agendar tu auditoría gratis.",
+    "checkEmail": "Revisa tu email:",
+    "spamNotice": "Te enviamos un email de confirmación con los próximos pasos. Si no lo ves, revisa tu carpeta de spam.",
+    "backHome": "Volver al inicio",
+    "chatNow": "Chat ahora"
   },
   "error": {
-    "title": "Error al enviar",
-    "message": "Ha ocurrido un error. Por favor, inténtalo de nuevo o contáctanos directamente.",
-    "retry": "Intentar de nuevo"
-  },
-  "benefits": {
-    "title": "¿Qué incluye el Diagnóstico?",
-    "items": [
-      {
-        "icon": "📊",
-        "title": "Análisis de Procesos",
-        "description": "Evaluamos tus flujos de trabajo actuales e identificamos cuellos de botella."
-      },
-      {
-        "icon": "💰",
-        "title": "Cálculo de ROI",
-        "description": "Te mostramos exactamente cuánto puedes ahorrar con automatización."
-      },
-      {
-        "icon": "🗺️",
-        "title": "Roadmap Personalizado",
-        "description": "Plan de implementación paso a paso adaptado a tu empresa."
-      },
-      {
-        "icon": "✅",
-        "title": "100% Reembolsable",
-        "description": "Si contratas cualquier solución, descontamos el costo del diagnóstico."
-      }
-    ]
+    "submitError": "Hubo un error al enviar tu solicitud. Por favor, intenta de nuevo o contacta por WhatsApp."
   }
 }

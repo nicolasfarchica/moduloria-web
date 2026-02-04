@@ -1,11 +1,47 @@
 {
-  "page": {
-    "title": "Strategic Assessment",
-    "subtitle": "Discover how AI can transform your modular construction company"
+  "hero": {
+    "title": "Free",
+    "titleHighlight": "Assessment",
+    "subtitle": "30 Minutes of Pure Value",
+    "description": "Discover exactly how much you can save by automating your processes.",
+    "descriptionHighlight": "No commitment. With real numbers from your company."
+  },
+  "benefits": {
+    "title": "What do you get in the assessment?",
+    "items": [
+      {
+        "icon": "🎯",
+        "title": "Diagnosis of 3-5 concrete opportunities",
+        "description": "We identify the most inefficient processes in YOUR specific company. Not generic ones."
+      },
+      {
+        "icon": "💰",
+        "title": "ROI calculated with your real numbers",
+        "description": "We don't use averages. We calculate the exact annual savings based on your volume of invoices, projects, and staff."
+      },
+      {
+        "icon": "🚀",
+        "title": "Implementable Quick Win proposal",
+        "description": "We suggest a low-risk pilot project (implementable in < 1 week) to validate results."
+      },
+      {
+        "icon": "📄",
+        "title": "PDF report with detailed analysis",
+        "description": "After the call, you receive a document with all identified opportunities and a suggested action plan."
+      }
+    ]
+  },
+  "guarantees": {
+    "title": "ModulorIA Guarantees",
+    "items": [
+      "100% free, no purchase commitment",
+      "No aggressive sales or pressure",
+      "If your case isn't suitable for automation, we'll tell you honestly",
+      "We sign NDA if needed"
+    ]
   },
   "form": {
-    "title": "Request Your Strategic Assessment",
-    "subtitle": "Complete the form and we'll contact you within 24 hours.",
+    "title": "Schedule Free Assessment",
     "fields": {
       "name": {
         "label": "Full name",
@@ -33,62 +69,31 @@
           "200+": "More than 200 employees"
         }
       },
-      "role": {
-        "label": "Your role",
-        "placeholder": "Director, CEO, Operations Manager..."
+      "projects": {
+        "label": "Simultaneous active projects",
+        "placeholder": "E.g.: 5",
+        "optional": "optional"
       },
       "challenge": {
         "label": "What's your biggest operational challenge?",
-        "placeholder": "Tell us which processes you'd like to automate or improve..."
-      },
-      "plan": {
-        "label": "Plan of interest",
-        "options": {
-          "diagnostico": "Strategic Assessment",
-          "quick-win": "Quick Win",
-          "high-impact": "High Impact",
-          "not-sure": "Not sure yet"
-        }
+        "placeholder": "Tell us which processes you'd like to automate or improve...",
+        "optional": "optional"
       }
     },
-    "submit": "Request Assessment",
+    "submit": "Request Free Assessment",
     "submitting": "Sending...",
     "consent": "By submitting, you agree to our",
     "privacyPolicy": "Privacy Policy"
   },
   "success": {
     "title": "Request Received!",
-    "message": "Thank you for your interest. We'll contact you within 24 hours to schedule your Strategic Assessment.",
-    "backHome": "Back to home"
+    "thankYou": "Thank you {name}. We'll contact you within 24 hours to schedule your free assessment.",
+    "checkEmail": "Check your email:",
+    "spamNotice": "We've sent you a confirmation email with the next steps. If you don't see it, check your spam folder.",
+    "backHome": "Back to home",
+    "chatNow": "Chat now"
   },
   "error": {
-    "title": "Submission Error",
-    "message": "An error occurred. Please try again or contact us directly.",
-    "retry": "Try again"
-  },
-  "benefits": {
-    "title": "What's Included in the Assessment?",
-    "items": [
-      {
-        "icon": "📊",
-        "title": "Process Analysis",
-        "description": "We evaluate your current workflows and identify bottlenecks."
-      },
-      {
-        "icon": "💰",
-        "title": "ROI Calculation",
-        "description": "We show you exactly how much you can save with automation."
-      },
-      {
-        "icon": "🗺️",
-        "title": "Custom Roadmap",
-        "description": "Step-by-step implementation plan tailored to your company."
-      },
-      {
-        "icon": "✅",
-        "title": "100% Refundable",
-        "description": "If you hire any solution, we discount the assessment cost."
-      }
-    ]
+    "submitError": "There was an error submitting your request. Please try again or contact us via WhatsApp."
   }
 }
