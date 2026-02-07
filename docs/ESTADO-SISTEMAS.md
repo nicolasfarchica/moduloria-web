@@ -1,7 +1,7 @@
 # ModulorIA - Estado de Sistemas
 
 > Resumen ejecutivo de todos los sistemas implementados y pendientes
-> Ultima actualizacion: 2026-02-04 (Sistema Redes Sociales ACTIVO)
+> Ultima actualizacion: 2026-02-07 (Optimizacion MCPs: 11 → 3 habilitados)
 
 ---
 
@@ -16,7 +16,7 @@
 | Blog SEO | 10 | 0 | 10 |
 | MVPs/Productos | 0 | 2 | 2 |
 | Redes Sociales | 1 | 0 | 1 |
-| Claude MCPs | 13 | 0 | 13 |
+| Claude MCPs | 3 | 10 (dormidos) | 13 |
 | Claude Skills | 7 | 0 | 7 |
 | **TOTAL** | **45** | **3** | **48** |
 
@@ -268,40 +268,37 @@
 | Resend API Key | Header Auth | SI |
 | Notion API Key | Header Auth | SI (para HTTP Request) |
 
-### Claude Code MCPs (Configurados en ~/.mcp.json)
+### Claude Code MCPs (Optimizado 7-feb-2026)
+
+> Se redujo de 11 MCPs a 3 habilitados para bajar consumo de tokens (~78K a ~20-25K).
+> Herramientas nativas de Claude Code reemplazan los MCPs deshabilitados.
+> Backup y rollback documentados en memoria persistente de Claude Code.
+
+**Habilitados (3 a nivel proyecto):**
 | MCP | Funcion | Estado |
 |-----|---------|--------|
-| filesystem | Acceso a archivos Desktop | ACTIVO |
-| github | Operaciones GitHub | ACTIVO |
-| playwright | Automatizacion browser | ACTIVO |
-| memory | Memoria persistente | ACTIVO |
-| notion | Acceso a Notion | ACTIVO |
-| sequential-thinking | Razonamiento paso a paso | ACTIVO |
-| brave-search | Busqueda web | ACTIVO |
-| markitdown | Conversion markdown | ACTIVO |
-| task-master-ai | Gestion de tareas | ACTIVO |
-| fetch | HTTP requests | ACTIVO |
-| context7 | Documentacion librerias | ACTIVO |
-| n8n-mcp | Documentacion N8N (1,084 nodos) | ACTIVO |
-| n8n-server | **Conexion directa N8N Cloud API** | ACTIVO (nuevo 25-ene) |
+| github | Operaciones GitHub (PRs, issues, code) | ACTIVO |
+| context7 | Documentacion librerias (Next.js, Tailwind, React) | ACTIVO |
+| playwright | Automatizacion browser y testing web | ACTIVO |
 
-### Credenciales N8N Cloud (MCP n8n-server)
-| Parametro | Valor |
-|-----------|-------|
-| Instancia | nfarchica.app.n8n.cloud |
-| API URL | https://nfarchica.app.n8n.cloud/api/v1 |
-| API Key Label | Claude-MCP-ModulorIA |
-| API Key Expira | No expira (sin fecha limite) |
-| Paquete NPM | @leonardsellem/n8n-mcp-server |
+**Deshabilitados (reactivables si se necesitan):**
+| MCP | Razon de desactivacion | Reemplazo |
+|-----|------------------------|-----------|
+| filesystem | Redundante | Read/Write/Glob/Edit nativos |
+| memory | Redundante | Auto-memory de Claude Code |
+| notion | Duplicado | claude_ai_Notion built-in |
+| brave-search | Redundante | WebSearch nativo |
+| fetch | Redundante | WebFetch nativo |
+| markitdown | Nunca usado | - |
+| task-master-ai | Dormido (0 in-progress) | CLI `task-master` disponible |
+| n8n-mcp | Bajo uso actual | Reactivar al disenar workflows |
+| n8n-server | Bajo uso actual | Reactivar al disenar workflows |
+| sequential-thinking | Bajo impacto | Razonamiento nativo de Claude |
 
-**Capacidades n8n-server:**
-- `workflow_list` - Listar workflows
-- `workflow_get` - Ver detalles workflow
-- `workflow_create` - Crear workflows desde Claude
-- `workflow_update` - Modificar workflows
-- `workflow_activate/deactivate` - Activar/desactivar
-- `execution_run` - Ejecutar workflow
-- `execution_list` - Ver historial ejecuciones
+**Como reactivar un MCP:**
+1. Editar `~/.claude/settings.local.json`
+2. Mover nombre de `disabledMcpjsonServers` a `enabledMcpjsonServers`
+3. Reiniciar Claude Code
 
 ### Claude Code Skills (Instalados en ~/.claude/skills/)
 | Skill | Funcion | Estado |
