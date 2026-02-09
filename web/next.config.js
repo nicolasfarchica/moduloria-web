@@ -6,11 +6,17 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 const nextConfig = {
   reactStrictMode: true,
 
-  // SEO: Redirecciones 301 permanentes para URLs antiguas
-  // Esto transfiere el SEO de las URLs sin prefijo a las nuevas con /es/
+  // SEO: Redirecciones permanentes
   // Documentado en: docs/SEO-INDEXACION-STATUS.md
   async redirects() {
     return [
+      // www -> sin www (resuelve canonical duplicada en Google Search Console)
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.moduloria.com' }],
+        destination: 'https://moduloria.com/:path*',
+        permanent: true,
+      },
       // Paginas principales (sin prefijo -> /es/)
       {
         source: '/servicios',
