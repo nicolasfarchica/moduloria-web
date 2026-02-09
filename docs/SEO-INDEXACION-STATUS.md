@@ -1,6 +1,6 @@
 # SEO e Indexacion - Estado y Documentacion
 
-**Ultima actualizacion:** 4 de Febrero 2026
+**Ultima actualizacion:** 9 de Febrero 2026
 **Autor:** Claude Code (asistencia a Nicolas)
 
 ---
@@ -249,12 +249,26 @@ const nextConfig = {
    - `/es/auditoria`
    - `/es/recursos`
 
+### Completado (9 Feb 2026)
+
+7. [x] Implementar redirect www.moduloria.com -> moduloria.com en next.config.js
+8. [x] Deploy a produccion (commit b676b81)
+9. [x] Verificar redirect funciona: www.moduloria.com -> 308 -> moduloria.com
+10. [x] Verificar redirect con path: www.moduloria.com/es/servicios -> 308 -> moduloria.com/es/servicios
+
+### Pendiente - Corto Plazo (10 Feb 2026)
+
+11. [ ] Abrir Google Search Console y validar correccion del error "Duplicada: canonical diferente"
+12. [ ] Re-enviar sitemap en GSC (moduloria.com/sitemap.xml)
+13. [ ] Verificar en Vercel Dashboard que www.moduloria.com este como redirect (no alias)
+14. [ ] Solicitar indexacion de nuevas URLs en ingles (/en/services, /en/pricing, etc.)
+
 ### Pendiente - Mediano Plazo (1-2 semanas)
 
-7. [ ] Monitorear en GSC que Google reindexe las nuevas URLs
-8. [ ] Verificar que las URLs antiguas se marquen como "Redireccionada"
-9. [ ] Revisar metricas de indexacion
-10. [ ] Considerar configurar www -> non-www redirect a nivel DNS/Vercel
+15. [ ] Monitorear en GSC que Google reindexe las nuevas URLs
+16. [ ] Verificar que el error "Pagina con redireccion" desaparezca solo
+17. [ ] Verificar que las URLs antiguas se marquen como "Redireccionada"
+18. [ ] Revisar metricas de indexacion
 
 ---
 
@@ -283,10 +297,11 @@ curl -s https://moduloria.com/sitemap.xml | head -50
 
 ## Estado Actual de Redirecciones (Post-Fix)
 
-Verificado el 4 Feb 2026 despues del deploy:
+Verificado el 9 Feb 2026 despues del deploy:
 
-| URL Antigua | Redirect | Destino |
-|-------------|----------|---------|
+| URL | Redirect | Destino |
+|-----|----------|---------|
+| `www.moduloria.com/*` | **308** | `moduloria.com/*` |
 | `/servicios` | **308** | `/es/servicios` |
 | `/precios` | **308** | `/es/precios` |
 | `/auditoria` | **308** | `/es/auditoria` |
@@ -296,7 +311,7 @@ Verificado el 4 Feb 2026 despues del deploy:
 | `/blog/:slug` | **308** | `/es/blog/:slug` |
 | `/` (raiz) | 307 | `/es` (middleware) |
 
-**Nota:** El redirect de `/` a `/es` sigue siendo 307 porque es manejado por el middleware de next-intl para permitir deteccion automatica de idioma. Esto es aceptable.
+**Nota:** El redirect de `/` a `/es` sigue siendo 307 porque es manejado por el middleware de next-intl para deteccion automatica de idioma. Esto es aceptable.
 
 ---
 
@@ -307,6 +322,8 @@ Verificado el 4 Feb 2026 despues del deploy:
 | Ene 2026 | Implementacion de i18n con next-intl | Nuevas URLs con /es/ y /en/ |
 | 4 Feb 2026 | Diagnostico de indexacion | Identificados problemas de 307 |
 | 4 Feb 2026 | Implementar 308 redirects | Redirects permanentes activos |
+| 9 Feb 2026 | GSC reporta 2 errores: canonical duplicada + pagina con redireccion | Diagnosticado |
+| 9 Feb 2026 | Agregar redirect www -> non-www en next.config.js | Deploy exitoso, redirect 308 funcionando |
 
 ---
 
