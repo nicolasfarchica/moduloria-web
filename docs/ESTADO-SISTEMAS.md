@@ -174,13 +174,20 @@
 > **Instagram SIEMPRE necesita version cuadrada separada.**
 
 **Publicaciones realizadas:**
+- 10 feb 2026: "Espana mercado clave construccion modular Europa" - Noticia/Industria (carrusel 6 slides, 3 redes)
+- 9 feb 2026: "Stack 3 herramientas IA diarias" - Behind the scenes (carrusel 6 slides, 3 redes)
+- 8 feb 2026: "70% del software no se usa" - Autoridad (carrusel 6 slides, 3 redes)
+- 6 feb 2026: Claude Opus 4.6 - Thought leadership (carrusel 5 slides, LinkedIn personal)
+- 6 feb 2026: 3 senales de que necesitas automatizar (carrusel 5 slides, 3 redes)
 - 4 feb 2026: Investigar sector con IA (carrusel 8 slides)
 - 3 feb 2026: Dato edificacion industrializada 2%
 - 2 feb 2026: Historia personal IA (2 anos, 1 portatil)
 - Posts anteriores: OCR Facturas, 11 de la noche, IA no reemplaza equipo
 
+**Cadencia actual:** DIARIA (desde 8 feb 2026) - Plan semanal en docs/contenido/PLAN-DIARIO-SEMANA-09-15-FEB.md
+
 **Documentacion disponible:**
-- `docs/contenido/2026-02-04-investigar-sector-con-ia.md` - Ultimo post
+- `docs/contenido/2026-02-08-post-domingo.md` - Ultimo post
 - `docs/estrategia/pilares-contenido.md` - Pilares de contenido
 - `docs/templates/carrusel-*.md` - 4 templates de carrusel
 - `docs/workflows/sesion-batching-contenido.md` - Checklist batching
